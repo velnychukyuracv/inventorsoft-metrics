@@ -28,8 +28,8 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Optional<User> findById(Long entityId) {
-        return Optional.ofNullable(userRepository.findOne(entityId));
+    public Optional<User> findById(Long userId) {
+        return userRepository.findById(userId);
     }
 
     public List<User> findAll() {
