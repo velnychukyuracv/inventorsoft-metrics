@@ -1,0 +1,13 @@
+spring:
+  datasource:
+   url: jdbc:postgresql://localhost:5432/reporttool
+   username: postgres
+   password: postgres
+   hikari:
+     maximum-pool-size: 10
+     minimum-idle: 10
+     jdbc-url: jdbc:postgresql://localhost:5432/reporttool
+
+application:
+  protocol: http
+  host: localhost:8080

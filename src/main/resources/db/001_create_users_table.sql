@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS users (
+  id serial NOT NULL,
+  first_name VARCHAR DEFAULT NULL,
+  last_name VARCHAR DEFAULT NULL,
+  email VARCHAR NOT NULL UNIQUE,
+  password VARCHAR DEFAULT NULL,
+  status VARCHAR NULL,
+  last_sign_in TIMESTAMP NOT NULL,
+
+  PRIMARY KEY (id)
+)
