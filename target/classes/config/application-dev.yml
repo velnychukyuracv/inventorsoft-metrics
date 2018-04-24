@@ -11,3 +11,9 @@ spring:
 application:
   protocol: http
   host: localhost:8080
+
+jwt:
+  expiration: 360000
+  secret: teststring
+  tokenprefix: Bearer
+  headerstring: Authorization

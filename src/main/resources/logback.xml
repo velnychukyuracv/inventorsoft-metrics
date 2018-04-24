@@ -1,0 +1,42 @@
+<configuration scan="true">
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+
+        <logger name="com.reporttool" level="DEBUG"/>
+        <logger name="org.springframework" level="DEBUG"/>
+        <logger name="org.hibernate" level="DEBUG"/>
+    </springProfile>
+
+    <springProfile name="test">
+
+        <appender name="FileLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>reporttool-app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>50MB</maxFileSize>
+            </rollingPolicy>
+
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+        </appender>
+
+        <root level="DEBUG">
+            <appender-ref ref="FileLogger"/>
+        </root>
+
+        <root level="ERROR">
+            <appender-ref ref="FileLogger"/>
+        </root>
+
+        <logger name="com.reporttool" level="DEBUG"/>
+
+    </springProfile>
+
+
+</configuration>

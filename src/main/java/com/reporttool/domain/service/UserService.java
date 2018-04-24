@@ -28,19 +28,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Optional<User> findById(Long userId) {
-        return userRepository.findById(userId);
-    }
 
-    public List<User> findAll() {
-        return Lists.newArrayList(userRepository.findAll());
-    }
-
-    public User update(User user) {
-        checkArgument(nonNull(user.getId()),
-                "Could not update entity. Entity hasn't persisted yet");
-        return userRepository.save(user);
-    }
 
     public User create(User user) {
         checkArgument(isNull(user.getId()),
@@ -51,6 +39,31 @@ public class UserService {
     public User save(User user) {
         return isNull(user.getId()) ? create(user) : update(user);
     }
+
+
+
+    public List<User> findAll() {
+        return Lists.newArrayList(userRepository.findAll());
+    }
+
+    public Optional<User> findById(Long userId) {
+        return userRepository.findById(userId);
+    }
+
+    public Optional<User> findByEmail(String userEmail) {
+        Optional<User> user = userRepository.findDistinctByEmail(userEmail);
+        return user;
+    }
+
+
+
+    public User update(User user) {
+        checkArgument(nonNull(user.getId()),
+                "Could not update entity. Entity hasn't persisted yet");
+        return userRepository.save(user);
+    }
+
+
 
     public void delete(User user) {
         checkArgument(nonNull(user.getId()),
