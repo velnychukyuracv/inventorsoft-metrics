@@ -1,4 +1,4 @@
-package com.reporttool.security;
+package com.reporttool.security.model;
 
 import lombok.Getter;
 import lombok.Setter;

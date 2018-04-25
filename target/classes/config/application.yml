@@ -15,4 +15,7 @@ spring:
     banner-mode: 'off'
   liquibase:
     change-log: classpath:/db/master.xml
+  mvc:
+    favicon:
+      enabled: false
 

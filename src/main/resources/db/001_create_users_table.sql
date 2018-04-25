@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
   id serial NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
   first_name VARCHAR DEFAULT NULL,
   last_name VARCHAR DEFAULT NULL,
   email VARCHAR NOT NULL UNIQUE,

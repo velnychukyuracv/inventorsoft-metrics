@@ -1,6 +1,7 @@
-package com.reporttool.security;
+package com.reporttool.security.filter;
 
-import lombok.AllArgsConstructor;
+import com.reporttool.security.service.TokenAuthenticationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -13,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JWTAuthenticationFilter extends GenericFilterBean {
 
-    private TokenAuthenticationService service;
+    private final TokenAuthenticationService service;
 
     @Override
     public void doFilter(ServletRequest request,

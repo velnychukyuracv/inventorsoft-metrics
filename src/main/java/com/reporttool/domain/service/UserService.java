@@ -1,34 +1,32 @@
 package com.reporttool.domain.service;
 
 import com.google.common.collect.Lists;
-import com.reporttool.domain.User;
+import com.reporttool.domain.model.User;
 import com.reporttool.domain.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class UserService {
 
-    private PasswordEncoder passwordEncoder;
-    private UserRepository userRepository;
-
-    @Inject
-    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
-        this.userRepository = repository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-
+    private final UserRepository userRepository;
 
     public User create(User user) {
         checkArgument(isNull(user.getId()),
@@ -46,13 +44,21 @@ public class UserService {
         return Lists.newArrayList(userRepository.findAll());
     }
 
+    public Page<User> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
     public Optional<User> findById(Long userId) {
         return userRepository.findById(userId);
     }
 
     public Optional<User> findByEmail(String userEmail) {
-        Optional<User> user = userRepository.findDistinctByEmail(userEmail);
-        return user;
+        return userRepository.findDistinctByEmail(userEmail);
+    }
+
+    public Page<User> findUsersByName(String query, Pageable pageable) {
+        return userRepository
+                .findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query, pageable);
     }
 
 

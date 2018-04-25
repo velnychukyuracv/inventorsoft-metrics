@@ -1,6 +1,9 @@
-package com.reporttool.security;
+package com.reporttool.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reporttool.security.handler.JwtAuthenticationSuccessHandler;
+import com.reporttool.security.model.AccountCredentials;
+import com.reporttool.security.service.TokenAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -56,7 +58,5 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
             Authentication auth) throws IOException, ServletException {
         authenticationService
                 .addAuthentication(res, auth.getName());
-
-        chain.doFilter(req, res);
     }
 }

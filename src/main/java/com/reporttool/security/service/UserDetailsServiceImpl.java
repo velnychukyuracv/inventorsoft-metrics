@@ -1,6 +1,7 @@
-package com.reporttool.security;
+package com.reporttool.security.service;
 
 import com.reporttool.domain.service.UserService;
+import com.reporttool.security.model.SecurityUser;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import static java.lang.String.format;
 
 /**
- * Implementation of {@link UserDetailsService} to load application user by email
+ * Implementation of {@link UserDetailsService} to load application userview by email
  */
 @Service
 @AllArgsConstructor
@@ -22,6 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userService.findByEmail(username)
                 .map(SecurityUser::new)
-                .orElseThrow(() -> new UsernameNotFoundException(format("Couldn't find user with email %s", username)));
+                .orElseThrow(() -> new UsernameNotFoundException(format("Couldn't find userview with email %s", username)));
     }
 }

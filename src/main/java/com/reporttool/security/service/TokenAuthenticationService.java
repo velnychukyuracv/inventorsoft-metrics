@@ -1,4 +1,4 @@
-package com.reporttool.security;
+package com.reporttool.security.service;
 
 import com.reporttool.config.PropertyConfig;
 import io.jsonwebtoken.Jwts;

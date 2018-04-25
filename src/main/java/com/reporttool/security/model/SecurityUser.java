@@ -1,6 +1,6 @@
-package com.reporttool.security;
+package com.reporttool.security.model;
 
-import com.reporttool.domain.User;
+import com.reporttool.domain.model.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.Authentication;
@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import java.util.Collections;
 
 /**
- * Simple adapter between application's user and spring security's
+ * Simple adapter between application's userview and spring security's
  * authentication principal. Instance of this class will be returned from
  * {@link Authentication#getPrincipal()}
  */
