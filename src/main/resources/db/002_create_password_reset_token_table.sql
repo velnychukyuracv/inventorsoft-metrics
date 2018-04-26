@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS password_reset_tokens (
-  id SERIAL NOT NULL,
+  user_id BIGINT NOT NULL,
   token VARCHAR NOT NULL,
   created_at TIMESTAMP NOT NULL,
   updated_at TIMESTAMP NOT NULL,
   is_used BOOLEAN NOT NULL,
   expire_time TIMESTAMP NOT NULL,
 
-  PRIMARY KEY (id),
+  PRIMARY KEY (user_id),
 
   CONSTRAINT PASSWORD_RESET_TOKEN_FK
-  FOREIGN KEY (id)
+  FOREIGN KEY (user_id)
   REFERENCES users (id)
   ON DELETE CASCADE
 );

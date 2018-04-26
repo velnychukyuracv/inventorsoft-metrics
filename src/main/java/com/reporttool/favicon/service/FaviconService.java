@@ -10,7 +10,7 @@ import java.io.InputStream;
 @Service
 public class FaviconService {
     public byte[] getFavicon() throws IOException {
-        Resource resource = new ClassPathResource("images/favicon.jpeg");
+        Resource resource = new ClassPathResource("/static/images/favicon.jpeg");
         InputStream resourceInputStream = resource.getInputStream();
         return resourceInputStream.readAllBytes();
     }

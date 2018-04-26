@@ -58,7 +58,7 @@ public class UserViewController {
 
     @PatchMapping(path="/{userId}", consumes="application/json")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public UserEditForm patchOrder(@PathVariable("userId") Long userId,
+    public UserEditForm patchUser(@PathVariable("userId") Long userId,
                                    @Validated @RequestBody UserEditForm userForm) {
         return userViewService.patchUser(userId, userForm);
     }
@@ -67,7 +67,7 @@ public class UserViewController {
 
     @DeleteMapping("/{userId}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void deleteOrder(@PathVariable("userId") Long userId) {
+    public void deleteUser(@PathVariable("userId") Long userId) {
         try {
             userService.delete(userId);
         } catch (EmptyResultDataAccessException e) {

@@ -14,7 +14,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
  * Configures beans to provide access to resources.
  */
 @Configuration
-@EnableConfigurationProperties({PropertyConfig.JWTProperties.class})
+@EnableConfigurationProperties({PropertyConfig.JWTProperties.class, PropertyConfig.ApplicationProperties.class})
 public class PropertyConfig {
 
     @Getter
@@ -25,5 +25,13 @@ public class PropertyConfig {
         private String secret;
         private String tokenprefix;
         private String headerstring;
+    }
+
+    @Getter
+    @Setter
+    @ConfigurationProperties("application")
+    public static class ApplicationProperties {
+        private String host;
+        private String protocol;
     }
 }

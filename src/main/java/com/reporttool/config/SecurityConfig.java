@@ -12,6 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @AllArgsConstructor
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final TokenAuthenticationService service;
@@ -38,11 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint())
-                .and().authorizeRequests().anyRequest().authenticated()
+                .and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/googleAccount/login-with-google").permitAll()
-                .antMatchers(HttpMethod.GET, "/googleAccount/oauth2callback").permitAll()
-                .antMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 // We filter the api/login requests
                 .addFilterBefore(new JWTLoginFilter("/login",
@@ -61,6 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.GET,"/googleAccount/login-with-google")
                 .antMatchers(HttpMethod.GET,"/googleAccount/oauth2callback")
-                .antMatchers(HttpMethod.GET, "/favicon.ico");
+                .antMatchers(HttpMethod.GET, "/favicon.ico")
+                .antMatchers(HttpMethod.POST, "/forgetPassword")
+                .antMatchers(HttpMethod.POST, "/forgetPassword/resetPassword")
+                                /* Swagger */
+                .antMatchers(HttpMethod.GET,"/v2/api-docs/**")
+                .antMatchers(HttpMethod.GET,"/swagger-resources")
+                .antMatchers(HttpMethod.GET,"/swagger-ui.html")
+                .antMatchers(HttpMethod.GET,"/webjars/**");
     }
 }

@@ -6,20 +6,17 @@ import com.reporttool.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Service
 @Slf4j
@@ -27,6 +24,7 @@ import static org.springframework.data.domain.Sort.Direction.DESC;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User create(User user) {
         checkArgument(isNull(user.getId()),
@@ -79,5 +77,16 @@ public class UserService {
 
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public void changePassword(User user, String password) {
+        if (nonNull(user)) {
+            String newEncodedPassword = passwordEncoder.encode(password);
+            user.setPassword(newEncodedPassword);
+            save(user);
+        } else {
+            log.error("Invalid passed parameters, user: {}, password: {}", user, password);
+            throw new InvalidParameterException();
+        }
     }
 }
