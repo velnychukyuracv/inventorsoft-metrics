@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -58,6 +59,7 @@ public class UserViewService {
 
 
 
+    @Transactional
     public UserEditForm patchUser(Long userId, UserEditForm userForm) {
         Optional<User> optionalUser = userService.findById(userId);
         User user = optionalUser.orElseThrow(ResourceNotFoundException:: new);

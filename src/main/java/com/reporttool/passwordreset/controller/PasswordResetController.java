@@ -21,15 +21,11 @@ import javax.validation.constraints.Email;
 public class PasswordResetController {
 
     private final PasswordResetService passwordResetService;
-    private final UserService userService;
-    private final MailService mailService;
 
     @PostMapping(value = "/forgetPassword")
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendCreateAndSendToken(@RequestParam(name = "email") @Email String email) {
-        User user = userService.findByEmail(email).orElseThrow(ResourceNotFoundException:: new);
-        String token = passwordResetService.createToken(user).getToken();
-        mailService.sendResetToken(token, user);
+    public void createAndSendToken(@RequestParam(name = "email") @Email String email) {
+        passwordResetService.createAndSendToken(email);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

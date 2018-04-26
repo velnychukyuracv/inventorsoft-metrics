@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/AsyncConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEntityListener.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/model/EmailBuilder.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/model/PasswordResetForm.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/inventorsoft-metrics.iml" afterPath="$PROJECT_DIR$/inventorsoft-metrics.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/service/PasswordResetService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql" afterPath="$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/constants/Status.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/constants/Status.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application.yml" afterPath="$PROJECT_DIR$/target/classes/config/application.yml" />
-    </list>
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -565,16 +533,15 @@
       <workItem from="1524205215330" duration="24552000" />
       <workItem from="1524552774922" duration="25399000" />
       <workItem from="1524637408669" duration="27823000" />
-      <workItem from="1524726047687" duration="22382000" />
+      <workItem from="1524726047687" duration="22657000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140768000" />
+    <option name="totallyTimeSpent" value="141043000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -594,10 +561,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26755112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
