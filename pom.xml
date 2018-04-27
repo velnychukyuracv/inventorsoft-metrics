@@ -179,7 +179,7 @@
     </dependencies>
 
     <build>
-        <finalName>inventorsoft-matrics</finalName>
+        <finalName>inventorsoft-metrics</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
