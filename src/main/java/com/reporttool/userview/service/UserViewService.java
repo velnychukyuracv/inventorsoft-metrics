@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 import static java.util.Objects.nonNull;
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 @Service
 @RequiredArgsConstructor

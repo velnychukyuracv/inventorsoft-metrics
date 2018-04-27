@@ -18,6 +18,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.reporttool.constants.MetricConstants.APP;
+
 @AllArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -41,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .and().authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers(HttpMethod.POST, APP + "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // We filter the api/login requests
-                .addFilterBefore(new JWTLoginFilter("/login",
+                .addFilterBefore(new JWTLoginFilter(APP + "/login",
                                 authenticationManager(),
                                 service,
                                 new JwtAuthenticationSuccessHandler()),
@@ -59,15 +61,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers(HttpMethod.GET,"/googleAccount/login-with-google")
-                .antMatchers(HttpMethod.GET,"/googleAccount/oauth2callback")
-                .antMatchers(HttpMethod.GET, "/favicon.ico")
-                .antMatchers(HttpMethod.POST, "/forgetPassword")
-                .antMatchers(HttpMethod.POST, "/forgetPassword/resetPassword")
+                .antMatchers(HttpMethod.GET,APP + "/googleAccount/login-with-google")
+                .antMatchers(HttpMethod.GET,APP + "/googleAccount/oauth2callback")
+                .antMatchers(HttpMethod.GET, APP + "/favicon.ico")
+                .antMatchers(HttpMethod.POST, APP + "/forgetPassword")
+                .antMatchers(HttpMethod.POST, APP + "/forgetPassword/resetPassword")
                                 /* Swagger */
-                .antMatchers(HttpMethod.GET,"/v2/api-docs/**")
-                .antMatchers(HttpMethod.GET,"/swagger-resources")
-                .antMatchers(HttpMethod.GET,"/swagger-ui.html")
-                .antMatchers(HttpMethod.GET,"/webjars/**");
+                .antMatchers(HttpMethod.GET,APP + "/v2/api-docs/**")
+                .antMatchers(HttpMethod.GET,APP + "/swagger-resources")
+                .antMatchers(HttpMethod.GET,APP + "/swagger-ui.html")
+                .antMatchers(HttpMethod.GET,APP + "/webjars/**");
     }
 }

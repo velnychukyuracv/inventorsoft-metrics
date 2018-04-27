@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,79 +41,56 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
-        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
-        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="roles" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="177" column="21" lean-forward="false" selection-start-line="177" selection-start-column="21" selection-end-line="177" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="209">
+              <caret line="64" column="45" lean-forward="false" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+      <file leaf-file-name="GoogleAccountController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state relative-caret-position="251">
+              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JWTLoginFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JWTAuthenticationFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetricConstants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -145,20 +138,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/ValidEnumValue.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/UniqueEmailValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/BaseForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/PasswordMatcherValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/PasswordMatcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/exeption/ResourceNotFoundExeption.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/SearchController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/service/SearchService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/service/UserDetailsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/model/SecurityUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/handler/RestAuthenticationEntryPoint.java" />
@@ -171,31 +157,38 @@
         <option value="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/mail/model/EmailBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/service/PasswordResetService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/model/PasswordResetForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/AsyncConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractIdentifiable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/base/DefaultCrudSupport.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEnntityListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEntityListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/service/UserDetailsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
       </list>
     </option>
   </component>
@@ -250,8 +243,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,7 +287,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="userview" type="462c0819:PsiDirectoryNode" />
+              <item name="google" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
@@ -301,8 +296,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="userview" type="462c0819:PsiDirectoryNode" />
+              <item name="google" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
@@ -365,8 +379,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -533,15 +545,17 @@
       <workItem from="1524205215330" duration="24552000" />
       <workItem from="1524552774922" duration="25399000" />
       <workItem from="1524637408669" duration="27823000" />
-      <workItem from="1524726047687" duration="22657000" />
+      <workItem from="1524726047687" duration="23756000" />
+      <workItem from="1524811356974" duration="2206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141043000" />
+    <option name="totallyTimeSpent" value="144348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -554,7 +568,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -564,13 +578,11 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26755112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27086788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -578,6 +590,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -729,39 +743,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
-          <line>33</line>
+          <line>35</line>
           <properties />
           <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java</url>
-          <line>84</line>
-          <properties />
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java</url>
-          <line>18</line>
-          <properties />
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java</url>
-          <line>14</line>
-          <properties />
-          <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java</url>
@@ -782,13 +766,25 @@
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java</url>
-          <line>13</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
+          <line>32</line>
           <properties />
-          <option name="timeStamp" value="142" />
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="143" />
+      <option name="time" value="146" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -824,419 +820,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar!/javax/validation/constraints/Email.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/web/bind/annotation/RequestParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.databasechangelog">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ctid" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.databasechangeloglock">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE.jar!/org/springframework/data/jpa/convert/threeten/Jsr310JpaConverters.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.16.Final/hibernate-core-5.2.16.Final.jar!/org/hibernate/engine/spi/SessionDelegatorBaseImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="259" column="16" lean-forward="false" selection-start-line="259" selection-start-column="16" selection-end-line="259" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.16.Final/hibernate-core-5.2.16.Final.jar!/org/hibernate/engine/spi/SharedSessionContractImplementor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="60" column="9" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.16.Final/hibernate-core-5.2.16.Final.jar!/org/hibernate/event/spi/PersistEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/EntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="61" column="16" lean-forward="false" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE.jar!/org/springframework/data/jpa/repository/support/SimpleJpaRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4266">
-          <caret line="291" column="27" lean-forward="false" selection-start-line="291" selection-start-column="27" selection-end-line="291" selection-end-column="27" />
-          <folding>
-            <marker date="1524050503251" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1524050503251" expanded="false" signature="171:2024" ph="..." />
-            <marker date="1524050503251" expanded="true" signature="2026:2075" ph="@{...}" />
-            <marker date="1524050503251" expanded="true" signature="2577:2906" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="2979:3071" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="3156:3207" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="3285:3296" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="3317:3323" ph=" }" />
-            <marker date="1524050503251" expanded="false" signature="3364:3375" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="3419:3425" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="3472:3581" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="3624:3846" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="3901:4191" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="4021:4182" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="4245:4399" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="4478:4724" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="4797:5099" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="5148:5321" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="5376:5387" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="5455:5461" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="5502:6054" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="6097:6237" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="6266:6399" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="6438:8102" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="8132:8143" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="8224:8230" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="8281:9117" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="9156:9167" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="9237:9243" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="9291:9419" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="9485:9684" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="9746:9822" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="9903:10115" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="10188:10253" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="10320:10598" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="10656:10796" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="10858:11024" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="11087:11242" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="11316:11460" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="11542:11979" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="12004:12015" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="12106:12112" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="12169:12259" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="12322:12514" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="12585:12675" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="12759:13080" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="13124:13135" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="13151:13157" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="13163:13181" ph="/**...*/" />
-            <marker date="1524050503251" expanded="true" signature="13302:13385" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="13527:13873" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="13777:13865" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="13964:14115" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="14242:14383" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="14466:14538" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="14657:15097" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="15103:15121" ph="/**...*/" />
-            <marker date="1524050503251" expanded="true" signature="15216:15287" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="15403:15882" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="16029:16560" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="16643:16963" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="17011:17272" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="17340:17698" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="17755:17766" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="17794:17800" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="17879:18288" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="17973:18086" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="18183:18282" ph="{...}" />
-            <marker date="1524050503251" expanded="true" signature="18371:18962" ph="{...}" />
-            <marker date="1524050503251" expanded="false" signature="18581:18596" ph=" { " />
-            <marker date="1524050503251" expanded="false" signature="18639:18649" ph=" }" />
-            <marker date="1524050503251" expanded="true" signature="18746:18956" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="16" column="110" lean-forward="false" selection-start-line="16" selection-start-column="110" selection-end-line="16" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.6.RELEASE/spring-data-commons-2.0.6.RELEASE-sources.jar!/org/springframework/data/repository/PagingAndSortingRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="31" column="17" lean-forward="false" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE-sources.jar!/org/springframework/data/jpa/repository/JpaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="34" column="35" lean-forward="false" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.6.RELEASE/spring-data-commons-2.0.6.RELEASE-sources.jar!/org/springframework/data/repository/Repository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.6.RELEASE/spring-data-commons-2.0.6.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE-sources.jar!/org/springframework/data/jpa/repository/support/SimpleJpaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="490" column="0" lean-forward="false" selection-start-line="490" selection-start-column="0" selection-end-line="490" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.16.Final/hibernate-core-5.2.16.Final.jar!/org/hibernate/internal/SessionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="655" column="0" lean-forward="false" selection-start-line="655" selection-start-column="0" selection-end-line="655" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/base/DefaultCrudSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="40" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractIdentifiable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE-sources.jar!/org/springframework/data/jpa/domain/support/AuditingEntityListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="65" column="7" lean-forward="true" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt:///usr/lib/jvm/java-9-oracle!/java.base/java/lang/reflect/Method.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-460">
-          <caret line="274" column="5" lean-forward="true" selection-start-line="274" selection-start-column="5" selection-end-line="274" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEntityListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#480#481#0" expanded="false" />
-            <element signature="e#536#537#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#929#930#0" expanded="false" />
-            <element signature="e#985#986#0" expanded="false" />
-            <element signature="e#1034#1035#0" expanded="false" />
-            <element signature="e#1102#1103#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="52" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.password_reset_tokens">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1256,167 +839,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="56" column="35" lean-forward="false" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
-          <folding>
-            <marker date="1519832461856" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1519832461856" expanded="false" signature="146:514" ph="..." />
-            <marker date="1519832461856" expanded="true" signature="516:553" ph="@{...}" />
-            <marker date="1519832461856" expanded="true" signature="675:682" ph="{}" />
-            <marker date="1519832461856" expanded="true" signature="688:737" ph="@{...}" />
-            <marker date="1519832461856" expanded="false" signature="785:796" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="861:867" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="873:922" ph="@{...}" />
-            <marker date="1519832461856" expanded="false" signature="971:982" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="1048:1054" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="1060:1109" ph="@{...}" />
-            <marker date="1519832461856" expanded="false" signature="1153:1164" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="1225:1231" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="1237:1286" ph="@{...}" />
-            <marker date="1519832461856" expanded="false" signature="1331:1342" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="1404:1410" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="1474:1485" ph=" { " />
-            <marker date="1519832461856" expanded="true" signature="1531:1537" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="1631:1709" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="1775:1863" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="1961:2113" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="2206:2283" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="2348:2435" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="2532:2683" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="2748:2854" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="2959:2970" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="3019:3025" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="3031:3083" ph="@{...}" />
-            <marker date="1519832461856" expanded="true" signature="3153:3222" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="3293:3304" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="3346:3352" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="3459:3539" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="3663:3745" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="3863:3935" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="4051:4103" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="4161:4172" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="4225:4231" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="4292:4544" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="4716:5022" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="4833:4848" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="4879:4889" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="4923:4938" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="5006:5016" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="5189:6397" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="5329:5344" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="5404:5414" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="5460:5475" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="5513:5523" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="5554:5569" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="5653:5663" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="5717:6114" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="6149:6391" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="6489:7537" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="6702:6838" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="6883:6898" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="6935:6945" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="6999:7314" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="7345:7360" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="7405:7415" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="7449:7464" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="7521:7531" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="7617:8667" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="7770:7785" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="7846:7856" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="7902:8151" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="8205:8472" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="8503:8518" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="8548:8558" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="8592:8607" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="8651:8661" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="8810:9717" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="8963:8978" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="9032:9042" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="9088:9103" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="9145:9155" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="9186:9201" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="9230:9240" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="9294:9587" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="9621:9636" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="9701:9711" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="9848:10729" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="9997:10012" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="10066:10076" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="10126:10141" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="10173:10183" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="10214:10229" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="10258:10268" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="10322:10603" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="10637:10652" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="10713:10723" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="10816:11629" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="10952:10967" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="10988:10998" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="11033:11048" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="11077:11087" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="11118:11133" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="11163:11173" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="11227:11515" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="11549:11564" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="11613:11623" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="11709:12822" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="11916:11931" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="11960:11970" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="12016:12249" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="12280:12295" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="12340:12350" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="12404:12679" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="12713:12728" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="12806:12816" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="12903:14023" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="13111:13126" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="13155:13165" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="13211:13445" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="13476:13491" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="13537:13547" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="13601:13879" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="13913:13928" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="14007:14017" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="14104:14983" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="14246:14261" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="14327:14337" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="14382:14397" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="14429:14439" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="14470:14485" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="14519:14529" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="14583:14859" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="14893:14908" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="14967:14977" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="15046:16121" ph="{...}" />
-            <marker date="1519832461856" expanded="true" signature="15068:15281" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="15122:15141" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15153:15167" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="15205:15224" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15257:15271" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="15304:15519" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="15358:15377" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15390:15404" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="15442:15461" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15495:15509" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="15537:15751" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="15591:15610" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15627:15641" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="15679:15698" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15727:15741" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="15770:15985" ph="{...}" />
-            <marker date="1519832461856" expanded="false" signature="15824:15843" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15860:15874" ph=" }" />
-            <marker date="1519832461856" expanded="false" signature="15912:15931" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="15961:15975" ph=" }" />
-            <marker date="1519832461856" expanded="true" signature="16022:16033" ph="{}" />
-            <marker date="1519832461856" expanded="false" signature="16078:16093" ph=" { " />
-            <marker date="1519832461856" expanded="false" signature="16105:16115" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1429,48 +858,445 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/AsyncConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        <state relative-caret-position="234">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+        <state relative-caret-position="54">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+        <state relative-caret-position="738">
+          <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/Status.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEntityListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="87" column="18" lean-forward="false" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/exeption/ResourceNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="52" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/model/GoogleProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="105" column="58" lean-forward="false" selection-start-line="105" selection-start-column="58" selection-end-line="105" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/mail/model/EmailBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/model/PasswordResetForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/handler/JwtAuthenticationSuccessHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/handler/RestAuthenticationEntryPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/model/AccountCredentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/model/SecurityUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/service/TokenAuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/service/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserViewDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/UniqueEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/ValidEnumValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/UniqueEmailValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/ValidEnumTypeValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#246#247#0" expanded="false" />
+            <element signature="e#323#324#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="64" column="45" lean-forward="false" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

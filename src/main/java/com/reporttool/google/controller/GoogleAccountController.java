@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+import static com.reporttool.constants.MetricConstants.APP;
+
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/googleAccount")
+@RequestMapping(value = APP + "/googleAccount")
 @Slf4j
 public class GoogleAccountController {
 

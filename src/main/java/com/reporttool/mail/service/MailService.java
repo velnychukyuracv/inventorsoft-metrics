@@ -1,6 +1,5 @@
 package com.reporttool.mail.service;
 
-import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.model.User;
 import com.reporttool.mail.model.EmailBuilder;
 import lombok.RequiredArgsConstructor;
