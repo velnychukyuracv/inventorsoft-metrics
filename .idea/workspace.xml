@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
-    </list>
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,58 +29,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="64" column="45" lean-forward="false" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoogleAccountController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JWTLoginFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JWTAuthenticationFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MetricConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -187,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -279,44 +212,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="google" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="google" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
@@ -546,16 +441,15 @@
       <workItem from="1524552774922" duration="25399000" />
       <workItem from="1524637408669" duration="27823000" />
       <workItem from="1524726047687" duration="23756000" />
-      <workItem from="1524811356974" duration="2206000" />
+      <workItem from="1524811356974" duration="2313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144348000" />
+    <option name="totallyTimeSpent" value="144455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -568,7 +462,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -578,8 +472,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27086788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27086788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -742,12 +636,6 @@
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
-          <line>35</line>
-          <properties />
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java</url>
           <line>38</line>
           <properties />
@@ -764,18 +652,6 @@
           <line>294</line>
           <properties />
           <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java</url>
@@ -1260,10 +1136,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        <state relative-caret-position="551">
+          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1284,18 +1168,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="64" column="45" lean-forward="false" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="72">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
           <folding />
         </state>
       </provider>
