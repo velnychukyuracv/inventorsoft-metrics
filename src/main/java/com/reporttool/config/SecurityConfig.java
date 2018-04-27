@@ -1,11 +1,11 @@
 package com.reporttool.config;
 
-import com.reporttool.security.filter.JWTAuthenticationFilter;
-import com.reporttool.security.filter.JWTLoginFilter;
-import com.reporttool.security.handler.JwtAuthenticationSuccessHandler;
-import com.reporttool.security.handler.RestAuthenticationEntryPoint;
-import com.reporttool.security.service.TokenAuthenticationService;
-import com.reporttool.security.service.UserDetailsServiceImpl;
+import com.reporttool.config.security.filter.JWTAuthenticationFilter;
+import com.reporttool.config.security.filter.JWTLoginFilter;
+import com.reporttool.config.security.handler.JwtAuthenticationSuccessHandler;
+import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
+import com.reporttool.config.security.service.TokenAuthenticationService;
+import com.reporttool.config.security.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,7 +18,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.reporttool.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 
 @AllArgsConstructor
 @Configuration
@@ -61,11 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers(HttpMethod.GET,APP + "/googleAccount/login-with-google")
-                .antMatchers(HttpMethod.GET,APP + "/googleAccount/oauth2callback")
-                .antMatchers(HttpMethod.GET, APP + "/favicon.ico")
-                .antMatchers(HttpMethod.POST, APP + "/forgetPassword")
-                .antMatchers(HttpMethod.POST, APP + "/forgetPassword/resetPassword")
+                .antMatchers(HttpMethod.GET,APP + NO_AUTH + "/**")
                                 /* Swagger */
                 .antMatchers(HttpMethod.GET,APP + "/v2/api-docs/**")
                 .antMatchers(HttpMethod.GET,APP + "/swagger-resources")

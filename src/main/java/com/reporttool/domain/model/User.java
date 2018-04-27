@@ -1,6 +1,6 @@
 package com.reporttool.domain.model;
 
-import com.reporttool.constants.Status;
+import com.reporttool.domain.constants.Status;
 import com.reporttool.domain.model.base.AbstractVersional;
 import lombok.Getter;
 import lombok.Setter;

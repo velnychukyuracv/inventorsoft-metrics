@@ -6,7 +6,6 @@ spring:
    hikari:
      maximum-pool-size: 10
      minimum-idle: 10
-     jdbc-url: jdbc:postgresql://localhost:5432/reporttool
   mail:
       host: smtp.gmail.com
       port: 587

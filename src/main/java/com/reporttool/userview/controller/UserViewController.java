@@ -1,7 +1,6 @@
 package com.reporttool.userview.controller;
 
 import com.reporttool.domain.service.UserService;
-import com.reporttool.exeption.ResourceNotFoundException;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
@@ -9,6 +8,7 @@ import com.reporttool.userview.service.UserViewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.reporttool.constants.MetricConstants.APP;
-import static com.reporttool.constants.MetricConstants.LAST_SIGN_IN;
+import static com.reporttool.domain.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
 
 @RestController
 @RequiredArgsConstructor
@@ -43,7 +43,7 @@ public class UserViewController {
 
     @GetMapping("/{userId}")
     public UserViewDto getUserById(@PathVariable("userId") Long userId) {
-        return userViewService.findById(userId).orElseThrow(ResourceNotFoundException :: new);
+        return userViewService.findById(userId).orElseThrow(ResourceNotFoundException:: new);
     }
     
 

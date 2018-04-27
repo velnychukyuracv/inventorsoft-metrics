@@ -1,6 +1,6 @@
 package com.reporttool.userview.model;
 
-import com.reporttool.constants.Status;
+import com.reporttool.domain.constants.Status;
 import lombok.Getter;
 import lombok.Setter;
 

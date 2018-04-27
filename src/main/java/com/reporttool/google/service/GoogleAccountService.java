@@ -11,7 +11,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.service.UserService;
 import com.reporttool.google.model.GoogleProperties;
-import com.reporttool.security.service.TokenAuthenticationService;
+import com.reporttool.config.security.service.TokenAuthenticationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

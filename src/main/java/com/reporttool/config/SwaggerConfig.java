@@ -28,7 +28,7 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * TODO make it more secure.
@@ -62,8 +62,8 @@ public class SwaggerConfig {
                         typeResolver.resolve(WildcardType.class)
                 ))
                 .useDefaultResponseMessages(false)
-                .securitySchemes(List.of(new ApiKey("mykey", "api_key", "header")))
-                .securityContexts(List.of(getSecurityContext()))
+                .securitySchemes(Arrays.asList(new ApiKey("mykey", "api_key", "header")))
+                .securityContexts(Arrays.asList(getSecurityContext()))
                 .enableUrlTemplating(true);
     }
 
@@ -89,7 +89,7 @@ public class SwaggerConfig {
 
     private SecurityContext getSecurityContext() {
         return SecurityContext.builder()
-                .securityReferences(List.of(getDefaultAuth()))
+                .securityReferences(Arrays.asList(getDefaultAuth()))
                 .forPaths(PathSelectors.regex("/anyPath.*"))
                 .build();
     }

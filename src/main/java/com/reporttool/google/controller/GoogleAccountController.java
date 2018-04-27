@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-import static com.reporttool.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(value = APP + "/googleAccount")
+@RequestMapping(value = APP + NO_AUTH + "/googleAccount")
 @Slf4j
 public class GoogleAccountController {
 

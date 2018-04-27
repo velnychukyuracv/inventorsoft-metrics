@@ -3,7 +3,7 @@ package com.reporttool.userview.service;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.model.mapper.UserMapper;
 import com.reporttool.domain.service.UserService;
-import com.reporttool.exeption.ResourceNotFoundException;
+import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
