@@ -1,64 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/credentials.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/reporttool/config/TestConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/application.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/credentials.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/script.sql" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change beforePath="$PROJECT_DIR$/inventorsoft-metrics.iml" afterPath="$PROJECT_DIR$/inventorsoft-metrics.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/MetricConstants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/constants/Status.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/Status.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/exeption/ResourceNotFoundException.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/exeption/ResourceNotFoundException.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/model/EmailBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/common/mail/model/EmailBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/common/mail/service/MailService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/PasswordResetController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/model/PasswordResetForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/PasswordResetForm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTAuthenticationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTAuthenticationFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/filter/JWTLoginFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/handler/JwtAuthenticationSuccessHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/handler/JwtAuthenticationSuccessHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/handler/RestAuthenticationEntryPoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/handler/RestAuthenticationEntryPoint.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/model/AccountCredentials.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/model/SecurityUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/SecurityUser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/service/TokenAuthenticationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/security/service/UserDetailsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/UserDetailsServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserViewDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserViewDto.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/UniqueEmail.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/UniqueEmail.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/validation/annotation/ValidEnumValue.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/ValidEnumValue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/UniqueEmailValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/validation/validator/ValidEnumTypeValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-test.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/favicon.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/constants/Status.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-test.yml" afterPath="" />
-    </list>
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,11 +63,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="807">
               <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -661,12 +614,12 @@
       <workItem from="1524552774922" duration="25399000" />
       <workItem from="1524637408669" duration="27823000" />
       <workItem from="1524726047687" duration="23756000" />
-      <workItem from="1524811356974" duration="7857000" />
+      <workItem from="1524811356974" duration="7933000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149999000" />
+    <option name="totallyTimeSpent" value="150075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -1240,14 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1377,6 +1322,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="807">
           <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding />
         </state>
       </provider>

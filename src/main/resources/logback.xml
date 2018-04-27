@@ -13,11 +13,11 @@
         <logger name="org.hibernate" level="DEBUG"/>
     </springProfile>
 
-    <springProfile name="test">
+    <springProfile name="prod">
 
         <appender name="FileLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-                <fileNamePattern>reporttool-app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <fileNamePattern>/app/logs/reporttool-app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
                 <maxFileSize>50MB</maxFileSize>
             </rollingPolicy>
 
@@ -26,7 +26,7 @@
             </encoder>
         </appender>
 
-        <root level="DEBUG">
+        <root level="INFO">
             <appender-ref ref="FileLogger"/>
         </root>
 
