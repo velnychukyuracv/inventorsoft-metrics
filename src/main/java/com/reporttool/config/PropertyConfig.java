@@ -10,7 +10,11 @@ import org.springframework.context.annotation.Configuration;
  * Configures beans to provide access to resources.
  */
 @Configuration
-@EnableConfigurationProperties({PropertyConfig.JWTProperties.class, PropertyConfig.ApplicationProperties.class})
+@EnableConfigurationProperties({
+        PropertyConfig.JWTProperties.class,
+        PropertyConfig.ApplicationProperties.class,
+        PropertyConfig.CorsProperties.class
+})
 public class PropertyConfig {
 
     @Getter
@@ -29,5 +33,12 @@ public class PropertyConfig {
     public static class ApplicationProperties {
         private String host;
         private String protocol;
+    }
+
+    @Getter
+    @Setter
+    @ConfigurationProperties("cors")
+    public static class CorsProperties {
+        private String origins;
     }
 }

@@ -20,13 +20,9 @@ public class TokenAuthenticationService {
 
     private final PropertyConfig.JWTProperties jwtProperties;
 
-    public void addAuthentication(HttpServletResponse res, String username) {
-        String JWT = Jwts.builder()
-                .setSubject(username)
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
-                .signWith(SignatureAlgorithm.HS512, jwtProperties.getSecret())
-                .compact();
-        res.addHeader(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + JWT);
+    public void addAuthentication(HttpServletResponse res, String userName) {
+        String JWT = createToken(userName);
+        res.addHeader(jwtProperties.getHeaderstring(), JWT);
     }
 
     public Authentication getAuthentication(HttpServletRequest request, HttpServletResponse response) {
@@ -46,5 +42,13 @@ public class TokenAuthenticationService {
         }
 
         return null;
+    }
+
+    public String createToken(String userName) {
+        return jwtProperties.getTokenprefix() + " " + Jwts.builder()
+                .setSubject(userName)
+                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
+                .signWith(SignatureAlgorithm.HS512, jwtProperties.getSecret())
+                .compact();
     }
 }

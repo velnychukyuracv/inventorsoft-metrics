@@ -41,7 +41,8 @@ import java.util.Arrays;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SwaggerConfig {
 
-    TypeResolver typeResolver;
+
+    private final TypeResolver typeResolver;
 
     @Bean
     Docket api() {

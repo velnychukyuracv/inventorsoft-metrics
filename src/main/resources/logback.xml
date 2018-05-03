@@ -8,9 +8,9 @@
             <appender-ref ref="CONSOLE"/>
         </root>
 
-        <logger name="com.reporttool" level="DEBUG"/>
-        <logger name="org.springframework" level="DEBUG"/>
-        <logger name="org.hibernate" level="DEBUG"/>
+        <logger name="com.reporttool" level="INFO"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.hibernate" level="INFO"/>
     </springProfile>
 
     <springProfile name="prod">

@@ -7,4 +7,6 @@
 
     <include file="001_create_users_table.xml" relativeToChangelogFile="true"/>
     <include file="002_create_password_reset_token_table.xml" relativeToChangelogFile="true"/>
+    <include file="003_create_sequence.xml" relativeToChangelogFile="true"/>
+    <include file="004_remove_not_null_constraint_from_user_last_sign_in.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

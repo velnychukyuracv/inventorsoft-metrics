@@ -33,3 +33,6 @@ jwt:
   secret: adada54g,a,dbabd_1
   tokenprefix: Bearer
   headerstring: Authorization
+
+cors:
+  origins: https://report.inventorsoft.co

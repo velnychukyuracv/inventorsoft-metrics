@@ -7,9 +7,12 @@ import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraintvalidation.SupportedValidationTarget;
+import javax.validation.constraintvalidation.ValidationTarget;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
     private final UserService userService;

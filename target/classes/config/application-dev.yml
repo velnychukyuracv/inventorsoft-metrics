@@ -32,3 +32,6 @@ jwt:
   secret: teststring
   tokenprefix: Bearer
   headerstring: Authorization
+
+cors:
+  origins: http://localhost:4200

@@ -7,6 +7,7 @@ import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
 import com.reporttool.config.security.service.TokenAuthenticationService;
 import com.reporttool.config.security.service.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,6 +18,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
@@ -31,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsServiceImpl userDetailsService;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final PropertyConfig.CorsProperties corsProperties;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -63,10 +71,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.GET,APP + NO_AUTH + "/**")
-                                /* Swagger */
-                .antMatchers(HttpMethod.GET,APP + "/v2/api-docs/**")
-                .antMatchers(HttpMethod.GET,APP + "/swagger-resources")
-                .antMatchers(HttpMethod.GET,APP + "/swagger-ui.html")
-                .antMatchers(HttpMethod.GET,APP + "/webjars/**");
+                .antMatchers(HttpMethod.GET, "/v2/api-docs/**")
+                .antMatchers(HttpMethod.GET, "/swagger-resources")
+                .antMatchers(HttpMethod.GET, "/swagger-ui.html")
+                .antMatchers(HttpMethod.GET, "/webjars/**");
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList(corsProperties.getOrigins()));
+        configuration.setAllowedMethods(Arrays.asList("GET"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration(APP + "/**", configuration);
+        return source;
     }
 }

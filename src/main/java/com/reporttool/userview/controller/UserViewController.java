@@ -1,5 +1,6 @@
 package com.reporttool.userview.controller;
 
+import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.service.UserService;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
@@ -8,7 +9,6 @@ import com.reporttool.userview.service.UserViewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +36,7 @@ public class UserViewController {
     @GetMapping()
     public Page<UserViewDto> getUsers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                                       @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
-                                      @RequestParam(value = "direction", required = false, defaultValue = "desc") String direction,
+                                      @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
                                       @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
         return userViewService.getUsers(page, pageSize, direction, sortBy);
     }
@@ -71,7 +71,7 @@ public class UserViewController {
         try {
             userService.delete(userId);
         } catch (EmptyResultDataAccessException e) {
-            // we don't need to do anything as far as userview doesn't exist in database
+            // we don't need to do anything as far as user doesn't exist in database
         }
     }
 }

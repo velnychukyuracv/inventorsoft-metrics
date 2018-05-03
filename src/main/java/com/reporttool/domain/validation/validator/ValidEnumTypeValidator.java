@@ -4,9 +4,12 @@ import com.reporttool.domain.validation.annotation.ValidEnumValue;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraintvalidation.SupportedValidationTarget;
+import javax.validation.constraintvalidation.ValidationTarget;
 import java.util.ArrayList;
 import java.util.List;
 
+@SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
 public class ValidEnumTypeValidator implements ConstraintValidator<ValidEnumValue, String> {
 
     private List<String> enumValues = new ArrayList<>();

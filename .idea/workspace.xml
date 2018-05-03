@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/db/003_create_sequence.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/db/004_remove_not_null_constraint_from_user_last_sign_in.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/swagger.properties" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_1_RELEASE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_1_RELEASE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_6_RELEASE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_5_RELEASE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_0_5_RELEASE.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/inventorsoft-metrics.iml" afterPath="$PROJECT_DIR$/inventorsoft-metrics.iml" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/master.xml" afterPath="$PROJECT_DIR$/src/main/resources/db/master.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.yml" afterPath="$PROJECT_DIR$/src/test/resources/application.yml" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/credentials.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/script.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-dev.yml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-prod.yml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/master.xml" afterPath="$PROJECT_DIR$/target/classes/db/master.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,76 +69,50 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="reporttool@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="reporttool: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="sequences" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="64" column="66" lean-forward="false" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application-dev.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="application-dev.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-dev.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JWTLoginFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="167" column="21" lean-forward="false" selection-start-line="166" selection-start-column="36" selection-end-line="167" selection-end-column="21" />
+            <state relative-caret-position="234">
+              <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -106,19 +121,99 @@
       <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="27" />
+            <state relative-caret-position="270">
+              <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="16" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordResetController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/PasswordResetController.java">
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="191">
+              <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="53" column="35" lean-forward="false" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserViewService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordResetToken.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users" pinned="false" current-in-tab="false">
+        <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.users">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="password_reset_tokens" pinned="false" current-in-tab="false">
+        <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.password_reset_tokens">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-288">
+              <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,10 +232,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>InMemor</find>
-      <find>entry</find>
-      <find>ADMIN</find>
-      <find>curr</find>
       <find>LAST_SIGN_IN</find>
       <find>UsernameNotFoundException</find>
       <find>AuthenticationException</find>
@@ -149,6 +240,28 @@
       <find>entity</find>
       <find>invoke(Object var1, Object... var2)</find>
       <find>/swagger-ui.html</find>
+      <find>andReturn</find>
+      <find>/users</find>
+      <find>spring-data-rest-webmvc</find>
+      <find>repositoryrestresource</find>
+      <find>handlerma</find>
+      <find>repositoryres</find>
+      <find>handler</find>
+      <find>starter</find>
+      <find>swagg</find>
+      <find>springfox</find>
+      <find>repositoryrestha</find>
+      <find>Access-Control-Allow-Methods</find>
+      <find>swagger-ui.html</find>
+      <find>/swagger-ui.htm</find>
+      <find>swa</find>
+      <find>springfox.documentation.swagger.v2.host</find>
+      <find>swagger</find>
+      <find>default</find>
+      <find>test</find>
+      <find>springfox.documentation.swagger.v2.path</find>
+      <find>swagger-ui</find>
+      <find>CustomSwaggerController</find>
     </findStrings>
     <replaceStrings>
       <replace>token</replace>
@@ -165,57 +278,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/002_add_date_fields_users_table.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/002_add_date_fields_users_table.sql" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/001_create_users_table.sql" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/master.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/mail/model/EmailBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/service/PasswordResetService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/model/PasswordResetForm.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/AsyncConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractIdentifiable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/base/DefaultCrudSupport.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEnntityListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/listener/MyEntityListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/security/service/UserDetailsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/CustomExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/mail/service/MailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/constants/MetricConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/passwordreset/controller/PasswordResetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/PasswordResetForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/Status.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/MetricConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/Status.java" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/PasswordResetController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/reporttool/TestConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/reporttool/config/TestConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/application.yml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/reporttool/user/UserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/cors/CorsTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/master.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/004_remove_not_null_constraint_from_user_last_sign_in.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/003_create_sequence.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/model/JsonDateSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/serialization/JsonDateSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserViewDto.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/model/PageRequestImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/model/UserViewDtoPageImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/model/RestResponsePage.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/ValidEnumValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/WebConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTAuthenticationFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/CustomSwaggerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/WebConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/001_create_users_table.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/swagger.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/application-test.yml" />
+        <option value="$PROJECT_DIR$/src/test/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/test/resources/script.sql" />
       </list>
     </option>
   </component>
@@ -248,11 +361,14 @@
       <select />
     </treeState>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="265" />
-    <option name="y" value="76" />
-    <option name="width" value="1398" />
-    <option name="height" value="1020" />
+    <option name="x" value="237" />
+    <option name="y" value="123" />
+    <option name="width" value="1396" />
+    <option name="height" value="1012" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -270,10 +386,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,47 +427,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -364,26 +436,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="google" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="userview" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="userview" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
@@ -404,6 +458,14 @@
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
               <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -420,15 +482,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="inventorsoft-metrics" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reporttool" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="inventorsoft-metrics" type="b2602c69:ProjectViewProjectNode" />
@@ -441,13 +494,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Java/taco-cloud" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adreview/java-spring-thymeleaf-sample" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -495,7 +551,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ApplicationStarter">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -516,6 +572,106 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+    </configuration>
+    <configuration name="TotalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.reporttool.totaltest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="inventorsoft-metrics" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.reporttool.totaltest" />
+      <option name="MAIN_CLASS_NAME" value="com.reporttool.totaltest.TotalTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TotalTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.reporttool.totaltest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="inventorsoft-metrics" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.reporttool.totaltest" />
+      <option name="MAIN_CLASS_NAME" value="com.reporttool.totaltest.TotalTest" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TotalTest.testGetUserById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.reporttool.totaltest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="inventorsoft-metrics" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.reporttool.totaltest" />
+      <option name="MAIN_CLASS_NAME" value="com.reporttool.totaltest.TotalTest" />
+      <option name="METHOD_NAME" value="testGetUserById" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TotalTest.testUsersSaveAndGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.reporttool.totaltest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="inventorsoft-metrics" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.reporttool.totaltest" />
+      <option name="MAIN_CLASS_NAME" value="com.reporttool.totaltest.TotalTest" />
+      <option name="METHOD_NAME" value="testUsersSaveAndGet" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -547,7 +703,7 @@
     <configuration name="ApplicationStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.reporttool.config.*" />
+          <option name="PATTERN" value="com.reporttool.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -588,9 +744,20 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TotalTest.testUsersSaveAndGet" />
+      <item index="1" class="java.lang.String" itemvalue="Spring Boot.ApplicationStarter" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TotalTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TotalTest.login" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TotalTest.testGetUserById" />
+    </list>
     <recent_temporary>
-      <list size="1">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Spring Boot.ApplicationStarter" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TotalTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TotalTest.testGetUserById" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TotalTest.testUsersSaveAndGet" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TotalTest.login" />
       </list>
     </recent_temporary>
   </component>
@@ -614,12 +781,50 @@
       <workItem from="1524552774922" duration="25399000" />
       <workItem from="1524637408669" duration="27823000" />
       <workItem from="1524726047687" duration="23756000" />
-      <workItem from="1524811356974" duration="7933000" />
+      <workItem from="1524811356974" duration="15970000" />
+      <workItem from="1525072873815" duration="23492000" />
+      <workItem from="1525243741427" duration="21963000" />
+      <workItem from="1525330360686" duration="8101000" />
+      <workItem from="1525350807798" duration="1478000" />
+      <workItem from="1525352449828" duration="3456000" />
+      <workItem from="1525356041382" duration="8956000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="TotalTest - 2018.05.03 at 18h 59m 36s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 02m 15s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 13m 05s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 15m 16s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 21m 49s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 27m 11s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 30m 39s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 34m 41s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 35m 48s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TotalTest - 2018.05.03 at 19h 36m 53s.xml">
+      <configuration name="TotalTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150075000" />
+    <option name="totallyTimeSpent" value="225558000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -643,10 +848,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27086788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28081813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -815,32 +1020,77 @@
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE.jar!/org/springframework/data/jpa/repository/support/SimpleJpaRepository.class</url>
-          <line>292</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java</url>
+          <line>54</line>
           <properties />
-          <option name="timeStamp" value="131" />
+          <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE.jar!/org/springframework/data/jpa/repository/support/SimpleJpaRepository.class</url>
-          <line>294</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java</url>
+          <line>41</line>
           <properties />
-          <option name="timeStamp" value="137" />
+          <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTAuthenticationFilter.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java</url>
           <line>29</line>
           <properties />
-          <option name="timeStamp" value="145" />
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.5.RELEASE/spring-context-5.0.5.RELEASE.jar!/org/springframework/validation/DataBinder.class</url>
+          <line>475</line>
+          <properties />
+          <option name="timeStamp" value="253" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="146" />
+      <option name="time" value="268" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="this.argumentResolvers.supportsParameter(parameter)" language="JAVA" />
+      </configuration>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((FirewalledRequest) request)._getHttpServletRequest().getRequestURI()" language="JAVA" custom="org.springframework.security.web.firewall.FirewalledRequest" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>email</expression-string>
+        <expression-string>((FirewalledRequest) request)._getHttpServletRequest().getRequestURI()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.springframework.security.web.firewall.FirewalledRequest</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((FirewalledRequest) request)._getHttpServletRequest().getRequestURL()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.springframework.security.web.firewall.FirewalledRequest</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.getRemoteAddr()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.getRemoteHost()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.argumentResolvers.supportsParameter(parameter)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>userViewService.getUsers(page, pageSize, direction, sortBy)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>testRestTemplate</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -850,17 +1100,37 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>response.getHeader(string);</expression-string>
+        <expression-string>userService.findAll(pageable).map(userMapper :: mapToUserViewDto)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>HEADER_STRING</expression-string>
+        <expression-string>email</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>DateTimeFormatter.ofPattern(&quot;MM-dd-yyyy&quot;).format(null)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>date</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>dateFormat.format(date)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>userViewService.getUsers(page, pageSize, direction, sortBy)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>this.entityInformation.isNew(entity)</expression-string>
         <language-id>JAVA</language-id>
@@ -869,355 +1139,113 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/PasswordResetTokenRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/PasswordResetService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="87" column="18" lean-forward="false" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/exeption/ResourceNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/service/FaviconService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="52" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/model/GoogleProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/service/GoogleAccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="105" column="58" lean-forward="false" selection-start-line="105" selection-start-column="58" selection-end-line="105" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/common/mail/model/EmailBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/common/mail/service/MailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/handler/JwtAuthenticationSuccessHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/handler/RestAuthenticationEntryPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/SecurityUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/UserDetailsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserEditForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserViewDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/UniqueEmail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/ValidEnumValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="486">
+          <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/annotation/ValidEnumValue.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-prod.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#246#247#0" expanded="false" />
-            <element signature="e#323#324#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="-223">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/favicon/controller/FaviconController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/search/controller/SearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/PasswordResetForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="3078">
+          <caret line="171" column="32" lean-forward="false" selection-start-line="171" selection-start-column="32" selection-end-line="171" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/MetricConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="90">
+          <caret line="5" column="50" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/constants/Status.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.5.RELEASE/spring-webmvc-5.0.5.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/CorsRegistration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="533">
+          <caret line="87" column="28" lean-forward="false" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="342">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.8.0/springfox-spring-web-2.8.0.jar!/springfox/documentation/spring/web/plugins/Docket.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="211" column="18" lean-forward="false" selection-start-line="211" selection-start-column="18" selection-end-line="211" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.8.0/springfox-spring-web-2.8.0-sources.jar!/springfox/documentation/spring/web/plugins/Docket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5778">
+          <caret line="379" column="16" lean-forward="false" selection-start-line="379" selection-start-column="16" selection-end-line="379" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.5.RELEASE/spring-context-5.0.5.RELEASE.jar!/org/springframework/context/annotation/PropertySource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/ApplicationStarter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/google/controller/GoogleAccountController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.8.0/springfox-swagger2-2.8.0.jar!/springfox/documentation/swagger2/annotations/EnableSwagger2.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        <state relative-caret-position="162">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/PasswordResetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="64" column="66" lean-forward="false" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/credentials.json">
+    <entry file="file://$PROJECT_DIR$/hs_err_pid12979.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1225,111 +1253,306 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/config/TestConfig.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.8.0/springfox-swagger2-2.8.0.jar!/springfox/documentation/swagger2/configuration/Swagger2DocumentationConfiguration.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        <state relative-caret-position="311">
+          <caret line="38" column="88" lean-forward="false" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hs_err_pid13507.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="64" lean-forward="true" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.8.0/springfox-swagger2-2.8.0.jar!/springfox/documentation/swagger2/web/Swagger2Controller.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="52" column="28" lean-forward="false" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1524747184389" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1524747184389" expanded="false" signature="160:1293" ph="..." />
+            <marker date="1524747184389" expanded="true" signature="1295:1317" ph="@{...}" />
+            <marker date="1524747184389" expanded="true" signature="1868:2116" ph="{...}" />
+            <marker date="1524747184389" expanded="true" signature="2122:2459" ph="@{...}" />
+            <marker date="1524747184389" expanded="true" signature="2613:3451" ph="{...}" />
+            <marker date="1524747184389" expanded="true" signature="3510:3814" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/resettoken/ResetTokenTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.0.4.RELEASE/spring-security-web-5.0.4.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.8.0/springfox-swagger2-2.8.0-sources.jar!/springfox/documentation/swagger2/web/Swagger2Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="354" column="36" lean-forward="false" selection-start-line="354" selection-start-column="36" selection-end-line="354" selection-end-column="36" />
-          <folding>
-            <element signature="e#15260#15261#0" expanded="false" />
-            <element signature="e#15295#15296#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="113">
+          <caret line="80" column="48" lean-forward="true" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.8.0/springfox-spring-web-2.8.0-sources.jar!/springfox/documentation/spring/web/PropertySourcedRequestMappingHandlerMapping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="167" column="21" lean-forward="false" selection-start-line="166" selection-start-column="36" selection-end-line="167" selection-end-column="21" />
+        <state relative-caret-position="140">
+          <caret line="56" column="27" lean-forward="true" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/user/UserTest.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.8.0/springfox-spring-web-2.8.0-sources.jar!/springfox/documentation/spring/web/PropertySourcedMapping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="56" column="38" lean-forward="false" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+        <state relative-caret-position="162">
+          <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-dev.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/CustomSwaggerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="216">
+          <caret line="12" column="55" lean-forward="false" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/List.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.5.RELEASE/spring-webmvc-5.0.5.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/ViewControllerRegistry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="176">
+          <caret line="77" column="46" lean-forward="false" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.5.RELEASE/spring-webmvc-5.0.5.RELEASE-sources.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="91" column="36" lean-forward="false" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+        <state relative-caret-position="-1066">
+          <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/001_create_users_table.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/002_create_password_reset_token_table.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/swagger.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="50" lean-forward="true" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="83" lean-forward="true" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        <state relative-caret-position="162">
+          <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+          <folding>
+            <element signature="n#root#0;n#springProfile#0;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#appender#0;n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#rollingPolicy#0;n#appender#0;n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#encoder#0;n#appender#0;n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#root#0;n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+            <element signature="n#root#1;n#springProfile#1;n#configuration#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://sequence:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.users_id_seq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://sequence:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.hibernate_sequence">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/security/filter/JWTLoginFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="53" column="35" lean-forward="false" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/userview/service/UserViewService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/base/AbstractVersional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/PasswordResetToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-288">
+          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/GenerationType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.password_reset_tokens">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/77e9d2e4/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/reporttool.public.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/script.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="50" column="52" lean-forward="true" selection-start-line="50" selection-start-column="52" selection-end-line="50" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
           <folding />
         </state>
       </provider>
