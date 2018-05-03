@@ -1,48 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/db/003_create_sequence.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/db/004_remove_not_null_constraint_from_user_last_sign_in.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/swagger.properties" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/3a28d7e5-4d1b-49c7-9ef8-ee9575eaa79f/storage_v2/_src_/database/reporttool.zAQtcw/schema/public.abK9xQ.meta" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_1_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_1_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_6_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_5_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_0_5_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/inventorsoft-metrics.iml" afterPath="$PROJECT_DIR$/inventorsoft-metrics.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/AppBeanConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/PropertyConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SwaggerConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/model/AccountCredentials.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/security/service/TokenAuthenticationService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/UniqueEmailValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/validation/validator/ValidEnumTypeValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/controller/UserViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/userview/model/UserSignForm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/master.xml" afterPath="$PROJECT_DIR$/src/main/resources/db/master.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.yml" afterPath="$PROJECT_DIR$/src/test/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/credentials.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/script.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/ApplicationStarter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/AppBeanConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/repository/UserRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/domain/service/UserService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-prod.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/master.xml" afterPath="$PROJECT_DIR$/target/classes/db/master.xml" />
-    </list>
+    <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -787,7 +746,7 @@
       <workItem from="1525330360686" duration="8101000" />
       <workItem from="1525350807798" duration="1478000" />
       <workItem from="1525352449828" duration="3456000" />
-      <workItem from="1525356041382" duration="8956000" />
+      <workItem from="1525356041382" duration="8982000" />
     </task>
     <servers />
   </component>
@@ -824,7 +783,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225558000" />
+    <option name="totallyTimeSpent" value="225584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
