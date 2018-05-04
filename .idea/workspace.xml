@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b868837-2d3a-4144-975c-2b4c90eb0e0b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/config/application-test.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/clean-up.sql" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/script.sql" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/reporttool/domain/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/001_create_users_table.sql" afterPath="$PROJECT_DIR$/src/main/resources/db/001_create_users_table.sql" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/004_remove_not_null_constraint_from_user_last_sign_in.xml" afterPath="$PROJECT_DIR$/src/main/resources/db/004_remove_not_null_constraint_from_user_last_sign_in.xml" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/reporttool/config/SecurityConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-dev.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-dev.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/application-prod.yml" afterPath="$PROJECT_DIR$/target/classes/config/application-prod.yml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/001_create_users_table.sql" afterPath="$PROJECT_DIR$/target/classes/db/001_create_users_table.sql" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-test.yml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -103,17 +90,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TotalTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TotalTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+            <state relative-caret-position="216">
+              <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clean-up.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="clean-up.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/clean-up.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
@@ -147,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/resources/script.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,7 +144,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -272,8 +259,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config/application-test.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/clean-up.sql" />
+        <option value="$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java" />
       </list>
     </option>
   </component>
@@ -305,9 +292,6 @@
       </expand>
       <select />
     </treeState>
-  </component>
-  <component name="MavenRunner">
-    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="237" />
@@ -742,7 +726,7 @@
       <workItem from="1525350807798" duration="1478000" />
       <workItem from="1525352449828" duration="3456000" />
       <workItem from="1525356041382" duration="9344000" />
-      <workItem from="1525417516278" duration="5002000" />
+      <workItem from="1525417516278" duration="5191000" />
     </task>
     <servers />
   </component>
@@ -779,7 +763,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230948000" />
+    <option name="totallyTimeSpent" value="231137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -788,11 +772,11 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20121615" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20121615" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17468214" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17468214" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -803,10 +787,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33010754" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2841349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1359,8 +1343,8 @@
         <state relative-caret-position="216">
           <caret line="60" column="61" lean-forward="false" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="61" />
           <folding>
-            <element signature="e#1805#1806#0" expanded="true" />
-            <element signature="e#1873#1874#0" expanded="true" />
+            <element signature="e#1805#1806#0" expanded="false" />
+            <element signature="e#1873#1874#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1462,15 +1446,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reporttool/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1478,7 +1454,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/resources/script.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1487,6 +1463,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/reporttool/totaltest/TotalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
           <folding />
         </state>
       </provider>
