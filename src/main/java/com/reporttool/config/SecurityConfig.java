@@ -64,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/login")
                 .antMatchers(HttpMethod.GET,APP + NO_AUTH + "/**")
+                .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/forgetPassword/**")
                 .antMatchers(HttpMethod.GET, "/v2/api-docs/**")
                 .antMatchers(HttpMethod.GET, "/swagger-resources")
                 .antMatchers(HttpMethod.GET, "/swagger-ui.html")

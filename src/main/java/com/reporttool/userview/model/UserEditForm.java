@@ -20,5 +20,5 @@ public class UserEditForm {
 
     @NotBlank
     @ValidEnumValue(enumClass = Status.class)
-    private Status status;
+    private String status;
 }
