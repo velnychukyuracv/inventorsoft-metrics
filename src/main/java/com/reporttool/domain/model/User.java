@@ -41,7 +41,7 @@ public class User extends AbstractVersional {
     @Column
     @Enumerated(EnumType.STRING)
     private Status status;
-    @Column(name = "last_sign_in", nullable = false)
+    @Column(name = "last_sign_in")
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
     private LocalDateTime lastSignIn;
 }

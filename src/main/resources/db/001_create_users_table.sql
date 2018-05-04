@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR NOT NULL UNIQUE,
   password VARCHAR DEFAULT NULL,
   status VARCHAR NULL,
-  last_sign_in TIMESTAMP NOT NULL,
+  last_sign_in TIMESTAMP DEFAULT NULL,
 
   PRIMARY KEY (id)
 )
