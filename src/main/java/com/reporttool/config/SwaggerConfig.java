@@ -29,6 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * TODO make it more secure.
@@ -41,8 +42,7 @@ import java.util.Arrays;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SwaggerConfig {
 
-
-    private final TypeResolver typeResolver;
+    TypeResolver typeResolver;
 
     @Bean
     Docket api() {
@@ -51,7 +51,6 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
                 .paths(PathSelectors.any())
-                .paths(PathSelectors.regex(String.format("%s/.*", "/api")))
                 .build()
                 .pathMapping("/")
                 .directModelSubstitute(LocalDate.class, String.class)
@@ -100,4 +99,5 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         return new SecurityReference("mykey", new AuthorizationScope[] { authorizationScope });
     }
+
 }
