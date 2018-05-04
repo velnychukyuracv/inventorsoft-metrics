@@ -69,14 +69,14 @@ public class ResetTokenTest {
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
         mapper.registerModule(new JavaTimeModule());
-        token = tokenService.createToken("bogden1979@yahoo.com");
+        token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
     }
 
     @Test
     public void testCreateAndConsumePasswordResetToken() throws Exception {
         MockHttpServletResponse response = mockMvc.perform(post(APP + NO_AUTH + "/forgetPassword")
                 .contentType(MediaType.APPLICATION_JSON)
-                .param("email", "bogden1979@yahoo.com"))
+                .param("email", "vasyl.pahomenko2018@gmail.com"))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
@@ -95,7 +95,7 @@ public class ResetTokenTest {
 
         response = mockMvc.perform(post(APP + NO_AUTH + "/login")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"userName\":\"bogden1979@yahoo.com\",\"password\":\"qwertyuiop12345\"}")
+                .content("{\"userName\":\"vasyl.pahomenko2018@gmail.com\",\"password\":\"qwertyuiop12345\"}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());

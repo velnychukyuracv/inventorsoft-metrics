@@ -75,14 +75,14 @@ public class UserViewTest {
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
         mapper.registerModule(new JavaTimeModule());
-        token = tokenService.createToken("bogden1979@yahoo.com");
+        token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
     }
 
     @Test
     public void login() throws Exception {
         MockHttpServletResponse response = mockMvc.perform(post(APP + NO_AUTH + "/login")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"userName\":\"bogden1979@yahoo.com\",\"password\":\"qwerty12345\"}")
+                .content("{\"userName\":\"vasyl.pahomenko2018@gmail.com\",\"password\":\"qwerty12345\"}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());
