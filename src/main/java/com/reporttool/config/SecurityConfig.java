@@ -1,8 +1,6 @@
 package com.reporttool.config;
 
 import com.reporttool.config.security.filter.JWTAuthenticationFilter;
-import com.reporttool.config.security.filter.JWTLoginFilter;
-import com.reporttool.config.security.handler.JwtAuthenticationSuccessHandler;
 import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
 import com.reporttool.config.security.service.TokenAuthenticationService;
 import com.reporttool.config.security.service.UserDetailsServiceImpl;
@@ -10,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -51,15 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .and().authorizeRequests()
-                .antMatchers(HttpMethod.POST, APP + "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                // We filter the api/login requests
-                .addFilterBefore(new JWTLoginFilter(APP + "/login",
-                                authenticationManager(),
-                                service,
-                                new JwtAuthenticationSuccessHandler()),
-                        UsernamePasswordAuthenticationFilter.class)
                 // And filter other requests to check the presence of JWT in header
                 .addFilterBefore(new JWTAuthenticationFilter(service),
                         UsernamePasswordAuthenticationFilter.class)
@@ -69,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
+                .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/login")
                 .antMatchers(HttpMethod.GET,APP + NO_AUTH + "/**")
                 .antMatchers(HttpMethod.GET, "/v2/api-docs/**")
                 .antMatchers(HttpMethod.GET, "/swagger-resources")
@@ -84,5 +78,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration(APP + "/**", configuration);
         return source;
+    }
+
+    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

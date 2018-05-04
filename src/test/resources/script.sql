@@ -8,7 +8,7 @@ was changed. Inconsistent data may affect results of other tests */
 
 /* This piece of code fills the "uses" table with valid data which has relationships in other tables */
 INSERT INTO users (id, created_at, updated_at, first_name, last_name, email, password, status, last_sign_in)
-VALUES((SELECT nextval('hibernate_sequence')), '2018-04-20 00:00:01', '2018-04-20 00:00:01', 'Petia', 'Petrov', 'bogden1979@yahoo.com', '$2a$10$AFqQiawMXrgiwGMwOyKeKO717AU9FkWTCBmaAI5Hd1Czc45oPxBqW', 'ACTIVE', '2018-04-20 00:00:01');
+VALUES((SELECT nextval('hibernate_sequence')), '2018-04-20 00:00:01', '2018-04-20 00:00:01', 'Petia', 'Petrov', 'bogden1979@yahoo.com', '$2a$10$eSHpNUbGG9YBeda8RkgtjOnCPg0HqIIT5MGqIFvn1PAkDnfoskpui', 'ACTIVE', '2018-04-20 00:00:01');
 
 
 

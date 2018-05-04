@@ -9,7 +9,7 @@
         </root>
 
         <logger name="com.reporttool" level="INFO"/>
-        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.springframework" level="DEBUG"/>
         <logger name="org.hibernate" level="INFO"/>
     </springProfile>
 

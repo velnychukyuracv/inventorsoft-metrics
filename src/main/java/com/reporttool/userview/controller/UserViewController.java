@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,11 +35,17 @@ public class UserViewController {
     private final UserService userService;
 
     @GetMapping()
-    public Page<UserViewDto> getUsers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-                                      @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
-                                      @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
-                                      @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
-        return userViewService.getUsers(page, pageSize, direction, sortBy);
+    public Page<UserViewDto> getUsers(
+            @RequestParam(value = "query", required = false) String query,
+            @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
+            @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
+            @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
+        if (isEmpty(query)) {
+            return userViewService.getUsers(page, pageSize, direction, sortBy);
+        } else {
+            return userViewService.findUsersByName(query, page, pageSize, direction, sortBy);
+        }
     }
 
     @GetMapping("/{userId}")

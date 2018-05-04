@@ -30,6 +30,7 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.inject.Inject;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
@@ -79,13 +80,12 @@ public class TotalTest {
 
     @Test
     public void login() throws Exception {
-        MockHttpServletResponse response = mockMvc.perform(post(APP + "/login")
+        MockHttpServletResponse response = mockMvc.perform(post(APP + NO_AUTH + "/login")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"username\":\"bogden1979@yahoo.com\",\"password\":\"qwerty\"}")
+                .content("{\"userName\":\"bogden1979@yahoo.com\",\"password\":\"qwerty12345\"}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());
-        assertTrue(response.getHeaderNames().contains("Authorization"));
     }
 
     @Test
@@ -136,6 +136,16 @@ public class TotalTest {
         UserViewDto user = mapper.readValue(result, new TypeReference<UserViewDto>(){});
         assertTrue("Petia".equals(user.getFirstName()));
     }
+
+//    @Test
+//    public void testSerchUserByName() throws Exception {
+//        String result = mockMvc.perform(get(APP + "/search")
+//                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+//                .param("qu"))
+//                .andReturn().getResponse().getContentAsString();
+//        UserViewDto user = mapper.readValue(result, new TypeReference<UserViewDto>(){});
+//        assertTrue("Petia".equals(user.getFirstName()));
+//    }
 
 //    @Test
 //    public void corsTest() throws Exception {
