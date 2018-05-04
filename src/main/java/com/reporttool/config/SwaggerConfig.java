@@ -51,6 +51,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
                 .paths(PathSelectors.any())
+                .paths(PathSelectors.regex(String.format("%s/.*", "/api")))
                 .build()
                 .pathMapping("/")
                 .directModelSubstitute(LocalDate.class, String.class)
