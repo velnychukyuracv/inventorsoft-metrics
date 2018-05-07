@@ -1,6 +1,6 @@
 package com.reporttool.domain.model.base;
 
-import com.reporttool.domain.model.listener.AbstractVersionalListener;
+import com.reporttool.domain.model.listener.AbstractVersionalIdentifiableListener;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,19 +13,11 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-/**
- * Base class for entities which have to be versioned.
- * By versioned we mean that those entities will have
- * created and updated timestamp. Actual tracking of this values
- * will be delegated to Spring Data Auditing module, so you don't
- * need to update those fields manually
- */
 @Getter
 @Setter
 @MappedSuperclass
-@EntityListeners(AbstractVersionalListener.class)
-public abstract class AbstractVersional {
-
+@EntityListeners(AbstractVersionalIdentifiableListener.class)
+public class AbstractVersionalIdentifiable extends AbstractIdentifiable {
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)

@@ -1,20 +1,20 @@
 package com.reporttool.domain.model.listener;
 
-import com.reporttool.domain.model.base.AbstractVersional;
+import com.reporttool.domain.model.base.AbstractVersionalIdentifiable;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
-public class MyEntityListener {
+public class AbstractVersionalIdentifiableListener {
     @PrePersist
-    void onPrePersist(AbstractVersional entity) {
+    void onPrePersist(AbstractVersionalIdentifiable entity) {
         entity.setCreatedAt(LocalDateTime.now());
         entity.setUpdatedAt(LocalDateTime.now());
     }
 
     @PreUpdate
-    void onPreUpdate(AbstractVersional entity) {
+    void onPreUpdate(AbstractVersionalIdentifiable entity) {
         entity.setUpdatedAt(LocalDateTime.now());
     }
 }
