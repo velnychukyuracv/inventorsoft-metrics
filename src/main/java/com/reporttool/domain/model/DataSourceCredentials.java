@@ -1,16 +1,20 @@
 package com.reporttool.domain.model;
 
+import com.reporttool.domain.service.DataSourceImplService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class DataSourceCredentials {
 
-    private static Map<String, DataSource> dataSources = new HashMap<>();
+    private final DataSourceImplService dataSourceService;
+
+    private static Map<String, DataSourceImpl> dataSources = new HashMap<>();
 
     @PostConstruct
     private void init() {

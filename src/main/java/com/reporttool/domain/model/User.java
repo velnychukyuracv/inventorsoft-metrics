@@ -2,6 +2,7 @@ package com.reporttool.domain.model;
 
 import com.reporttool.domain.constants.Status;
 import com.reporttool.domain.model.base.AbstractVersional;
+import com.reporttool.domain.model.base.AbstractVersionalIdentifiable;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
@@ -25,11 +26,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
         indexes = @Index(columnList = "email"))
 @Getter
 @Setter
-public class User extends AbstractVersional {
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
-    @Column(unique = true)
-    private Long id;
+public class User extends AbstractVersionalIdentifiable {
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
