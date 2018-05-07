@@ -1,5 +1,6 @@
 package com.reporttool.config;
 
+import com.google.common.collect.ImmutableList;
 import com.reporttool.config.security.filter.JWTAuthenticationFilter;
 import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
 import com.reporttool.config.security.service.TokenAuthenticationService;
@@ -70,16 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/swagger-resources")
                 .antMatchers(HttpMethod.GET, "/swagger-ui.html")
                 .antMatchers(HttpMethod.GET, "/webjars/**");
-    }
-
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(corsProperties.getOrigins()));
-        configuration.setAllowedMethods(Arrays.asList("GET", "PUT", "POST", "DELETE", "PATCH"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration(APP + "/**", configuration);
-        return source;
     }
 
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)

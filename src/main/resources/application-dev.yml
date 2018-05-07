@@ -34,4 +34,4 @@ jwt:
   headerstring: Authorization
 
 cors:
-  origins: http://localhost:4200
+  origins: '*'
