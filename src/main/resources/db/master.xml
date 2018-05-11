@@ -9,5 +9,6 @@
     <include file="002_create_password_reset_token_table.xml" relativeToChangelogFile="true"/>
     <include file="003_create_sequence.xml" relativeToChangelogFile="true"/>
     <include file="004_remove_not_null_constraint_from_user_last_sign_in.xml" relativeToChangelogFile="true"/>
-    <include file="005_create_data_source_table.xml" relativeToChangelogFile="true"/>
+    <include file="005_create_data_source_representations_table.xml" relativeToChangelogFile="true"/>
+    <include file="006_delete_status_column_from_users_table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

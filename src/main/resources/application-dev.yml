@@ -30,8 +30,12 @@ application:
 jwt:
   expiration: 360000
   secret: teststring
-  tokenprefix: Bearer
-  headerstring: Authorization
+  token-prefix: Bearer
+  header-string: Authorization
 
 cors:
   origins: '*'
+
+encryption:
+  public-key: M02cnQ51Ji97vwT4
+

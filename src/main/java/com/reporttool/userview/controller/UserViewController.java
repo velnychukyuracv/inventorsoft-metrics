@@ -7,6 +7,7 @@ import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
 import com.reporttool.userview.service.UserViewService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -29,10 +30,20 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = APP + "/users")
+@Slf4j
 public class UserViewController {
 
     private final UserViewService userViewService;
     private final UserService userService;
+
+
+    @PostMapping(consumes="application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserSignForm saveUser(@Validated @RequestBody UserSignForm userForm) {
+        return userViewService.create(userForm);
+    }
+
+
 
     @GetMapping()
     public Page<UserViewDto> getUsers(
@@ -51,14 +62,6 @@ public class UserViewController {
     @GetMapping("/{userId}")
     public UserViewDto getUserById(@PathVariable("userId") Long userId) {
         return userViewService.findById(userId).orElseThrow(ResourceNotFoundException:: new);
-    }
-    
-
-
-    @PostMapping(consumes="application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserSignForm saveUser(@Validated @RequestBody UserSignForm userForm) {
-        return userViewService.create(userForm);
     }
 
 

@@ -53,14 +53,13 @@ public class ResetTokenTest {
     private TokenAuthenticationService tokenService;
 
     @Inject
-    private PropertyConfig.JWTProperties jwtProperties;
+    private PasswordResetService passwordResetService;
 
     @Inject
-    private PasswordResetService passwordResetService;
+    private ObjectMapper objectMapper;
 
     private String token;
     private MockMvc mockMvc;
-    private ObjectMapper mapper = new ObjectMapper();
 
     @Before
     public void setup() {
@@ -68,7 +67,6 @@ public class ResetTokenTest {
                 .webAppContextSetup(context)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
-        mapper.registerModule(new JavaTimeModule());
         token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
     }
 
@@ -89,7 +87,7 @@ public class ResetTokenTest {
 
         response = mockMvc.perform(post(APP + NO_AUTH + "/forgetPassword/resetPassword")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(passwordResetForm)))
+                .content(objectMapper.writeValueAsString(passwordResetForm)))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 

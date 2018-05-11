@@ -8,20 +8,21 @@ import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static com.reporttool.utils.ReportToolUtils.createPageable;
 import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserViewService {
 
     private final UserService userService;
@@ -65,12 +66,6 @@ public class UserViewService {
         setUserFields(user, userForm);
         User updatedUser = userService.save(user);
         return userMapper.mapToUserEditForm(updatedUser);
-    }
-
-
-
-    private Pageable createPageable(Integer page, Integer pageSize, String direction, String sortBy) {
-        return PageRequest.of(page, pageSize, Sort.by(Sort.Direction.fromString(direction), sortBy));
     }
 
     private void setUserFields(User user, UserEditForm userEditForm) {

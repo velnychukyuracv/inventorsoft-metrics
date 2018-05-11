@@ -7,10 +7,13 @@ import com.reporttool.domain.repository.PasswordResetTokenRepository;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.common.mail.service.MailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,6 +24,7 @@ import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PasswordResetService {
 
     private static final int HOURS = 2;
@@ -77,7 +81,8 @@ public class PasswordResetService {
         PasswordResetToken resetToken = new PasswordResetToken();
         resetToken.setToken(token);
         resetToken.setUser(user);
-        resetToken.setExpirationTime(LocalDateTime.now().plusHours(HOURS));
+        resetToken.setExpirationTime(LocalDateTime.now().plus(2, ChronoUnit.HOURS));
+        log.debug("Reset token for user {} was successfully created", user.getEmail());
         return save(resetToken);
     }
 
@@ -87,6 +92,7 @@ public class PasswordResetService {
         User user = passwordToken.getUser();
         userService.changePassword(user, password);
         delete(passwordToken);
+        log.debug("Token {} was successfully deleted", token);
     }
 
     @Transactional
@@ -94,5 +100,6 @@ public class PasswordResetService {
         User user = userService.findByEmail(email).orElseThrow(ResourceNotFoundException:: new);
         String token = createToken(user).getToken();
         mailService.sendResetToken(token, user);
+        log.debug("Token was sent to: {}", email);
     }
 }

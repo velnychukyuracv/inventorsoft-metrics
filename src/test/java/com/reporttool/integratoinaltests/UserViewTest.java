@@ -25,6 +25,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -41,6 +42,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -64,9 +66,14 @@ public class UserViewTest {
     @Inject
     private PropertyConfig.JWTProperties jwtProperties;
 
+    @Inject
+    private ObjectMapper objectMapper;
+
+    @Inject
+    private PropertyConfig.CorsProperties corsProperties;
+
     private String token;
     private MockMvc mockMvc;
-    private ObjectMapper mapper = new ObjectMapper();
 
     @Before
     public void setup() {
@@ -74,7 +81,6 @@ public class UserViewTest {
                 .webAppContextSetup(context)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
-        mapper.registerModule(new JavaTimeModule());
         token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
     }
 
@@ -96,12 +102,11 @@ public class UserViewTest {
         userSignForm.setLastName("Mykhalchuk");
         userSignForm.setEmail("bogdan.mykhalchuk@inventorsoft.co");
         userSignForm.setPassword("12345678");
-        userSignForm.setStatus("ACTIVE");
 
         MockHttpServletResponse response = mockMvc.perform(post(APP + "/users")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(userSignForm)))
+                .content(objectMapper.writeValueAsString(userSignForm)))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
@@ -109,18 +114,17 @@ public class UserViewTest {
         userSignForm.setLastName("Trubkin");
         userSignForm.setEmail("gonduras@inventorsoft.co");
         userSignForm.setPassword("123456789");
-        userSignForm.setStatus("ACTIVE");
         assertEquals(201, response.getStatus());
 
         response = mockMvc.perform(post(APP + "/users")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(userSignForm)))
+                .content(objectMapper.writeValueAsString(userSignForm)))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
         mockMvc.perform(get(APP + "/users")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .param("sortBy", "firstName"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content", hasSize(3)))
@@ -131,16 +135,16 @@ public class UserViewTest {
     @Test
     public void testGetUserById() throws Exception {
         String result = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token))
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
                 .andReturn().getResponse().getContentAsString();
-        UserViewDto user = mapper.readValue(result, new TypeReference<UserViewDto>(){});
+        UserViewDto user = objectMapper.readValue(result, new TypeReference<UserViewDto>(){});
         assertTrue("Petia".equals(user.getFirstName()));
     }
 
     @Test
     public void testSearchUserByName() throws Exception {
         mockMvc.perform(get(APP + "/users")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .param("query", "Pet"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content", hasSize(1)))
@@ -154,46 +158,43 @@ public class UserViewTest {
 
         userEditForm.setFirstName("Bogdan");
         userEditForm.setLastName("Mykhalchuk");
-        userEditForm.setStatus("inactive");
 
         MockHttpServletResponse response= mockMvc.perform(patch(APP + "/users/1")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(userEditForm)))
+                .content(objectMapper.writeValueAsString(userEditForm)))
                 .andReturn().getResponse();
         assertEquals(202, response.getStatus());
 
         String result = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token))
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
                 .andReturn().getResponse().getContentAsString();
-        UserViewDto user = mapper.readValue(result, new TypeReference<UserViewDto>(){});
+        UserViewDto user = objectMapper.readValue(result, new TypeReference<UserViewDto>(){});
         assertTrue("Bogdan".equals(user.getFirstName()));
     }
 
     @Test
     public void testDeleteUser() throws Exception {
         MockHttpServletResponse response= mockMvc.perform(delete(APP + "/users/1")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         assertEquals(204, response.getStatus());
 
         response = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderstring(), jwtProperties.getTokenprefix() + " " + token))
+                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
                 .andReturn().getResponse();
         assertEquals(404, response.getStatus());
     }
 
-//    @Test
-//    public void corsTest() throws Exception {
-//        mockMvc
-//                .perform(get(APP + "/users")
-//                .header("Access-Control-Request-Method", "GET")
-//                .header("Origin", corsProperties.getOrigins())
-//                .header("Authorization", token))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(MockMvcResultMatchers.header().string("Access-Control-Allow-Methods", "GET"))
-//                .andExpect(content().string("application/json;charset=UTF-8"));
-//    }
+    @Test
+    public void corsTest() throws Exception {
+        mockMvc
+                .perform(get(APP + "/users")
+                .header("Origin", corsProperties.getOrigins())
+                .header("Authorization", token))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Access-Control-Allow-Origin", corsProperties.getOrigins()));
+    }
 }

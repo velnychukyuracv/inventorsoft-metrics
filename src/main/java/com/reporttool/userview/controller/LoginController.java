@@ -3,6 +3,7 @@ package com.reporttool.userview.controller;
 import com.reporttool.config.security.model.AccountCredentials;
 import com.reporttool.config.security.service.TokenAuthenticationService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +20,7 @@ import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(APP + NO_AUTH + "/login")
+@Slf4j
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;

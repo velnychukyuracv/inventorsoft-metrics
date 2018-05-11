@@ -1,5 +1,7 @@
 package com.reporttool.config;
 
+import com.reporttool.domain.exeption.EncryptionException;
+import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -37,6 +39,26 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = MessagingException.class)
     public ResponseEntity<Object> handleMessagingException(Exception ex, WebRequest request) {
+        return handleExceptionInternal(
+                ex,
+                ex.getMessage(),
+                new HttpHeaders(),
+                HttpStatus.SERVICE_UNAVAILABLE,
+                request);
+    }
+
+    @ExceptionHandler(value = EncryptionException.class)
+    public ResponseEntity<Object> handleEncryptionException(Exception ex, WebRequest request) {
+        return handleExceptionInternal(
+                ex,
+                ex.getMessage(),
+                new HttpHeaders(),
+                HttpStatus.SERVICE_UNAVAILABLE,
+                request);
+    }
+
+    @ExceptionHandler(value = MappingException.class)
+    public ResponseEntity<Object> handleMappingException(Exception ex, WebRequest request) {
         return handleExceptionInternal(
                 ex,
                 ex.getMessage(),

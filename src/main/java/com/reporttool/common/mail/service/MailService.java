@@ -46,6 +46,7 @@ public class MailService {
 
         mimeMessage.setContent(emailBuilder.getBody(), "text/html");
         javaMailSender.send(mimeMessage);
+        log.debug("An email was sent to {}", emailBuilder.getToEmail());
     }
 
     /**

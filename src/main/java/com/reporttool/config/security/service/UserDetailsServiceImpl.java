@@ -3,6 +3,7 @@ package com.reporttool.config.security.service;
 import com.reporttool.domain.service.UserService;
 import com.reporttool.config.security.model.SecurityUser;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,7 @@ import static java.lang.String.format;
  */
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserService userService;
