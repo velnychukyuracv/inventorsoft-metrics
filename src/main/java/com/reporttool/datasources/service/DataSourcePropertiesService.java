@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.datasources.model.DataSourceDto;
 import com.reporttool.datasources.model.DataSourceEditForm;
+import com.reporttool.datasources.model.DataSourceForm;
 import com.reporttool.datasources.model.DataSourceProperties;
 import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
@@ -36,12 +37,14 @@ public class DataSourcePropertiesService {
 
 
 
-    public DataSourceProperties saveDataSource(DataSourceProperties dbProperties) {
+    public DataSourceForm saveDataSource(DataSourceForm dataSourceForm) {
+        DataSourceProperties dbProperties = dataSourcePropertiesMapper.mapToDataSourceProperties(dataSourceForm);
         DataSourceDbRepresentation createdDbRepresentation =
                 dbRepresentationService.create(createDbRepresentation(dbProperties));
         String decodedStringDbPropertiesRepresentation =
                 cipherService.decrypt(createdDbRepresentation.getDataSourceObjectRepresentation());
-        return parseDataSourceProperties(decodedStringDbPropertiesRepresentation);
+        return dataSourcePropertiesMapper
+                .mapToDataSourceForm(parseDataSourceProperties(decodedStringDbPropertiesRepresentation));
     }
 
 

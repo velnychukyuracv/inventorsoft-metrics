@@ -2,6 +2,7 @@ package com.reporttool.datasources.controller;
 
 import com.reporttool.datasources.model.DataSourceDto;
 import com.reporttool.datasources.model.DataSourceEditForm;
+import com.reporttool.datasources.model.DataSourceForm;
 import com.reporttool.datasources.model.DataSourceProperties;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.datasources.service.DataSourcePropertiesService;
@@ -40,7 +41,7 @@ public class DataSourceController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public DataSourceProperties saveDataSource(@RequestBody @Validated DataSourceProperties dataSourceProperties) {
+    public DataSourceForm saveDataSource(@RequestBody @Validated DataSourceForm dataSourceProperties) {
         return dataSourcePropertiesService.saveDataSource(dataSourceProperties);
     }
 

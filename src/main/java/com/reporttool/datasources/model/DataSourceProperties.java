@@ -22,17 +22,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class DataSourceProperties {
-    @NotBlank
     private String dataSourceName;
-    @NotBlank
     private String userName;
-    @NotBlank
     private String password;
-    @NotBlank
     private String url;
-    @NotBlank
     private String driverClassName;
-//    @NotBlank
-//    @ValidEnumValue(enumClass = DataSourceType.class)
     private DataSourceType dataSourceType;
 }
