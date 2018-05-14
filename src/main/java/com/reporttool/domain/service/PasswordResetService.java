@@ -1,6 +1,7 @@
 package com.reporttool.domain.service;
 
 import com.google.api.client.util.Lists;
+import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.model.PasswordResetToken;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.repository.PasswordResetTokenRepository;
@@ -27,11 +28,10 @@ import static java.util.Objects.nonNull;
 @Slf4j
 public class PasswordResetService {
 
-    private static final int HOURS = 2;
-
     private final PasswordResetTokenRepository tokenRepository;
     private final UserService userService;
     private final MailService mailService;
+    private final PropertyConfig.ResetPassTokenExpirationProperties expirationProperties;
 
     @Transactional(readOnly = true)
     public Optional<PasswordResetToken> findById(Long tokenId) {
@@ -75,15 +75,15 @@ public class PasswordResetService {
     }
     
     
-    @Transactional
-    public PasswordResetToken createToken(User user) {
+
+    private PasswordResetToken createToken(User user) {
         String token = UUID.randomUUID().toString();
         PasswordResetToken resetToken = new PasswordResetToken();
         resetToken.setToken(token);
         resetToken.setUser(user);
-        resetToken.setExpirationTime(LocalDateTime.now().plus(2, ChronoUnit.HOURS));
+        resetToken.setExpirationTime(LocalDateTime.now().plus(expirationProperties.getMinutesExpiration(), ChronoUnit.MINUTES));
         log.debug("Reset token for user {} was successfully created", user.getEmail());
-        return save(resetToken);
+        return resetToken;
     }
 
     @Transactional
@@ -98,7 +98,19 @@ public class PasswordResetService {
     @Transactional
     public void createAndSendToken(String email) {
         User user = userService.findByEmail(email).orElseThrow(ResourceNotFoundException:: new);
-        String token = createToken(user).getToken();
+        Optional<PasswordResetToken> optional = findById(user.getId());
+        PasswordResetToken passwordResetToken;
+        if (optional.isPresent()) {
+            passwordResetToken = optional.get();
+            LocalDateTime tokenExpiration = passwordResetToken.getExpirationTime();
+            if (LocalDateTime.now().compareTo(tokenExpiration) >= 0) {
+                passwordResetToken = createToken(user);
+            }
+        } else {
+            passwordResetToken = createToken(user);
+        }
+        save(passwordResetToken);
+        String token = passwordResetToken.getToken();
         mailService.sendResetToken(token, user);
         log.debug("Token was sent to: {}", email);
     }

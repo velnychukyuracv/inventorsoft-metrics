@@ -72,10 +72,10 @@ public class DataSourceCRUDOperationsTest {
     public void testDataSourcesSaveAndGet() throws Exception {
         DataSourceForm dataSourceForm = new DataSourceForm();
         dataSourceForm.setDataSourceName("TEST_POSTGRES");
-        dataSourceForm.setUserName("User");
-        dataSourceForm.setPassword("password");
-        dataSourceForm.setUrl("url");
-        dataSourceForm.setDriverClassName("driver");
+        dataSourceForm.setUserName("postgres");
+        dataSourceForm.setPassword("postgres");
+        dataSourceForm.setUrl("jdbc:postgresql://localhost:5432/test");
+        dataSourceForm.setDriverClassName("org.postgresql.Driver");
         dataSourceForm.setDataSourceType("POSTGRES");
 
         MockHttpServletResponse response = mockMvc.perform(post(APP + "/data-sources")
