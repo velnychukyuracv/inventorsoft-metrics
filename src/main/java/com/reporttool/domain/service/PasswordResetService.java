@@ -1,7 +1,6 @@
 package com.reporttool.domain.service;
 
 import com.google.api.client.util.Lists;
-import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.model.PasswordResetToken;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.repository.PasswordResetTokenRepository;
@@ -28,10 +27,11 @@ import static java.util.Objects.nonNull;
 @Slf4j
 public class PasswordResetService {
 
+    private static final int HOURS = 2;
+
     private final PasswordResetTokenRepository tokenRepository;
     private final UserService userService;
     private final MailService mailService;
-    private final PropertyConfig.ResetPassTokenExpirationProperties expirationProperties;
 
     @Transactional(readOnly = true)
     public Optional<PasswordResetToken> findById(Long tokenId) {
@@ -81,7 +81,7 @@ public class PasswordResetService {
         PasswordResetToken resetToken = new PasswordResetToken();
         resetToken.setToken(token);
         resetToken.setUser(user);
-        resetToken.setExpirationTime(LocalDateTime.now().plus(expirationProperties.getMinutesExpiration(), ChronoUnit.MINUTES));
+        resetToken.setExpirationTime(LocalDateTime.now().plus(HOURS, ChronoUnit.HOURS));
         log.debug("Reset token for user {} was successfully created", user.getEmail());
         return resetToken;
     }

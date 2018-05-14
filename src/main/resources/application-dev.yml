@@ -28,7 +28,7 @@ application:
   host: localhost:8080
 
 jwt:
-  expiration: 36000000
+  expiration: 14400000
   secret: teststring
   token-prefix: Bearer
   header-string: Authorization
@@ -38,7 +38,4 @@ cors:
 
 encryption:
   public-key: M02cnQ51Ji97vwT4
-
-reset-token:
-  minutesExpiration: 10
 

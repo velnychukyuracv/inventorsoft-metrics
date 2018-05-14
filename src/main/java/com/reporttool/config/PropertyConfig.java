@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
         PropertyConfig.JWTProperties.class,
         PropertyConfig.ApplicationProperties.class,
         PropertyConfig.CorsProperties.class,
-        PropertyConfig.EncryptionProperties.class,
-        PropertyConfig.ResetPassTokenExpirationProperties.class
+        PropertyConfig.EncryptionProperties.class
 })
 public class PropertyConfig {
 
@@ -49,12 +48,5 @@ public class PropertyConfig {
     @ConfigurationProperties("encryption")
     public static class EncryptionProperties {
         private String publicKey;
-    }
-
-    @Getter
-    @Setter
-    @ConfigurationProperties("reset-token")
-    public static class ResetPassTokenExpirationProperties {
-        private Long minutesExpiration;
     }
 }
