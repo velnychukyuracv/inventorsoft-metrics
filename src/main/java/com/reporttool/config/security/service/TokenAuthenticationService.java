@@ -36,18 +36,7 @@ public class TokenAuthenticationService {
         String string = jwtProperties.getHeaderString();
         String token = request.getHeader(string);
         if (token != null) {
-            String user;
-            // parse the token.
-            try {
-                user = Jwts.parser()
-                        .setSigningKey(jwtProperties.getSecret())
-                        .parseClaimsJws(token.replace(jwtProperties.getTokenPrefix(), ""))
-                        .getBody()
-                        .getSubject();
-            } catch (JwtException e) {
-                throw new CustomJwtException(e.getMessage());
-            }
-
+            String user = parseToken(token);
             if(nonNull(user)) {
                 log.debug("Authentication was created for user: {}", user);
                 return new UsernamePasswordAuthenticationToken(user, null, emptyList());
@@ -68,5 +57,19 @@ public class TokenAuthenticationService {
                 .compact();
         log.debug("Token was created for user: {}", userName);
         return token;
+    }
+
+    public String parseToken(String token) {
+        String email;
+        try {
+            email = Jwts.parser()
+                    .setSigningKey(jwtProperties.getSecret())
+                    .parseClaimsJws(token.replace(jwtProperties.getTokenPrefix(), ""))
+                    .getBody()
+                    .getSubject();
+        } catch (JwtException e) {
+            throw new CustomJwtException(e.getMessage());
+        }
+        return email;
     }
 }
