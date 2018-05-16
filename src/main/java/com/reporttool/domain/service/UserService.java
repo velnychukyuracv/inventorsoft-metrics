@@ -1,5 +1,6 @@
 package com.reporttool.domain.service;
 
+import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.repository.UserRepository;
 import com.reporttool.domain.service.base.DefaultCrudSupport;
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.security.InvalidParameterException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static java.util.Objects.nonNull;
@@ -60,5 +64,14 @@ public class UserService extends DefaultCrudSupport<User>{
             log.error("Invalid passed parameters, user: {}, password: {}", user, password);
             throw new InvalidParameterException();
         }
+    }
+
+    @Transactional
+    public void setUsersLastSignInField(String email) {
+        Optional<User> optionalUser = findByEmail(email);
+        User user = optionalUser.orElseThrow(ResourceNotFoundException::new);
+        LocalDateTime now = LocalDateTime.now();
+        user.setLastSignIn(now);
+        update(user);
     }
 }

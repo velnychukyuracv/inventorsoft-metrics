@@ -11,6 +11,7 @@ spring:
       hibernate:
         temp.use_jdbc_metadata_defaults: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    open-in-view: true
   main:
     banner-mode: 'off'
   liquibase:

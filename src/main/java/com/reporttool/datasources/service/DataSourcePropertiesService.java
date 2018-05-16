@@ -6,6 +6,7 @@ import com.reporttool.datasources.model.DataSourceDto;
 import com.reporttool.datasources.model.DataSourceEditForm;
 import com.reporttool.datasources.model.DataSourceForm;
 import com.reporttool.datasources.model.DataSourceProperties;
+import com.reporttool.domain.constants.DataSourceType;
 import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.DataSourceDbRepresentation;
@@ -45,7 +46,7 @@ public class DataSourcePropertiesService {
     /*
      * Field to store initialized DataSources
      */
-    private final Map<String, AtomicReference<DataSource>> dataSources = new ConcurrentHashMap<>();
+    private final Map<String, AtomicReference<HikariDataSource>> dataSources = new ConcurrentHashMap<>();
 
     /**
      * Read from data base all stored {@link DataSource} properties
@@ -112,6 +113,8 @@ public class DataSourcePropertiesService {
         DataSourceProperties dbProperties =
                 parseDataSourceProperties(stringDataBasePropertiesRepresentation);
 
+        String dataSourceName = dbProperties.getDataSourceName();
+
         setDataSourceFields(dataSourceForm, dbProperties);
 
         String updatedStringDataBasePropertiesRepresentation = convertToStringRepresentation(dbProperties);
@@ -119,11 +122,12 @@ public class DataSourcePropertiesService {
         String encryptedUpdatedStringDataBasePropertiesRepresentation =
                 cipherService.encrypt(updatedStringDataBasePropertiesRepresentation);
 
+        dbRepresentation.setDataSourceName(dbProperties.getDataSourceName());
         dbRepresentation.setDataSourceObjectRepresentation(encryptedUpdatedStringDataBasePropertiesRepresentation);
 
         dbRepresentationService.update(dbRepresentation);
 
-        updateDataSource(dbProperties);
+        updateDataSource(dbProperties, dataSourceName);
 
         log.debug("DataSourceDbRepresentation was successfully updated");
         return dataSourcePropertiesMapper.mapToDataSourceEditForm(dbProperties);
@@ -205,17 +209,17 @@ public class DataSourcePropertiesService {
             dbProperties.setDriverClassName(dataSourceForm.getDriverClassName());
         }
         if (nonNull(dataSourceForm.getDataSourceType())) {
-            dbProperties.setDataSourceType(dataSourceForm.getDataSourceType());
+            dbProperties.setDataSourceType(DataSourceType.valueOf(dataSourceForm.getDataSourceType()));
         }
     }
 
-    private AtomicReference<DataSource> createDataSourceReference(DataSourceProperties dbProperties) {
-        AtomicReference<DataSource> atomicReference = new AtomicReference<>();
+    private AtomicReference<HikariDataSource> createDataSourceReference(DataSourceProperties dbProperties) {
+        AtomicReference<HikariDataSource> atomicReference = new AtomicReference<>();
         atomicReference.set(createDataSource(dbProperties));
         return atomicReference;
     }
 
-    private DataSource createDataSource(DataSourceProperties dataSourceProperties) {
+    private HikariDataSource createDataSource(DataSourceProperties dataSourceProperties) {
         HikariConfig config = new HikariConfig();
         config.setUsername(dataSourceProperties.getUserName());
         config.setPassword(dataSourceProperties.getPassword());
@@ -225,16 +229,21 @@ public class DataSourcePropertiesService {
     }
 
     private void addDataSource(DataSourceProperties dbProperties) {
-        AtomicReference<DataSource> atomicReference = new AtomicReference<>();
+        AtomicReference<HikariDataSource> atomicReference = new AtomicReference<>();
         atomicReference.set(createDataSource(dbProperties));
         dataSources.put(dbProperties.getDataSourceName(), atomicReference);
     }
 
-    private void updateDataSource(DataSourceProperties dbProperties) {
-        dataSources.get(dbProperties.getDataSourceName()).set(createDataSource(dbProperties));
+    private void updateDataSource(DataSourceProperties dbProperties, String dataSourceName) {
+        AtomicReference<HikariDataSource> atomicReference = dataSources.get(dataSourceName);
+        atomicReference.get().close();
+        atomicReference.set(createDataSource(dbProperties));
+        dataSources.put(dbProperties.getDataSourceName(), atomicReference);
+        dataSources.remove(dataSourceName);
     }
 
     private void deleteDataSource(String dataSourceName) {
+        dataSources.get(dataSourceName).get().close();
         dataSources.remove(dataSourceName);
     }
 }

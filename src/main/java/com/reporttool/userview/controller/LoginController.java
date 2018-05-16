@@ -2,6 +2,7 @@ package com.reporttool.userview.controller;
 
 import com.reporttool.config.security.model.AccountCredentials;
 import com.reporttool.config.security.service.TokenAuthenticationService;
+import com.reporttool.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ public class LoginController {
 
     private final AuthenticationManager authenticationManager;
     private final TokenAuthenticationService tokenService;
+    private final UserService userService;
 
     @PostMapping()
     public ResponseEntity<String> createAuthenticationToken(
@@ -36,6 +38,8 @@ public class LoginController {
 
         /* If authentication is successful, we may create token */
         final String token = tokenService.createToken(authentication.getName());
+
+        userService.setUsersLastSignInField(request.getUserName());
 
         return ResponseEntity.ok(token);
     }

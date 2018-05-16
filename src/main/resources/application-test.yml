@@ -6,6 +6,22 @@ spring:
    hikari:
      maximum-pool-size: 10
      minimum-idle: 10
+  db-foo:
+    datasource:
+      url: jdbc:h2:mem:foo;DB_CLOSE_ON_EXIT=FALSE
+      username: username_1
+      password: password_1
+      driver-class-name: org.h2.Driver
+      test-on-borrow: true
+      validation-query: SELECT 1 FROM dual
+  db-bar:
+    datasource:
+      url: jdbc:h2:mem:bar;DB_CLOSE_ON_EXIT=FALSE
+      username: username
+      password: password
+      driver-class-name: org.h2.Driver
+      test-on-borrow: true
+      validation-query: SELECT 1 FROM dual
   mail:
       host: smtp.gmail.com
       port: 587
@@ -28,7 +44,7 @@ application:
   host: localhost:8080
 
 jwt:
-  expiration: 1000
+  expiration: 14400000
   secret: teststring
   token-prefix: Bearer
   header-string: Authorization
@@ -38,4 +54,3 @@ cors:
 
 encryption:
   public-key: M02cnQ51Ji97vwT4
-

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,12 +43,11 @@ public class TokenAuthenticationService {
 
             if(nonNull(user)) {
                 log.debug("Authentication was created for user: {}", user);
+                return new UsernamePasswordAuthenticationToken(user, null, emptyList());
             } else {
                 log.warn("There was an attempt to receive authentication for fake user with token: ", token);
+                return null;
             }
-            return user != null ?
-                    new UsernamePasswordAuthenticationToken(user, null, emptyList()) :
-                    null;
         }
 
         return null;

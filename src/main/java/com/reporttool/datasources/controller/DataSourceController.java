@@ -83,7 +83,7 @@ public class DataSourceController {
 
 
 
-    @DeleteMapping("/{dataSourceId")
+    @DeleteMapping("/{dataSourceId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDataSource(@PathVariable("dataSourceId") Long dataSourceId) {
         try {

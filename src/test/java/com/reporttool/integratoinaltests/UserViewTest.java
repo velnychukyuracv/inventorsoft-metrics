@@ -54,7 +54,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ImportAutoConfiguration(MailSenderAutoConfiguration.class)
 @Sql(scripts = "classpath:script.sql")
 @Sql(scripts = "classpath:clean-up.sql", executionPhase = AFTER_TEST_METHOD)
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 public class UserViewTest {
 
     @Inject
