@@ -1,6 +1,8 @@
 package com.reporttool.config.security.service;
 
 import com.reporttool.config.PropertyConfig;
+import com.reporttool.domain.exeption.CustomJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -34,12 +36,17 @@ public class TokenAuthenticationService {
         String string = jwtProperties.getHeaderString();
         String token = request.getHeader(string);
         if (token != null) {
+            String user;
             // parse the token.
-            String user = Jwts.parser()
-                    .setSigningKey(jwtProperties.getSecret())
-                    .parseClaimsJws(token.replace(jwtProperties.getTokenPrefix(), ""))
-                    .getBody()
-                    .getSubject();
+            try {
+                user = Jwts.parser()
+                        .setSigningKey(jwtProperties.getSecret())
+                        .parseClaimsJws(token.replace(jwtProperties.getTokenPrefix(), ""))
+                        .getBody()
+                        .getSubject();
+            } catch (JwtException e) {
+                throw new CustomJwtException(e.getMessage());
+            }
 
             if(nonNull(user)) {
                 log.debug("Authentication was created for user: {}", user);

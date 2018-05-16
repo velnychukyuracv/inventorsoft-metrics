@@ -1,5 +1,7 @@
 package com.reporttool.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reporttool.config.exceptions.ExceptionHandlerFilter;
 import com.reporttool.config.security.filter.JWTAuthenticationFilter;
 import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
 import com.reporttool.config.security.service.TokenAuthenticationService;
@@ -18,11 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
+import org.springframework.web.filter.CorsFilter;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
@@ -38,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final PropertyConfig.CorsProperties corsProperties;
+    private final ObjectMapper objectMapper;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -54,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
+                .addFilterBefore(new ExceptionHandlerFilter(objectMapper), CorsFilter.class)
                 // And filter other requests to check the presence of JWT in header
                 .addFilterBefore(new JWTAuthenticationFilter(service),
                         UsernamePasswordAuthenticationFilter.class)
