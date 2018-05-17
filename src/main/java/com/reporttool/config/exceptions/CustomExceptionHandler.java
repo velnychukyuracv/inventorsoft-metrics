@@ -58,8 +58,10 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers,
-                                                         HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleBindException(BindException ex,
+                                                         HttpHeaders headers,
+                                                         HttpStatus status,
+                                                         WebRequest request) {
         return handleExceptionInternal(
                 ex,
                 "Bad request!!!",

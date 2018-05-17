@@ -27,7 +27,6 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             // custom error response class used across my project
             response.setStatus(401);
             response.getWriter().write("Access denied!!!");
-            filterChain.doFilter(request, response);
         }
     }
 }
