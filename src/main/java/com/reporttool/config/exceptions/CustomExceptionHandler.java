@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -40,7 +41,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleUserNameNotFoundException(Exception ex, WebRequest request) {
         return handleExceptionInternal(
                 ex,
-                ex.getMessage(),
+                "Access denied!!!",
                 new HttpHeaders(),
                 HttpStatus.UNAUTHORIZED,
                 request);
@@ -50,7 +51,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleResourceNotFoundException(Exception ex, WebRequest request) {
         return handleExceptionInternal(
                 ex,
-                ex.getMessage(),
+                "Resource not found!!!",
                 new HttpHeaders(),
                 HttpStatus.NOT_FOUND,
                 request);
@@ -61,7 +62,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                          HttpStatus status, WebRequest request) {
         return handleExceptionInternal(
                 ex,
-                ex.getMessage(),
+                "Bad request!!!",
                 new HttpHeaders(),
                 HttpStatus.BAD_REQUEST,
                 request);
@@ -75,7 +76,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMessagingException(Exception ex, WebRequest request) {
         return handleExceptionInternal(
                 ex,
-                ex.getMessage(),
+                "Internal server error!!! Try again later.",
                 new HttpHeaders(),
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 request);

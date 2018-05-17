@@ -1,6 +1,5 @@
 package com.reporttool.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.config.exceptions.ExceptionHandlerFilter;
 import com.reporttool.config.security.filter.JWTAuthenticationFilter;
 import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
@@ -36,8 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final ObjectMapper objectMapper;
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
@@ -52,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new ExceptionHandlerFilter(objectMapper), CorsFilter.class)
+                .addFilterBefore(new ExceptionHandlerFilter(), CorsFilter.class)
                 // And filter other requests to check the presence of JWT in header
                 .addFilterBefore(new JWTAuthenticationFilter(service),
                         UsernamePasswordAuthenticationFilter.class)
