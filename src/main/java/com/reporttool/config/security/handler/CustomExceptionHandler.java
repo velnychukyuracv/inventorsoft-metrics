@@ -1,5 +1,7 @@
-package com.reporttool.config.exceptions;
+package com.reporttool.config.security.handler;
 
+import com.reporttool.domain.exeption.CustomIOException;
+import com.reporttool.domain.exeption.CustomJwtException;
 import com.reporttool.domain.exeption.EncryptionException;
 import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
@@ -36,12 +38,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({
             UsernameNotFoundException.class,
             BadCredentialsException.class,
-            JwtException.class
+            CustomJwtException.class
     })
     protected ResponseEntity<Object> handleUserNameNotFoundException(Exception ex, WebRequest request) {
         return handleExceptionInternal(
                 ex,
-                "Access denied!!!",
+                ex.getMessage(),
                 new HttpHeaders(),
                 HttpStatus.UNAUTHORIZED,
                 request);
@@ -73,7 +75,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({
             MessagingException.class,
             EncryptionException.class,
-            MappingException.class
+            MappingException.class,
+            CustomIOException.class
     })
     protected ResponseEntity<Object> handleMessagingException(Exception ex, WebRequest request) {
         return handleExceptionInternal(

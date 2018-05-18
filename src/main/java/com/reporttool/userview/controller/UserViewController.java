@@ -5,7 +5,6 @@ import com.reporttool.domain.service.UserService;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
-import com.reporttool.userview.service.UserViewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -33,14 +32,13 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 @Slf4j
 public class UserViewController {
 
-    private final UserViewService userViewService;
     private final UserService userService;
 
 
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public UserSignForm saveUser(@Validated @RequestBody UserSignForm userForm) {
-        return userViewService.create(userForm);
+        return userService.create(userForm);
     }
 
 
@@ -53,15 +51,15 @@ public class UserViewController {
             @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
             @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
         if (isEmpty(query)) {
-            return userViewService.getUsers(page, pageSize, direction, sortBy);
+            return userService.findAll(page, pageSize, direction, sortBy);
         } else {
-            return userViewService.findUsersByName(query, page, pageSize, direction, sortBy);
+            return userService.findUsersByName(query, page, pageSize, direction, sortBy);
         }
     }
 
     @GetMapping("/{userId}")
     public UserViewDto getUserById(@PathVariable("userId") Long userId) {
-        return userViewService.findById(userId).orElseThrow(ResourceNotFoundException:: new);
+        return userService.findUserViewDtoById(userId).orElseThrow(ResourceNotFoundException:: new);
     }
 
 
@@ -70,7 +68,7 @@ public class UserViewController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public UserEditForm patchUser(@PathVariable("userId") Long userId,
                                    @Validated @RequestBody UserEditForm userForm) {
-        return userViewService.patchUser(userId, userForm);
+        return userService.patchUser(userId, userForm);
     }
 
 

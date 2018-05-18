@@ -1,11 +1,12 @@
-package com.reporttool.integratoinaltests;
+package com.reporttool.integratointests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.ApplicationStarter;
-import com.reporttool.config.PropertyConfig;
 import com.reporttool.config.TestConfig;
-import com.reporttool.config.security.service.TokenAuthenticationService;
-import com.reporttool.datasources.model.DataSourceForm;
+import com.reporttool.domain.model.PasswordResetToken;
+import com.reporttool.jwttoken.service.JwtTokenDbRepService;
+import com.reporttool.userview.service.PasswordResetService;
+import com.reporttool.userview.model.PasswordResetForm;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,14 +28,10 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.inject.Inject;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
+import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 import static junit.framework.TestCase.assertEquals;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ApplicationStarter.class, TestConfig.class},
@@ -45,21 +42,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Sql(scripts = "classpath:script.sql")
 @Sql(scripts = "classpath:clean-up.sql", executionPhase = AFTER_TEST_METHOD)
 @ActiveProfiles("test")
-public class DataSourceCRUDOperationsTest {
+public class ResetTokenTest {
 
     @Inject
     private WebApplicationContext context;
 
     @Inject
-    private TokenAuthenticationService tokenService;
+    private JwtTokenDbRepService jwtTokenDbRepService;
 
     @Inject
-    private PropertyConfig.JWTProperties jwtProperties;
+    private PasswordResetService passwordResetService;
 
     @Inject
     private ObjectMapper objectMapper;
 
-    private String token;
     private MockMvc mockMvc;
 
     @Before
@@ -68,34 +64,34 @@ public class DataSourceCRUDOperationsTest {
                 .webAppContextSetup(context)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
-        token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
     }
 
     @Test
-    public void testDataSourcesSaveAndGet() throws Exception {
-        DataSourceForm dataSourceForm = new DataSourceForm();
-        dataSourceForm.setDataSourceName("TEST_H2_2");
-        dataSourceForm.setUserName("username");
-        dataSourceForm.setPassword("password");
-        dataSourceForm.setUrl("jdbc:h2:mem:foo;DB_CLOSE_ON_EXIT=FALSE");
-        dataSourceForm.setDriverClassName("org.h2.Driver");
-        dataSourceForm.setDataSourceType("H2");
-
-        MockHttpServletResponse response = mockMvc.perform(post(APP + "/data-sources")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+    public void testCreateAndConsumePasswordResetToken() throws Exception {
+        MockHttpServletResponse response = mockMvc.perform(post(APP + NO_AUTH + "/forgetPassword")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(dataSourceForm)))
+                .param("email", "vasyl.pahomenko2018@gmail.com"))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
-        mockMvc.perform(get(APP + "/data-sources")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content", hasSize(2)))
-                .andExpect(jsonPath("$.content[0].dataSourceName").value("TEST_H2_1"))
-                .andReturn();
+        PasswordResetToken passwordResetToken = passwordResetService.findById(1L).orElseThrow(Exception::new);
+        String token = passwordResetToken.getToken();
 
+        PasswordResetForm passwordResetForm = new PasswordResetForm();
+        passwordResetForm.setToken(token);
+        passwordResetForm.setPassword("qwertyuiop12345");
 
+        response = mockMvc.perform(post(APP + NO_AUTH + "/forgetPassword/resetPassword")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(passwordResetForm)))
+                .andReturn().getResponse();
+        assertEquals(201, response.getStatus());
+
+        response = mockMvc.perform(post(APP + NO_AUTH + "/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"userName\":\"vasyl.pahomenko2018@gmail.com\",\"password\":\"qwertyuiop12345\"}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
+        assertEquals(200, response.getStatus());
     }
-
 }

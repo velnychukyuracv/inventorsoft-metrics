@@ -1,6 +1,6 @@
 package com.reporttool.config;
 
-import com.reporttool.config.exceptions.ExceptionHandlerFilter;
+import com.reporttool.config.security.filter.ExceptionHandlerFilter;
 import com.reporttool.config.security.filter.JWTAuthenticationFilter;
 import com.reporttool.config.security.handler.RestAuthenticationEntryPoint;
 import com.reporttool.config.security.service.TokenAuthenticationService;

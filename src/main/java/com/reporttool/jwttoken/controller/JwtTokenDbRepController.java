@@ -1,12 +1,11 @@
-package com.reporttool.userview.controller;
+package com.reporttool.jwttoken.controller;
 
 import com.reporttool.config.PropertyConfig;
 import com.reporttool.config.security.model.AccountCredentials;
-import com.reporttool.config.security.service.TokenAuthenticationService;
-import com.reporttool.domain.service.UserService;
+import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
+import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,15 +27,14 @@ import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 @RequiredArgsConstructor
 @RequestMapping(APP)
 @Slf4j
-public class JwtTokenController {
+public class JwtTokenDbRepController {
 
     private final AuthenticationManager authenticationManager;
-    private final TokenAuthenticationService tokenService;
-    private final UserService userService;
+    private final JwtTokenDbRepService tokenService;
     private final PropertyConfig.JWTProperties jwtProperties;
 
     @PostMapping(NO_AUTH + "/login")
-    public ResponseEntity<String> createAuthenticationToken(
+    public ResponseEntity<TokenDbRepresentationDto> createAuthenticationToken(
             @Validated @RequestBody final AccountCredentials request) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -44,17 +42,17 @@ public class JwtTokenController {
         );
 
         /* If authentication is successful, we may create token */
-        final String token = tokenService.createToken(authentication.getName());
-
-        userService.setUsersLastSignInField(request.getUserName());
+        TokenDbRepresentationDto token = tokenService.createAndSaveTokenDbRepresentation(authentication.getName());
 
         return ResponseEntity.ok(token);
     }
 
     @GetMapping("/refresh-token")
-    public ResponseEntity<String> refreshAuthenticationToken(HttpServletRequest request, HttpServletResponse response) {
-        String token = request.getHeader(jwtProperties.getHeaderString());
-        String userEmail = tokenService.parseToken(token);
-        return ResponseEntity.ok(tokenService.createToken(userEmail));
+    public ResponseEntity<TokenDbRepresentationDto> refreshAuthenticationToken(
+            @RequestBody String expirationToken,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        String jwtToken = request.getHeader(jwtProperties.getHeaderString());
+        return ResponseEntity.ok(tokenService.refreshToken(jwtToken, expirationToken));
     }
 }

@@ -1,4 +1,4 @@
-package com.reporttool.common.mail.model;
+package com.reporttool.email.model;
 
 import lombok.Builder;
 import lombok.Getter;

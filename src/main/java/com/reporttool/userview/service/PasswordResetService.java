@@ -1,11 +1,12 @@
-package com.reporttool.domain.service;
+package com.reporttool.userview.service;
 
 import com.google.api.client.util.Lists;
 import com.reporttool.domain.model.PasswordResetToken;
 import com.reporttool.domain.model.User;
 import com.reporttool.domain.repository.PasswordResetTokenRepository;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
-import com.reporttool.common.mail.service.MailService;
+import com.reporttool.email.service.MailService;
+import com.reporttool.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -109,7 +109,7 @@ public class PasswordResetService {
         } else {
             passwordResetToken = createToken(user);
         }
-        save(passwordResetToken);
+        create(passwordResetToken);
         String token = passwordResetToken.getToken();
         mailService.sendResetToken(token, user);
         log.debug("Token was sent to: {}", email);

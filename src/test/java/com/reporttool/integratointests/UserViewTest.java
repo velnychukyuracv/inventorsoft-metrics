@@ -1,12 +1,11 @@
-package com.reporttool.integratoinaltests;
+package com.reporttool.integratointests;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.reporttool.ApplicationStarter;
 import com.reporttool.config.PropertyConfig;
 import com.reporttool.config.TestConfig;
-import com.reporttool.config.security.service.TokenAuthenticationService;
+import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
@@ -42,7 +41,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -61,7 +59,7 @@ public class UserViewTest {
     private WebApplicationContext context;
 
     @Inject
-    private TokenAuthenticationService tokenService;
+    private JwtTokenDbRepService jwtTokenDbRepService;
 
     @Inject
     private PropertyConfig.JWTProperties jwtProperties;
@@ -81,7 +79,7 @@ public class UserViewTest {
                 .webAppContextSetup(context)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
-        token = tokenService.createToken("vasyl.pahomenko2018@gmail.com");
+        token = jwtTokenDbRepService.createAndSaveTokenDbRepresentation("vasyl.pahomenko2018@gmail.com").getJwtToken();
     }
 
     @Test
@@ -104,7 +102,7 @@ public class UserViewTest {
         userSignForm.setPassword("12345678");
 
         MockHttpServletResponse response = mockMvc.perform(post(APP + "/users")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userSignForm)))
                 .andReturn().getResponse();
@@ -117,17 +115,17 @@ public class UserViewTest {
         assertEquals(201, response.getStatus());
 
         response = mockMvc.perform(post(APP + "/users")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userSignForm)))
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
         mockMvc.perform(get(APP + "/users")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), token)
                 .param("sortBy", "firstName"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content", hasSize(3)))
+                .andExpect(jsonPath("$.content", hasSize(4)))
                 .andExpect(jsonPath("$.content[0].firstName").value("Bogdan"))
                 .andReturn();
     }
@@ -135,7 +133,7 @@ public class UserViewTest {
     @Test
     public void testGetUserById() throws Exception {
         String result = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
+                .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse().getContentAsString();
         UserViewDto user = objectMapper.readValue(result, new TypeReference<UserViewDto>(){});
         assertTrue("Petia".equals(user.getFirstName()));
@@ -144,7 +142,7 @@ public class UserViewTest {
     @Test
     public void testSearchUserByName() throws Exception {
         mockMvc.perform(get(APP + "/users")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), token)
                 .param("query", "Pet"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content", hasSize(1)))
@@ -160,14 +158,14 @@ public class UserViewTest {
         userEditForm.setLastName("Mykhalchuk");
 
         MockHttpServletResponse response= mockMvc.perform(patch(APP + "/users/1")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+                .header(jwtProperties.getHeaderString(), token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userEditForm)))
                 .andReturn().getResponse();
         assertEquals(202, response.getStatus());
 
         String result = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
+                .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse().getContentAsString();
         UserViewDto user = objectMapper.readValue(result, new TypeReference<UserViewDto>(){});
         assertTrue("Bogdan".equals(user.getFirstName()));
@@ -175,14 +173,14 @@ public class UserViewTest {
 
     @Test
     public void testDeleteUser() throws Exception {
-        MockHttpServletResponse response= mockMvc.perform(delete(APP + "/users/1")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token)
+        MockHttpServletResponse response= mockMvc.perform(delete(APP + "/users/2")
+                .header(jwtProperties.getHeaderString(), token)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         assertEquals(204, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/users/1")
-                .header(jwtProperties.getHeaderString(), jwtProperties.getTokenPrefix() + " " + token))
+        response = mockMvc.perform(get(APP + "/users/2")
+                .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(404, response.getStatus());
     }

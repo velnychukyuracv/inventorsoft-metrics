@@ -1,6 +1,6 @@
 package com.reporttool.userview.controller;
 
-import com.reporttool.domain.service.PasswordResetService;
+import com.reporttool.userview.service.PasswordResetService;
 import com.reporttool.userview.model.PasswordResetForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

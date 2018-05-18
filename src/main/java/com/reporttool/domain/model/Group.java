@@ -21,5 +21,5 @@ public class Group extends AbstractVersionalIdentifiable {
     @Column(name = "material_icon", nullable = false)
     private String materialIcon;
     @Column(name = "order_field", nullable = false)
-    private String order;
+    private Integer order;
 }

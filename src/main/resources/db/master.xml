@@ -12,4 +12,6 @@
     <include file="005_create_data_source_representations_table.xml" relativeToChangelogFile="true"/>
     <include file="006_delete_status_column_from_users_table.xml" relativeToChangelogFile="true"/>
     <include file="007_create_groups_table.xml" relativeToChangelogFile="true"/>
+    <include file="008_change_column_type_groups_table.xml" relativeToChangelogFile="true"/>
+    <include file="009_create_token_db_representation_table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

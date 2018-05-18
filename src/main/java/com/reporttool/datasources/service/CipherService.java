@@ -27,7 +27,7 @@ public class CipherService {
         try {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         } catch (InvalidKeyException e) {
-            log.warn("Wrong secret code was specified during Cipher's encrypt mode initialization");
+            log.warn("Wrong secret code was specified during Cipher's encrypt mode initialization! {}", e);
             throw new EncryptionException(e);
         }
 
@@ -36,10 +36,10 @@ public class CipherService {
             byte[] encryptedBytes = cipher.doFinal(data.getBytes());
             return Base64.getEncoder().encodeToString(encryptedBytes);
         } catch (BadPaddingException e) {
-            log.warn("Wrong padding was specified during encryption");
+            log.warn("Wrong padding was specified during encryption!!! {}", e);
             throw new EncryptionException(e);
         } catch (IllegalBlockSizeException e) {
-            log.warn("Illegal block size has occurred during encryption");
+            log.warn("Illegal block size has occurred during encryption!!! {}", e);
             throw new EncryptionException(e);
         }
     }
@@ -49,7 +49,7 @@ public class CipherService {
         try {
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
         } catch (InvalidKeyException e) {
-            log.warn("Wrong secret code was specified during Cipher's decrypt mode initialization");
+            log.warn("Wrong secret code was specified during Cipher's decrypt mode initialization!!! {}", e);
             throw new EncryptionException(e);
         }
 
@@ -58,10 +58,10 @@ public class CipherService {
             byte[] decodedBytes = Base64.getDecoder().decode(data);
             return new String(cipher.doFinal(decodedBytes));
         } catch (BadPaddingException e) {
-            log.warn("Wrong padding was specified during decryption");
+            log.warn("Wrong padding was specified during decryption!!! {}", e);
             throw new EncryptionException(e);
         } catch (IllegalBlockSizeException e) {
-            log.warn("Illegal block size has occurred during decryption");
+            log.warn("Illegal block size has occurred during decryption!!! {}", e);
             throw new EncryptionException(e);
         }
     }

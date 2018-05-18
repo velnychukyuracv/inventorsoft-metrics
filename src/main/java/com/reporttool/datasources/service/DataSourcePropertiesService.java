@@ -11,10 +11,10 @@ import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.DataSourceDbRepresentation;
 import com.reporttool.domain.model.mapper.DataSourcePropertiesMapper;
-import com.reporttool.domain.service.DataSourceDbRepresentationService;
+import com.reporttool.domain.repository.DataSourceDbRepresentationRepository;
+import com.reporttool.domain.service.base.DefaultCrudSupport;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.List;
@@ -35,13 +36,25 @@ import static java.util.Objects.nonNull;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
-public class DataSourcePropertiesService {
+public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDbRepresentation> {
 
     private final DataSourcePropertiesMapper dataSourcePropertiesMapper;
-    private final DataSourceDbRepresentationService dbRepresentationService;
     private final ObjectMapper objectMapper;
     private final CipherService cipherService;
+    private final DataSourceDbRepresentationRepository dbRepresentationRepository;
+
+    @Inject
+    public DataSourcePropertiesService(
+            DataSourceDbRepresentationRepository dbRepresentationRepository,
+            DataSourcePropertiesMapper dataSourcePropertiesMapper,
+            ObjectMapper objectMapper,
+            CipherService cipherService) {
+        super(dbRepresentationRepository);
+        this.dbRepresentationRepository = dbRepresentationRepository;
+        this.dataSourcePropertiesMapper = dataSourcePropertiesMapper;
+        this.objectMapper = objectMapper;
+        this.cipherService = cipherService;
+    }
 
     /*
      * Field to store initialized DataSources
@@ -54,17 +67,19 @@ public class DataSourcePropertiesService {
      */
     @PostConstruct
     private void init() {
-        List<DataSourceProperties> dataSourceProperties = findAll();
+        List<DataSourceProperties> dataSourceProperties = findAllDataSourceProperties();
         dataSourceProperties.forEach(a -> dataSources.put(a.getDataSourceName(), createDataSourceReference(a)));
     }
 
-
+    @Transactional(readOnly = true)
+    List<DataSourceProperties> findAllDataSourceProperties() {
+        return mapToDataSourceForm(findAll());
+    }
 
     @Transactional
     public DataSourceForm saveDataSource(DataSourceForm dataSourceForm) {
         DataSourceProperties dbProperties = dataSourcePropertiesMapper.mapToDataSourceProperties(dataSourceForm);
-        DataSourceDbRepresentation createdDbRepresentation =
-                dbRepresentationService.create(createDbRepresentation(dbProperties));
+        DataSourceDbRepresentation createdDbRepresentation = create(createDbRepresentation(dbProperties));
 
         addDataSource(dbProperties);
 
@@ -76,24 +91,22 @@ public class DataSourcePropertiesService {
 
 
 
-
-    private List<DataSourceProperties> findAll() {
-        return mapToDataSourceForm(dbRepresentationService.findAll());
-    }
-
+    @Transactional(readOnly = true)
     public Page<DataSourceDto> findAll(Pageable pageable) {
-        Page<DataSourceDbRepresentation> dbRepresentations = dbRepresentationService.findAll(pageable);
+        Page<DataSourceDbRepresentation> dbRepresentations = dbRepresentationRepository.findAll(pageable);
         return dbRepresentations.map(this::createDataSourceDto);
     }
 
+    @Transactional(readOnly = true)
     public Page<DataSourceDto> findDataSourcesByName(String query, Pageable pageable) {
         Page<DataSourceDbRepresentation> dbRepresentations =
-                dbRepresentationService.findDataSourcesByName(query, pageable);
+                dbRepresentationRepository.findAllByDataSourceNameOrderByDataSourceNameAsc(query, pageable);
         return dbRepresentations.map(this::createDataSourceDto);
     }
 
+    @Transactional(readOnly = true)
     public DataSourceDto findDataSourceById(Long dataSourceId) {
-        Optional<DataSourceDbRepresentation> dbRepresentation = dbRepresentationService.findById(dataSourceId);
+        Optional<DataSourceDbRepresentation> dbRepresentation = findById(dataSourceId);
         if (dbRepresentation.isPresent()) {
             return createDataSourceDto(dbRepresentation.get());
         } else {
@@ -105,7 +118,7 @@ public class DataSourcePropertiesService {
 
     @Transactional
     public DataSourceEditForm patchDataSource(Long dataSourceId, DataSourceEditForm dataSourceForm) {
-        Optional<DataSourceDbRepresentation> optionalDbRepresentation = dbRepresentationService.findById(dataSourceId);
+        Optional<DataSourceDbRepresentation> optionalDbRepresentation = findById(dataSourceId);
         DataSourceDbRepresentation dbRepresentation =
                 optionalDbRepresentation.orElseThrow(ResourceNotFoundException::new);
         String stringDataBasePropertiesRepresentation =
@@ -125,7 +138,7 @@ public class DataSourcePropertiesService {
         dbRepresentation.setDataSourceName(dbProperties.getDataSourceName());
         dbRepresentation.setDataSourceObjectRepresentation(encryptedUpdatedStringDataBasePropertiesRepresentation);
 
-        dbRepresentationService.update(dbRepresentation);
+        update(dbRepresentation);
 
         updateDataSource(dbProperties, dataSourceName);
 
@@ -137,9 +150,9 @@ public class DataSourcePropertiesService {
 
     @Transactional
     public void deleteDataSource(Long dataSourceId) {
-        Optional<DataSourceDbRepresentation> optionalDbRepresentation = dbRepresentationService.findById(dataSourceId);
+        Optional<DataSourceDbRepresentation> optionalDbRepresentation = findById(dataSourceId);
         if (optionalDbRepresentation.isPresent()) {
-            dbRepresentationService.delete(dataSourceId);
+            delete(dataSourceId);
             deleteDataSource(optionalDbRepresentation.get().getDataSourceName());
         }
     }
@@ -152,7 +165,7 @@ public class DataSourcePropertiesService {
             log.debug("DataSourceProperties object was successfully converted to string");
             return stringRepresentation;
         } catch (JsonProcessingException e) {
-            log.warn("ObjectMapper could't convert object to string, JsonProcessingException has occurred");
+            log.warn("ObjectMapper could't convert DataSourceProperties object to string! {}", e);
             throw new MappingException(e);
         }
     }
@@ -193,7 +206,7 @@ public class DataSourcePropertiesService {
             log.debug("String was successfully converted to DataSourceProperties object");
             return dbProperties;
         } catch (IOException e) {
-            log.warn("ObjectMapper could't obtain DataSourceProperties object from string, IOException has occurred");
+            log.warn("ObjectMapper could't obtain DataSourceProperties object from string, IOException has occurred!!! {}", e);
             throw new MappingException(e);
         }
     }

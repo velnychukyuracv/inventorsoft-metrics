@@ -1,7 +1,7 @@
-package com.reporttool.common.mail.service;
+package com.reporttool.email.service;
 
 import com.reporttool.domain.model.User;
-import com.reporttool.common.mail.model.EmailBuilder;
+import com.reporttool.email.model.EmailBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -50,7 +50,7 @@ public class MailService {
     }
 
     /**
-     * Send reset link to email, under which {@link User}'ve been sign up.
+     * Send reset token to email, under which {@link User}'ve been sign up.
      */
     @SneakyThrows
     public void sendResetToken(String token, User user) {

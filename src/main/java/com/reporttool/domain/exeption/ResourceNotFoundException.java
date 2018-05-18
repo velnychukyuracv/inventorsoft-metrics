@@ -5,7 +5,7 @@ import lombok.ToString;
 @ToString
 public class ResourceNotFoundException extends RuntimeException{
 
-    private static final String MSG = "Resource not found.";
+    private static final String MSG = "Access denied!!!";
 
     public ResourceNotFoundException(){
         super(MSG);

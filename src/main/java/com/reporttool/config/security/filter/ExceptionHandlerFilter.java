@@ -1,4 +1,4 @@
-package com.reporttool.config.exceptions;
+package com.reporttool.config.security.filter;
 
 import com.reporttool.domain.exeption.CustomJwtException;
 import lombok.AllArgsConstructor;
@@ -22,11 +22,9 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } catch (CustomJwtException e) {
-
-            log.warn("Exception had occurred during authentication process! {}", e.getMessage());
             // custom error response class used across my project
             response.setStatus(401);
-            response.getWriter().write("Access denied!!!");
+            response.getWriter().write(e.getMessage());
         }
     }
 }

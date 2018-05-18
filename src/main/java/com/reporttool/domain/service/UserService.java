@@ -2,9 +2,14 @@ package com.reporttool.domain.service;
 
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.User;
+import com.reporttool.domain.model.mapper.UserMapper;
 import com.reporttool.domain.repository.UserRepository;
 import com.reporttool.domain.service.base.DefaultCrudSupport;
+import com.reporttool.userview.model.UserEditForm;
+import com.reporttool.userview.model.UserSignForm;
+import com.reporttool.userview.model.UserViewDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,12 +17,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.security.InvalidParameterException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import static com.reporttool.utils.ReportToolUtils.createPageable;
 import static java.util.Objects.nonNull;
 
 @Service
@@ -26,19 +30,63 @@ public class UserService extends DefaultCrudSupport<User>{
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
+
+    private final static int SHORT_UUID_LENGTH = 10;
 
     @Inject
-    public UserService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+    public UserService(
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder,
+            UserMapper userMapper) {
         super(userRepository);
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
     }
 
 
+    @Transactional
+    public UserSignForm create(UserSignForm userForm) {
+        User user = userMapper.mapToUserFromSignForm(userForm);
+        user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+        User createdUser = create(user);
+        return userMapper.mapToUserSignForm(createdUser);
+    }
+
+    @Transactional
+    public User createDefaultUser(String email) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(RandomStringUtils.random(SHORT_UUID_LENGTH));
+        user = create(user);
+        return user;
+    }
+
+
+
     @Transactional(readOnly = true)
-    public Page<User> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public Page<UserViewDto> findUsersByName(
+            String query,
+            Integer page,
+            Integer pageSize,
+            String direction,
+            String sortBy) {
+        Pageable pageable = createPageable(page, pageSize, direction, sortBy);
+        Page<User> users = userRepository
+                .findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query, pageable);
+        return users.map(userMapper :: mapToUserViewDto);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<UserViewDto> findUserViewDtoById(Long userId) {
+        return findById(userId).map(userMapper :: mapToUserViewDto);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<UserViewDto> findAll(Integer page, Integer pageSize, String direction, String sortProperty) {
+        Pageable pageable = createPageable(page, pageSize, direction, sortProperty);
+        return userRepository.findAll(pageable).map(userMapper :: mapToUserViewDto);
     }
 
     @Transactional(readOnly = true)
@@ -46,13 +94,16 @@ public class UserService extends DefaultCrudSupport<User>{
         return userRepository.findDistinctByEmail(userEmail);
     }
 
-    @Transactional(readOnly = true)
-    public Page<User> findUsersByName(String query, Pageable pageable) {
-        return userRepository
-                .findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query, pageable);
+
+
+    @Transactional
+    public UserEditForm patchUser(Long userId, UserEditForm userForm) {
+        Optional<User> optionalUser = findById(userId);
+        User user = optionalUser.orElseThrow(ResourceNotFoundException:: new);
+        setUserFields(user, userForm);
+        User updatedUser = save(user);
+        return userMapper.mapToUserEditForm(updatedUser);
     }
-
-
 
     @Transactional
     public void changePassword(User user, String password) {
@@ -67,11 +118,20 @@ public class UserService extends DefaultCrudSupport<User>{
     }
 
     @Transactional
-    public void setUsersLastSignInField(String email) {
-        Optional<User> optionalUser = findByEmail(email);
-        User user = optionalUser.orElseThrow(ResourceNotFoundException::new);
+    public void setUserLastSignInField(User user) {
         LocalDateTime now = LocalDateTime.now();
         user.setLastSignIn(now);
         update(user);
+    }
+
+
+
+    private void setUserFields(User user, UserEditForm userEditForm) {
+        if (nonNull(userEditForm.getFirstName())) {
+            user.setFirstName(userEditForm.getFirstName());
+        }
+        if(nonNull(userEditForm.getLastName())) {
+            user.setLastName(userEditForm.getLastName());
+        }
     }
 }
