@@ -1,6 +1,5 @@
 package com.reporttool.userview.model;
 
-import com.reporttool.domain.constants.Status;
 import com.reporttool.domain.validation.annotation.ValidEnumValue;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,8 +16,4 @@ public class UserEditForm {
 
     @Size(min = 2, max = 30)
     private String lastName;
-
-    @NotBlank
-    @ValidEnumValue(enumClass = Status.class)
-    private Status status;
 }

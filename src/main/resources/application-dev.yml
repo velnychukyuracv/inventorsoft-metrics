@@ -1,37 +1,41 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/reporttool
-    username: postgres
-    password: postgres
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
+   url: jdbc:postgresql://localhost:5432/reporttool
+   username: postgres
+   password: postgres
+   hikari:
+     maximum-pool-size: 10
+     minimum-idle: 10
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: vasyl.pahomenko2018@gmail.com
-    password: gvcofrelbcfffynp
-    protocol: smtp
-    tls: true
-  properties.mail.smtp:
-    auth: true
-    starttls.enable: true
-    ssl.trust: smtp.gmail.com
-  test-connection: true
+      host: smtp.gmail.com
+      port: 587
+      username: vasyl.pahomenko2018@gmail.com
+      password: gvcofrelbcfffynp
+      protocol: smtp
+      tls: true
+      properties.mail.smtp:
+        auth: true
+        starttls.enable: true
+        ssl.trust: smtp.gmail.com
+      test-connection: true
   google:
-    googleClientId: 134665215077-alj0sn4e16980oc56ft1lq0v0aa3j6uj.apps.googleusercontent.com
-    googleClientSecret: 2mUXvgYCEyN9hvnZoI07eRrd
-    googleRedirectUri: http://localhost:8080/googleAccount/oauth2callback
+      googleClientId: 835351722802-6hnnj1nind8nmrua4qa7pd13bnsp4qgu.apps.googleusercontent.com
+      googleClientSecret: sd8nWf2D5QGfDX6uWiHCp8Se
+      googleRedirectUri: http://localhost:8080/app/no-auth/googleAccount/oauth2callback
 
 application:
   protocol: http
   host: localhost:8080
 
 jwt:
-  expiration: 360000
+  expiration: 14400000
   secret: teststring
-  tokenprefix: Bearer
-  headerstring: Authorization
+  token-prefix: Bearer
+  header-string: Authorization
 
 cors:
-  origins: http://localhost:4200
+  origins: '*'
+
+encryption:
+  public-key: M02cnQ51Ji97vwT4
+

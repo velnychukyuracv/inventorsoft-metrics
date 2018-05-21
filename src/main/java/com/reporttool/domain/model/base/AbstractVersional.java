@@ -1,6 +1,6 @@
 package com.reporttool.domain.model.base;
 
-import com.reporttool.domain.model.listener.MyEntityListener;
+import com.reporttool.domain.model.listener.AbstractVersionalListener;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-@EntityListeners(MyEntityListener.class)
+@EntityListeners(AbstractVersionalListener.class)
 public abstract class AbstractVersional {
 
     @CreatedDate

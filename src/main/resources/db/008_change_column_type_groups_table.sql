@@ -1,0 +1,2 @@
+ALTER TABLE groups DROP COLUMN order_field;
+ALTER TABLE groups ADD COLUMN order_field INT NOT NULL DEFAULT 0;

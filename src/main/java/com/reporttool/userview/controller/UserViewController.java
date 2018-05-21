@@ -5,8 +5,8 @@ import com.reporttool.domain.service.UserService;
 import com.reporttool.userview.model.UserEditForm;
 import com.reporttool.userview.model.UserSignForm;
 import com.reporttool.userview.model.UserViewDto;
-import com.reporttool.userview.service.UserViewService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -24,34 +24,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = APP + "/users")
+@Slf4j
 public class UserViewController {
 
-    private final UserViewService userViewService;
     private final UserService userService;
-
-    @GetMapping()
-    public Page<UserViewDto> getUsers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-                                      @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
-                                      @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
-                                      @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
-        return userViewService.getUsers(page, pageSize, direction, sortBy);
-    }
-
-    @GetMapping("/{userId}")
-    public UserViewDto getUserById(@PathVariable("userId") Long userId) {
-        return userViewService.findById(userId).orElseThrow(ResourceNotFoundException:: new);
-    }
-    
 
 
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public UserSignForm saveUser(@Validated @RequestBody UserSignForm userForm) {
-        return userViewService.create(userForm);
+        return userService.create(userForm);
+    }
+
+
+
+    @GetMapping()
+    public Page<UserViewDto> getUsers(
+            @RequestParam(value = "query", required = false) String query,
+            @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
+            @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
+            @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
+        if (isEmpty(query)) {
+            return userService.findAll(page, pageSize, direction, sortBy);
+        } else {
+            return userService.findUsersByName(query, page, pageSize, direction, sortBy);
+        }
+    }
+
+    @GetMapping("/{userId}")
+    public UserViewDto getUserById(@PathVariable("userId") Long userId) {
+        return userService.findUserViewDtoById(userId).orElseThrow(ResourceNotFoundException:: new);
     }
 
 
@@ -60,7 +68,7 @@ public class UserViewController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public UserEditForm patchUser(@PathVariable("userId") Long userId,
                                    @Validated @RequestBody UserEditForm userForm) {
-        return userViewService.patchUser(userId, userForm);
+        return userService.patchUser(userId, userForm);
     }
 
 

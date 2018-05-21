@@ -1,8 +1,10 @@
 package com.reporttool.google.controller;
 
 import com.reporttool.google.service.GoogleAccountService;
+import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +31,12 @@ public class GoogleAccountController {
     }
 
     @GetMapping("/oauth2callback")
-    public void getGoogleCode(HttpServletRequest request, HttpServletResponse response) throws IOException, GeneralSecurityException {
+    public ResponseEntity<TokenDbRepresentationDto> getGoogleCode(HttpServletRequest request, HttpServletResponse response) throws IOException, GeneralSecurityException {
         StringBuffer fullUrlBuf = request.getRequestURL();
         if (request.getQueryString() != null) {
             fullUrlBuf.append('?').append(request.getQueryString());
         }
-        googleAccountService.getGoogleCode(fullUrlBuf, response);
+        TokenDbRepresentationDto tokenDbRepresentationDto = googleAccountService.getTokenDto(fullUrlBuf);
+        return ResponseEntity.ok(tokenDbRepresentationDto);
     }
 }

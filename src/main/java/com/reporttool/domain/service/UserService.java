@@ -1,59 +1,92 @@
 package com.reporttool.domain.service;
 
-import com.google.common.collect.Lists;
+import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.User;
+import com.reporttool.domain.model.mapper.UserMapper;
 import com.reporttool.domain.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import com.reporttool.domain.service.base.DefaultCrudSupport;
+import com.reporttool.userview.model.UserEditForm;
+import com.reporttool.userview.model.UserSignForm;
+import com.reporttool.userview.model.UserViewDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.security.InvalidParameterException;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static java.util.Objects.isNull;
+import static com.reporttool.utils.ReportToolUtils.createPageable;
 import static java.util.Objects.nonNull;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
-public class UserService {
+public class UserService extends DefaultCrudSupport<User>{
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
+
+    private final static int SHORT_UUID_LENGTH = 10;
+
+    @Inject
+    public UserService(
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder,
+            UserMapper userMapper) {
+        super(userRepository);
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
+    }
+
 
     @Transactional
-    public User create(User user) {
-        checkArgument(isNull(user.getId()),
-                "Could not create entity. Entity has already exists");
-        return userRepository.save(user);
+    public UserSignForm create(UserSignForm userForm) {
+        User user = userMapper.mapToUserFromSignForm(userForm);
+        user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+        User createdUser = create(user);
+        return userMapper.mapToUserSignForm(createdUser);
     }
 
     @Transactional
-    public User save(User user) {
-        return isNull(user.getId()) ? create(user) : update(user);
+    public User createDefaultUser(String email) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(RandomStringUtils.random(SHORT_UUID_LENGTH));
+        user = create(user);
+        return user;
     }
 
 
 
     @Transactional(readOnly = true)
-    public List<User> findAll() {
-        return Lists.newArrayList(userRepository.findAll());
+    public Page<UserViewDto> findUsersByName(
+            String query,
+            Integer page,
+            Integer pageSize,
+            String direction,
+            String sortBy) {
+        Pageable pageable = createPageable(page, pageSize, direction, sortBy);
+        Page<User> users = userRepository
+                .findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query, pageable);
+        return users.map(userMapper :: mapToUserViewDto);
     }
 
     @Transactional(readOnly = true)
-    public Page<User> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public Optional<UserViewDto> findUserViewDtoById(Long userId) {
+        return findById(userId).map(userMapper :: mapToUserViewDto);
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> findById(Long userId) {
-        return userRepository.findById(userId);
+    public Page<UserViewDto> findAll(Integer page, Integer pageSize, String direction, String sortProperty) {
+        Pageable pageable = createPageable(page, pageSize, direction, sortProperty);
+        return userRepository.findAll(pageable).map(userMapper :: mapToUserViewDto);
     }
 
     @Transactional(readOnly = true)
@@ -61,33 +94,15 @@ public class UserService {
         return userRepository.findDistinctByEmail(userEmail);
     }
 
-    @Transactional(readOnly = true)
-    public Page<User> findUsersByName(String query, Pageable pageable) {
-        return userRepository
-                .findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query, pageable);
-    }
-
 
 
     @Transactional
-    public User update(User user) {
-        checkArgument(nonNull(user.getId()),
-                "Could not update entity. Entity hasn't persisted yet");
-        return userRepository.save(user);
-    }
-
-
-
-    @Transactional
-    public void delete(User user) {
-        checkArgument(nonNull(user.getId()),
-                "Could not delete entity. Entity hasn't persisted yet");
-        userRepository.delete(user);
-    }
-
-    @Transactional
-    public void delete(Long id) {
-        userRepository.deleteById(id);
+    public UserEditForm patchUser(Long userId, UserEditForm userForm) {
+        Optional<User> optionalUser = findById(userId);
+        User user = optionalUser.orElseThrow(ResourceNotFoundException:: new);
+        setUserFields(user, userForm);
+        User updatedUser = save(user);
+        return userMapper.mapToUserEditForm(updatedUser);
     }
 
     @Transactional
@@ -99,6 +114,24 @@ public class UserService {
         } else {
             log.error("Invalid passed parameters, user: {}, password: {}", user, password);
             throw new InvalidParameterException();
+        }
+    }
+
+    @Transactional
+    public void setUserLastSignInField(User user) {
+        LocalDateTime now = LocalDateTime.now();
+        user.setLastSignIn(now);
+        update(user);
+    }
+
+
+
+    private void setUserFields(User user, UserEditForm userEditForm) {
+        if (nonNull(userEditForm.getFirstName())) {
+            user.setFirstName(userEditForm.getFirstName());
+        }
+        if(nonNull(userEditForm.getLastName())) {
+            user.setLastName(userEditForm.getLastName());
         }
     }
 }

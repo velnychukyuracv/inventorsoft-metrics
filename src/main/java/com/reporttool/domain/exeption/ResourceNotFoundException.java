@@ -1,14 +1,11 @@
 package com.reporttool.domain.exeption;
 
-import lombok.Getter;
 import lombok.ToString;
 
 @ToString
 public class ResourceNotFoundException extends RuntimeException{
 
-    private static final String MSG = "Resource not found.";
-    @Getter
-    private static final String ERROR_PAGE = "error/notFound";
+    private static final String MSG = "Access denied!!!";
 
     public ResourceNotFoundException(){
         super(MSG);
@@ -16,5 +13,9 @@ public class ResourceNotFoundException extends RuntimeException{
 
     public ResourceNotFoundException(String message){
         super(message);
+    }
+
+    public ResourceNotFoundException(Exception e){
+        super(MSG + e);
     }
 }

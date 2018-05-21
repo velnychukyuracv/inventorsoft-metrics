@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties({
         PropertyConfig.JWTProperties.class,
         PropertyConfig.ApplicationProperties.class,
-        PropertyConfig.CorsProperties.class
+        PropertyConfig.CorsProperties.class,
+        PropertyConfig.EncryptionProperties.class
 })
 public class PropertyConfig {
 
@@ -23,8 +24,8 @@ public class PropertyConfig {
     public static class JWTProperties {
         private Long expiration;
         private String secret;
-        private String tokenprefix;
-        private String headerstring;
+        private String tokenPrefix;
+        private String headerString;
     }
 
     @Getter
@@ -40,5 +41,12 @@ public class PropertyConfig {
     @ConfigurationProperties("cors")
     public static class CorsProperties {
         private String origins;
+    }
+
+    @Getter
+    @Setter
+    @ConfigurationProperties("encryption")
+    public static class EncryptionProperties {
+        private String publicKey;
     }
 }
