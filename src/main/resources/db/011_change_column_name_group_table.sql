@@ -1,0 +1,1 @@
+ALTER TABLE groups RENAME COLUMN materialicon to material_icon;

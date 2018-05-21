@@ -8,9 +8,9 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.exeption.CustomIOException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
-import com.reporttool.google.model.GoogleProperties;
 import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
 import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +34,7 @@ public class GoogleAccountService {
     private static final String TOKEN_SERVER_ENCODED_URL = "https://www.googleapis.com/oauth2/v4/token";
 
     private final JwtTokenDbRepService jwtTokenDbRepService;
-    private final GoogleProperties googleProperties;
+    private final PropertyConfig.GoogleProperties googleProperties;
 
 
     public String getUrl() {

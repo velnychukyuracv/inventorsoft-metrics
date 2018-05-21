@@ -14,7 +14,8 @@ import org.springframework.context.annotation.Configuration;
         PropertyConfig.JWTProperties.class,
         PropertyConfig.ApplicationProperties.class,
         PropertyConfig.CorsProperties.class,
-        PropertyConfig.EncryptionProperties.class
+        PropertyConfig.EncryptionProperties.class,
+        PropertyConfig.GoogleProperties.class
 })
 public class PropertyConfig {
 
@@ -48,5 +49,14 @@ public class PropertyConfig {
     @ConfigurationProperties("encryption")
     public static class EncryptionProperties {
         private String publicKey;
+    }
+
+    @Getter
+    @Setter
+    @ConfigurationProperties("spring.google")
+    public static class GoogleProperties {
+        private String googleClientId;
+        private String googleClientSecret;
+        private String googleRedirectUri;
     }
 }

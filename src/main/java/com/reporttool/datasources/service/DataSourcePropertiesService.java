@@ -114,6 +114,11 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
         }
     }
 
+    @Transactional(readOnly = true)
+    public DataSourceDbRepresentation findDataSourceDbRepById(Long id) {
+        return findById(id).orElseThrow(ResourceNotFoundException :: new);
+    }
+
 
 
     @Transactional

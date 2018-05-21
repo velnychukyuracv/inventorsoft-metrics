@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.inject.Inject;
 import java.util.Optional;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Service
@@ -43,7 +44,12 @@ public class GroupService extends DefaultCrudSupport<Group> {
     public GroupForm saveGroup(GroupForm groupForm) {
         Group group = groupMapper.mapToGroupFromGroupForm(groupForm);
         group.setUuid(createShortUUID());
-        Integer order = groupRepository.findMaxOrderForGroups() + 1;
+        Integer order = groupRepository.findMaxOrderForGroups();
+        if (isNull(order)) {
+            order = 1;
+        } else {
+            order++;
+        }
         group.setOrder(order);
         create(group);
 
@@ -64,9 +70,9 @@ public class GroupService extends DefaultCrudSupport<Group> {
 
     @Transactional(readOnly = true)
     public GroupDto findGroupDto(Long groupId) {
-        Optional<Group> optionalGroup = findById(groupId);
-        Group group = optionalGroup.orElseThrow(ResourceNotFoundException::new);
-        return groupMapper.mapToGroupDtoFromGroup(group);
+        return groupMapper
+                .mapToGroupDtoFromGroup(findById(groupId)
+                        .orElseThrow(ResourceNotFoundException::new));
     }
 
 
