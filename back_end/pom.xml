@@ -176,7 +176,7 @@
     </dependencies>
 
     <build>
-        <finalName>back_end</finalName>
+        <finalName>inventorsoft-metrics</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
