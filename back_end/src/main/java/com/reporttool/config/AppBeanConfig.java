@@ -3,6 +3,7 @@ package com.reporttool.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.reporttool.domain.exeption.EncryptionException;
+import com.reporttool.sqlresponse.mapper.ObjectExtractor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -55,5 +56,10 @@ public class AppBeanConfig {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         return objectMapper;
+    }
+
+    @Bean
+    public ObjectExtractor getObjectExtractor() {
+        return new ObjectExtractor();
     }
 }

@@ -32,6 +32,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Service
@@ -163,6 +164,15 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
     }
 
 
+    public HikariDataSource getDataSourceFromMapByName(String dataSourceName) {
+        AtomicReference<HikariDataSource> reference = dataSources.get(dataSourceName);
+        if (isNull(reference)) {
+            log.debug("There is no data source with name {}", dataSourceName);
+            throw new ResourceNotFoundException();
+        }
+
+        return reference.get();
+    }
 
     private String convertToStringRepresentation(DataSourceProperties dataSourceProperties) {
         try {

@@ -19,7 +19,7 @@ public class SqlController {
 
     private final SqlService sqlService;
 
-    @PostMapping("/{datasource_id}/query")
+    @PostMapping("/{dataSourceId}/query")
     public List<List<Object>> executeQuery(
             @PathVariable Long dataSourceId,
             @RequestParam(name = "sql") String sql) {
