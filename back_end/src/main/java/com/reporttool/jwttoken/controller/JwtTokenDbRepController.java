@@ -47,7 +47,7 @@ public class JwtTokenDbRepController {
         return ResponseEntity.ok(token);
     }
 
-    @GetMapping("/refresh-token")
+    @PostMapping(NO_AUTH + "/refresh-token")
     public ResponseEntity<TokenDbRepresentationDto> refreshAuthenticationToken(
             @RequestBody String expirationToken,
             HttpServletRequest request,
