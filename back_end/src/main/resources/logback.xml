@@ -18,6 +18,7 @@
         <appender name="FileLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
                 <fileNamePattern>/app/logs/reporttool-app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxHistory>5</maxHistory>
                 <maxFileSize>50MB</maxFileSize>
             </rollingPolicy>
 
