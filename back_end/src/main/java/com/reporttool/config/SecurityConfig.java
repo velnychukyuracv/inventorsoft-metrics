@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/login")
+                .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/refresh-token")
                 .antMatchers(HttpMethod.GET,APP + NO_AUTH + "/**")
                 .antMatchers(HttpMethod.POST, APP + NO_AUTH + "/forgetPassword/**")
                 .antMatchers(HttpMethod.GET, "/v2/api-docs/**")

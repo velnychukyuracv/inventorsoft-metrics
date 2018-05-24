@@ -44,7 +44,7 @@ application:
   host: localhost:8080
 
 jwt:
-  expiration: 14400000
+  expiration: 5000
   secret: teststring
   token-prefix: Bearer
   header-string: Authorization

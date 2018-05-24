@@ -6,6 +6,7 @@ import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
 import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +27,7 @@ import static com.reporttool.domain.constants.MetricConstants.NO_AUTH;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(APP)
+@RequestMapping(APP + NO_AUTH)
 @Slf4j
 public class JwtTokenDbRepController {
 
@@ -33,7 +35,7 @@ public class JwtTokenDbRepController {
     private final JwtTokenDbRepService tokenService;
     private final PropertyConfig.JWTProperties jwtProperties;
 
-    @PostMapping(NO_AUTH + "/login")
+    @PostMapping("/login")
     public ResponseEntity<TokenDbRepresentationDto> createAuthenticationToken(
             @Validated @RequestBody final AccountCredentials request) {
 
@@ -47,12 +49,12 @@ public class JwtTokenDbRepController {
         return ResponseEntity.ok(token);
     }
 
-    @PostMapping(NO_AUTH + "/refresh-token")
+    @PostMapping("/refresh-token")
     public ResponseEntity<TokenDbRepresentationDto> refreshAuthenticationToken(
             @RequestBody String expirationToken,
             HttpServletRequest request,
             HttpServletResponse response) {
         String jwtToken = request.getHeader(jwtProperties.getHeaderString());
-        return ResponseEntity.ok(tokenService.refreshToken(jwtToken, expirationToken));
+        return new ResponseEntity<>(tokenService.refreshToken(jwtToken, expirationToken), HttpStatus.CREATED);
     }
 }
