@@ -119,8 +119,9 @@ public class JwtTokenDbRepService {
 
     @Transactional
     public TokenDbRepresentationDto refreshToken(String jwtToken, String expirationToken) {
-        String userEmail = parseToken(jwtToken);
         TokenDbRepresentation tokenDbRep = findTokenDbRepByJwtToken(jwtToken);
+        User user = userService.findById(tokenDbRep.getId()).orElseThrow(ResourceNotFoundException :: new);
+        String userEmail = user.getEmail();
         if (!tokenDbRep.getExpirationToken().equals(expirationToken)) {
             log.warn("There was an attempt to receive authentication with fake expirationToken for user with email {}!!!",
                     userEmail);
