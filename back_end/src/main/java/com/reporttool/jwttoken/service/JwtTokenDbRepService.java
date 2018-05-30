@@ -16,7 +16,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,8 +37,6 @@ public class JwtTokenDbRepService {
     private final TokenDbRepresentationRepository tokenDbRepRepository;
     private final TokenDbRepresentationMapper tokenDbRepMapper;
     private final PropertyConfig.JWTProperties jwtProperties;
-    private final PasswordEncoder passwordEncoder;
-
 
     @Transactional
     public TokenDbRepresentation create(TokenDbRepresentation token) {

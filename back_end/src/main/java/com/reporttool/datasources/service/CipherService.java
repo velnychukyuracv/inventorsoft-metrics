@@ -1,6 +1,5 @@
 package com.reporttool.datasources.service;
 
-import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.exeption.EncryptionException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +17,6 @@ import java.util.Base64;
 @Slf4j
 public class CipherService {
 
-    private final PropertyConfig.EncryptionProperties encryptionProperties;
     private final Cipher cipher;
     private final SecretKey secretKey;
 

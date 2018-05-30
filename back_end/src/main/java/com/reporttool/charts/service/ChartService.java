@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.Optional;
@@ -47,15 +48,17 @@ public class ChartService extends DefaultCrudSupport<Chart> {
     }
 
 
-
+    @Transactional(readOnly = true)
     public Page<ChartDto> findChartDtos(Pageable pageable) {
         return chartRepository.findAll(pageable).map(chartMapper :: mapToChartDtoFromChart);
     }
 
+    @Transactional(readOnly = true)
     public Page<ChartDto> findChartDtosByName(String query, Pageable pageable) {
         return chartRepository.findAllByName(query, pageable).map(chartMapper :: mapToChartDtoFromChart);
     }
 
+    @Transactional(readOnly = true)
     public ChartDto findChartById(Long chartId) {
         return chartMapper
                 .mapToChartDtoFromChart(findById(chartId)
@@ -63,9 +66,8 @@ public class ChartService extends DefaultCrudSupport<Chart> {
     }
 
 
-
+    @Transactional
     public ChartForm updateChart(Long chartId, ChartForm form) {
-
         Chart chart = findById(chartId).orElseThrow(ResourceNotFoundException::new);
         setChartVariable(form, chart);
         update(chart);
