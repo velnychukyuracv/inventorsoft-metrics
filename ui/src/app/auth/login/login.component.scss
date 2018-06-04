@@ -1,11 +1,10 @@
-//@import url("../../../assets/colors.scss");
+@import "../../../assets/colors.scss";
 
 .btn-primary {
-    //background-color: $purpleColor;
-    background-color: #796AEE;
-    border: #796AEE;
+    background-color: $purpleColor;
+    border: $purpleColor;
 }
 
 .left-block {
-    background-color: rgba(121, 106, 238, 0.9);
+    background-color: $purpleColor;
 }
