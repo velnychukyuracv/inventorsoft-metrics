@@ -13,8 +13,10 @@ export class AuthService {
     ) {
     }
 
+    /**
+     * http request to the server for authentication data
+     */
     login(user: User) {
-        console.log(user);
         return this.http.post(environment.NO_AUTH_PREFIX + '/login', {
             password: user.password,
             userName: user.userName

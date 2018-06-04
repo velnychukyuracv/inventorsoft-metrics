@@ -1,78 +1,3 @@
-<!--<div class="page login-page">-->
-<!--<div class="container d-flex align-items-center">-->
-<!--<div class="row">-->
-<!--&lt;!&ndash; Logo & Information Panel&ndash;&gt;-->
-<!--<div class="col-lg-6 text-white left-block d-flex">-->
-<!--<div class="info d-flex align-items-center">-->
-<!--<div class="content">-->
-<!--<div class="logo">-->
-<!--<h1>Dashboard</h1>-->
-<!--</div>-->
-<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash; Form Panel    &ndash;&gt;-->
-<!--<div class="col-lg-6 bg-white">-->
-<!--<div class="form d-flex align-items-center">-->
-<!--<div class="content">-->
-<!--<div class="alert alert-danger" *ngIf="message">{{message}}</div>-->
-<!--<form class="form-validate" [formGroup]="form" (ngSubmit)="onSubmit()">-->
-<!--<div class="form-group">-->
-<!--<label for="login-username" class="label-material">User Name</label>-->
-<!--<input id="login-username"-->
-<!--type="email"-->
-<!--name="loginUsername"-->
-<!--required-->
-<!--data-msg="Please enter your username"-->
-<!--class="form-control"-->
-<!--formControlName="userName"-->
-<!--[ngClass]="{'classCss': form.get('userName').invalid && form.get('userName').touched}"-->
-<!--&gt;-->
-<!--<span *ngIf="form.get('userName').invalid && form.get('userName').touched">-->
-<!--<span *ngIf="form.get('userName')['errors']['required']">поле не может быть пустым</span>-->
-<!--<span-->
-<!--*ngIf="form.get('userName')['errors']['minlength'] && form.get('userName')['errors']['minlength']['requiredLength']">-->
-<!--пароль больше {{ form.get('userName')['errors']['minlength']['requiredLength'] }} символов.-->
-<!--Сейчас {{ form.get('userName')['errors']['minlength']['actualLength'] }}-->
-<!--</span>-->
-<!--<span *ngIf="form.get('userName')['errors']['email']">Должна быть собачка</span>-->
-<!--</span>-->
-
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<label for="login-password" class="label-material">Password</label>-->
-<!--<input id="login-password" type="password" name="loginPassword"-->
-<!--required data-msg="Please enter your password"-->
-<!--class="form-control"-->
-<!--formControlName="password"-->
-<!--[ngClass]="{'classCss': form.get('password').invalid && form.get('password').touched}"-->
-
-<!--&gt;-->
-<!--<span *ngIf="form.get('password').invalid && form.get('password').touched">-->
-<!--<span *ngIf="form.get('password')['errors']['required']">поле не может быть пустым</span>-->
-
-<!--<span-->
-<!--*ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">-->
-<!--пароль больше {{ form.get('password')['errors']['minlength']['requiredLength'] }} символов.-->
-<!--Сейчас {{ form.get('password')['errors']['minlength']['actualLength'] }}-->
-<!--</span>-->
-<!--</span>-->
-
-<!--</div>-->
-<!--<button type="submit" id="login" class="btn text-white mb-3 btn-primary" [disabled]="form.invalid">Login</button>-->
-<!--&lt;!&ndash; This should be submit button but I replaced it with <a> for demo purposes&ndash;&gt;-->
-<!--</form>-->
-<!--<a href="#" class="forgot-pass">Forgot Password?</a><br>-->
-<!--<small>Do not have an account?</small>-->
-<!--<a href="register.html" class="signup">Signup</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
 <div class="container mt-5 border rounded shadow">
     <div class="row">
         <div class="col-6  text-white d-flex align-items-center p-5 left-block">
@@ -98,11 +23,10 @@
                     <div class="alert alert-info mt-3" *ngIf="form.get('userName').invalid && form.get('userName').touched">
                         <span *ngIf="form.get('userName')['errors']['required']">Field 'User Name' must be filled in.</span>
                         <span
-                            *ngIf="form.get('userName')['errors']['minlength'] && form.get('userName')['errors']['minlength']['requiredLength']">
+                            *ngIf="form.get('userName').hasError('minlength')">
                                 User Name should be at least {{ form.get('userName')['errors']['minlength']['requiredLength'] }} characters long.
                                 Now {{ form.get('userName')['errors']['minlength']['actualLength'] }} characters.
                         </span>
-                        <span *ngIf="form.get('userName')['errors']['email']">Symbol @ missed. </span>
                         <span *ngIf="form.get('userName')['errors']['pattern']">Required pattern: test@gmail.com</span>
                     </div>
 
@@ -122,7 +46,7 @@
                         <span *ngIf="form.get('password')['errors']['required']">Field 'Password' must be filled in.</span>
 
                         <span
-                            *ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">
+                            *ngIf="form.get('password').hasError('minlength')">
                             Password should be at least  {{ form.get('password')['errors']['minlength']['requiredLength'] }} characters long.
                             Now {{ form.get('password')['errors']['minlength']['actualLength'] }} characters.
                         </span>
