@@ -10,6 +10,7 @@ import { AuthService } from "../../common/services/auth.service";
 export class LoginComponent implements OnInit {
     form: FormGroup;
     message: string;
+    // regexp for username
     pattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
     constructor(
