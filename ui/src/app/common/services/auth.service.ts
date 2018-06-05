@@ -17,6 +17,7 @@ export class AuthService {
 
     /**
      * http request to the server for authentication data
+     * @param user - user data
      */
     login(user: User) {
         return this.http.post(environment.NO_AUTH_PREFIX + '/login', {

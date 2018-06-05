@@ -2,11 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AuthModule } from "./auth/auth.module";
-import { AuthService } from "./common/services/auth.service";
-import { AuthGuardService } from "./common/services/auth-guard.service";
+import { AuthModule } from './auth/auth.module';
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -17,10 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
         AuthModule,
         HttpClientModule
     ],
-    providers   : [
-        AuthService,
-        AuthGuardService
-    ],
+    providers   : [],
     bootstrap   : [AppComponent]
 })
 export class AppModule {
