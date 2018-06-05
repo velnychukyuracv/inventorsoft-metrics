@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../common/services/auth.service";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../common/services/auth.service';
 
 @Component({
     selector   : 'app-login',
@@ -10,8 +10,7 @@ import { AuthService } from "../../common/services/auth.service";
 export class LoginComponent implements OnInit {
     form: FormGroup;
     message: string;
-    // regexp for username
-    pattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
+    usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
     constructor(
         private authService: AuthService
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.form = new FormGroup({
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
-            'userName': new FormControl(null, [Validators.required, Validators.minLength(5),Validators.pattern(this.pattern)])
+            'userName': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)])
         })
     }
 
@@ -33,24 +32,23 @@ export class LoginComponent implements OnInit {
         const formData = this.form.value;
         this.authService.login(formData)
             .subscribe(res => {
-                    if (res) {
-                        this.saveToLocalStorage(res)
-                    }
+                    this.saveToLocalStorage(res)
                 },
                 error => {
-                    if (error) {
-                        this.showMessage('User Name or Password incorrect')
-                    }
+                    this.showMessage(error)
                 })
     }
+
+    // TODO should move this function to some token service
     /**
-    * store authentication data to local storage
-    * @param res - response
+     * store authentication data to local storage
+     * @param token - token data
      */
-    saveToLocalStorage(res) {
-        localStorage.setItem('jwtToken', res.jwtToken);
-        localStorage.setItem('expirationToken', res.expirationToken);
+    saveToLocalStorage(token) {
+        let data = JSON.stringify(token);
+        localStorage.setItem('jwt.token', data);
     }
+
     // TODO Need to change when we will have done service for notifications
     /**
      * show info block
