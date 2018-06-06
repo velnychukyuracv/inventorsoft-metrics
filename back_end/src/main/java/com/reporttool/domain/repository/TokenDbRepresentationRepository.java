@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface TokenDbRepresentationRepository extends JpaRepository<TokenDbRepresentation, Long> {
     Optional<TokenDbRepresentation> findDistinctByJwtToken(String jwtToken);
+    Optional<TokenDbRepresentation> findDistinctByExpirationToken(String expirationToken);
 }
