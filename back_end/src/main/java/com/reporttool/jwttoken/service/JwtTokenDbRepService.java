@@ -62,27 +62,6 @@ public class JwtTokenDbRepService {
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
     }
 
-    /**
-     * ATTENTION!!!
-     * Method for obtaining JWT token and creation of user with account in social networks
-     * could be used only after social account authentication
-     * @param email {@link String}
-     * @return {@link TokenDbRepresentationDto}
-     */
-    @Transactional
-    public TokenDbRepresentationDto findOrCreateUserAndToken(String email) {
-        Optional<User> optionalUser = userService.findByEmail(email);
-        User user;
-        TokenDbRepresentation tokenDbRep;
-        if (optionalUser.isPresent()) {
-            user = optionalUser.get();
-            tokenDbRep = getTokenDbRepresentation(email, user);
-        } else {
-            throw new UsernameNotFoundException("Access denied!!!");
-        }
-        return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
-    }
-
 
 
     @Transactional(readOnly = true)
