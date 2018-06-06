@@ -54,15 +54,6 @@ public class UserService extends DefaultCrudSupport<User>{
         return userMapper.mapToUserSignForm(createdUser);
     }
 
-    @Transactional
-    public User createDefaultUser(String email) {
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(RandomStringUtils.random(SHORT_UUID_LENGTH));
-        user = create(user);
-        return user;
-    }
-
 
 
     @Transactional(readOnly = true)

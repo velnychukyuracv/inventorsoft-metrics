@@ -16,6 +16,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -77,10 +78,7 @@ public class JwtTokenDbRepService {
             user = optionalUser.get();
             tokenDbRep = getTokenDbRepresentation(email, user);
         } else {
-            user = userService.createDefaultUser(email);
-            tokenDbRep = createTokenDbRepresentation(email);
-            tokenDbRep.setUser(user);
-            create(tokenDbRep);
+            throw new UsernameNotFoundException("Access denied!!!");
         }
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
     }
