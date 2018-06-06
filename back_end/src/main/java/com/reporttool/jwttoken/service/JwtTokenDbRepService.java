@@ -54,9 +54,8 @@ public class JwtTokenDbRepService {
     public TokenDbRepresentationDto createAndSaveTokenDbRepresentation(String email) {
         Optional<User> optionalUser = userService.findByEmail(email);
         User user = optionalUser.orElseThrow(ResourceNotFoundException::new);
-        Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
         TokenDbRepresentation tokenDbRep;
-        tokenDbRep = getTokenDbRepresentation(email, user, optionalTokenDbRep);
+        tokenDbRep = getTokenDbRepresentation(email, user);
 
         userService.setUserLastSignInField(user);
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
@@ -76,8 +75,7 @@ public class JwtTokenDbRepService {
         TokenDbRepresentation tokenDbRep;
         if (optionalUser.isPresent()) {
             user = optionalUser.get();
-            Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
-            tokenDbRep = getTokenDbRepresentation(email, user, optionalTokenDbRep);
+            tokenDbRep = getTokenDbRepresentation(email, user);
         } else {
             user = userService.createDefaultUser(email);
             tokenDbRep = createTokenDbRepresentation(email);
@@ -183,19 +181,18 @@ public class JwtTokenDbRepService {
         return token;
     }
 
-    private TokenDbRepresentation getTokenDbRepresentation(
+    public TokenDbRepresentation getTokenDbRepresentation(
             String email,
-            User user,
-            Optional<TokenDbRepresentation> optionalTokenDbRep) {
-
+            User user) {
+        Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
         TokenDbRepresentation tokenDbRep;
         if (optionalTokenDbRep.isPresent()) {
             tokenDbRep = optionalTokenDbRep.get();
-        } else {
-            tokenDbRep = createTokenDbRepresentation(email);
-            tokenDbRep.setUser(user);
-            create(tokenDbRep);
+            delete(tokenDbRep);
         }
+        tokenDbRep = createTokenDbRepresentation(email);
+        tokenDbRep.setUser(user);
+        tokenDbRep = create(tokenDbRep);
         return tokenDbRep;
     }
 }
