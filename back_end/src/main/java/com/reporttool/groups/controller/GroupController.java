@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
-import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
+import static com.reporttool.domain.constants.MetricConstants.ORDER;
 import static java.util.Objects.isNull;
 
 @RestController
@@ -48,7 +48,7 @@ public class GroupController {
             @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
             @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
-            @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
+            @RequestParam(value = "sortBy", required = false, defaultValue = ORDER) String sortBy) {
         Pageable pageable = ReportToolUtils.createPageable(page, pageSize, direction, sortBy);
         if (isNull(query)) {
             return groupService.findGroupDtos(pageable);
