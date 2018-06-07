@@ -75,6 +75,11 @@ public class GroupService extends DefaultCrudSupport<Group> {
                         .orElseThrow(ResourceNotFoundException::new));
     }
 
+    @Transactional(readOnly = true)
+    public Group findGroupById(Long id) {
+        return findById(id).orElseThrow(ResourceNotFoundException::new);
+    }
+
 
 
     @Transactional

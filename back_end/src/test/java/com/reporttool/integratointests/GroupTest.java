@@ -86,7 +86,7 @@ public class GroupTest {
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/groups/4")
+        response = mockMvc.perform(get(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());
@@ -95,7 +95,7 @@ public class GroupTest {
         GroupDto groupDto = objectMapper.readValue(object, GroupDto.class);
         assertTrue("Test".equals(groupDto.getName()));
         assertTrue("Material icon".equals(groupDto.getMaterialIcon()));
-        assertTrue(4 == groupDto.getId());
+        assertTrue(5 == groupDto.getId());
 
         groupForm.setName("Test Name");
 
@@ -110,12 +110,12 @@ public class GroupTest {
         groupDto = objectMapper.readValue(object, GroupDto.class);
         assertTrue("Test Name".equals(groupDto.getName()));
 
-        response = mockMvc.perform(delete(APP + "/groups/4")
+        response = mockMvc.perform(delete(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(204, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/groups/4")
+        response = mockMvc.perform(get(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(404, response.getStatus());

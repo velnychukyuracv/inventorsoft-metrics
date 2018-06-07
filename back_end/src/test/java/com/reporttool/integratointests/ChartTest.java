@@ -82,6 +82,7 @@ public class ChartTest {
         chartForm.setOrder(1);
         chartForm.setAttributes("attributes");
         chartForm.setDataSourceDbRepId(3L);
+        chartForm.setGroupId(4L);
 
         MockHttpServletResponse response = mockMvc.perform(post(APP + "/charts")
                 .header(jwtProperties.getHeaderString(), token)
@@ -90,7 +91,7 @@ public class ChartTest {
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/charts/4")
+        response = mockMvc.perform(get(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());
@@ -103,11 +104,11 @@ public class ChartTest {
         assertTrue("PIE".equals(chartDto.getType().toString()));
         assertTrue(1 == chartDto.getOrder());
         assertTrue("attributes".equals(chartDto.getAttributes()));
-        assertTrue(4 == chartDto.getId());
+        assertTrue(5 == chartDto.getId());
 
         chartForm.setAttributes("TestAttributes");
 
-        response = mockMvc.perform(patch(APP + "/charts/4")
+        response = mockMvc.perform(patch(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(chartForm)))
@@ -118,12 +119,12 @@ public class ChartTest {
         chartForm = objectMapper.readValue(object, ChartForm.class);
         assertTrue("TestAttributes".equals(chartForm.getAttributes()));
 
-        response = mockMvc.perform(delete(APP + "/charts/4")
+        response = mockMvc.perform(delete(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(204, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/charts/4")
+        response = mockMvc.perform(get(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(404, response.getStatus());

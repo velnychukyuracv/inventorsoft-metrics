@@ -1,5 +1,7 @@
 package com.reporttool.groups.controller;
 
+import com.reporttool.charts.model.ChartDto;
+import com.reporttool.charts.service.ChartService;
 import com.reporttool.groups.model.GroupDto;
 import com.reporttool.groups.model.GroupForm;
 import com.reporttool.groups.service.GroupService;
@@ -8,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -32,6 +35,7 @@ import static java.util.Objects.isNull;
 public class GroupController {
 
     private final GroupService groupService;
+    private final ChartService chartService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -58,8 +62,14 @@ public class GroupController {
     }
 
     @GetMapping("/{groupId}")
-    public GroupDto getGroupDto(@PathVariable Long groupId) {
+    public GroupDto getGroupDto(@PathVariable("groupId") Long groupId) {
         return groupService.findGroupDto(groupId);
+    }
+
+    @GetMapping("{groupId}/charts")
+    public Page<ChartDto> getChartsForGroup(@PathVariable("groupId") Long groupId,
+                                            @PageableDefault Pageable pageable) {
+        return chartService.findChartsByGroup(groupId, pageable);
     }
 
 

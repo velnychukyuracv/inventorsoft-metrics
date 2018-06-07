@@ -160,12 +160,13 @@ public class JwtTokenDbRepService {
     }
 
     @Transactional
-    TokenDbRepresentation createNewTokenDbRepresentation(String email) {
+    TokenDbRepresentation createNewTokenDbRepresentation(String email, User user) {
         TokenDbRepresentation tokenDbRep = new TokenDbRepresentation();
         String jwtToken = createToken(email);
         String expirationToken = UUID.randomUUID().toString();
         tokenDbRep.setJwtToken(jwtToken);
         tokenDbRep.setExpirationToken(expirationToken);
+        tokenDbRep.setUser(user);
         return create(tokenDbRep);
     }
 
@@ -180,7 +181,7 @@ public class JwtTokenDbRepService {
     }
 
     @Transactional
-    TokenDbRepresentation refreshJwtToken(TokenDbRepresentation tokenDbRep, String email) {
+    TokenDbRepresentation refreshTokenDbRep(TokenDbRepresentation tokenDbRep, String email) {
         String jwtToken = createToken(email);
         tokenDbRep.setJwtToken(jwtToken);
         return update(tokenDbRep);
@@ -193,11 +194,10 @@ public class JwtTokenDbRepService {
         TokenDbRepresentation tokenDbRep;
         if (optionalTokenDbRep.isPresent()) {
             tokenDbRep = optionalTokenDbRep.get();
-            tokenDbRep = refreshJwtToken(tokenDbRep, email);
+            tokenDbRep = refreshTokenDbRep(tokenDbRep, email);
         } else {
-            tokenDbRep = createNewTokenDbRepresentation(email);
-            tokenDbRep.setUser(user);
+            tokenDbRep = createNewTokenDbRepresentation(email, user);
         }
-        return update(tokenDbRep);
+        return tokenDbRep;
     }
 }

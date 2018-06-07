@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -31,4 +32,8 @@ public class ChartForm {
     @NotNull
     @Digits(integer = 5, fraction = 0)
     private Long dataSourceDbRepId;
+    @NotNull
+    @Min(0)
+    @Digits(integer = 5, fraction = 0)
+    private Long groupId;
 }
