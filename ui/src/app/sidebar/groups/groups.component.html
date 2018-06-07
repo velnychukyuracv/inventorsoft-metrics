@@ -1,3 +1,9 @@
-<p>
-  groups works!
-</p>
+<div>
+    <button (click)="getGroups()">Get Groups</button>
+</div>
+
+<ul>
+    <li *ngFor="let group of groups">
+        {{group.name}}
+    </li>
+</ul>

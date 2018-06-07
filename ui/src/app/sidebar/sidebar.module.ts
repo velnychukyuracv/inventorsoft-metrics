@@ -6,6 +6,7 @@ import { GroupsComponent } from './groups/groups.component';
   imports: [
     CommonModule
   ],
-  declarations: [GroupsComponent]
+  declarations: [GroupsComponent],
+  exports     : [GroupsComponent]
 })
 export class SidebarModule { }
