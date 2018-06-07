@@ -1,0 +1,60 @@
+<div class="container mt-5 border rounded shadow">
+    <div class="row">
+        <div class="col-6  text-white d-flex align-items-center p-5 left-block">
+            <div class="content">
+                <div class="logo">
+                    <h1>Dashboard</h1>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="col-6 p-5">
+            <form class="form-validate" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="login-username" class="label-material">User Name</label>
+                    <input id="login-username"
+                           type="email"
+                           name="loginUsername"
+                           required
+                           class="form-control"
+                           formControlName="userName"
+                           [ngClass]="{'border border-danger': form.get('userName').invalid && form.get('userName').touched}"
+                    >
+                    <div class="alert alert-info mt-3" *ngIf="form.get('userName').invalid && form.get('userName').touched">
+                        <span *ngIf="form.get('userName')['errors']['required']">Field 'User Name' must be filled in.</span>
+                        <span
+                            *ngIf="form.get('userName').hasError('minlength')">
+                                User Name should be at least {{ form.get('userName')['errors']['minlength']['requiredLength'] }} characters long.
+                                Now {{ form.get('userName')['errors']['minlength']['actualLength'] }} characters.
+                        </span>
+                        <span *ngIf="form.get('userName')['errors']['pattern']">Required pattern: test@gmail.com</span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input id="login-password"
+                           type="password"
+                           name="loginPassword"
+                           required
+                           class="form-control"
+                           formControlName="password"
+                           [ngClass]="{'border border-danger': form.get('password').invalid && form.get('password').touched}"
+
+                    >
+                    <div class="alert alert-info mt-3" *ngIf="form.get('password').invalid && form.get('password').touched">
+                        <span *ngIf="form.get('password')['errors']['required']">Field 'Password' must be filled in.</span>
+
+                        <span
+                            *ngIf="form.get('password').hasError('minlength')">
+                            Password should be at least  {{ form.get('password')['errors']['minlength']['requiredLength'] }} characters long.
+                            Now {{ form.get('password')['errors']['minlength']['actualLength'] }} characters.
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" id="login" class="btn text-white mb-3 btn-primary" [disabled]="form.invalid">Login</button>
+            </form>
+            <div class="alert alert-info" *ngIf="message">{{message}}</div>
+        </div>
+    </div>
+</div>
