@@ -66,7 +66,7 @@ public class GroupController {
         return groupService.findGroupDto(groupId);
     }
 
-    @GetMapping("{groupId}/charts")
+    @GetMapping("/{groupId}/charts")
     public Page<ChartDto> getChartsForGroup(@PathVariable("groupId") Long groupId,
                                             @PageableDefault Pageable pageable) {
         return chartService.findChartsByGroup(groupId, pageable);
