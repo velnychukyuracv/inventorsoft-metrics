@@ -40,7 +40,7 @@ public class GroupController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    private GroupForm saveGroup(@RequestBody @Validated GroupForm groupForm) {
+    public GroupForm saveGroup(@RequestBody @Validated GroupForm groupForm) {
         return groupService.saveGroup(groupForm);
     }
 
