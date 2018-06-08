@@ -80,11 +80,9 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
     @Transactional
     public DataSourceForm saveDataSource(DataSourceForm dataSourceForm) {
         DataSourceProperties dbProperties = dataSourcePropertiesMapper.mapToDataSourceProperties(dataSourceForm);
-
-        // trying to create HikariDataSource object
-        addDataSource(dbProperties);
-
         DataSourceDbRepresentation createdDbRepresentation = create(createDbRepresentation(dbProperties));
+
+        addDataSource(dbProperties);
 
         String decodedStringDbPropertiesRepresentation =
                 cipherService.decrypt(createdDbRepresentation.getDataSourceObjectRepresentation());
