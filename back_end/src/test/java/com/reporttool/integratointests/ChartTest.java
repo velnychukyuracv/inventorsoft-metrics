@@ -30,11 +30,15 @@ import javax.inject.Inject;
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ApplicationStarter.class, TestConfig.class},
@@ -118,6 +122,21 @@ public class ChartTest {
         object = response.getContentAsString();
         chartForm = objectMapper.readValue(object, ChartForm.class);
         assertTrue("TestAttributes".equals(chartForm.getAttributes()));
+
+        response = mockMvc.perform(get(APP + "/charts")
+                .header(jwtProperties.getHeaderString(), token)
+                .param("query", "Test"))
+                .andReturn().getResponse();
+        assertEquals(200, response.getStatus());
+
+
+        mockMvc.perform(get(APP + "/charts")
+                .header(jwtProperties.getHeaderString(), token))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].query").value("Query"))
+                .andReturn();
+        assertEquals(200, response.getStatus());
 
         response = mockMvc.perform(delete(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token))
