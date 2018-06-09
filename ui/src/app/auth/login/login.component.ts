@@ -32,22 +32,14 @@ export class LoginComponent implements OnInit {
         const formData = this.form.value;
         this.authService.login(formData)
             .subscribe(res => {
-                    this.saveToLocalStorage(res)
+                    this.authService.saveToLocalStorage(res)
                 },
                 error => {
                     this.showMessage(error)
                 })
     }
 
-    // TODO should move this function to some token service
-    /**
-     * store authentication data to local storage
-     * @param token - token data
-     */
-    saveToLocalStorage(token) {
-        let data = JSON.stringify(token);
-        localStorage.setItem('jwt.token', data);
-    }
+
 
     // TODO Need to change when we will have done service for notifications
     /**

@@ -27,4 +27,18 @@ export class AuthService {
             catchError(error => throwError('User Name or Password incorrect'))
         )
     }
+
+    // TODO should move this function to some token service
+    /**
+     * store authentication data to local storage
+     * @param token - token data
+     */
+    saveToLocalStorage(token) {
+        let data = JSON.stringify(token);
+        localStorage.setItem('jwt.token', data);
+    }
+
+    getToken() {
+        return JSON.parse(localStorage.getItem('jwt.token'));
+    }
 }

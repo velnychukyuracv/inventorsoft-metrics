@@ -16,9 +16,9 @@ export class GroupsComponent implements OnInit {
     }
 
     getGroups() {
-        this.groupsService.getGroups().pipe(first()).subscribe(groups => {
-            console.log('Get groups', groups)
-            this.groups = groups
+        this.groupsService.getGroups().pipe(first()).subscribe((response: any) => {
+            console.log('Get groups', response.content)
+            this.groups = response.content
         })
     }
 

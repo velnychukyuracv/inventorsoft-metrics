@@ -8,6 +8,6 @@ import { MenuComponent } from './menu/menu.component';
     CommonModule
   ],
   declarations: [GroupsComponent, MenuComponent],
-  exports     : [GroupsComponent]
+  exports     : [GroupsComponent, MenuComponent]
 })
 export class SidebarModule { }
