@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../common/services/auth.service';
+import { SpinnersService } from '../../spinners/spinners.service';
 
 @Component({
     selector   : 'app-login',
@@ -13,8 +14,15 @@ export class LoginComponent implements OnInit {
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
     constructor(
-        private authService: AuthService
-    ) {
+        private authService: AuthService,
+        private SpinnersService: SpinnersService
+    ) { }
+
+    public showSpinners(): void {
+        this.SpinnersService.show();
+    }
+    private hideSpinners(): void {
+        this.SpinnersService.hide();
     }
 
     ngOnInit() {
@@ -29,13 +37,16 @@ export class LoginComponent implements OnInit {
      * @param res - response
      */
     onSubmit() {
+        this.showSpinners();
         const formData = this.form.value;
         this.authService.login(formData)
             .subscribe(res => {
-                    this.saveToLocalStorage(res)
+                    this.saveToLocalStorage(res);
+                     this.hideSpinners();
                 },
                 error => {
-                    this.showMessage(error)
+                    this.showMessage(error);
+                    this.hideSpinners();
                 })
     }
 

@@ -5,14 +5,17 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { SpinnersComponent } from './spinners/spinners.component';
+import { SpinnersService } from './spinners/spinners.service';
 
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SpinnersComponent
     ],
-    imports     : [
+    imports: [
         RouterModule.forRoot(
             APP_ROUTES
         ),
@@ -20,8 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
         AuthModule,
         HttpClientModule
     ],
-    providers   : [],
-    bootstrap   : [AppComponent]
+    providers: [
+        SpinnersService,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
