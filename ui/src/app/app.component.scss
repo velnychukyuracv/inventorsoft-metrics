@@ -1,0 +1,14 @@
+@import '../assets/colors.scss';
+
+/*TODO remove or change this after create sidebar component*/
+.sidebar {
+    width: 200px;
+    background-color: $sidebarLeft;
+}
+
+/*TODO remove or change this after create header component*/
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: $header;
+}
