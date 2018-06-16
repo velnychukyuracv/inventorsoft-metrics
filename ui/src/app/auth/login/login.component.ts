@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../common/services/auth.service';
 import { SpinnersService } from '../../spinners/spinners.service';
+import { TokenService } from '../../common/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector   : 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private SpinnersService: SpinnersService
+        private SpinnersService: SpinnersService,
+        private tokenService: TokenService,
+        public router: Router
     ) {
     }
 
@@ -43,7 +47,12 @@ export class LoginComponent implements OnInit {
         const formData = this.form.value;
         this.authService.login(formData)
             .subscribe(res => {
-                    this.saveToLocalStorage(res);
+                    this.tokenService.saveToLocalStorage(res);
+                    this.showMessage('Logged in', 1000,
+                        () => {
+                            return this.router.navigate(['/users']);
+                        }
+                    );
                     this.hideSpinners();
                 },
                 error => {
@@ -52,25 +61,18 @@ export class LoginComponent implements OnInit {
                 })
     }
 
-    // TODO should move this function to some token service
-    /**
-     * store authentication data to local storage
-     * @param token - token data
-     */
-    saveToLocalStorage(token) {
-        let data = JSON.stringify(token);
-        localStorage.setItem('jwt.token', data);
-    }
-
     // TODO Need to change when we will have done service for notifications
     /**
      * show info block
      * @param message - info text for user
      */
-    private showMessage(message) {
+    private showMessage(message, time = 6000, actionCb = null) {
         this.message = message;
         setTimeout(() => {
+            if (actionCb) {
+                actionCb()
+            }
             this.message = '';
-        }, 6000)
+        }, time)
     }
 }

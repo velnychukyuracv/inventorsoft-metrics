@@ -4,6 +4,7 @@ import { User } from '../models/user.model';
 import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/internal/operators';
 import { throwError } from 'rxjs/index';
+import { TokenService } from './token.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,8 @@ import { throwError } from 'rxjs/index';
 export class AuthService {
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private tokenService: TokenService
     ) {
     }
 
@@ -26,5 +28,9 @@ export class AuthService {
         }).pipe(
             catchError(error => throwError('User Name or Password incorrect'))
         )
+    }
+
+    get isAuthenticated() {
+        return !!this.tokenService.getToken()
     }
 }
