@@ -3,10 +3,8 @@ package com.reporttool.datasources.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.datasources.model.DataSourceDto;
-import com.reporttool.datasources.model.DataSourceEditForm;
 import com.reporttool.datasources.model.DataSourceForm;
 import com.reporttool.datasources.model.DataSourceProperties;
-import com.reporttool.domain.constants.DataSourceType;
 import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.DataSourceDbRepresentation;
@@ -33,7 +31,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 @Service
 @Slf4j
@@ -123,7 +120,7 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
 
 
     @Transactional
-    public DataSourceEditForm patchDataSource(Long dataSourceId, DataSourceEditForm dataSourceForm) {
+    public DataSourceForm patchDataSource(Long dataSourceId, DataSourceForm dataSourceForm) {
         Optional<DataSourceDbRepresentation> optionalDbRepresentation = findById(dataSourceId);
         DataSourceDbRepresentation dbRepresentation =
                 optionalDbRepresentation.orElseThrow(ResourceNotFoundException::new);
@@ -134,7 +131,7 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
 
         String dataSourceName = dbProperties.getDataSourceName();
 
-        setDataSourceFields(dataSourceForm, dbProperties);
+        dataSourcePropertiesMapper.updateDataSourceProperties(dataSourceForm, dbProperties);
 
         String updatedStringDataBasePropertiesRepresentation = convertToStringRepresentation(dbProperties);
 
@@ -149,7 +146,7 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
         updateDataSource(dbProperties, dataSourceName);
 
         log.debug("DataSourceDbRepresentation was successfully updated");
-        return dataSourcePropertiesMapper.mapToDataSourceEditForm(dbProperties);
+        return dataSourcePropertiesMapper.mapToDataSourceForm(dbProperties);
     }
 
 
@@ -223,21 +220,6 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
         } catch (IOException e) {
             log.warn("ObjectMapper could't obtain DataSourceProperties object from string, IOException has occurred!!! {}", e);
             throw new MappingException(e);
-        }
-    }
-
-    private void setDataSourceFields(DataSourceEditForm dataSourceForm, DataSourceProperties dbProperties) {
-        if (nonNull(dataSourceForm.getDataSourceName())) {
-            dbProperties.setDataSourceName(dataSourceForm.getDataSourceName());
-        }
-        if (nonNull(dataSourceForm.getUrl())) {
-            dbProperties.setUrl(dataSourceForm.getUrl());
-        }
-        if (nonNull(dataSourceForm.getDriverClassName())) {
-            dbProperties.setDriverClassName(dataSourceForm.getDriverClassName());
-        }
-        if (nonNull(dataSourceForm.getDataSourceType())) {
-            dbProperties.setDataSourceType(DataSourceType.valueOf(dataSourceForm.getDataSourceType()));
         }
     }
 

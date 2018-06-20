@@ -31,6 +31,7 @@ import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -95,7 +96,13 @@ public class DataSourceCRUDOperationsTest {
                 .andExpect(jsonPath("$.content[0].dataSourceName").value("TEST_H2_1"))
                 .andReturn();
 
-
+        dataSourceForm.setDataSourceName("TEST_H2_3");
+        response = mockMvc.perform(patch(APP + "/data-sources/5")
+                .header(jwtProperties.getHeaderString(), token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dataSourceForm)))
+                .andReturn().getResponse();
+        assertEquals(202, response.getStatus());
     }
 
 }
