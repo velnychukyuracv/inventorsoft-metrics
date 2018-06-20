@@ -12,9 +12,9 @@
         <td>{{user.id}}</td>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
-        <td class="button" (click)="editUser()">edit</td>
+        <td class="button" [routerLink]="['/edit-user', user.id]">edit</td>
         <td class="button" (click)="deleteUser()">delete</td>
     </tr>
 </table>
-<button class="btn btn-primary mb-3" (click)="addUser()">Add</button>
+<button class="btn btn-primary mb-3" routerLink="/add-user">Add</button>
 

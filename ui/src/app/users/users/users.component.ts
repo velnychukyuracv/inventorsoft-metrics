@@ -39,23 +39,7 @@ export class UsersComponent implements OnInit {
         }, 6000)
     }
 
-    /**
-     * redirection on add-user page
-     */
-    addUser() {
-        return this.router.navigate(['/add-user']);
-    }
-
-    /**
-     * redirection on edit-user page
-     */
-    editUser() {
-        return this.router.navigate(['/edit-user']);
-    }
-
-    /**
-     * redirection on delete page
-     */
+    //TODO delete user
     deleteUser() {
 
     }

@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/internal/operators';
 import { throwError } from 'rxjs/index';
-import { NewUser } from '../models/add.model';
+import { NewUser } from '../models/add_user.model';
+import { EditUser } from '../models/edit_user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -28,11 +29,26 @@ export class UserService {
      * http request transfer to the server new user
      */
     addUser(user: NewUser) {
+        let {email, firstName, lastName, password} = user;
         return this.http.post(environment.BASE_URL + '/app/users', {
-            email    : user.email,
-            firstName: user.firstName,
-            lastName : user.lastName,
-            password : user.password
+            email,
+            firstName,
+            lastName,
+            password
+        }).pipe(
+            catchError(error => throwError('Something went wrong'))
+        )
+    }
+
+    /**
+     * http request transfer to the server new data about user
+     * @param id - delivered user's id
+     */
+    editUser(user: EditUser, id) {
+        let {firstName, lastName} = user;
+        return this.http.patch(environment.BASE_URL + `/app/users/${id}`, {
+            firstName,
+            lastName
         }).pipe(
             catchError(error => throwError('Something went wrong'))
         )

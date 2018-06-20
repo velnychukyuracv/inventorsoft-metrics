@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './common/services/auth-guard.service';
-
 import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
 import { UsersComponent } from './users/users/users.component';
@@ -27,7 +26,7 @@ export const APP_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path       : 'edit-user',
+        path       : 'edit-user/:id',
         component  : EditUserComponent,
         canActivate: [AuthGuard]
     },
