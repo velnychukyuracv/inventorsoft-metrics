@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
+import { DataSourcesModule } from './data-sources/data-sources.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,18 +16,19 @@ import { HttpClientModule } from '@angular/common/http';
         AppComponent,
         SpinnersComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forRoot(
             APP_ROUTES
         ),
         BrowserModule,
+        HttpClientModule,
         AuthModule,
-        HttpClientModule
+        DataSourcesModule,
     ],
-    providers: [
+    providers   : [
         SpinnersService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap   : [AppComponent]
 })
 export class AppModule {
 }
