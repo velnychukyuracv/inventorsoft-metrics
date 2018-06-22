@@ -14,10 +14,11 @@ import { DataSource } from '../common/models/data-source.model';
 export class DataSourcesComponent implements OnInit {
 
     @ViewChild('btnCloseDataSource') btnCloseDataSource: ElementRef;
+    @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
     dataSources: DataSource[];
     dataSourceForm: FormGroup;
-    editedDataSourceId: number;
+    selectedDataSourceId: number;
 
     constructor(
         private dataSourcesService: DataSourcesService,
@@ -51,7 +52,7 @@ export class DataSourcesComponent implements OnInit {
         this.dataSourceForm.get('userName').enable();
 
         this.dataSourceForm.reset();
-        this.editedDataSourceId = undefined;
+        this.selectedDataSourceId = undefined;
     }
 
     openEditModal(dataSourceId: number) {
@@ -64,9 +65,13 @@ export class DataSourcesComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 response => {
-                    this.editedDataSourceId = response.id;
+                    this.selectedDataSourceId = response.id;
                     this.dataSourceForm.patchValue(response);
                 });
+    }
+
+    openDeleteModal(dataSourceId: number) {
+        this.selectedDataSourceId = dataSourceId;
     }
 
     getDataSources() {
@@ -120,12 +125,13 @@ export class DataSourcesComponent implements OnInit {
     /** Edit Data Source
      */
     editDataSource() {
-        if (this.editedDataSourceId) {
-            this.dataSourcesService.editDataSource(this.editedDataSourceId, this.dataSourceForm.value).pipe(first())
+        if (this.selectedDataSourceId) {
+            this.dataSourcesService.editDataSource(this.selectedDataSourceId, this.dataSourceForm.value).pipe(first())
                 .subscribe(
                     response => {
-                        this.closeModal();
                         this.getDataSources();
+
+                        this.closeModal();
                         // TODO: Show success notification
                     },
                     error => {
@@ -136,8 +142,34 @@ export class DataSourcesComponent implements OnInit {
         }
     }
 
+    /** Delete Data Source
+     */
+    deleteDataSource() {
+        if (this.selectedDataSourceId) {
+            this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
+                .subscribe(
+                    response => {
+                        this.getDataSources();
+
+                        this.closeConfirmDeleteModal();
+                        // TODO: Show success notification
+                    },
+                    error => {
+                        this.closeConfirmDeleteModal();
+                        // TODO: Show error notification
+                    }
+                )
+        }
+
+        this.closeConfirmDeleteModal();
+    }
+
     closeModal() {
         this.btnCloseDataSource.nativeElement.click();
+    }
+
+    closeConfirmDeleteModal() {
+        this.btnCloseConfirmDelete.nativeElement.click();
     }
 
 }

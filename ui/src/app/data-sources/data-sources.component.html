@@ -1,8 +1,11 @@
-<div class="container">
-    <div class="row">
-        <button type="button" class="btn btn-outline-primary" (click)="openAddModal()" data-toggle="modal" data-target="#dataSourceModal">
-            Create
-        </button>
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col">
+            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#dataSourceModal"
+                    (click)="openAddModal()">
+                Create
+            </button>
+        </div>
     </div>
     <table class="table table-hover">
         <thead>
@@ -13,7 +16,7 @@
             <th>Driver</th>
             <th>Created</th>
             <th>Updated</th>
-            <th></th>
+            <th colspan="2">Actions</th>
         </tr>
         </thead>
         <tbody *ngIf="dataSources?.length > 0">
@@ -25,10 +28,15 @@
             <td>{{source.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{source.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                        (click)="openEditModal(source.id)"
-                        data-target="#dataSourceModal">
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#dataSourceModal"
+                        (click)="openEditModal(source.id)">
                     Edit
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
+                        (click)="openDeleteModal(source.id)">
+                    Delete
                 </button>
             </td>
         </tr>
@@ -38,11 +46,11 @@
 
 </div>
 
-<div class="modal show" id="dataSourceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal show" id="dataSourceModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Data Source Card</h5>
+                <h5 class="modal-title">Data Source Card</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -118,7 +126,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" *ngIf="editedDataSourceId == undefined">
+                    <div class="form-group" *ngIf="selectedDataSourceId === undefined">
                         <label class="label-material">Password:</label>
                         <input type="password"
                                required
@@ -136,7 +144,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" *ngIf="editedDataSourceId == undefined">
+                    <div class="form-group" *ngIf="selectedDataSourceId === undefined">
                         <label class="label-material">User Name:</label>
                         <input required
                                class="form-control"
@@ -156,7 +164,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" #btnCloseDataSource class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button *ngIf="editedDataSourceId; else createBlock"
+                <button *ngIf="selectedDataSourceId; else createBlock"
                         type="button"
                         [disabled]="dataSourceForm.invalid"
                         class="btn btn-primary"
@@ -171,6 +179,26 @@
                         Add data source
                     </button>
                 </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deleting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete data source?
+            </div>
+            <div class="modal-footer">
+                <button type="button" #btnCloseConfirmDelete class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" (click)="deleteDataSource()">Delete</button>
             </div>
         </div>
     </div>

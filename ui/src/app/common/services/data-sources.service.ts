@@ -42,4 +42,11 @@ export class DataSourcesService {
     editDataSource(id: number, dataSource: DataSource) {
         return this.httpClient.patch(environment.BASE_URL + this.SERVICE_PATH + '/' + id, dataSource);
     }
+
+    /** HTTP request for delete Data Source
+     * @param id: Data Source id
+     */
+    deleteDataSource(id: number) {
+        return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + '/' + id);
+    }
 }
