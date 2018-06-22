@@ -3,6 +3,7 @@ import { first } from 'rxjs/internal/operators/first';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { DataSourcesService } from '../common/services/data-sources.service';
+import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
 
 @Component({
@@ -18,7 +19,18 @@ export class DataSourcesComponent implements OnInit {
     dataSourceForm: FormGroup;
     editedDataSourceId: number;
 
-    constructor(private dataSourcesService: DataSourcesService) {
+    constructor(
+        private dataSourcesService: DataSourcesService,
+        private SpinnersService: SpinnersService,
+    ) {
+    }
+
+    private showSpinners(): void {
+        this.SpinnersService.show();
+    }
+
+    private hideSpinners(): void {
+        this.SpinnersService.hide();
     }
 
     ngOnInit() {
@@ -58,6 +70,8 @@ export class DataSourcesComponent implements OnInit {
     }
 
     getDataSources() {
+        this.showSpinners();
+
         this.dataSourcesService.getDataSources()
             .pipe(first())
             .subscribe(
@@ -75,6 +89,13 @@ export class DataSourcesComponent implements OnInit {
                         let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
+
+                    this.hideSpinners();
+                    // TODO: Show success notification
+                },
+                error => {
+                    this.hideSpinners();
+                    // TODO: Show error notification
                 }
             )
     }

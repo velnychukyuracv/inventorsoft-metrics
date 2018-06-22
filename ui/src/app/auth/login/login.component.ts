@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private SpinnersService: SpinnersService
-    ) { }
+    ) {
+    }
 
     public showSpinners(): void {
         this.SpinnersService.show();
     }
+
     private hideSpinners(): void {
         this.SpinnersService.hide();
     }
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(formData)
             .subscribe(res => {
                     this.saveToLocalStorage(res);
-                     this.hideSpinners();
+                    this.hideSpinners();
                 },
                 error => {
                     this.showMessage(error);
