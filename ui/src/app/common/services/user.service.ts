@@ -27,6 +27,7 @@ export class UserService {
 
     /**
      * http request transfer to the server new user
+     * @param user - user data
      */
     addUser(user: NewUser) {
         let {email, firstName, lastName, password} = user;
@@ -43,6 +44,7 @@ export class UserService {
     /**
      * http request transfer to the server new data about user
      * @param id - delivered user's id
+     * @param user - user data
      */
     editUser(user: EditUser, id) {
         let {firstName, lastName} = user;

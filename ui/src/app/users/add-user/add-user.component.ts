@@ -27,7 +27,6 @@ export class AddUserComponent implements OnInit {
 
     /**
      * submit form data to  the server
-     * @param res - response
      */
     onSubmit() {
         const formData = this.form.value;

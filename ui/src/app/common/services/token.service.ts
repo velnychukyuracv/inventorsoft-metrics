@@ -29,9 +29,9 @@ export class TokenService {
     }
 
     //TODO find bug in refresh token
-    // /**
-    //  * http request to the server for  new authentication data
-    //  */
+    /**
+     * http request to the server for  new authentication data
+     */
     // public refreshToken() {
     //     return this.http.post(environment.NO_AUTH_PREFIX + '/refresh-token', this.getToken()['expirationToken'])
     //         .subscribe(
