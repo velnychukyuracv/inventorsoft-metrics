@@ -1,4 +1,4 @@
-export interface Group {
+export class Group {
     id?: number;
     materialIcon: string;
     name: string;
@@ -6,4 +6,6 @@ export interface Group {
     updatedAt?: string;
     order?: number;
     uuid?: string;
+
+    constructor() {}
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../../environments/environment';
 import { AuthService } from './auth.service';
 import { Group } from '../models/group.model';
@@ -15,16 +14,22 @@ export class GroupsService {
                 private authService: AuthService) {
     }
 
-    // getGroups(): Observable<Array<Group>> {
     getGroups() {
-/*        getGroups(): Observable<{content: Group[]}> {*/
-       // console.log(this.authService.getToken())
         return this.httpClient.get(environment.BASE_URL + '/app/groups', {
             headers: {
                 'Authorization': this.authService.getToken().jwtToken
             }
 
         });
+    }
+
+    addGroup(createdGroup: Group) {
+        const body = {materialIcon: createdGroup.materialIcon, name: createdGroup.name};
+        return this.httpClient.post(environment.BASE_URL + '/app/groups', body, {
+            headers: {
+                'Authorization': this.authService.getToken().jwtToken
+            }
+        })
     }
 }
 
