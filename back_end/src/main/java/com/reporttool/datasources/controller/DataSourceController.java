@@ -1,14 +1,11 @@
 package com.reporttool.datasources.controller;
 
 import com.reporttool.datasources.model.DataSourceDto;
-import com.reporttool.datasources.model.DataSourceEditForm;
 import com.reporttool.datasources.model.DataSourceForm;
-import com.reporttool.datasources.model.DataSourceProperties;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.datasources.service.DataSourcePropertiesService;
 import com.reporttool.utils.ReportToolUtils;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,8 +73,8 @@ public class DataSourceController {
 
     @PatchMapping(path = "/{dataSourceId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public DataSourceEditForm patchDataSource(@PathVariable("dataSourceId") Long dataSourceId,
-                                          @RequestBody @Validated DataSourceEditForm dataSourceForm) {
+    public DataSourceForm patchDataSource(@PathVariable("dataSourceId") Long dataSourceId,
+                                          @RequestBody @Validated DataSourceForm dataSourceForm) {
         return dataSourcePropertiesService.patchDataSource(dataSourceId, dataSourceForm);
     }
 

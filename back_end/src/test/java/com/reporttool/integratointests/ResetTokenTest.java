@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.ApplicationStarter;
 import com.reporttool.config.TestConfig;
 import com.reporttool.domain.model.PasswordResetToken;
-import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import com.reporttool.userview.service.PasswordResetService;
 import com.reporttool.userview.model.PasswordResetForm;
 import lombok.extern.slf4j.Slf4j;
@@ -46,9 +45,6 @@ public class ResetTokenTest {
 
     @Inject
     private WebApplicationContext context;
-
-    @Inject
-    private JwtTokenDbRepService jwtTokenDbRepService;
 
     @Inject
     private PasswordResetService passwordResetService;

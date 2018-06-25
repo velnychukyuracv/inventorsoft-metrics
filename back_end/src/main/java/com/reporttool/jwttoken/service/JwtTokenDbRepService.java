@@ -10,6 +10,7 @@ import com.reporttool.domain.model.mapper.TokenDbRepresentationMapper;
 import com.reporttool.domain.repository.TokenDbRepresentationRepository;
 import com.reporttool.domain.service.UserService;
 import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -54,36 +55,10 @@ public class JwtTokenDbRepService {
     public TokenDbRepresentationDto createAndSaveTokenDbRepresentation(String email) {
         Optional<User> optionalUser = userService.findByEmail(email);
         User user = optionalUser.orElseThrow(ResourceNotFoundException::new);
-        Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
         TokenDbRepresentation tokenDbRep;
-        tokenDbRep = getTokenDbRepresentation(email, user, optionalTokenDbRep);
+        tokenDbRep = getTokenDbRepresentation(email, user);
 
         userService.setUserLastSignInField(user);
-        return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
-    }
-
-    /**
-     * ATTENTION!!!
-     * Method for obtaining JWT token and creation of user with account in social networks
-     * could be used only after social account authentication
-     * @param email {@link String}
-     * @return {@link TokenDbRepresentationDto}
-     */
-    @Transactional
-    public TokenDbRepresentationDto findOrCreateUserAndToken(String email) {
-        Optional<User> optionalUser = userService.findByEmail(email);
-        User user;
-        TokenDbRepresentation tokenDbRep;
-        if (optionalUser.isPresent()) {
-            user = optionalUser.get();
-            Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
-            tokenDbRep = getTokenDbRepresentation(email, user, optionalTokenDbRep);
-        } else {
-            user = userService.createDefaultUser(email);
-            tokenDbRep = createTokenDbRepresentation(email);
-            tokenDbRep.setUser(user);
-            create(tokenDbRep);
-        }
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
     }
 
@@ -104,6 +79,12 @@ public class JwtTokenDbRepService {
         Optional<TokenDbRepresentation> optionalTokenDbRep = tokenDbRepRepository.findDistinctByJwtToken(jwtToken);
         return optionalTokenDbRep.orElseThrow(ResourceNotFoundException::new);
     }
+    @Transactional(readOnly = true)
+    public TokenDbRepresentation findTokenDbRepByExpirationToken(String expirationToken) {
+        Optional<TokenDbRepresentation> optionalTokenDbRep =
+                tokenDbRepRepository.findDistinctByExpirationToken(expirationToken);
+        return optionalTokenDbRep.orElseThrow(ResourceNotFoundException::new);
+    }
 
 
 
@@ -115,20 +96,34 @@ public class JwtTokenDbRepService {
     }
 
     @Transactional
-    public TokenDbRepresentationDto refreshToken(String jwtToken, String expirationToken) {
-        TokenDbRepresentation tokenDbRep = findTokenDbRepByJwtToken(jwtToken);
+    public TokenDbRepresentationDto refreshToken(String expiredJwtToken, String expirationToken) {
+        TokenDbRepresentation tokenDbRep = findTokenDbRepByExpirationToken(expirationToken);
         User user = userService.findById(tokenDbRep.getId()).orElseThrow(ResourceNotFoundException :: new);
         String userEmail = user.getEmail();
-        if (!tokenDbRep.getExpirationToken().equals(expirationToken)) {
-            log.warn("There was an attempt to receive authentication with fake expirationToken for user with email {}!!!",
-                    userEmail);
-            throw new BadCredentialsException("Access denied!!!");
+
+        // checks if the expired JWT token is valid
+        try {
+            parseToken(expiredJwtToken);
+        } catch (CustomJwtException e) {
+            if (e.getException() instanceof ExpiredJwtException) {
+                // do nothing because this is valid, but expired jwt token
+            } else {
+                log.warn("There was an attempt to receive authentication with fake expirationToken for user with email {}!!!",
+                        userEmail);
+                throw new BadCredentialsException("Access denied!!!");
+            }
         }
-        jwtToken = createToken(userEmail);
-        expirationToken = UUID.randomUUID().toString();
-        tokenDbRep.setJwtToken(jwtToken);
-        tokenDbRep.setExpirationToken(expirationToken);
-        update(tokenDbRep);
+
+        String newJwtToken = tokenDbRep.getJwtToken();
+
+        //checks if saved in data base JWT token is valid and not expired
+        try {
+            parseToken(newJwtToken);
+        } catch (CustomJwtException e) {
+            newJwtToken = createToken(userEmail);
+            tokenDbRep.setJwtToken(newJwtToken);
+            tokenDbRep = update(tokenDbRep);
+        }
         userService.setUserLastSignInField(tokenDbRep.getUser());
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
     }
@@ -159,18 +154,20 @@ public class JwtTokenDbRepService {
                     .getSubject();
         } catch (JwtException e) {
             log.warn("Exception had occurred during JWT token parsing! {}", e);
-            throw new CustomJwtException(e.getMessage());
+            throw new CustomJwtException(e.getMessage(), e);
         }
         return email;
     }
 
-    private TokenDbRepresentation createTokenDbRepresentation(String email) {
+    @Transactional
+    TokenDbRepresentation createNewTokenDbRepresentation(String email, User user) {
         TokenDbRepresentation tokenDbRep = new TokenDbRepresentation();
         String jwtToken = createToken(email);
         String expirationToken = UUID.randomUUID().toString();
         tokenDbRep.setJwtToken(jwtToken);
         tokenDbRep.setExpirationToken(expirationToken);
-        return tokenDbRep;
+        tokenDbRep.setUser(user);
+        return create(tokenDbRep);
     }
 
     private String createToken(String userName) {
@@ -183,18 +180,23 @@ public class JwtTokenDbRepService {
         return token;
     }
 
-    private TokenDbRepresentation getTokenDbRepresentation(
-            String email,
-            User user,
-            Optional<TokenDbRepresentation> optionalTokenDbRep) {
+    @Transactional
+    TokenDbRepresentation refreshTokenDbRep(TokenDbRepresentation tokenDbRep, String email) {
+        String jwtToken = createToken(email);
+        tokenDbRep.setJwtToken(jwtToken);
+        return update(tokenDbRep);
+    }
 
+    public TokenDbRepresentation getTokenDbRepresentation(
+            String email,
+            User user) {
+        Optional<TokenDbRepresentation> optionalTokenDbRep = findById(user.getId());
         TokenDbRepresentation tokenDbRep;
         if (optionalTokenDbRep.isPresent()) {
             tokenDbRep = optionalTokenDbRep.get();
+            tokenDbRep = refreshTokenDbRep(tokenDbRep, email);
         } else {
-            tokenDbRep = createTokenDbRepresentation(email);
-            tokenDbRep.setUser(user);
-            create(tokenDbRep);
+            tokenDbRep = createNewTokenDbRepresentation(email, user);
         }
         return tokenDbRep;
     }

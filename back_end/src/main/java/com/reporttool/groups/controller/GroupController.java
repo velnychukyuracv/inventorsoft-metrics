@@ -1,5 +1,7 @@
 package com.reporttool.groups.controller;
 
+import com.reporttool.charts.model.ChartDto;
+import com.reporttool.charts.service.ChartService;
 import com.reporttool.groups.model.GroupDto;
 import com.reporttool.groups.model.GroupForm;
 import com.reporttool.groups.service.GroupService;
@@ -8,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
-import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
+import static com.reporttool.domain.constants.MetricConstants.ORDER;
 import static java.util.Objects.isNull;
 
 @RestController
@@ -32,11 +35,12 @@ import static java.util.Objects.isNull;
 public class GroupController {
 
     private final GroupService groupService;
+    private final ChartService chartService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    private GroupForm saveGroup(@RequestBody @Validated GroupForm groupForm) {
+    public GroupForm saveGroup(@RequestBody @Validated GroupForm groupForm) {
         return groupService.saveGroup(groupForm);
     }
 
@@ -48,7 +52,7 @@ public class GroupController {
             @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
             @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
-            @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy) {
+            @RequestParam(value = "sortBy", required = false, defaultValue = ORDER) String sortBy) {
         Pageable pageable = ReportToolUtils.createPageable(page, pageSize, direction, sortBy);
         if (isNull(query)) {
             return groupService.findGroupDtos(pageable);
@@ -58,8 +62,14 @@ public class GroupController {
     }
 
     @GetMapping("/{groupId}")
-    public GroupDto getGroupDto(@PathVariable Long groupId) {
+    public GroupDto getGroupDto(@PathVariable("groupId") Long groupId) {
         return groupService.findGroupDto(groupId);
+    }
+
+    @GetMapping("/{groupId}/charts")
+    public Page<ChartDto> getChartsForGroup(@PathVariable("groupId") Long groupId,
+                                            @PageableDefault Pageable pageable) {
+        return chartService.findChartsByGroup(groupId, pageable);
     }
 
 

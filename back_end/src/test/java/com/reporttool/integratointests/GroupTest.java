@@ -32,11 +32,15 @@ import javax.inject.Inject;
 import static com.reporttool.domain.constants.MetricConstants.APP;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ApplicationStarter.class, TestConfig.class},
@@ -86,7 +90,7 @@ public class GroupTest {
                 .andReturn().getResponse();
         assertEquals(201, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/groups/4")
+        response = mockMvc.perform(get(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(200, response.getStatus());
@@ -95,9 +99,43 @@ public class GroupTest {
         GroupDto groupDto = objectMapper.readValue(object, GroupDto.class);
         assertTrue("Test".equals(groupDto.getName()));
         assertTrue("Material icon".equals(groupDto.getMaterialIcon()));
-        assertTrue(4 == groupDto.getId());
+        assertTrue(5 == groupDto.getId());
 
         groupForm.setName("Test Name");
+
+        ChartForm chartForm = new ChartForm();
+        chartForm.setName("Test");
+        chartForm.setQuery("Query");
+        chartForm.setFilterColumns("1, 2, 3");
+        chartForm.setVisibleColumns("3, 2, 1");
+        chartForm.setType("PIE");
+        chartForm.setOrder(1);
+        chartForm.setAttributes("attributes");
+        chartForm.setDataSourceDbRepId(3L);
+        chartForm.setGroupId(4L);
+
+        response = mockMvc.perform(post(APP + "/charts")
+                .header(jwtProperties.getHeaderString(), token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(chartForm)))
+                .andReturn().getResponse();
+        assertEquals(201, response.getStatus());
+
+        mockMvc.perform(get(APP + "/groups/4/charts")
+                .header(jwtProperties.getHeaderString(), token))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content", hasSize(1)))
+                .andExpect(jsonPath("$.content[0].query").value("Query"))
+                .andReturn();
+        assertEquals(201, response.getStatus());
+
+        mockMvc.perform(get(APP + "/groups")
+                .header(jwtProperties.getHeaderString(), token))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content", hasSize(2)))
+                .andExpect(jsonPath("$.content[1].name").value("Test"))
+                .andReturn();
+        assertEquals(201, response.getStatus());
 
         response = mockMvc.perform(patch(APP + "/groups/4")
                 .header(jwtProperties.getHeaderString(), token)
@@ -110,12 +148,12 @@ public class GroupTest {
         groupDto = objectMapper.readValue(object, GroupDto.class);
         assertTrue("Test Name".equals(groupDto.getName()));
 
-        response = mockMvc.perform(delete(APP + "/groups/4")
+        response = mockMvc.perform(delete(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(204, response.getStatus());
 
-        response = mockMvc.perform(get(APP + "/groups/4")
+        response = mockMvc.perform(get(APP + "/groups/5")
                 .header(jwtProperties.getHeaderString(), token))
                 .andReturn().getResponse();
         assertEquals(404, response.getStatus());

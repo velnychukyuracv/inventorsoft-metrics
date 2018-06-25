@@ -101,4 +101,8 @@ public class ChartService extends DefaultCrudSupport<Chart> {
                     .orElseThrow(ResourceNotFoundException::new));
         }
     }
+
+    public Page<ChartDto> findChartsByGroup(Long groupId, Pageable pageable) {
+        return chartRepository.findByGroup(groupId, pageable).map(chartMapper :: mapToChartDtoFromChart);
+    }
 }

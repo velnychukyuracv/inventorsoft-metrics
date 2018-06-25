@@ -16,4 +16,6 @@
     <include file="009_create_token_db_representation_table.xml" relativeToChangelogFile="true"/>
     <include file="010_create_charts_table.xml" relativeToChangelogFile="true"/>
     <include file="011_change_column_name_group_table.xml" relativeToChangelogFile="true"/>
+    <include file="012_remove_default_fom_order_column_groups_table.xml" relativeToChangelogFile="true"/>
+    <include file="013_add_group_id_column_charts_table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

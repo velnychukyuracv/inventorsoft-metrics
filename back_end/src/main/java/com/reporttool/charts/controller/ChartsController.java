@@ -3,7 +3,6 @@ package com.reporttool.charts.controller;
 import com.reporttool.charts.model.ChartDto;
 import com.reporttool.charts.model.ChartForm;
 import com.reporttool.charts.service.ChartService;
-import com.reporttool.domain.model.Chart;
 import com.reporttool.utils.ReportToolUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -26,9 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.awt.*;
 
 import static com.reporttool.domain.constants.MetricConstants.APP;
-import static com.reporttool.domain.constants.MetricConstants.LAST_SIGN_IN;
+import static com.reporttool.domain.constants.MetricConstants.ORDER;
 import static java.util.Objects.isNull;
-import static java.util.Objects.requireNonNull;
 
 @RestController
 @RequestMapping(APP + "/charts")
@@ -51,7 +49,7 @@ public class ChartsController {
             @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
             @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
-            @RequestParam(value = "sortBy", required = false, defaultValue = LAST_SIGN_IN) String sortBy
+            @RequestParam(value = "sortBy", required = false, defaultValue = ORDER) String sortBy
     ) {
 
         Pageable pageable = ReportToolUtils.createPageable(page, pageSize, direction, sortBy);

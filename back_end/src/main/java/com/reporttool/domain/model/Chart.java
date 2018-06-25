@@ -37,4 +37,7 @@ public class Chart extends AbstractVersionalIdentifiable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "data_source_id")
     private DataSourceDbRepresentation dataSourceDbRep;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "group_id")
+    private Group group;
 }

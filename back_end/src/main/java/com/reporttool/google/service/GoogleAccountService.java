@@ -11,14 +11,21 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.reporttool.config.PropertyConfig;
 import com.reporttool.domain.exeption.CustomIOException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
+import com.reporttool.domain.model.TokenDbRepresentation;
+import com.reporttool.domain.model.User;
+import com.reporttool.domain.model.mapper.TokenDbRepresentationMapper;
+import com.reporttool.domain.service.UserService;
 import com.reporttool.jwttoken.model.TokenDbRepresentationDto;
 import com.reporttool.jwttoken.service.JwtTokenDbRepService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -35,6 +42,8 @@ public class GoogleAccountService {
 
     private final JwtTokenDbRepService jwtTokenDbRepService;
     private final PropertyConfig.GoogleProperties googleProperties;
+    private final UserService userService;
+    private final TokenDbRepresentationMapper tokenDbRepMapper;
 
 
     public String getUrl() {
@@ -78,7 +87,7 @@ public class GoogleAccountService {
             String email = payload.getEmail();
 
             log.debug("User logging in with Google account with email: {}", email);
-            return jwtTokenDbRepService.findOrCreateUserAndToken(email);
+            return findOrCreateUserAndToken(email);
 
         } catch (TokenResponseException e) {
             if (nonNull(e.getDetails())) {
@@ -98,5 +107,26 @@ public class GoogleAccountService {
             log.error("Connection problem have been occurred during Google Authentication!!! {}", e);
             throw new CustomIOException();
         }
+    }
+
+    /**
+     * ATTENTION!!!
+     * Method for obtaining JWT token and creation of user with account in social networks
+     * could be used only after social account authentication
+     * @param email {@link String}
+     * @return {@link TokenDbRepresentationDto}
+     */
+    @Transactional
+    public TokenDbRepresentationDto findOrCreateUserAndToken(String email) {
+        Optional<User> optionalUser = userService.findByEmail(email);
+        User user;
+        TokenDbRepresentation tokenDbRep;
+        if (optionalUser.isPresent()) {
+            user = optionalUser.get();
+            tokenDbRep = jwtTokenDbRepService.getTokenDbRepresentation(email, user);
+        } else {
+            throw new UsernameNotFoundException("Access denied!!!");
+        }
+        return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);
     }
 }

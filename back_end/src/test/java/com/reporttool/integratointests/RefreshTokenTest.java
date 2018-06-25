@@ -53,15 +53,11 @@ public class RefreshTokenTest {
     private WebApplicationContext context;
 
     @Inject
-    private JwtTokenDbRepService jwtTokenDbRepService;
-
-    @Inject
     private PropertyConfig.JWTProperties jwtProperties;
 
     @Inject
     private ObjectMapper objectMapper;
 
-    private String token;
     private MockMvc mockMvc;
 
     @Before
@@ -70,7 +66,6 @@ public class RefreshTokenTest {
                 .webAppContextSetup(context)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
-        token = jwtTokenDbRepService.createAndSaveTokenDbRepresentation("vasyl.pahomenko2018@gmail.com").getJwtToken();
     }
 
     @Test
