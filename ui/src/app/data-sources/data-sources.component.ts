@@ -22,21 +22,30 @@ export class DataSourcesComponent implements OnInit {
 
     constructor(
         private dataSourcesService: DataSourcesService,
-        private SpinnersService: SpinnersService,
+        private spinnersService: SpinnersService,
     ) {
     }
 
+    /** Show spinners
+     */
     private showSpinners(): void {
-        this.SpinnersService.show();
+        this.spinnersService.show();
     }
 
+    /** Hide spinners
+     */
     private hideSpinners(): void {
-        this.SpinnersService.hide();
+        this.spinnersService.hide();
     }
 
     ngOnInit() {
-        this.getDataSources();
+        this.buildDataSources();
+        this.initDataSourceForm();
+    }
 
+    /** Initialisation Data Source Form
+     */
+    initDataSourceForm() {
         this.dataSourceForm = new FormGroup({
             dataSourceName : new FormControl(null, [Validators.required]),
             dataSourceType : new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -47,6 +56,8 @@ export class DataSourcesComponent implements OnInit {
         });
     }
 
+    /** Open modal window for adding instance of Data Source
+     */
     openAddModal() {
         this.dataSourceForm.get('password').enable();
         this.dataSourceForm.get('userName').enable();
@@ -55,6 +66,9 @@ export class DataSourcesComponent implements OnInit {
         this.selectedDataSourceId = undefined;
     }
 
+    /** Open modal window for editing instance of Data Source
+     * @param dataSourceId: Data Source id
+     */
     openEditModal(dataSourceId: number) {
         this.dataSourceForm.get('password').disable();
         this.dataSourceForm.get('userName').disable();
@@ -70,11 +84,16 @@ export class DataSourcesComponent implements OnInit {
                 });
     }
 
+    /** Open modal window for deleting instance of Data Source
+     * @param dataSourceId: Data Source id
+     */
     openDeleteModal(dataSourceId: number) {
         this.selectedDataSourceId = dataSourceId;
     }
 
-    getDataSources() {
+    /** Build Data Sources
+     */
+    buildDataSources() {
         this.showSpinners();
 
         this.dataSourcesService.getDataSources()
@@ -102,21 +121,25 @@ export class DataSourcesComponent implements OnInit {
                     this.hideSpinners();
                     // TODO: Show error notification
                 }
-            )
+            );
     }
 
     /** Create Data Source
      */
     createDataSource() {
+        this.showSpinners();
+
         this.dataSourcesService.createDataSource(this.dataSourceForm.value).pipe(first())
             .subscribe(
                 response => {
-                    this.closeModal();
-                    this.getDataSources();
+                    this.hideSpinners();
+                    this.closeModalDataSource();
+                    this.buildDataSources();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.closeModal();
+                    this.hideSpinners();
+                    this.closeModalDataSource();
                     // TODO: Show error notification
                 }
             );
@@ -125,17 +148,20 @@ export class DataSourcesComponent implements OnInit {
     /** Edit Data Source
      */
     editDataSource() {
+        this.showSpinners();
+
         if (this.selectedDataSourceId) {
             this.dataSourcesService.editDataSource(this.selectedDataSourceId, this.dataSourceForm.value).pipe(first())
                 .subscribe(
                     response => {
-                        this.getDataSources();
-
-                        this.closeModal();
+                        this.hideSpinners();
+                        this.buildDataSources();
+                        this.closeModalDataSource();
                         // TODO: Show success notification
                     },
                     error => {
-                        this.closeModal();
+                        this.hideSpinners();
+                        this.closeModalDataSource();
                         // TODO: Show error notification
                     }
                 );
@@ -145,29 +171,34 @@ export class DataSourcesComponent implements OnInit {
     /** Delete Data Source
      */
     deleteDataSource() {
+        this.showSpinners();
+
         if (this.selectedDataSourceId) {
             this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
                 .subscribe(
                     response => {
-                        this.getDataSources();
-
+                        this.hideSpinners();
                         this.closeConfirmDeleteModal();
+                        this.buildDataSources();
                         // TODO: Show success notification
                     },
                     error => {
+                        this.hideSpinners();
                         this.closeConfirmDeleteModal();
                         // TODO: Show error notification
                     }
-                )
+                );
         }
-
-        this.closeConfirmDeleteModal();
     }
 
-    closeModal() {
+    /** close modal window for creating and editing Data Source
+     */
+    closeModalDataSource() {
         this.btnCloseDataSource.nativeElement.click();
     }
 
+    /** close modal window for deleting Data Source
+     */
     closeConfirmDeleteModal() {
         this.btnCloseConfirmDelete.nativeElement.click();
     }
