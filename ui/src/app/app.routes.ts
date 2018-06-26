@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
+import { ChartsComponent } from "./charts/charts.component";
 
-export const APP_ROUTES: Routes = [
+export const APP_ROUTES:Routes = [
     {
-        path      : '',
+        path: '',
         redirectTo: '/login',
-        pathMatch : 'full'
+        pathMatch: 'full'
     },
     {
-        path     : 'login',
+        path: 'login',
         component: LoginComponent
     },
     {
@@ -17,7 +18,12 @@ export const APP_ROUTES: Routes = [
         component: DataSourcesComponent
     },
     {
-        path      : '**',
+        path: 'charts',
+        component: ChartsComponent
+    },
+    {
+        path: '**',
         redirectTo: '/login'
     }
+
 ];
