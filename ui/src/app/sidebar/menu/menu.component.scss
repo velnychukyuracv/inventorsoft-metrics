@@ -23,13 +23,13 @@ p {
         display: block;
         padding: 12px 20px;
         cursor: pointer;
-        color: $sidebarItem-color;
+        color: $sidebarItem;
         -webkit-transition: background-color 200ms, color 200ms;
         transition: background-color 200ms, color 200ms;
         &:active, &:hover {
-            color: $sidebarItemActive-color;
-            background-color: $sidebarActive-color;
-            border-left: 5px solid $sidebarLeft-color;
+            color: $bgPage;
+            background-color: $sidebarActive;
+            border-left: 5px solid $sidebarLeft;
             padding-left: 15px;
         }
     }

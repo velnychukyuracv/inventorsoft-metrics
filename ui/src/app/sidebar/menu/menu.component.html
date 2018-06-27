@@ -14,15 +14,17 @@
             <a class="nav-link" href="#"><i class="fa fa-home fa-1x"> </i> Data Source Management</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-bar-chart fa-1x"> </i> Charts Management</a>
+            <a routerLink="add-group" class="nav-link" href="#"><i class="fa fa-bar-chart fa-1x"> </i> Charts Management</a>
         </li>
         <li class="nav-item">
             <div ngbDropdown id="dropdown">
-                <a id="dropdownBasic" ngbDropdownToggle (click)="getGroups()"><i class="fa fa-group fa-1x"> </i> Group
+                <a id="dropdownBasic" ngbDropdownToggle><i class="fa fa-group fa-1x"> </i> Group
                     Management</a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic">
-                    <a class="dropdown-item"><i class="fa fa-plus fa-1x"> </i> Add new group</a>
-                    <a *ngFor="let group of groups">Icon: {{group.name}} Name: {{group.name}}</a>
+                    <a class="dropdown-item" (click)="addGroup()"><i class="fa fa-plus fa-1x"> </i> Add new group</a>
+                    <a *ngFor="let group of groups">Icon: <i [class]="group.materialIcon"> </i> Name: {{group.name}}
+                        <button class="btn btn-outline-secondary" (click)="deleteGroup(group.id)"><i class="fa fa-trash fa-1x"> </i></button>
+                    </a>
                 </div>
             </div>
         </li>

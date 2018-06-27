@@ -1,22 +1,43 @@
-<!--<div>
-    <button (click)="getGroups()">Get Groups</button>
-</div>
-
-<ul>
-    <li *ngFor="let group of groups">
-        Icon: {{group.name}} Name: {{group.name}}
-    </li>
-</ul>-->
-
-<div class="container">
+<form class="form-validate" [formGroup]="addGroupForm">
     <h1>Add Group</h1>
     <div class="form-group">
         <label for="icon">Icon</label>
-        <input type="text" class="form-control" id="icon" required [(ngModel)]="group.materialIcon" name="materialIcon">
+        <select class="form-control"
+                id="icon"
+                required
+                [(ngModel)]="group.materialIcon"
+                name="materialIcon"
+                formControlName="materialIcon"
+                [ngClass]="{'border border-danger': addGroupForm.get('materialIcon').invalid && addGroupForm.get('materialIcon').touched}">
+            <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}} {{materialIcon.title}}
+
+                <!--<p><i [class]="materialIcon.class"></i>{{materialIcon.title}}</p>-->
+                <!--                <a  href="#"><i class="fa fa-square fa-1x"> </i> Data Source Management</a>-->
+            </option>
+        </select>
+    </div>
+    <div class="alert alert-info mt-3" *ngIf="addGroupForm.get('materialIcon').touched">
+        <span *ngIf="addGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
     </div>
     <div class="form-group">
-        <label for="name">Group Mame</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="group.name" name="name">
+        <label for="name">Group Name</label>
+        <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            formControlName="name"
+            required
+            [(ngModel)]="group.name"
+            [ngClass]="{'border border-danger': addGroupForm.get('name').invalid && addGroupForm.get('name').touched}">
     </div>
-    <button type="submit" class="btn btn-default" (click)="submit(group)">Create</button>
-</div>
+    <div class="alert alert-info mt-3" *ngIf="addGroupForm.get('name').invalid && addGroupForm.get('name').touched">
+        <span *ngIf="addGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
+        <span
+            *ngIf="addGroupForm.get('name').hasError('minlength')">
+                                Group Name should be at least {{ addGroupForm.get('name')['errors']['minlength']['requiredLength'] }} characters long.
+                                Now {{ addGroupForm.get('name')['errors']['minlength']['actualLength'] }} characters.
+        </span>
+    </div>
+    <button type="submit" class="btn btn-default" (click)="createGroup(group)">Create</button>
+</form>
