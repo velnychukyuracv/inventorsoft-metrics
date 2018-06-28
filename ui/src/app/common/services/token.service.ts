@@ -34,10 +34,5 @@ export class TokenService {
      */
     // public refreshToken() {
     //     return this.http.post(environment.NO_AUTH_PREFIX + '/refresh-token', this.getToken()['expirationToken'])
-    //         .subscribe(
-    //             (res) => {
-    //                 this.saveToLocalStorage(res);
-    //             }
-    //         );
     // }
 }

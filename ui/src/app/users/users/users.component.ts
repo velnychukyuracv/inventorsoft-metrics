@@ -15,11 +15,18 @@ export class UsersComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getAllUsers()
+    }
+
+    /**
+     * show all users received from the server
+     * @param res - result of the function getUsers
+     */
+    getAllUsers() {
         this.userService.getUsers()
             .subscribe(
                 (res) => {
                     this.currentUsers = res['content'];
-                    console.log(this.currentUsers)
                 },
                 error => {
                     this.showMessage(error)

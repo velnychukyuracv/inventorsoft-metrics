@@ -21,7 +21,7 @@ export class UserService {
     getUsers() {
         return this.http.get(environment.BASE_URL + `/app/users${this.sortById}`)
             .pipe(
-                catchError(error => throwError('Something went wrong'))
+                catchError(error => throwError('Server problem: ' + error.status + ' error'))
             )
     }
 
@@ -37,7 +37,7 @@ export class UserService {
             lastName,
             password
         }).pipe(
-            catchError(error => throwError('Something went wrong'))
+            catchError(error => throwError('Server problem: ' + error.status + ' error'))
         )
     }
 

@@ -6,11 +6,10 @@ import {
     HttpEvent,
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { tap } from 'rxjs/internal/operators';
+
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 import { TokenService } from '../services/token.service';
 
 @Injectable()
@@ -27,17 +26,26 @@ export class JwtInterceptor implements HttpInterceptor {
             });
         }
         return next.handle(request)
-            .do((event: HttpEvent<any>) => {
+            .pipe(
+                tap((event: HttpEvent<any>) => {
 
-                if (event instanceof HttpResponse) {
-                    //todo stuff with response
-                }
-            }, (err: any) => {
-                if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401) {
-                        //TODO this.tokenService.refreshToken()
+                    if (event instanceof HttpResponse) {
+                        //todo stuff with response
                     }
-                }
-            })
+                }, (err: any) => {
+                    if (err instanceof HttpErrorResponse) {
+                        if (err.status === 401) {
+                            //TODO find the bug in refreshToken
+                            // this.tokenService.refreshToken()
+                            //     .subscribe(
+                            //         (res) => {
+                            //             console.log(res);
+                            //             this.tokenService.saveToLocalStorage(res);
+                            //         }
+                            //     );
+                        }
+                    }
+                })
+            )
     }
 }

@@ -1,4 +1,4 @@
 export interface Token {
-    expirationToken: "string";
-    jwtToken: "string";
+    expirationToken: string;
+    jwtToken: string;
 }

@@ -10,13 +10,23 @@ import { UserService } from '../../common/services/user.service';
 })
 export class AddUserComponent implements OnInit {
     form: FormGroup;
-    usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
     message: string;
+    /**
+     * validation pattern for username
+     */
+    usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
     constructor(public router: Router, public userService: UserService) {
     }
 
     ngOnInit() {
+        this.addUserForm();
+    }
+
+    /**
+     * create form for adding user
+     */
+    addUserForm() {
         this.form = new FormGroup({
             'email'    : new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)]),
             'firstName': new FormControl(null, [Validators.required]),
