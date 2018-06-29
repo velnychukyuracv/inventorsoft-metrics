@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GroupsComponent } from './menu/groups/groups.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
 import { MenuComponent } from './menu/menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../common/shared/shared.module';
+import { EditGroupComponent } from './edit-group/edit-group.component';
 
 @NgModule({
     imports     : [
@@ -16,8 +17,9 @@ import { SharedModule } from '../common/shared/shared.module';
         AngularFontAwesomeModule,
         SharedModule
     ],
-    declarations: [GroupsComponent, MenuComponent],
-    exports     : [GroupsComponent, MenuComponent]
+    declarations: [CreateGroupComponent, EditGroupComponent, MenuComponent],
+    exports     : [CreateGroupComponent, EditGroupComponent, MenuComponent],
+    entryComponents: [CreateGroupComponent, EditGroupComponent]
 })
 export class SidebarModule {
 }

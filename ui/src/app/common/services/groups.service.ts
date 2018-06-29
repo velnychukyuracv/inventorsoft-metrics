@@ -18,7 +18,7 @@ export class GroupsService {
 
     getGroups() {
         console.log('get group');
-        return this.httpClient.get(environment.BASE_URL + '/app/groups?pageSize=100', {
+        return this.httpClient.get(environment.BASE_URL + '/app/groups', {
             headers: {
                 'Authorization': this.authService.getToken().jwtToken
             }
@@ -40,8 +40,23 @@ export class GroupsService {
         ));
     }
 
-    deleteGroup(id: number) {
-        return this.httpClient.delete(environment.BASE_URL + '/app/groups' + '/' + id)
+    editGroup(editedGroup: Group, idGroup: number) {
+        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, editedGroup, {
+            headers: {
+                'Authorization': this.authService.getToken().jwtToken
+            }
+        }).pipe(
+            catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ));
+    }
+
+    deleteGroup(idGroup: number) {
+        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup, {
+            headers: {
+                'Authorization': this.authService.getToken().jwtToken
+            }
+        })
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ));

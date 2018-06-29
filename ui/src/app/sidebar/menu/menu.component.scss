@@ -1,8 +1,5 @@
 @import '../../../assets/colors.scss';
 
-.user {
-
-}
 img {
     width: 90px;
     padding: 20px;
@@ -21,6 +18,7 @@ p {
         font-size: 15px;
         text-decoration: none;
         display: block;
+        width: 250px;
         padding: 12px 20px;
         cursor: pointer;
         color: $sidebarItem;
@@ -31,6 +29,17 @@ p {
             background-color: $sidebarActive;
             border-left: 5px solid $sidebarLeft;
             padding-left: 15px;
+        }
+        i {
+            margin-right: 10px;
+        }
+        button {
+            float: right;
+            color: $sidebarItem;
+            vertical-align: middle;
+            &:active, &:hover {
+                color: $bgPage;
+            }
         }
     }
     > li > a {

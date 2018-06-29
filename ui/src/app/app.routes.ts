@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { GroupsComponent } from './sidebar/menu/groups/groups.component';
+import { CreateGroupComponent } from './sidebar/create-group/create-group.component';
 
 export const APP_ROUTES: Routes = [
     {
@@ -15,7 +15,7 @@ export const APP_ROUTES: Routes = [
 
     {
         path     : 'add-group',
-        component: GroupsComponent
+        component: CreateGroupComponent
     },
     {
         path      : '**',
