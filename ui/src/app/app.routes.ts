@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { CreateGroupComponent } from './sidebar/create-group/create-group.component';
+import { DataSourcesComponent } from './data-sources/data-sources.component';
 
 export const APP_ROUTES: Routes = [
     {
@@ -12,10 +12,9 @@ export const APP_ROUTES: Routes = [
         path     : 'login',
         component: LoginComponent
     },
-
     {
-        path     : 'add-group',
-        component: CreateGroupComponent
+        path     : 'data-sources',
+        component: DataSourcesComponent
     },
     {
         path      : '**',

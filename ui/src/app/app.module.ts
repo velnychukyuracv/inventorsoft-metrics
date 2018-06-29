@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
+import { DataSourcesModule } from './data-sources/data-sources.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarModule } from './sidebar/sidebar.module';
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/forms';
         AppComponent,
         SpinnersComponent
     ],
-    imports: [
+    imports     : [
         RouterModule.forRoot(
             APP_ROUTES
         ),
@@ -30,12 +31,13 @@ import { FormsModule } from '@angular/forms';
         AngularFontAwesomeModule,
         AuthModule,
         SidebarModule,
-        HttpClientModule
+        HttpClientModule,
+        DataSourcesModule
     ],
-    providers: [
+    providers   : [
         SpinnersService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap   : [AppComponent]
 })
 export class AppModule {
 }

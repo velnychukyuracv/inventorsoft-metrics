@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private SpinnersService: SpinnersService
-    ) { }
+    ) {
+    }
 
     public showSpinners(): void {
         this.SpinnersService.show();
     }
+
     private hideSpinners(): void {
         this.SpinnersService.hide();
     }
