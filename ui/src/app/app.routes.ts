@@ -18,7 +18,8 @@ export const APP_ROUTES: Routes = [
     },
     {
         path     : 'data-sources',
-        component: DataSourcesComponent
+        component: DataSourcesComponent,
+        canActivate: [AuthGuard]
     },
     {
         path       : 'users',

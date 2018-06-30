@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
     HttpRequest,
     HttpHandler,
@@ -6,11 +6,11 @@ import {
     HttpEvent,
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { tap } from 'rxjs/internal/operators';
+import {Observable} from 'rxjs/internal/Observable';
+import {tap} from 'rxjs/internal/operators';
 
-import { AuthService } from '../services/auth.service';
-import { TokenService } from '../services/token.service';
+import {AuthService} from '../services/auth.service';
+import {TokenService} from '../services/token.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

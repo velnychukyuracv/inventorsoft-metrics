@@ -29,7 +29,9 @@ export class AuthService {
             catchError(error => throwError('User Name or Password incorrect'))
         )
     }
-
+    /**
+     * find out if user is authenticated
+     */
     get isAuthenticated() {
         return !!this.tokenService.getToken()
     }

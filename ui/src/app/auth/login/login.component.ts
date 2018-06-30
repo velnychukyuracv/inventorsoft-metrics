@@ -17,18 +17,18 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private SpinnersService: SpinnersService,
+        private spinnersService: SpinnersService,
         private tokenService: TokenService,
         public router: Router
     ) {
     }
 
     public showSpinners(): void {
-        this.SpinnersService.show();
+        this.spinnersService.show();
     }
 
     private hideSpinners(): void {
-        this.SpinnersService.hide();
+        this.spinnersService.hide();
     }
 
     ngOnInit() {

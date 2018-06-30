@@ -1,15 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { first } from 'rxjs/internal/operators/first';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {first} from 'rxjs/internal/operators/first';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { DataSourcesService } from '../common/services/data-sources.service';
-import { SpinnersService } from '../spinners/spinners.service';
-import { DataSource } from '../common/models/data-source.model';
+import {DataSourcesService} from '../common/services/data-sources.service';
+import {SpinnersService} from '../spinners/spinners.service';
+import {DataSource} from '../common/models/data-source.model';
 
 @Component({
-    selector   : 'app-data-sources',
+    selector: 'app-data-sources',
     templateUrl: './data-sources.component.html',
-    styleUrls  : ['./data-sources.component.scss']
+    styleUrls: ['./data-sources.component.scss']
 })
 export class DataSourcesComponent implements OnInit {
 
@@ -20,10 +20,8 @@ export class DataSourcesComponent implements OnInit {
     dataSourceForm: FormGroup;
     selectedDataSourceId: number;
 
-    constructor(
-        private dataSourcesService: DataSourcesService,
-        private spinnersService: SpinnersService,
-    ) {
+    constructor(private dataSourcesService: DataSourcesService,
+                private spinnersService: SpinnersService,) {
     }
 
     /** Show spinners
@@ -47,12 +45,12 @@ export class DataSourcesComponent implements OnInit {
      */
     initDataSourceForm() {
         this.dataSourceForm = new FormGroup({
-            dataSourceName : new FormControl(null, [Validators.required]),
-            dataSourceType : new FormControl(null, [Validators.required, Validators.minLength(3)]),
+            dataSourceName: new FormControl(null, [Validators.required]),
+            dataSourceType: new FormControl(null, [Validators.required, Validators.minLength(3)]),
             driverClassName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-            url            : new FormControl(null, [Validators.required, Validators.minLength(8)]),
-            password       : new FormControl(null, [Validators.required, Validators.minLength(8)]),
-            userName       : new FormControl(null, [Validators.required, Validators.minLength(3)]),
+            url: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+            password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+            userName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
         });
     }
 
