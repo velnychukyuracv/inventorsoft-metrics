@@ -24,7 +24,6 @@ export class GroupsService {
      */
 
     getGroups() {
-        console.log('get group');
         return this.httpClient.get(environment.BASE_URL + '/app/groups', {
             headers: {
                 'Authorization': this.authService.getToken().jwtToken
@@ -35,8 +34,8 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to create Group
-     * @param createdGroup: Group Info
+     * HTTP request to create group
+     * @param createdGroup: Group Data
      */
 
     createGroup(createdGroup: Group) {
@@ -51,13 +50,12 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to edit Group
-     * @param editedGroup: Group Info
+     * HTTP request to edit group
+     * @param editedGroup: Group Data
      * @param idGroup: Group id
      */
 
     editGroup(editedGroup: Group, idGroup: number) {
-        console.log(idGroup);
         const body = {materialIcon: editedGroup.materialIcon, name: editedGroup.name};
         return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, body, {
             headers: {
@@ -70,7 +68,7 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to delete Group
+     * HTTP request to delete group
      * @param idGroup: Group id
      */
 

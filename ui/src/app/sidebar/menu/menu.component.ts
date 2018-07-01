@@ -7,7 +7,6 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditGroupComponent } from '../edit-group/edit-group.component';
-import { send } from 'q';
 
 @Component({
     selector   : 'app-menu',
@@ -17,9 +16,6 @@ import { send } from 'q';
 
 export class MenuComponent {
     groups: Group[];
-    group: Group = new Group();
-    groupId: number;
-    selectedGroup: Group;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
@@ -30,6 +26,10 @@ export class MenuComponent {
     ngOnInit() {
         this.getGroups();
     }
+
+    /**
+     * Get all groups
+     */
 
     getGroups() {
         this.showSpinners();
@@ -43,12 +43,18 @@ export class MenuComponent {
             })
     }
 
-    deleteGroup(groupId) {
+    /**
+     * Delete group data
+     * @param groupId: Id of selected group
+     */
+
+    deleteGroup(groupId: number) {
         this.showSpinners();
         this.groupsService.deleteGroup(groupId).pipe(first())
             .subscribe(
                 (response) => {
                     this.hideSpinners();
+                    this.getGroups();
                     // TODO: Show success notification
                 },
                 error => {
@@ -59,18 +65,35 @@ export class MenuComponent {
 
     }
 
+    /**
+     * Open Create Group modal
+     */
+
     openCreateModal() {
         this.modalService.open(CreateGroupComponent);
     }
+
+    /**
+     * Open Edit Group modal
+     * @param selectedGroup: Data of selected group
+     */
 
     openEditModal(selectedGroup: Group) {
         this.groupsService.editedGroupInfo = selectedGroup;
         this.modalService.open(EditGroupComponent);
     }
 
+    /**
+     * Show spinner
+     */
+
     showSpinners(): void {
         this.spinnersService.show();
     }
+
+    /**
+     * Hide spinner
+     */
 
     hideSpinners(): void {
         this.spinnersService.hide();

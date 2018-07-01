@@ -1,36 +1,36 @@
-    <div class="modal-header">
-        <h1>Edit Group</h1>
-    </div>
-    <div class="modal-body">
-        <form class="form-validate" [formGroup]="editGroupForm">
-            <div class="form-group">
-                <label for="icon">Icon</label>
-                <select id="icon" class="form-control" name="materialIcon" formControlName="materialIcon" required
-                        [(ngModel)]="group.materialIcon"
-                        [ngClass]="{'border border-danger': editGroupForm.get('materialIcon').invalid && editGroupForm.get('materialIcon').touched}">
-                    <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}} {{materialIcon.title}}
-                    </option>
-                </select>
-            </div>
-            <div class="alert alert-info mt-3" *ngIf="editGroupForm.get('materialIcon').touched">
-                <span *ngIf="editGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
-            </div>
-            <div class="form-group">
-                <label for="name">Group Name</label>
-                <input type="text" id="name" class="form-control" name="name" formControlName="name" required [(ngModel)]="group.name"
-                       [ngClass]="{'border border-danger': editGroupForm.get('name').invalid && editGroupForm.get('name').touched}">
-            </div>
-            <div class="alert alert-info mt-3" *ngIf="editGroupForm.get('name').invalid && editGroupForm.get('name').touched">
-                <span *ngIf="editGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
-                <span
-                    *ngIf="editGroupForm.get('name').hasError('minlength')">
+<div class="modal-header">
+    <h1>Edit Group</h1>
+</div>
+<div class="modal-body">
+    <form class="form-validate" [formGroup]="editGroupForm">
+        <div class="form-group">
+            <label for="icon">Icon</label>
+            <select id="icon" class="form-control" name="materialIcon" formControlName="materialIcon" required
+                    [(ngModel)]="group.materialIcon"
+                    [ngClass]="{'border border-danger': editGroupForm.get('materialIcon').invalid && editGroupForm.get('materialIcon').touched}">
+                <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}} {{materialIcon.title}}
+                </option>
+            </select>
+        </div>
+        <div class="alert alert-info mt-3" *ngIf="editGroupForm.get('materialIcon').touched">
+            <span *ngIf="editGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="name">Group Name</label>
+            <input type="text" id="name" class="form-control" name="name" formControlName="name" required [(ngModel)]="group.name"
+                   [ngClass]="{'border border-danger': editGroupForm.get('name').invalid && editGroupForm.get('name').touched}">
+        </div>
+        <div class="alert alert-info mt-3" *ngIf="editGroupForm.get('name').invalid && editGroupForm.get('name').touched">
+            <span *ngIf="editGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
+            <span
+                *ngIf="editGroupForm.get('name').hasError('minlength')">
                                 Group Name should be at least {{ editGroupForm.get('name')['errors']['minlength']['requiredLength'] }} characters long.
                                 Now {{ editGroupForm.get('name')['errors']['minlength']['actualLength'] }} characters.
         </span>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-default" (click)="editGroup(group, group.id)">Edit</button>
-        <button type="submit" class="btn btn-default"  (click)="activeModal.close()">Close</button>
-    </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-default" (click)="editGroup(group, group.id)">Edit</button>
+    <button type="submit" class="btn btn-default" (click)="activeModal.close()">Close</button>
+</div>
