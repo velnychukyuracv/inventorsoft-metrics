@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
-import { group } from '@angular/animations';
+import { Icons } from '../../common/models/groupIcons.model';
 
 @Component({
     selector   : 'app-edit-group',
@@ -16,58 +16,25 @@ export class EditGroupComponent {
     groups: Group[];
     group: Group = new Group();
     editGroupForm: FormGroup;
-    selectedGroupId: number;
-    receivedGroup: Group;
     done: boolean = false;
-    icons = [
-        {
-            class: 'fa fa-bookmark fa-1x',
-            glyph: '',
-            title: 'bookmark',
-        },
-        {
-            class: 'fa fa-circle fa-1x',
-            glyph: '',
-            title: 'circle',
-        },
-        {
-            class: 'fa fa-cloud fa-1x',
-            glyph: '',
-            title: 'cloud',
-        },
-        {
-            class: 'fa fa-square fa-1x',
-            glyph: '',
-            title: 'square',
-        },
-        {
-            class: 'fa fa-star fa-1x',
-            glyph: '',
-            title: 'star',
-        },
-        {
-            class: 'fa fa-certificate fa-1x',
-            glyph: '',
-            title: 'certificate',
-        }];
+    icons: Icons [];
 
     constructor(private groupsService: GroupsService,
                 private spinnersService: SpinnersService,
+                public activeModal: NgbActiveModal,
                 private modalService: NgbModal) {
     }
 
+
     editGroup(group: Group, selectedGroupId: number) {
         this.showSpinners();
+        selectedGroupId = this.groupsService.editedGroupInfo.id;
         console.log(selectedGroupId);
         this.groupsService.editGroup(group, selectedGroupId).pipe(first())
             .subscribe(
                 (response) => {
-                   /* this.receivedGroup = data;
-                    this.done = true;*/
                     this.hideSpinners();
                     console.log(response);
-                    /*                    console.log(this.group);
-                                        console.log(data);*/
                 },
                 error => {
                     console.log(error);
@@ -78,6 +45,8 @@ export class EditGroupComponent {
 
     ngOnInit() {
         this.initEditGroupForm();
+        this.getIcons();
+        this.getEditedUserData();
     }
 
     initEditGroupForm() {
@@ -85,6 +54,15 @@ export class EditGroupComponent {
             'materialIcon': new FormControl(null, [Validators.required]),
             'name'        : new FormControl(null, [Validators.required, Validators.minLength(3)]),
         });
+    }
+
+    getIcons() {
+        this.icons = this.groupsService.getIcons();
+    }
+
+    getEditedUserData() {
+        this.group.materialIcon = this.groupsService.editedGroupInfo.materialIcon;
+        this.group.name = this.groupsService.editedGroupInfo.name;
     }
 
     public showSpinners(): void {

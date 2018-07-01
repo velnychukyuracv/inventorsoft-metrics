@@ -32,7 +32,9 @@
                         <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
                             <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
                                 class="fa fa-trash fa-1x"> </i></button>
-                            <button class="btn btn-link btn-sm" (click)="openEditModal()"><i class="fa fa-edit fa-1x"> </i></button>
+                            <button class="btn btn-link btn-sm" (click)="openEditModal(group)"><i
+                                class="fa fa-edit fa-1x"> </i>
+                            </button>
                         </a>
                     </div>
                 </div>
@@ -40,6 +42,7 @@
         </li>
     </ul>
 </nav>
+
 
 
 

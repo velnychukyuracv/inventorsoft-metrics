@@ -7,6 +7,7 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditGroupComponent } from '../edit-group/edit-group.component';
+import { send } from 'q';
 
 @Component({
     selector   : 'app-menu',
@@ -16,7 +17,9 @@ import { EditGroupComponent } from '../edit-group/edit-group.component';
 
 export class MenuComponent {
     groups: Group[];
-    selectedGroupId: number;
+    group: Group = new Group();
+    groupId: number;
+    selectedGroup: Group;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
@@ -40,9 +43,9 @@ export class MenuComponent {
             })
     }
 
-    deleteGroup(selectedGroupId) {
+    deleteGroup(groupId) {
         this.showSpinners();
-        this.groupsService.deleteGroup(selectedGroupId).pipe(first())
+        this.groupsService.deleteGroup(groupId).pipe(first())
             .subscribe(
                 (response) => {
                     this.hideSpinners();
@@ -60,7 +63,8 @@ export class MenuComponent {
         this.modalService.open(CreateGroupComponent);
     }
 
-    openEditModal() {
+    openEditModal(selectedGroup: Group) {
+        this.groupsService.editedGroupInfo = selectedGroup;
         this.modalService.open(EditGroupComponent);
     }
 
