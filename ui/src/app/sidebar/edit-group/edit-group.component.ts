@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -16,38 +16,38 @@ export class EditGroupComponent {
     groups: Group[];
     group: Group = new Group();
     editGroupForm: FormGroup;
-    done: boolean = false;
     icons: Icons [];
 
     constructor(private groupsService: GroupsService,
                 private spinnersService: SpinnersService,
-                public activeModal: NgbActiveModal,
-                private modalService: NgbModal) {
-    }
-
-
-    editGroup(group: Group, selectedGroupId: number) {
-        this.showSpinners();
-        selectedGroupId = this.groupsService.editedGroupInfo.id;
-        console.log(selectedGroupId);
-        this.groupsService.editGroup(group, selectedGroupId).pipe(first())
-            .subscribe(
-                (response) => {
-                    this.hideSpinners();
-                    console.log(response);
-                },
-                error => {
-                    console.log(error);
-                    this.hideSpinners();
-                }
-            );
+                public activeModal: NgbActiveModal) {
     }
 
     ngOnInit() {
         this.initEditGroupForm();
         this.getIcons();
-        this.getEditedUserData();
+        this.getEditedGroupData();
     }
+
+    /**
+     * Get all groups
+     */
+
+    getGroups() {
+        this.showSpinners();
+        this.groupsService.getGroups().pipe(first()).subscribe(
+            (response: any) => {
+                this.hideSpinners();
+                this.groups = response.content;
+            },
+            error => {
+                this.hideSpinners();
+            })
+    }
+
+    /**
+     * Initialization Edit Group Form
+     */
 
     initEditGroupForm() {
         this.editGroupForm = new FormGroup({
@@ -56,18 +56,57 @@ export class EditGroupComponent {
         });
     }
 
+    /**
+     * Get Icons for editing group
+     */
+
     getIcons() {
         this.icons = this.groupsService.getIcons();
     }
 
-    getEditedUserData() {
+    /**
+     * Get data of selected group
+     */
+
+    getEditedGroupData() {
         this.group.materialIcon = this.groupsService.editedGroupInfo.materialIcon;
         this.group.name = this.groupsService.editedGroupInfo.name;
     }
 
+    /**
+     * Edit group data
+     * @param group: Data of selected group
+     * @param selectedGroupId: Id of selected group
+     */
+
+    editGroup(group: Group, selectedGroupId: number) {
+        this.showSpinners();
+        selectedGroupId = this.groupsService.editedGroupInfo.id;
+        this.groupsService.editGroup(group, selectedGroupId).pipe(first())
+            .subscribe(
+                (response) => {
+                    this.hideSpinners();
+                    this.activeModal.close();
+                    // TODO: Show success notification
+                },
+                error => {
+                    this.hideSpinners();
+                    // TODO: Show error notification
+                }
+            );
+    }
+
+    /**
+     * Show spinner
+     */
+
     public showSpinners(): void {
         this.spinnersService.show();
     }
+
+    /**
+     * Hide spinner
+     */
 
     private hideSpinners(): void {
         this.spinnersService.hide();
