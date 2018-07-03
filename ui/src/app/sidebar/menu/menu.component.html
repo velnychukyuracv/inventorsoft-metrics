@@ -1,4 +1,4 @@
-<nav class="nav flex-column">
+<nav class="nav flex-column" id="sidebar">
     <div class="user">
         <img src="../../../assets/user.png" class="rounded-circle">
         <p><b>Your Name</b></p>
@@ -7,6 +7,7 @@
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-home fa-1x"> </i> Home</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-user fa-1x"> </i> User Management</a>
         </li>
@@ -14,36 +15,35 @@
             <a class="nav-link" href="#"><i class="fa fa-home fa-1x"> </i> Data Source Management</a>
         </li>
         <li class="nav-item">
-            <div ngbDropdown id="dropdown-1" [autoClose]="false">
-                <a id="dropdownBasic-1" ngbDropdownToggle><i class="fa fa-bar-chart fa-1x"> </i> Charts
-                    Management</a>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic-1">
-                    <a class="dropdown-item">Item</a>
-                </div>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                    <span class="menu-collapsed"><i class="fa fa-bar-chart fa-1x"> </i> Chart
+                    Management</span>
+            </a>
+            <div id='submenu1' class="collapse sidebar-submenu">
+                <a class="dropdown-item"> Item</a>
             </div>
         </li>
         <li class="nav-item">
-            <div ngbDropdown id="dropdown" [autoClose]="false">
-                <a id="dropdownBasic" ngbDropdownToggle><i class="fa fa-group fa-1x"> </i> Group
-                    Management</a>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic">
-                    <a class="dropdown-item" (click)="openCreateModal()"><i class="fa fa-plus fa-1x"> </i> Add new group</a>
-                    <div>
-                        <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
-                            <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
-                                class="fa fa-trash fa-1x"> </i></button>
-                            <button class="btn btn-link btn-sm" (click)="openEditModal(group)"><i
-                                class="fa fa-edit fa-1x"> </i>
-                            </button>
-                        </a>
-                    </div>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                    <span class="menu-collapsed"><i class="fa fa-group fa-1x"> </i> Group
+                    Management</span>
+            </a>
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <div class="text-center">
+                    <button class="btn btn-outline-secondary" id="create-group" (click)="openCreateModal()"><i
+                        class="fa fa-plus fa-1x"> </i> Create new group
+                    </button>
+                </div>
+                <div>
+                    <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
+                        <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
+                            class="fa fa-trash fa-1x"> </i></button>
+                        <button class="btn btn-link btn-sm" (click)="openEditModal(group)"><i
+                            class="fa fa-edit fa-1x"> </i>
+                        </button>
+                    </a>
                 </div>
             </div>
         </li>
     </ul>
 </nav>
-
-
-
-
-

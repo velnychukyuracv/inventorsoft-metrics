@@ -100,7 +100,7 @@ export class EditGroupComponent {
      * Show spinner
      */
 
-    public showSpinners(): void {
+    showSpinners(): void {
         this.spinnersService.show();
     }
 
@@ -108,7 +108,7 @@ export class EditGroupComponent {
      * Hide spinner
      */
 
-    private hideSpinners(): void {
+    hideSpinners(): void {
         this.spinnersService.hide();
     }
 

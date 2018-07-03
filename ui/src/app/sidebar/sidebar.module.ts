@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CreateGroupComponent } from './create-group/create-group.component';
 import { MenuComponent } from './menu/menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../common/shared/shared.module';
 import { EditGroupComponent } from './edit-group/edit-group.component';
@@ -14,7 +13,6 @@ import { EditGroupComponent } from './edit-group/edit-group.component';
         FormsModule,
         NgbModule,
         ReactiveFormsModule,
-        AngularFontAwesomeModule,
         SharedModule
     ],
     declarations: [CreateGroupComponent, EditGroupComponent, MenuComponent],

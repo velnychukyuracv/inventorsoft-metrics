@@ -15,7 +15,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class CreateGroupComponent {
     group: Group = new Group();
-    addGroupForm: FormGroup;
+    createGroupForm: FormGroup;
     receivedGroup: Group;
     icons: Icons[];
 
@@ -34,7 +34,7 @@ export class CreateGroupComponent {
      */
 
     initCreateGroupForm() {
-        this.addGroupForm = new FormGroup({
+        this.createGroupForm = new FormGroup({
             'materialIcon': new FormControl(null, [Validators.required]),
             'name'        : new FormControl(null, [Validators.required, Validators.minLength(3)]),
         });
@@ -74,7 +74,7 @@ export class CreateGroupComponent {
      * Show spinner
      */
 
-    public showSpinners(): void {
+    showSpinners(): void {
         this.spinnersService.show();
     }
 
@@ -82,7 +82,7 @@ export class CreateGroupComponent {
      * Hide spinner
      */
 
-    private hideSpinners(): void {
+    hideSpinners(): void {
         this.spinnersService.hide();
     }
 

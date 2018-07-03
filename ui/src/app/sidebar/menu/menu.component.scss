@@ -18,13 +18,12 @@ p {
         font-size: 15px;
         text-decoration: none;
         display: block;
-        width: 250px;
         padding: 12px 20px;
         cursor: pointer;
         color: $sidebarItem;
         -webkit-transition: background-color 200ms, color 200ms;
         transition: background-color 200ms, color 200ms;
-        &:active, &:hover {
+        &:active, &:hover, &:focus {
             color: $bgPage;
             background-color: $sidebarActive;
             border-left: 5px solid $sidebarLeft;
@@ -41,13 +40,31 @@ p {
                 color: $bgPage;
             }
         }
+
     }
-    > li > a {
-        /*        &:hover {
-                    color: $sidebarItemActive-color;
-                    background-color: $sidebarActive-color;
-                    border-left: 5px solid $sidebarLeft-color;
-                    padding-left: 15px;
-                }*/
+    .sidebar-submenu {
+        background-color: $sidebarDropdown;
+    }
+    #create-group {
+        margin: 10px;
+    }
+
+}
+
+#sidebar {
+    /* for the animation */
+    transition: margin 0.3s ease;
+}
+
+.collapsed {
+    /* hide it for small displays*/
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .collapsed {
+        display: block;
+        /* same width as sidebar */
+        margin-left: -25%;
     }
 }

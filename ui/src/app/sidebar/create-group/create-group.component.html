@@ -2,30 +2,30 @@
     <h1>Create Group</h1>
 </div>
 <div class="modal-body">
-    <form class="form-validate" [formGroup]="addGroupForm">
+    <form class="form-validate" [formGroup]="createGroupForm">
         <div class="form-group">
             <label for="icon">Icon</label>
             <select id="icon" class="form-control" name="materialIcon" formControlName="materialIcon" required
                     [(ngModel)]="group.materialIcon"
-                    [ngClass]="{'border border-danger': addGroupForm.get('materialIcon').invalid && addGroupForm.get('materialIcon').touched}">
+                    [ngClass]="{'border border-danger': createGroupForm.get('materialIcon').invalid && createGroupForm.get('materialIcon').touched}">
                 <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}} {{materialIcon.title}}
                 </option>
             </select>
         </div>
-        <div class="alert alert-info mt-3" *ngIf="addGroupForm.get('materialIcon').touched">
-            <span *ngIf="addGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
+        <div class="alert alert-info mt-3" *ngIf="createGroupForm.get('materialIcon').invalid && createGroupForm.get('materialIcon').touched">
+            <span *ngIf="createGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
         </div>
         <div class="form-group">
             <label for="name">Group Name</label>
             <input type="text" id="name" class="form-control" name="name" formControlName="name" required [(ngModel)]="group.name"
-                   [ngClass]="{'border border-danger': addGroupForm.get('name').invalid && addGroupForm.get('name').touched}">
+                   [ngClass]="{'border border-danger': createGroupForm.get('name').invalid && createGroupForm.get('name').touched}">
         </div>
-        <div class="alert alert-info mt-3" *ngIf="addGroupForm.get('name').invalid && addGroupForm.get('name').touched">
-            <span *ngIf="addGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
+        <div class="alert alert-info mt-3" *ngIf="createGroupForm.get('name').invalid && createGroupForm.get('name').touched">
+            <span *ngIf="createGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
             <span
-                *ngIf="addGroupForm.get('name').hasError('minlength')">
-                                Group Name should be at least {{ addGroupForm.get('name')['errors']['minlength']['requiredLength'] }} characters long.
-                                Now {{ addGroupForm.get('name')['errors']['minlength']['actualLength'] }} characters.
+                *ngIf="createGroupForm.get('name').hasError('minlength')">
+                                Group Name should be at least {{ createGroupForm.get('name')['errors']['minlength']['requiredLength'] }} characters long.
+                                Now {{ createGroupForm.get('name')['errors']['minlength']['actualLength'] }} characters.
         </span>
         </div>
     </form>
