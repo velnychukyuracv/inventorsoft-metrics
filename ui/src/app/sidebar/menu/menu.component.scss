@@ -50,21 +50,3 @@ p {
     }
 
 }
-
-#sidebar {
-    /* for the animation */
-    transition: margin 0.3s ease;
-}
-
-.collapsed {
-    /* hide it for small displays*/
-    display: none;
-}
-
-@media (min-width: 992px) {
-    .collapsed {
-        display: block;
-        /* same width as sidebar */
-        margin-left: -25%;
-    }
-}
