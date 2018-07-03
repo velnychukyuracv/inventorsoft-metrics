@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reporttool.datasources.model.DataSourceDto;
 import com.reporttool.datasources.model.DataSourceForm;
 import com.reporttool.datasources.model.DataSourceProperties;
+import com.reporttool.domain.constants.DataSourceType;
 import com.reporttool.domain.exeption.MappingException;
 import com.reporttool.domain.exeption.ResourceNotFoundException;
 import com.reporttool.domain.model.DataSourceDbRepresentation;
@@ -15,6 +16,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -90,16 +95,22 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
 
 
     @Transactional(readOnly = true)
-    public Page<DataSourceDto> findAll(Pageable pageable) {
+    public Page<DataSourceDto> findAll(Pageable pageable, String sortBy, String direction) {
         Page<DataSourceDbRepresentation> dbRepresentations = dbRepresentationRepository.findAll(pageable);
-        return dbRepresentations.map(this::createDataSourceDto);
+        Page<DataSourceDto> dataSourceDtos = dbRepresentations.map(this::createDataSourceDto);
+        List<DataSourceDto> list = new ArrayList<>(dataSourceDtos.getContent());
+        list.sort(createComparator(sortBy, direction));
+        return new PageImpl<>(list, pageable, dataSourceDtos.getTotalElements());
     }
 
     @Transactional(readOnly = true)
-    public Page<DataSourceDto> findDataSourcesByName(String query, Pageable pageable) {
+    public Page<DataSourceDto> findDataSourcesByName(String query, Pageable pageable, String sortBy, String direction) {
         Page<DataSourceDbRepresentation> dbRepresentations =
                 dbRepresentationRepository.findAllByDataSourceNameOrderByDataSourceNameAsc(query, pageable);
-        return dbRepresentations.map(this::createDataSourceDto);
+        Page<DataSourceDto> dataSourceDtos = dbRepresentations.map(this::createDataSourceDto);
+        List<DataSourceDto> list = new ArrayList<>(dataSourceDtos.getContent());
+        list.sort(createComparator(sortBy, direction));
+        return new PageImpl<>(list, pageable, dataSourceDtos.getTotalElements());
     }
 
     @Transactional(readOnly = true)
@@ -255,5 +266,95 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
     private void deleteDataSource(String dataSourceName) {
         dataSources.get(dataSourceName).get().close();
         dataSources.remove(dataSourceName);
+    }
+
+    private Comparator<DataSourceDto> createComparator(final String sortBy, final String direction) {
+        return new Comparator<DataSourceDto>() {
+            @Override
+            public int compare(DataSourceDto dto1, DataSourceDto dto2) {
+                int i = 0;
+                switch (sortBy) {
+                    case "id":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getId().compareTo(dto2.getId());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getId().compareTo(dto1.getId());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                    case "createdAt":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getCreatedAt().compareTo(dto2.getCreatedAt());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getCreatedAt().compareTo(dto1.getCreatedAt());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                    case "updatedAt":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getUpdatedAt().compareTo(dto2.getUpdatedAt());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getUpdatedAt().compareTo(dto1.getUpdatedAt());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                    case "url":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getUrl().compareTo(dto2.getUrl());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getUrl().compareTo(dto1.getUrl());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                    case "driverClassName":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getDriverClassName().compareTo(dto2.getDriverClassName());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getDriverClassName().compareTo(dto1.getDriverClassName());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                    case "dataSourceType":
+                        switch (direction) {
+                            case "asc" :
+                                i = dto1.getDataSourceType().compareTo(dto2.getDataSourceType());
+                                if (i == 0) {
+                                    i = dto1.getDataSourceName().compareTo(dto2.getDataSourceName());
+                                }
+                            case "desc" :
+                                i = dto2.getDataSourceType().compareTo(dto1.getDataSourceType());
+                                if (i == 0) {
+                                    i = dto2.getDataSourceName().compareTo(dto1.getDataSourceName());
+                                }
+                        }
+                }
+                return i;
+            }
+        };
     }
 }

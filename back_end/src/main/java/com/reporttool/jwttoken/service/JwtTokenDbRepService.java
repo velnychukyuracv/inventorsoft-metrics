@@ -55,8 +55,7 @@ public class JwtTokenDbRepService {
     public TokenDbRepresentationDto createAndSaveTokenDbRepresentation(String email) {
         Optional<User> optionalUser = userService.findByEmail(email);
         User user = optionalUser.orElseThrow(ResourceNotFoundException::new);
-        TokenDbRepresentation tokenDbRep;
-        tokenDbRep = getTokenDbRepresentation(email, user);
+        TokenDbRepresentation tokenDbRep = getTokenDbRepresentation(email, user);
 
         userService.setUserLastSignInField(user);
         return tokenDbRepMapper.mapToTokenDbRepresentationDto(tokenDbRep);

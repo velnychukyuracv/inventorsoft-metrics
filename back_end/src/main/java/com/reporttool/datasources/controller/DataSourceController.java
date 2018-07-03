@@ -51,11 +51,11 @@ public class DataSourceController {
             @RequestParam(value = "pageSize", required = false, defaultValue = "50") Integer pageSize,
             @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
             @RequestParam(value = "sortBy", required = false, defaultValue = DATA_SOURCE_NAME) String sortBy) {
-        Pageable pageable = ReportToolUtils.createPageable(page, pageSize, direction, sortBy);
+        Pageable pageable = ReportToolUtils.createPageable(page, pageSize, direction, DATA_SOURCE_NAME);
         if (isEmpty(query)) {
-            return dataSourcePropertiesService.findAll(pageable);
+            return dataSourcePropertiesService.findAll(pageable, sortBy, direction);
         } else {
-            return dataSourcePropertiesService.findDataSourcesByName(query, pageable);
+            return dataSourcePropertiesService.findDataSourcesByName(query, pageable, sortBy, direction);
         }
     }
 
