@@ -20,7 +20,6 @@ export class UsersComponent implements OnInit {
 
     /**
      * show all users received from the server
-     * @param res - result of the function getUsers
      */
     getAllUsers() {
         this.userService.getUsers()
