@@ -13,7 +13,8 @@ export class PaginationService {
     constructor() {
     }
 
-    /** sends event to observable
+    /**
+     * Sends event to observable
      * @param {number | PAGE_NAVIGATION} event
      */
     changeCurrentPage(event: number | PAGE_NAVIGATION) {

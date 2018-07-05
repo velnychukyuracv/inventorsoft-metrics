@@ -17,7 +17,8 @@ export class PaginationableListDirective implements OnInit, OnDestroy {
         this.subscribeAndEmitCurrentPageChanges();
     }
 
-    /** subscribing and emitting changes of current page
+    /**
+     * Subscribing and emitting changes of current page
      */
     subscribeAndEmitCurrentPageChanges() {
         this.paginationItemSubscription = this.paginationService.currentPage$.subscribe(event => {

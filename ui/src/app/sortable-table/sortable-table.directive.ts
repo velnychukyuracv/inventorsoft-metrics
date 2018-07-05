@@ -17,7 +17,8 @@ export class SortableTableDirective implements OnInit, OnDestroy {
         this.subscribeAndEmitSortChanges();
     }
 
-    /** subscribing and emitting sort changes
+    /**
+     * Subscribing and emitting sort changes
      */
     subscribeAndEmitSortChanges() {
         this.columnSortedSubscription = this.sortService.columnSorted$.subscribe(event => {

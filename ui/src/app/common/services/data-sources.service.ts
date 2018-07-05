@@ -19,7 +19,8 @@ export class DataSourcesService {
     constructor(private httpClient: HttpClient) {
     }
 
-    /** HTTP request for get Data Source list
+    /**
+     * HTTP request for get Data Source list
      * @param {DataSourcesParams} params: request parameters
      * @return {Observable<any>}
      */
@@ -30,7 +31,8 @@ export class DataSourcesService {
             ));
     }
 
-    /** Makes HttpParams
+    /**
+     * Makes HttpParams
      * @param {DataSourcesParams} options
      * @return {HttpParams}
      */
@@ -44,7 +46,8 @@ export class DataSourcesService {
         return params;
     }
 
-    /** HTTP request for get Data Source Info
+    /**
+     * HTTP request for get Data Source Info
      * @param id: Data Source id
      */
     getDataSourceById(id: number): Observable<any> {
@@ -54,7 +57,8 @@ export class DataSourcesService {
             ));
     }
 
-    /** HTTP request for create Data Source
+    /**
+     * HTTP request for create Data Source
      * @param dataSource: Data Source Info
      */
     createDataSource(dataSource: DataSource) {
@@ -64,7 +68,8 @@ export class DataSourcesService {
             ));
     }
 
-    /** HTTP request for edit Data Source
+    /**
+     * HTTP request for edit Data Source
      * @param id: Data Source id
      * @param dataSource: Data Source Info
      */
@@ -75,8 +80,10 @@ export class DataSourcesService {
             ));
     }
 
-    /** HTTP request for delete Data Source
-     * @param id: Data Source id
+    /**
+     * HTTP request for delete Data Source
+     * @param {number} id: Data Source id
+     * @return {Observable<any>}
      */
     deleteDataSource(id: number) {
         return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + '/' + id)

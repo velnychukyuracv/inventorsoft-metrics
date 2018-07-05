@@ -15,7 +15,8 @@ export class PaginationComponent implements OnInit {
     ngOnInit() {
     }
 
-    /** Get Array of number from 0 to totalPages
+    /**
+     * Get Array of number from 0 to totalPages
      * @return {number[]}
      */
     range(): number[] {

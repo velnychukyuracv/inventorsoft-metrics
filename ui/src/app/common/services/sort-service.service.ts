@@ -15,7 +15,8 @@ export class SortService {
 
     columnSorted$ = this.columnSortedSource.asObservable();
 
-    /** sends event to observable
+    /**
+     * Sends event to observable
      * @param {ColumnSortedEvent} event
      */
     columnSorted(event: ColumnSortedEvent) {

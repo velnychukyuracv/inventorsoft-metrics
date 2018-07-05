@@ -33,13 +33,15 @@ export class DataSourcesComponent implements OnInit {
     ) {
     }
 
-    /** Show spinners
+    /**
+     * Show spinners
      */
     private showSpinners(): void {
         this.spinnersService.show();
     }
 
-    /** Hide spinners
+    /**
+     * Hide spinners
      */
     private hideSpinners(): void {
         this.spinnersService.hide();
@@ -50,7 +52,8 @@ export class DataSourcesComponent implements OnInit {
         this.initDataSourceForm();
     }
 
-    /** Slot for connecting to signal 'sorted'
+    /**
+     * Slot for connecting to signal 'sorted'
      * @param $event
      */
     onSorted($event) {
@@ -59,7 +62,8 @@ export class DataSourcesComponent implements OnInit {
         this.buildDataSources();
     }
 
-    /** Slot for connecting to signal 'pageChanged'
+    /**
+     * Slot for connecting to signal 'pageChanged'
      * @param {number | PAGE_NAVIGATION} $event
      */
     onPageChange($event: number | PAGE_NAVIGATION) {
@@ -84,7 +88,8 @@ export class DataSourcesComponent implements OnInit {
         this.buildDataSources();
     }
 
-    /** Initialisation Data Source Form
+    /**
+     * Initialisation Data Source Form
      */
     initDataSourceForm() {
         this.dataSourceForm = new FormGroup({
@@ -97,7 +102,8 @@ export class DataSourcesComponent implements OnInit {
         });
     }
 
-    /** Open modal window for adding instance of Data Source
+    /**
+     * Open modal window for adding instance of Data Source
      */
     openAddModal() {
         this.dataSourceForm.get('password').enable();
@@ -107,7 +113,8 @@ export class DataSourcesComponent implements OnInit {
         this.selectedDataSourceId = undefined;
     }
 
-    /** Open modal window for editing instance of Data Source
+    /**
+     * Open modal window for editing instance of Data Source
      * @param dataSourceId: Data Source id
      */
     openEditModal(dataSourceId: number) {
@@ -125,14 +132,16 @@ export class DataSourcesComponent implements OnInit {
                 });
     }
 
-    /** Open modal window for deleting instance of Data Source
-     * @param dataSourceId: Data Source id
+    /**
+     * Open modal window for deleting instance of Data Source
+     * @param {number} dataSourceId: Data Source id
      */
     openDeleteModal(dataSourceId: number) {
         this.selectedDataSourceId = dataSourceId;
     }
 
-    /** Build Data Sources
+    /**
+     * Build Data Sources
      */
     buildDataSources() {
         this.showSpinners();
@@ -167,7 +176,8 @@ export class DataSourcesComponent implements OnInit {
             );
     }
 
-    /** Create Data Source
+    /**
+     * Create Data Source
      */
     createDataSource() {
         this.showSpinners();
@@ -188,7 +198,8 @@ export class DataSourcesComponent implements OnInit {
             );
     }
 
-    /** Edit Data Source
+    /**
+     * Edit Data Source
      */
     editDataSource() {
         this.showSpinners();
@@ -211,7 +222,8 @@ export class DataSourcesComponent implements OnInit {
         }
     }
 
-    /** Delete Data Source
+    /**
+     * Delete Data Source
      */
     deleteDataSource() {
         this.showSpinners();
@@ -234,13 +246,15 @@ export class DataSourcesComponent implements OnInit {
         }
     }
 
-    /** close modal window for creating and editing Data Source
+    /**
+     * close modal window for creating and editing Data Source
      */
     closeModalDataSource() {
         this.btnCloseDataSource.nativeElement.click();
     }
 
-    /** close modal window for deleting Data Source
+    /**
+     * close modal window for deleting Data Source
      */
     closeConfirmDeleteModal() {
         this.btnCloseConfirmDelete.nativeElement.click();

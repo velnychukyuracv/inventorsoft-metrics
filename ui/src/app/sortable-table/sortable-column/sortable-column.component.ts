@@ -19,7 +19,8 @@ export class SortableColumnComponent implements OnInit, OnDestroy {
         this.subscribeSortChanges();
     }
 
-    /** subscribing to sort changes
+    /**
+     * Subscribing to sort changes
      */
     subscribeSortChanges() {
         this.columnSortedSubscription = this.sortService.columnSorted$.subscribe(event => {
@@ -34,7 +35,8 @@ export class SortableColumnComponent implements OnInit, OnDestroy {
 
     @Input('sort-direction') sortDirection: string = '';
 
-    /** Click listener
+    /**
+     * Click listener for sorting table data
      */
     @HostListener('click') sort() {
         this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';

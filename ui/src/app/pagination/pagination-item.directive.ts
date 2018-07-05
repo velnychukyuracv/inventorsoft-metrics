@@ -14,7 +14,8 @@ export class PaginationItemDirective implements OnInit {
     ngOnInit() {
     }
 
-    /** Click listener
+    /**
+     * Click listener for change page
      */
     @HostListener('click') onClick() {
         this.paginationService.changeCurrentPage(this.pageNumber);
