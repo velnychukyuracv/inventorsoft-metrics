@@ -10,7 +10,6 @@ import { GroupsService } from '../common/services/groups.service';
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { first } from 'rxjs/operators';
 
-
 @Component({
     selector   : 'app-charts',
     templateUrl: './charts-page.component.html',
@@ -31,9 +30,9 @@ export class ChartsPageComponent implements OnInit {
         private notificationService: NotificationService,
         private dataSourceService: DataSourcesService,
         private groupService: GroupsService) {
-            this.charts = [];
-            this.dataSources = [];
-            this.groups = [];
+        this.charts = [];
+        this.dataSources = [];
+        this.groups = [];
     }
 
     ngOnInit() {
@@ -114,8 +113,6 @@ export class ChartsPageComponent implements OnInit {
                 this.chartForm.patchValue(response);
             });
     }
-
-
 
     deleteChart(): void {
         if (this.selectedChartId) {
