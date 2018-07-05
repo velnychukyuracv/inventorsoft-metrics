@@ -1,0 +1,80 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../../environments/environment';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import { Chart } from '../models/chart.model';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ChartsService {
+    constructor(private httpClient: HttpClient) {
+    }
+
+    /**
+     * Http request for getting all Charts
+     * @returns {Observable<any>}
+     */
+    getCharts(): Observable<any> {
+        return this.httpClient.get(environment.CHARTS_PREFIX, {
+            headers: {
+                'Authorization': JSON.parse(localStorage.getItem("jwt.token")).jwtToken
+            }
+        })
+            .pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error + "dasd")
+            ))
+    }
+
+    /**
+     * Http request for getting one Chart by id
+     * @param {number} id
+     * @returns {Observable<any>}
+     */
+    getChartById(id: number): Observable<any> {
+        return this.httpClient.get(environment.CHARTS_PREFIX + "/" + id)
+            .pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ))
+    }
+
+    /**
+     * Http request for creating new chart
+     * @param {Chart} chart
+     * @returns {Observable<any>}
+     */
+    createChart(chart: Chart): Observable<any> {
+        console.log(chart);
+        return this.httpClient.post(environment.CHARTS_PREFIX, chart)
+            .pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ))
+    }
+
+    /**
+     * Http request for editing some chart
+     * @param {number} id
+     * @param {Chart} chart
+     * @returns {Observable<any>}
+     */
+    editChart(id: number, chart: Chart): Observable<any> {
+        return this.httpClient.put(environment.CHARTS_PREFIX + "/" + id, chart)
+            .pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ))
+    }
+
+    /**
+     * Http for deleting some chart
+     * @param {number} id
+     * @returns {{}}
+     */
+    deleteChart(id: number): Observable<any> {
+        return this.httpClient.delete(environment.CHARTS_PREFIX + "/" + id)
+            .pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ))
+    }
+}
