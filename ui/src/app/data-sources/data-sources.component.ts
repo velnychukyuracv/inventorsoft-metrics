@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
+import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 import { DataSourcesParams } from '../common/models/data-sources-params.model';
 
 @Component({
@@ -18,7 +19,11 @@ export class DataSourcesComponent implements OnInit {
     @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
     dataSources: DataSource[];
-    dataSourcesParams: DataSourcesParams = {};
+    dataSourcesParams: DataSourcesParams = {
+        pageSize: 2,
+        page    : 0
+    };
+    totalPages: number = 1;
     dataSourceForm: FormGroup;
     selectedDataSourceId: number;
 
@@ -51,6 +56,31 @@ export class DataSourcesComponent implements OnInit {
     onSorted($event) {
         this.dataSourcesParams.sortBy = $event.sortBy;
         this.dataSourcesParams.direction = $event.direction;
+        this.buildDataSources();
+    }
+
+    /** Slot for connecting to signal 'pageChanged'
+     * @param {number | PAGE_NAVIGATION} $event
+     */
+    onPageChange($event: number | PAGE_NAVIGATION) {
+        if (typeof $event === 'number') {
+            this.dataSourcesParams.page = $event;
+        } else {
+            switch ($event) {
+                case PAGE_NAVIGATION.PREV:
+                    if (this.dataSourcesParams.page > 0) {
+                        --this.dataSourcesParams.page;
+                    }
+                    break;
+                case PAGE_NAVIGATION.NEXT:
+                    if (this.dataSourcesParams.page < this.totalPages) {
+                        ++this.dataSourcesParams.page;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         this.buildDataSources();
     }
 
@@ -111,7 +141,8 @@ export class DataSourcesComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 (data) => {
-                    this.dataSources = data.content;
+                    this.totalPages = data.totalPages;
+                    this.dataSourcesParams.page = data.number;
 
                     data.content.map(element => {
                         element.createdAt[1] -= 1;
@@ -124,6 +155,7 @@ export class DataSourcesComponent implements OnInit {
                         let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
+                    this.dataSources = data.content;
 
                     this.hideSpinners();
                     // TODO: Show success notification

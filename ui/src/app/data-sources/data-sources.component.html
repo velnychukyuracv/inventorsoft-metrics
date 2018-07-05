@@ -9,6 +9,7 @@
     </div>
     <table class="table table-hover table-sm"
            sortable-table (sorted)="onSorted($event)"
+           paginationable-list (pageChanged)="onPageChange($event)"
     >
         <thead>
         <tr>
@@ -48,6 +49,10 @@
         </tbody>
     </table>
 
+    <app-pagination [activePage]="dataSourcesParams.page"
+                    [totalPages]="totalPages"
+    >
+    </app-pagination>
 </div>
 
 <div class="modal show" id="dataSourceModal" tabindex="-1" role="dialog" aria-hidden="true">
