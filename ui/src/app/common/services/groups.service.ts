@@ -18,12 +18,8 @@ export class GroupsService {
 
     getGroups() {
         console.log('get group');
-        return this.httpClient.get(environment.BASE_URL + '/app/groups', {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-
-        }).pipe(catchError(
+        return this.httpClient.get(environment.BASE_URL + '/app/groups')
+            .pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
 
@@ -31,32 +27,21 @@ export class GroupsService {
 
     addGroup(createdGroup: Group) {
         const body = {materialIcon: createdGroup.materialIcon, name: createdGroup.name};
-        return this.httpClient.post(environment.BASE_URL + '/app/groups', body, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(catchError(
+        return this.httpClient.post(environment.BASE_URL + '/app/groups', body)
+            .pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
     }
 
     editGroup(editedGroup: Group, idGroup: number) {
-        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, editedGroup, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(
-            catchError(
+        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, editedGroup)
+            .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ));
     }
 
     deleteGroup(idGroup: number) {
-        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        })
+        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ));

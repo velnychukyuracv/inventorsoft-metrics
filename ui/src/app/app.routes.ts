@@ -38,11 +38,12 @@ export const APP_ROUTES: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path      : '**',
-        redirectTo: 'login'
+        path       : 'chart-management',
+        component  : ChartsPageComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path     : 'chart-management',
-        component: ChartsPageComponent
+        path      : '**',
+        redirectTo: 'login'
     }
 ];
