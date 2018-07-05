@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
+import { DataSourcesParams } from '../common/models/data-sources-params.model';
 
 @Component({
     selector   : 'app-data-sources',
@@ -17,6 +18,7 @@ export class DataSourcesComponent implements OnInit {
     @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
     dataSources: DataSource[];
+    dataSourcesParams: DataSourcesParams = {};
     dataSourceForm: FormGroup;
     selectedDataSourceId: number;
 
@@ -41,6 +43,15 @@ export class DataSourcesComponent implements OnInit {
     ngOnInit() {
         this.buildDataSources();
         this.initDataSourceForm();
+    }
+
+    /** Slot for connecting to signal 'sorted'
+     * @param $event
+     */
+    onSorted($event) {
+        this.dataSourcesParams.sortBy = $event.sortBy;
+        this.dataSourcesParams.direction = $event.direction;
+        this.buildDataSources();
     }
 
     /** Initialisation Data Source Form
@@ -96,7 +107,7 @@ export class DataSourcesComponent implements OnInit {
     buildDataSources() {
         this.showSpinners();
 
-        this.dataSourcesService.getDataSources()
+        this.dataSourcesService.getDataSources(this.dataSourcesParams)
             .pipe(first())
             .subscribe(
                 (data) => {

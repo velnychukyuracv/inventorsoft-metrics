@@ -7,15 +7,18 @@
             </button>
         </div>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover table-sm"
+           sortable-table (sorted)="onSorted($event)"
+    >
         <thead>
         <tr>
-            <th></th>
-            <th>URL</th>
-            <th>Data Source Name</th>
-            <th>Driver</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <th sortable-column="id">#</th>
+            <th sortable-column="url">URL</th>
+            <th sortable-column="dataSourceName">Data Source Name</th>
+            <th sortable-column="driverClassName">Driver</th>
+            <th sortable-column="dataSourceType">Source Type</th>
+            <th sortable-column="createdAt">Created</th>
+            <th sortable-column="updatedAt">Updated</th>
             <th colspan="2">Actions</th>
         </tr>
         </thead>
@@ -25,16 +28,17 @@
             <td>{{source.url}}</td>
             <td>{{source.dataSourceName}}</td>
             <td>{{source.driverClassName}}</td>
+            <td>{{source.dataSourceType}}</td>
             <td>{{source.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{source.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#dataSourceModal"
+                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#dataSourceModal"
                         (click)="openEditModal(source.id)">
                     Edit
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
+                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal"
                         (click)="openDeleteModal(source.id)">
                     Delete
                 </button>
