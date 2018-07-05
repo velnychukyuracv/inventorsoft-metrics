@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {environment} from "../../environments/environment";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ChartsService {
+    token: any;
+    constructor(private http: HttpClient) {
+        this.token = JSON.parse(localStorage.getItem('jwt.token'));
+    }
 
-  constructor(private http: HttpClient) { }
+    getChart() {
+        let data = {
+            attributes: "test",
+            dataSourceDbRepId: 1, // select
+            filterColumns: "test",
+            groupId: 1, // select
+            name: "test", // input
+            order: 0, // select , input
+            query: "test", // textarea/ json format
+            type: "test", // select
+            visibleColumns: "test" // textarea
+        };
+        console.log('store charts = ', environment.BASE_URL + '/app/charts');
+        return this.http.post(environment.BASE_URL + '/app/charts', data,
+            {
+                headers: new HttpHeaders ({
+                    'Content-Type': 'application/json',
+                    'Authorization': this.token.jwtToken
+                })
+            })
 
-  getChart() {
-    console.log('store charts');
-    return this.http.post(environment.BASE_URL + '/app/charts',
-      {
-      headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTUzMDAxNTg1NX0.yGic3Vl12gcU3Ui04rxiu0uGCy5EK6hxSJL0Nt7rHZvSteqAUSt495gKkmuwUMH7elbEwN5HaiYH-VESSOSt5w'
-      }
-
-    })
-
-  }
-/*{
-  "attributes": "test",
-  "dataSourceDbRepId": 0,
-  "filterColumns": "test",
-  "groupId": 0,
-  "name": "test",
-  "order": 0,
-  "query": "test",
-  "type": "test",
-  "visibleColumns": "test"
-},*/
-
+    }
 }

@@ -1,101 +1,116 @@
-
 <section class="container-fluid px-0">
 
-  <header class="chartsHeader row d-flex justify-content-between mx-0" >
-    <div>
-      <h2 class="no-margin-bottom">Charts</h2>
-    </div>
-    <button (click)="getChart()" class="btn btn-success">
-      Charts
-    </button>
-  </header>
-
-  <section>
-    <div class="breadcrumb-holder ">
-      <ul class="breadcrumb my-0 rounded-0">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item active">Charts</li>
-      </ul>
-    </div>
-  </section>
-
-  <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedCharts"
-                        [settings]="dropdownSettings">
-  </angular2-multiselect>
-
-  <main class="container-fluid">
-
-    <div class="row mx-0">
-
-      <aside class="col-lg-6 " *ngFor="let chart of chartsToShow">
-        <div class="chart">
-          <div class="chartHeader d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-              <h3> {{chart?.type}} chart</h3>
-            </div>
-
-            <div class="btnSettings btn-group">
-
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="OnClik()" >
-                <i class="fa fa-ellipsis-v"></i>
-              </button>
-
-              <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': buttontoggled}" >
-                <button class="dropdown-item" type="button" (click)="OnDeleteChart()" ><i class="fa fa-times"></i>Close</button>
-                <button class="dropdown-item" type="button" (click)="OnEditChart()">
-                  <i class="fa fa-gear"></i>Edit
-                </button>
-              </div>
+    <header class="chartsHeader row d-flex justify-content-between mx-0">
+        <div>
+            <h2 class="no-margin-bottom">Charts</h2>
+        </div>
+        <!--<button (click)="getCharts()" class="btn btn-success">
+            Charts
+        </button>-->
+    </header>
 
 
-              <!-- Modal -->
-              <div class="backdrop"  [ngStyle]="{'display':display}"></div>
-              <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Chart</h4>
-                      <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+
+    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedCharts"
+                          [settings]="dropdownSettings">
+    </angular2-multiselect>
+
+    <main class="container-fluid">
+        <div class="row mx-0" >
+
+                <aside class="col-lg-6 " *ngFor="let chart of chartsToShow" >
+                    <div class="chart">
+                        <div class="chartHeader d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <h3> {{chart?.type}} chart</h3>
+                            </div>
+
+                            <div class="btnSettings btn-group">
+
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" (click)="OnClik()">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': buttontoggled}">
+
+                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#editChart">
+                                        <i class="fa fa-gear"></i>Edit
+                                    </button>
+
+                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#deleteChart">
+                                        <i class="fa fa-times"></i>Delete
+                                    </button>
+
+                                </div>
+
+                                <!--edit modal-->
+                                <div class="modal fade" id="editChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center h3 ">Edit chart</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-success" (click)="OnEditChart()">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--delete modal-->
+                                <div class="modal fade" id="deleteChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center h2 alert alert-danger">
+                                                Are you sure you want to delete this chart?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger" (click)="OnDeleteChart()">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chartBody">
+                            <canvas baseChart
+                                    [datasets]="chart?.datasets"
+                                    [data]="chart?.data"
+                                    [labels]="chart?.labels"
+                                    [options]="chart?.options"
+                                    [colors]="chart?.colors"
+                                    [chartType]="chart?.type"
+                                    (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)">
+                            </canvas>
+                        </div>
+
                     </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" (click)="onEditHandled()" >Edit</button>
-                      <button type="button" class="btn btn-danger" (click)="onCloseHandled()" >Cancel</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-
-          <div class="chartBody">
-            <canvas baseChart
-                    [datasets]="chart?.datasets"
-                    [data]="chart?.data"
-                    [labels]="chart?.labels"
-                    [options]="chart?.options"
-                    [colors]="chart?.colors"
-                    [chartType]="chart?.type"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)">
-            </canvas>
-          </div>
+                </aside>
 
         </div>
-      </aside>
+    </main>
 
-    </div>
-  </main>
-
-  <footer class="chartsFooter">
-    <div class="container-fluid">
-      <h6 class="d-flex flex-row-reverse">InventorSoft Academy @ 2018 </h6>
-    </div>
-  </footer>
+    <footer class="chartsFooter">
+        <div class="container-fluid">
+            <h6 class="d-flex flex-row-reverse">InventorSoft Academy @ 2018 </h6>
+        </div>
+    </footer>
 
 </section>
 
