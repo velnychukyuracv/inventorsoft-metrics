@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
+import { ChartsPageModule } from './charts-page/charts-page.module';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { JwtInterceptor } from './common/shared/jwt-interceptor';
         HttpClientModule,
         AuthModule,
         DataSourcesModule,
-        UsersModule
+        UsersModule,
+        ChartsPageModule
     ],
     providers   : [
         SpinnersService,
