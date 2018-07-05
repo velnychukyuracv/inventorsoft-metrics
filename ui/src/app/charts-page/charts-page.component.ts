@@ -8,6 +8,7 @@ import { DataSource } from '../common/models/data-source.model';
 import { Group } from '../common/models/group.model';
 import { GroupsService } from '../common/services/groups.service';
 import { DataSourcesService } from '../common/services/data-sources.service';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -30,6 +31,9 @@ export class ChartsPageComponent implements OnInit {
         private notificationService: NotificationService,
         private dataSourceService: DataSourcesService,
         private groupService: GroupsService) {
+            this.charts = [];
+            this.dataSources = [];
+            this.groups = [];
     }
 
     ngOnInit() {
@@ -85,7 +89,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     getGroups(): void {
-        this.groupService.getGroups().subscribe(data => this.dataSources = data.content);
+        this.groupService.getGroups().subscribe(data => this.groups = data.content);
     }
 
     createChart(): void {
@@ -97,13 +101,41 @@ export class ChartsPageComponent implements OnInit {
             })
     }
 
-    openDeleteModal(chartId: number): void {
+    openConfirmDeleteModal(chartId: number): void {
         this.selectedChartId = chartId;
     }
+
+    openEditModal(chartId: number): void {
+        this.selectedChartId = chartId;
+
+        this.chartForm.reset();
+        this.chartsService.getChartById(chartId).pipe(first())
+            .subscribe(response => {
+                this.chartForm.patchValue(response);
+            });
+    }
+
+
 
     deleteChart(): void {
         if (this.selectedChartId) {
             this.chartsService.deleteChart(this.selectedChartId)
+                .subscribe(
+                    response => {
+                        this.hideSpinners();
+                        this.getCharts();
+                        //TODO: Show success notification
+                    }, error => {
+                        this.hideSpinners();
+                        //TODO: show error notification
+                    }
+                )
+        }
+    }
+
+    editChart(): void {
+        if (this.selectedChartId) {
+            this.chartsService.editChart(this.selectedChartId, this.chartForm.value)
                 .subscribe(
                     response => {
                         this.hideSpinners();

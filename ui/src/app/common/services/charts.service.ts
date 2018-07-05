@@ -18,11 +18,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     getCharts(): Observable<any> {
-        return this.httpClient.get(environment.CHARTS_PREFIX, {
-            headers: {
-                'Authorization': JSON.parse(localStorage.getItem("jwt.token")).jwtToken
-            }
-        })
+        return this.httpClient.get(environment.CHARTS_PREFIX)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error + "dasd")
             ))
@@ -60,7 +56,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     editChart(id: number, chart: Chart): Observable<any> {
-        return this.httpClient.put(environment.CHARTS_PREFIX + "/" + id, chart)
+        return this.httpClient.patch(environment.CHARTS_PREFIX + "/" + id, chart)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ))

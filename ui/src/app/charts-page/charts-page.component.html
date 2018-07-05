@@ -27,11 +27,12 @@
             <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>
-                <button type="button" class="btn btn-outline-warning" data-toggle="modal">
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#chartsModal"
+                    (click)="openEditModal(chart.id)">
                     Edit
                 </button>
                 <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
-                    (click)="openDeleteModal(chart.id)">
+                    (click)="openConfirmDeleteModal(chart.id)">
                     Delete
                 </button>
             </td>
@@ -185,9 +186,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button *ngIf="selectedChartId; else createBlock">
+                        <button *ngIf="selectedChartId; else createBlock" type="button" data-dismiss="modal"
                             class="btn btn-primary"
                             [disabled]="chartForm.invalid"
+                            (click)="editChart()">
                             Edit chart
                         </button>
                         <ng-template #createBlock>
