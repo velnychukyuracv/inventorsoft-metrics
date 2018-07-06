@@ -22,9 +22,8 @@ export class DataSourcesComponent implements OnInit {
 
     constructor(
         private dataSourcesService: DataSourcesService,
-        private spinnersService: SpinnersService,
-    ) {
-    }
+        private spinnersService: SpinnersService
+    ) {    }
 
     /** Show spinners
      */

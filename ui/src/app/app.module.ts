@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
-import  {AngularMultiSelectModule } from "angular2-multiselect-dropdown/multiselect.component";
+import {DndModule} from 'ng2-dnd';
 
 import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
@@ -30,8 +30,8 @@ import { DataSourcesModule } from './data-sources/data-sources.module';
         AuthModule,
         DataSourcesModule,
         ChartsModule,
-        AngularMultiSelectModule,
         FormsModule,
+        DndModule.forRoot(),
     ],
     providers   : [
         SpinnersService,
