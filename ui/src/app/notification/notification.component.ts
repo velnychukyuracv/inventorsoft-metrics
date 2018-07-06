@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../common/services/notification.service';
+import { Message } from '../common/models/message';
+import { Observable } from 'rxjs/internal/Observable';
+
+@Component({
+    selector   : 'app-notification',
+    templateUrl: './notification.component.html',
+    styleUrls  : ['./notification.component.scss']
+})
+export class NotificationComponent implements OnInit {
+    messages$: Observable<Message[]>;
+
+    constructor(private notificationService: NotificationService) {
+    }
+
+    ngOnInit() {
+        this.messages$ = this.notificationService.getMessages();
+    }
+
+    /**
+     * Is used to close some message
+     * @param {number} id
+     */
+    dismiss(id: number) {
+        this.notificationService.dissmissMessage(id);
+    }
+
+}
