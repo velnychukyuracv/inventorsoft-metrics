@@ -6,6 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../common/shared/shared.module';
 import { EditGroupComponent } from './edit-group/edit-group.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from '../app.routes';
 
 @NgModule({
     imports     : [
@@ -13,7 +15,10 @@ import { EditGroupComponent } from './edit-group/edit-group.component';
         FormsModule,
         NgbModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        RouterModule.forRoot(
+            APP_ROUTES
+        )
     ],
     declarations: [CreateGroupComponent, EditGroupComponent, MenuComponent],
     exports     : [CreateGroupComponent, EditGroupComponent, MenuComponent],

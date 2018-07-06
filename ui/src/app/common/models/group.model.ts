@@ -1,3 +1,6 @@
+/**
+ * Group model
+ */
 export class Group {
     id?: number;
     materialIcon: string;
@@ -7,5 +10,6 @@ export class Group {
     order?: number;
     uuid?: string;
 
-    constructor() {}
+    constructor() {
+    }
 }

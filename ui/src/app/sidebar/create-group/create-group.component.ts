@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '../../common/services/groups.service';
 import { Group } from '../../common/models/group.model';
 import { first } from 'rxjs/internal/operators/first';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Icons } from '../../common/models/groupIcons.model';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
-    selector   : 'app-groups',
+    selector   : 'app-create-group',
     templateUrl: './create-group.component.html',
     styleUrls  : ['./create-group.component.scss']
 })
 
-export class CreateGroupComponent {
+export class CreateGroupComponent implements OnInit {
     group: Group = new Group();
     createGroupForm: FormGroup;
     receivedGroup: Group;
     icons: Icons[];
 
-    constructor(private groupsService: GroupsService,
-                private spinnersService: SpinnersService,
-                public activeModal: NgbActiveModal) {
+    constructor(private router: Router,
+                private groupsService: GroupsService,
+                private spinnersService: SpinnersService) {
     }
 
     ngOnInit() {
@@ -32,7 +32,6 @@ export class CreateGroupComponent {
     /**
      * Initialization Create Group Form
      */
-
     initCreateGroupForm() {
         this.createGroupForm = new FormGroup({
             'materialIcon': new FormControl(null, [Validators.required]),
@@ -43,7 +42,6 @@ export class CreateGroupComponent {
     /**
      * Get Icons for creating group
      */
-
     getIcons() {
         this.icons = this.groupsService.getIcons();
     }
@@ -52,7 +50,6 @@ export class CreateGroupComponent {
      * Create group
      * @param group: Data of created group
      */
-
     createGroup(group: Group) {
         this.showSpinners();
         this.groupsService.createGroup(group).pipe(first())
@@ -60,7 +57,6 @@ export class CreateGroupComponent {
                 (data: Group) => {
                     this.receivedGroup = data;
                     this.hideSpinners();
-                    this.activeModal.close();
                     // TODO: Show success notification
                 },
                 error => {
@@ -73,7 +69,6 @@ export class CreateGroupComponent {
     /**
      * Show spinner
      */
-
     showSpinners(): void {
         this.spinnersService.show();
     }
@@ -81,10 +76,8 @@ export class CreateGroupComponent {
     /**
      * Hide spinner
      */
-
     hideSpinners(): void {
         this.spinnersService.hide();
     }
-
 }
 

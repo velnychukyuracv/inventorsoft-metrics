@@ -1,5 +1,8 @@
-import { Icons } from './groupIcons.model';
+import { Icons } from './common/models/groupIcons.model';
 
+/**
+ * Array of icons
+ */
 export let groupIcons : Icons[] = [
     {
         class: 'fa fa-bookmark fa-1x',

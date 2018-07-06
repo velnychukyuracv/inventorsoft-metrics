@@ -21,7 +21,6 @@ p {
         padding: 12px 20px;
         cursor: pointer;
         color: $sidebarItem;
-        -webkit-transition: background-color 200ms, color 200ms;
         transition: background-color 200ms, color 200ms;
         &:active, &:hover, &:focus {
             color: $bgPage;

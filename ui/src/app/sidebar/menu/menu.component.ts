@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
-import { CreateGroupComponent } from '../create-group/create-group.component';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EditGroupComponent } from '../edit-group/edit-group.component';
 
 @Component({
     selector   : 'app-menu',
@@ -14,23 +11,24 @@ import { EditGroupComponent } from '../edit-group/edit-group.component';
     styleUrls  : ['./menu.component.scss']
 })
 
-export class MenuComponent {
+export class MenuComponent implements OnInit {
+    selectedGroup: Group;
     groups: Group[];
+    editModalClicked: boolean;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private modalService: NgbModal,
                 private spinnersService: SpinnersService) {
     }
 
     ngOnInit() {
         this.getGroups();
+
     }
 
     /**
      * Get all groups
      */
-
     getGroups() {
         this.showSpinners();
         this.groupsService.getGroups().pipe(first()).subscribe(
@@ -47,7 +45,6 @@ export class MenuComponent {
      * Delete group data
      * @param groupId: Id of selected group
      */
-
     deleteGroup(groupId: number) {
         this.showSpinners();
         this.groupsService.deleteGroup(groupId).pipe(first())
@@ -66,27 +63,17 @@ export class MenuComponent {
     }
 
     /**
-     * Open Create Group modal
+     * Open edit modal
+     * @param group: Data of selected group
      */
-
-    openCreateModal() {
-        this.modalService.open(CreateGroupComponent);
-    }
-
-    /**
-     * Open Edit Group modal
-     * @param selectedGroup: Data of selected group
-     */
-
-    openEditModal(selectedGroup: Group) {
-        this.groupsService.editedGroupInfo = selectedGroup;
-        this.modalService.open(EditGroupComponent);
+    openEditModal(group: Group) {
+        this.editModalClicked = true;
+        this.selectedGroup = group;
     }
 
     /**
      * Show spinner
      */
-
     showSpinners(): void {
         this.spinnersService.show();
     }
@@ -94,7 +81,6 @@ export class MenuComponent {
     /**
      * Hide spinner
      */
-
     hideSpinners(): void {
         this.spinnersService.hide();
     }

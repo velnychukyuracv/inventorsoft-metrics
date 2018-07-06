@@ -30,7 +30,7 @@
             </a>
             <div id='submenu2' class="collapse sidebar-submenu">
                 <div class="text-center">
-                    <button class="btn btn-outline-secondary" id="create-group" (click)="openCreateModal()"><i
+                    <button class="btn btn-outline-secondary" id="create-group" data-toggle="modal" data-target="#createGroup"><i
                         class="fa fa-plus fa-1x"> </i> Create new group
                     </button>
                 </div>
@@ -38,7 +38,9 @@
                     <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
                         <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
                             class="fa fa-trash fa-1x"> </i></button>
-                        <button class="btn btn-link btn-sm" (click)="openEditModal(group)"><i
+                        <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
+                                data-target="#editGroup"
+                                (click)="openEditModal(group)"><i
                             class="fa fa-edit fa-1x"> </i>
                         </button>
                     </a>
@@ -47,3 +49,5 @@
         </li>
     </ul>
 </nav>
+<app-create-group></app-create-group>
+<app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
