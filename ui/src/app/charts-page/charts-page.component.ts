@@ -43,7 +43,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     getCharts(): void {
-        this.spinnersService.show();
+        this.showSpinners();
         this.chartsService.getCharts()
             .subscribe(
                 (data) => {
@@ -60,7 +60,7 @@ export class ChartsPageComponent implements OnInit {
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
 
-                    this.spinnersService.hide();
+                    this.showSpinners();
                     this.notificationService.success("Success");
                 }, (error) => {
                     this.spinnersService.hide();
