@@ -14,11 +14,13 @@ import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
 import { ChartsPageModule } from './charts-page/charts-page.module';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        SpinnersComponent
+        SpinnersComponent,
+        NotificationComponent
     ],
     imports     : [
         RouterModule.forRoot(

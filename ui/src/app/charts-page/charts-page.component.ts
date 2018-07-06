@@ -23,6 +23,7 @@ export class ChartsPageComponent implements OnInit {
     selectedChartId: number;
 
     private isIntegerPattern = /^\d+$/;
+    private columnsPattern = /^\s*?(?:\d+\,\s*)*\d+?\s*$/;
 
     constructor(
         private chartsService: ChartsService,
@@ -60,11 +61,10 @@ export class ChartsPageComponent implements OnInit {
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
 
-                    this.showSpinners();
-                    this.notificationService.success("Success");
+                    this.hideSpinners();
                 }, (error) => {
                     this.spinnersService.hide();
-                    this.notificationService.error("Error");
+                    this.notificationService.error('Failed to get list of charts');
                 }
             )
     }
@@ -73,13 +73,13 @@ export class ChartsPageComponent implements OnInit {
         this.chartForm = new FormGroup({
             attributes       : new FormControl(null, [Validators.required, Validators.minLength(2)]),
             dataSourceDbRepId: new FormControl(null, [Validators.required]),
-            filterColumns    : new FormControl(null, [Validators.required]),
+            filterColumns    : new FormControl(null, [Validators.required, Validators.pattern(this.columnsPattern)]),
             groupId          : new FormControl(null, [Validators.required]),
             name             : new FormControl(null, [Validators.required]),
             order            : new FormControl(null, [Validators.required, Validators.pattern(this.isIntegerPattern)]),
             query            : new FormControl(null, [Validators.required]),
             type             : new FormControl(null, [Validators.required]),
-            visibleColumns   : new FormControl(null, [Validators.required])
+            visibleColumns   : new FormControl(null, [Validators.required, Validators.pattern(this.columnsPattern)])
         });
     }
 
@@ -97,6 +97,10 @@ export class ChartsPageComponent implements OnInit {
             .subscribe(response => {
                 this.hideSpinners();
                 this.getCharts();
+                this.notificationService.success('You have successfully added new chart');
+            }, error => {
+                this.hideSpinners();
+                this.notificationService.error('Failed to create new chart"');
             })
     }
 
@@ -106,8 +110,6 @@ export class ChartsPageComponent implements OnInit {
 
     openEditModal(chartId: number): void {
         this.selectedChartId = chartId;
-
-        this.chartForm.reset();
         this.chartsService.getChartById(chartId).pipe(first())
             .subscribe(response => {
                 this.chartForm.patchValue(response);
@@ -121,10 +123,12 @@ export class ChartsPageComponent implements OnInit {
                     response => {
                         this.hideSpinners();
                         this.getCharts();
-                        //TODO: Show success notification
+                        this.notificationService.success(
+                            `You have successfully deleted chart with id ${this.selectedChartId}`
+                        );
                     }, error => {
                         this.hideSpinners();
-                        //TODO: show error notification
+                        this.notificationService.error(`Failed to delete chart with id ${this.selectedChartId}`);
                     }
                 )
         }
@@ -137,10 +141,12 @@ export class ChartsPageComponent implements OnInit {
                     response => {
                         this.hideSpinners();
                         this.getCharts();
-                        //TODO: Show success notification
+                        this.notificationService.success(
+                            `You have successfully edited chart with id ${this.selectedChartId}`
+                        );
                     }, error => {
                         this.hideSpinners();
-                        //TODO: show error notification
+                        this.notificationService.error(`Failed to edit chart with id ${this.selectedChartId}`);
                     }
                 )
         }

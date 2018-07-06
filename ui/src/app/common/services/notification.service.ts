@@ -8,7 +8,7 @@ import { of } from 'rxjs/internal/observable/of';
 })
 export class NotificationService {
     notifications: Message[];
-
+    private static TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
     constructor() {
         this.notifications = [];
     }
@@ -25,42 +25,42 @@ export class NotificationService {
     /**
      * Is used to create success notification
      * @param content
+     * @param beDisappeared
      */
-    success(content): void {
-        this.sendMessage(content, 'success');
+    success(content, beDisappeared: boolean = true): void {
+        this.sendMessage(content, 'success', beDisappeared);
     }
 
     /**
-     * Is used to create error notification
+     *
      * @param content
+     * @param {boolean} beDisappeared
      */
-    error(content): void {
-        this.sendMessage(content, 'danger');
+    error(content, beDisappeared: boolean = true): void {
+        this.sendMessage(content, 'danger', beDisappeared);
     }
 
     /**
      * Is used to dissmis notification
      * @param {number} id
+     * @param {boolean} beDisappeared
      */
     dissmissMessage(id: number): void {
-        for (let i = 0; i < this.notifications.length; i++) {
-            let notification = this.notifications[i];
-            if (notification.id === id) {
-                this.notifications.splice(i, 1);
-                return;
-            }
-        }
+        let index = this.notifications.findIndex(x => x.id == id);
+        this.notifications.splice(index, 1);
     }
 
     /**
      * Is used to create message
      * @param {string} content
      * @param {string} type
+     * @param {boolean} beDisappeared
      */
-    private sendMessage(content: string, type: string): void {
+    private sendMessage(content: string, type: string, beDisappeared: boolean = true): void {
         let message = new Message(content, type);
         this.notifications.push(message);
-        setTimeout(() => this.dissmissMessage(message.id), 6000);
+        if (beDisappeared)
+            setTimeout(() => this.dissmissMessage(message.id), NotificationService.TIME_TO_DESTROY_MSG_IN_MS);
     }
 
 }
