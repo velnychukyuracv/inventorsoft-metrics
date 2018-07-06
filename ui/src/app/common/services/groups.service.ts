@@ -21,11 +21,7 @@ export class GroupsService {
      * HTTP request to get all groups
      */
     getGroups() {
-        return this.httpClient.get(environment.BASE_URL + '/app/groups', {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(catchError(
+        return this.httpClient.get(environment.BASE_URL + '/app/groups').pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
     }
@@ -36,11 +32,7 @@ export class GroupsService {
      */
     createGroup(createdGroup: Group) {
         const body = {materialIcon: createdGroup.materialIcon, name: createdGroup.name};
-        return this.httpClient.post(environment.BASE_URL + '/app/groups', body, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(catchError(
+        return this.httpClient.post(environment.BASE_URL + '/app/groups', body).pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
     }
@@ -52,11 +44,7 @@ export class GroupsService {
      */
     editGroup(editedGroup: Group, idGroup: number) {
         const body = {materialIcon: editedGroup.materialIcon, name: editedGroup.name};
-        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, body, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(
+        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, body).pipe(
             catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ));
@@ -67,11 +55,7 @@ export class GroupsService {
      * @param idGroup: Group id
      */
     deleteGroup(idGroup: number) {
-        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup, {
-            headers: {
-                'Authorization': this.authService.getToken().jwtToken
-            }
-        }).pipe(catchError(
+        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup).pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
     }

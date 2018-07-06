@@ -28,7 +28,7 @@ import { JwtInterceptor } from './common/shared/jwt-interceptor';
         AuthModule,
         SidebarModule,
         HttpClientModule,
-        DataSourcesModule
+        DataSourcesModule,
         UsersModule
     ],
     providers   : [
