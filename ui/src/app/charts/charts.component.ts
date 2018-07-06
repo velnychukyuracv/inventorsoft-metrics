@@ -10,29 +10,12 @@ export class ChartsComponent implements OnInit {
 
     listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
 
-    dropdownList = [];
-    dropdownSettings = {};
-    selectedCharts = [];
 
-    constructor(private service: ChartsService) {
-    }
+
+    constructor(private service: ChartsService) { }
 
     ngOnInit() {    }
 
-    dropdownList = [
-        {alias: "line" },
-        {alias: "line"},
-        {alias: "bar" },
-        {alias: "bar"},
-        {alias: "radar" },
-        {alias: "doughnut"},
-        {alias: "pie"},
-        {alias: "polarArea"}
-    ];
-
-    get chartsToShow():any[] {
-        return this.dropdownList.map(({alias}) => this.possibleCharts.find(ch => ch.type === alias));
-    }
 
     possibleCharts = [
         {
@@ -55,7 +38,12 @@ export class ChartsComponent implements OnInit {
             type: 'line',
             datasets: [
                 {
-                    data: [20, 28, 30, 22, 24, 10, 7],
+                    label: "Data Set 1",
+                    data: [35, 55, 65, 85, 30, 22, 18, 35]
+                },
+                {
+                    label: "Data Set 2",
+                    data: [49, 68, 85, 40, 27, 35, 20, 25]
                 }
             ],
             labels: ["A", "B", "C", "D", "E", "F", "G"],
