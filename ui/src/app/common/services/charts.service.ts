@@ -10,6 +10,9 @@ import { Chart } from '../models/chart.model';
     providedIn: 'root'
 })
 export class ChartsService {
+
+    readonly SERVICE_PATH = '/app/charts/';
+
     constructor(private httpClient: HttpClient) {
     }
 
@@ -18,7 +21,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     getCharts(): Observable<any> {
-        return this.httpClient.get(environment.CHARTS_PREFIX)
+        return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error + "dasd")
             ))
@@ -30,7 +33,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     getChartById(id: number): Observable<any> {
-        return this.httpClient.get(environment.CHARTS_PREFIX + "/" + id)
+        return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ))
@@ -43,7 +46,7 @@ export class ChartsService {
      */
     createChart(chart: Chart): Observable<any> {
         console.log(chart);
-        return this.httpClient.post(environment.CHARTS_PREFIX, chart)
+        return this.httpClient.post(environment.BASE_URL + this.SERVICE_PATH, chart)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ))
@@ -56,7 +59,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     editChart(id: number, chart: Chart): Observable<any> {
-        return this.httpClient.patch(environment.CHARTS_PREFIX + "/" + id, chart)
+        return this.httpClient.patch(environment.BASE_URL + this.SERVICE_PATH, chart)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ))
@@ -68,7 +71,7 @@ export class ChartsService {
      * @returns {{}}
      */
     deleteChart(id: number): Observable<any> {
-        return this.httpClient.delete(environment.CHARTS_PREFIX + "/" + id)
+        return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
             ))
