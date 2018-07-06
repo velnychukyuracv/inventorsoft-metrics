@@ -25,15 +25,14 @@ public class ChartForm {
     @ValidEnumValue(enumClass = ChartType.class)
     private String type;
     @NotNull
-    @Digits(integer = 5, fraction = 0)
+    @Min(0)
     private Integer order;
     @NotBlank
     private String attributes;
     @NotNull
-    @Digits(integer = 5, fraction = 0)
+    @Min(0)
     private Long dataSourceDbRepId;
     @NotNull
     @Min(0)
-    @Digits(integer = 5, fraction = 0)
     private Long groupId;
 }

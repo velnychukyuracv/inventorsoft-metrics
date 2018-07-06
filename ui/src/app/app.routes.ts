@@ -1,11 +1,15 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './common/services/auth-guard.service';
 import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
+import { UsersComponent } from './users/users/users.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 export const APP_ROUTES: Routes = [
     {
         path      : '',
-        redirectTo: '/login',
+        redirectTo: 'login',
         pathMatch : 'full'
     },
     {
@@ -14,11 +18,27 @@ export const APP_ROUTES: Routes = [
     },
     {
         path     : 'data-sources',
-        component: DataSourcesComponent
+        component: DataSourcesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path       : 'users',
+        component  : UsersComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path       : 'edit-user/:id',
+        component  : EditUserComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path       : 'add-user',
+        component  : AddUserComponent,
+        canActivate: [AuthGuard]
     },
     {
         path      : '**',
-        redirectTo: '/login'
+        redirectTo: 'login'
     }
 
 ];

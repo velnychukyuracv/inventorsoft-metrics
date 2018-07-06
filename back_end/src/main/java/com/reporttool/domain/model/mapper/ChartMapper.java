@@ -19,7 +19,10 @@ public interface ChartMapper {
     })
     Chart mapToChartFromChartForm(ChartForm chartForm);
 
-    @Mapping(source = "chart.dataSourceDbRep.id", target = "dataSourceDbRepId")
+    @Mappings({
+            @Mapping(source = "chart.dataSourceDbRep.id", target = "dataSourceDbRepId"),
+            @Mapping(source = "chart.group.id", target = "groupId")
+    })
     ChartDto mapToChartDtoFromChart(Chart chart);
 
 }
