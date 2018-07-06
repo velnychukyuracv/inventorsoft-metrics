@@ -8,14 +8,10 @@ import { ChartsService } from './charts.service';
 })
 export class ChartsComponent implements OnInit {
 
-    listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
-
-
 
     constructor(private service: ChartsService) { }
 
     ngOnInit() {    }
-
 
     possibleCharts = [
         {
@@ -105,7 +101,6 @@ export class ChartsComponent implements OnInit {
             data: [300, 500, 100],
             labels: ['Download Sales', 'In-Store Sales', 'Mail Sales']
         },
-
         {
             id: '7',
             type: 'polarArea',
