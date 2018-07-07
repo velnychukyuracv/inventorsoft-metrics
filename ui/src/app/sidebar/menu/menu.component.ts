@@ -23,21 +23,22 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() {
         this.getGroups();
-
     }
 
     /**
      * Get all groups
      */
     getGroups() {
-        this.showSpinners();
+        this.spinnersService.show();
         this.groupsService.getGroups().pipe(first()).subscribe(
             (response: any) => {
-                this.hideSpinners();
+                this.spinnersService.hide();
                 this.groups = response.content;
+                // TODO: Show success notification
             },
             error => {
-                this.hideSpinners();
+                this.spinnersService.hide();
+                // TODO: Show error notification
             })
     }
 
@@ -46,20 +47,19 @@ export class MenuComponent implements OnInit {
      * @param groupId: Id of selected group
      */
     deleteGroup(groupId: number) {
-        this.showSpinners();
+        this.spinnersService.show();
         this.groupsService.deleteGroup(groupId).pipe(first())
             .subscribe(
                 (response) => {
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     this.getGroups();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     // TODO: Show error notification
                 }
             );
-
     }
 
     /**
@@ -70,19 +70,4 @@ export class MenuComponent implements OnInit {
         this.editModalClicked = true;
         this.selectedGroup = group;
     }
-
-    /**
-     * Show spinner
-     */
-    showSpinners(): void {
-        this.spinnersService.show();
-    }
-
-    /**
-     * Hide spinner
-     */
-    hideSpinners(): void {
-        this.spinnersService.hide();
-    }
-
 }

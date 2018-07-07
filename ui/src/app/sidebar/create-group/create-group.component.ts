@@ -35,7 +35,7 @@ export class CreateGroupComponent implements OnInit {
     initCreateGroupForm() {
         this.createGroupForm = new FormGroup({
             'materialIcon': new FormControl(null, [Validators.required]),
-            'name'        : new FormControl(null, [Validators.required, Validators.minLength(3)]),
+            'name'        : new FormControl(null, [Validators.required]),
         });
     }
 
@@ -51,33 +51,19 @@ export class CreateGroupComponent implements OnInit {
      * @param group: Data of created group
      */
     createGroup(group: Group) {
-        this.showSpinners();
+        this.spinnersService.show();
         this.groupsService.createGroup(group).pipe(first())
             .subscribe(
                 (data: Group) => {
                     this.receivedGroup = data;
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     // TODO: Show error notification
                 }
             );
-    }
-
-    /**
-     * Show spinner
-     */
-    showSpinners(): void {
-        this.spinnersService.show();
-    }
-
-    /**
-     * Hide spinner
-     */
-    hideSpinners(): void {
-        this.spinnersService.hide();
     }
 }
 

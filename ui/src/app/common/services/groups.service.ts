@@ -61,7 +61,7 @@ export class GroupsService {
     }
 
     /**
-     * Request to get all groups icons
+     * Query to get all groups icons
      */
     getIcons() {
         return groupIcons;

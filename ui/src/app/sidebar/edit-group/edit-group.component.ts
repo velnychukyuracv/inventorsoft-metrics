@@ -50,32 +50,17 @@ export class EditGroupComponent implements OnInit {
      * @param selectedGroupId: Id of selected group
      */
     editGroup(group: Group, selectedGroupId: number) {
-        this.showSpinners();
+        this.spinnersService.show();
         this.groupsService.editGroup(group, selectedGroupId).pipe(first())
             .subscribe(
                 (response) => {
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinnersService.hide();
                     // TODO: Show error notification
                 }
             );
     }
-
-    /**
-     * Show spinner
-     */
-    showSpinners(): void {
-        this.spinnersService.show();
-    }
-
-    /**
-     * Hide spinner
-     */
-    hideSpinners(): void {
-        this.spinnersService.hide();
-    }
-
 }
