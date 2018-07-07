@@ -48,7 +48,7 @@ export class ChartsPageComponent implements OnInit {
      */
     getCharts(): void {
         this.spinnersService.show();
-        this.chartsService.getCharts()
+        this.chartsService.getCharts().pipe(first())
             .subscribe(
                 (data) => {
                     this.charts = data.content;
@@ -93,14 +93,16 @@ export class ChartsPageComponent implements OnInit {
      * Is used to get a list of all data sources
      */
     getDataSources(): void {
-        this.dataSourceService.getDataSources().subscribe(data => this.dataSources = data.content);
+        this.dataSourceService.getDataSources().pipe(first())
+            .subscribe(data => this.dataSources = data.content);
     }
 
     /**
      * Is used to get a list of all groups
      */
     getGroups(): void {
-        this.groupService.getGroups().subscribe(data => this.groups = data.content);
+        this.groupService.getGroups().pipe(first())
+            .subscribe(data => this.groups = data.content);
     }
 
     /**
@@ -108,7 +110,7 @@ export class ChartsPageComponent implements OnInit {
      */
     createChart(): void {
         this.spinnersService.show()
-        this.chartsService.createChart(this.chartForm.value)
+        this.chartsService.createChart(this.chartForm.value).pipe(first())
             .subscribe(response => {
                 this.spinnersService.hide();
                 this.getCharts();
@@ -145,7 +147,7 @@ export class ChartsPageComponent implements OnInit {
     deleteChart(): void {
         this.spinnersService.show();
         if (this.selectedChartId) {
-            this.chartsService.deleteChart(this.selectedChartId)
+            this.chartsService.deleteChart(this.selectedChartId).pipe(first())
                 .subscribe(
                     response => {
                         this.spinnersService.hide();
@@ -167,7 +169,7 @@ export class ChartsPageComponent implements OnInit {
     editChart(): void {
         this.spinnersService.show();
         if (this.selectedChartId) {
-            this.chartsService.editChart(this.selectedChartId, this.chartForm.value)
+            this.chartsService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
                 .subscribe(
                     response => {
                         this.spinnersService.hide();
