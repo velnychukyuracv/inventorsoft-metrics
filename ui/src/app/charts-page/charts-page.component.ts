@@ -43,6 +43,9 @@ export class ChartsPageComponent implements OnInit {
         this.initChartForm();
     }
 
+    /**
+     * Is used to get a list of all charts and show it on the page
+     */
     getCharts(): void {
         this.spinnersService.show();
         this.chartsService.getCharts()
@@ -69,6 +72,9 @@ export class ChartsPageComponent implements OnInit {
             )
     }
 
+    /**
+     * Is used to init the chart input form. Although setted up validation for fields
+     */
     initChartForm(): void {
         this.chartForm = new FormGroup({
             attributes       : new FormControl(null, [Validators.required, Validators.minLength(2)]),
@@ -83,14 +89,23 @@ export class ChartsPageComponent implements OnInit {
         });
     }
 
+    /**
+     * Is used to get a list of all data sources
+     */
     getDataSources(): void {
         this.dataSourceService.getDataSources().subscribe(data => this.dataSources = data.content);
     }
 
+    /**
+     * Is used to get a list of all groups
+     */
     getGroups(): void {
         this.groupService.getGroups().subscribe(data => this.groups = data.content);
     }
 
+    /**
+     * Is used to create a chart
+     */
     createChart(): void {
         this.spinnersService.show()
         this.chartsService.createChart(this.chartForm.value)
@@ -104,10 +119,18 @@ export class ChartsPageComponent implements OnInit {
             })
     }
 
+    /**
+     * Opens window that confirms chart delete
+     * @param {number} chartId
+     */
     openConfirmDeleteModal(chartId: number): void {
         this.selectedChartId = chartId;
     }
 
+    /**
+     * Opens the chart input form for additing a chart and autocompletes it
+     * @param {number} chartId
+     */
     openEditModal(chartId: number): void {
         this.selectedChartId = chartId;
         this.chartsService.getChartById(chartId).pipe(first())
@@ -116,6 +139,9 @@ export class ChartsPageComponent implements OnInit {
             });
     }
 
+    /**
+     * Is used to delete a chart
+     */
     deleteChart(): void {
         this.spinnersService.show();
         if (this.selectedChartId) {
@@ -135,6 +161,9 @@ export class ChartsPageComponent implements OnInit {
         }
     }
 
+    /**
+     * Is used to edit a chart
+     */
     editChart(): void {
         this.spinnersService.show();
         if (this.selectedChartId) {

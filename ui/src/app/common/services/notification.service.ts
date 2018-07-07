@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Message } from '../models/message';
+import { MessageModel } from '../models/message.model';
 import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({
     providedIn: 'root'
 })
 export class NotificationService {
-    notifications: Message[];
+    notifications: MessageModel[];
     private static TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
     constructor() {
         this.notifications = [];
@@ -15,9 +15,9 @@ export class NotificationService {
 
     /**
      * Is Used to get messages in reverse order
-     * @returns {Observable<Message[]>}
+     * @returns {Observable<MessageModel[]>}
      */
-    getMessages(): Observable<Message[]> {
+    getMessages(): Observable<MessageModel[]> {
         return of(this.notifications.reverse());
     }
 
@@ -57,7 +57,7 @@ export class NotificationService {
      * @param {boolean} beDisappeared
      */
     private sendMessage(content: string, type: string, beDisappeared: boolean = true): void {
-        let message = new Message(content, type);
+        let message = new MessageModel(content, type);
         this.notifications.push(message);
         if (beDisappeared)
             setTimeout(() => this.dissmissMessage(message.id), NotificationService.TIME_TO_DESTROY_MSG_IN_MS);

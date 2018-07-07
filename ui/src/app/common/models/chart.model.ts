@@ -1,3 +1,6 @@
+/**
+ * The model represents a chart.
+ */
 export interface Chart {
     attributes: string,
     createdAt?: Array<number>,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../common/services/notification.service';
-import { Message } from '../common/models/message';
+import { MessageModel } from '../common/models/message.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
     styleUrls  : ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-    messages$: Observable<Message[]>;
+    messages$: Observable<MessageModel[]>;
 
     constructor(private notificationService: NotificationService) {
     }
