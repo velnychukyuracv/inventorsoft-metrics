@@ -1,7 +1,7 @@
 /**
- * HTTP params for getting data source list
+ * HTTP params for getting data for showing into table
  */
-export interface DataSourcesParams {
+export interface TableParams {
     sortBy?: string;
     direction?: string;
     pageSize?: number;

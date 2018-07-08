@@ -6,7 +6,7 @@ import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
-import { DataSourcesParams } from '../common/models/data-sources-params.model';
+import { TableParams } from '../common/models/table-params.model';
 
 @Component({
     selector   : 'app-data-sources',
@@ -19,7 +19,7 @@ export class DataSourcesComponent implements OnInit {
     @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
     dataSources: DataSource[];
-    dataSourcesParams: DataSourcesParams = {
+    tableParams: TableParams = {
         pageSize: 2,
         page    : 0
     };
@@ -57,8 +57,8 @@ export class DataSourcesComponent implements OnInit {
      * @param $event
      */
     onSorted($event) {
-        this.dataSourcesParams.sortBy = $event.sortBy;
-        this.dataSourcesParams.direction = $event.direction;
+        this.tableParams.sortBy = $event.sortBy;
+        this.tableParams.direction = $event.direction;
         this.buildDataSources();
     }
 
@@ -67,24 +67,21 @@ export class DataSourcesComponent implements OnInit {
      * @param {number | PAGE_NAVIGATION} $event
      */
     onPageChange($event: number | PAGE_NAVIGATION) {
-        if (typeof $event === 'number') {
-            this.dataSourcesParams.page = $event;
-        } else {
-            switch ($event) {
-                case PAGE_NAVIGATION.PREV:
-                    if (this.dataSourcesParams.page > 0) {
-                        --this.dataSourcesParams.page;
-                    }
-                    break;
-                case PAGE_NAVIGATION.NEXT:
-                    if (this.dataSourcesParams.page < this.totalPages) {
-                        ++this.dataSourcesParams.page;
-                    }
-                    break;
-                default:
-                    break;
-            }
+        switch ($event) {
+            case PAGE_NAVIGATION.PREV:
+                if (this.tableParams.page > 0) {
+                    --this.tableParams.page;
+                }
+                break;
+            case PAGE_NAVIGATION.NEXT:
+                if (this.tableParams.page < this.totalPages) {
+                    ++this.tableParams.page;
+                }
+                break;
+            default:
+                this.tableParams.page = $event;
         }
+
         this.buildDataSources();
     }
 
@@ -146,12 +143,12 @@ export class DataSourcesComponent implements OnInit {
     buildDataSources() {
         this.showSpinners();
 
-        this.dataSourcesService.getDataSources(this.dataSourcesParams)
+        this.dataSourcesService.getDataSources(this.tableParams)
             .pipe(first())
             .subscribe(
                 (data) => {
                     this.totalPages = data.totalPages;
-                    this.dataSourcesParams.page = data.number;
+                    this.tableParams.page = data.number;
 
                     data.content.map(element => {
                         element.createdAt[1] -= 1;
