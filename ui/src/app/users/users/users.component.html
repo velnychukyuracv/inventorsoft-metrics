@@ -2,6 +2,7 @@
 <div class="alert alert-info" *ngIf="message">{{message}}</div>
 <table *ngIf='currentUsers' class="table table-striped"
        sortable-table (sorted)="onSorted($event)"
+       paginationable-list (pageChanged)="onPageChange($event)"
 >
     <tr>
         <th sortable-column="id">Id</th>
@@ -18,5 +19,9 @@
         <td class="button" (click)="deleteUser()">delete</td>
     </tr>
 </table>
+<app-pagination [activePage]="tableParams.page"
+                [totalPages]="totalPages"
+>
+</app-pagination>
 <button class="btn btn-primary mb-3" routerLink="/add-user">Add</button>
 

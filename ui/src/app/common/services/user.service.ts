@@ -7,6 +7,7 @@ import { NewUser } from '../models/add_user.model';
 import { EditUser } from '../models/edit_user.model';
 import { TableParams } from '../models/table-params.model';
 import { HelperService } from './helper.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,7 @@ export class UserService {
      * http request to the server to get all users
      * @param {TableParams} params: request parameters
      */
-    getUsers(params: TableParams) {
+    getUsers(params: TableParams): Observable<any> {
         return this.http.get(environment.BASE_URL + `/app/users`, {params: HelperService.makeHttpParams(params)})
             .pipe(
                 catchError(error => throwError('Server problem: ' + error.status + ' error'))
