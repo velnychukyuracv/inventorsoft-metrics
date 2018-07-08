@@ -121,6 +121,13 @@ export class ChartsPageComponent implements OnInit {
             })
     }
 
+    openCreateModal(chartId: number): void {
+        if (this.selectedChartId) {
+            this.chartForm.reset();
+            this.selectedChartId = undefined;
+        }
+    }
+
     /**
      * Opens window that confirms chart delete
      * @param {number} chartId
