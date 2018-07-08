@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../common/services/user.service';
+import { SpinnersService } from '../../spinners/spinners.service';
 
 @Component({
     selector   : 'app-add-user',
@@ -16,7 +17,7 @@ export class AddUserComponent implements OnInit {
      */
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
-    constructor(public router: Router, public userService: UserService) {
+    constructor(public router: Router, public userService: UserService, public spinnerService: SpinnersService) {
     }
 
     ngOnInit() {
@@ -40,11 +41,15 @@ export class AddUserComponent implements OnInit {
      */
     onSubmit() {
         const formData = this.form.value;
+        this.spinnerService.show();
         this.userService.addUser(formData)
             .subscribe(res => {
+                    this.spinnerService.hide();
                     return this.router.navigate(['/users']);
+                    //todo success notification
                 },
                 error => {
+                    this.spinnerService.hide();
                     this.showMessage(error);
                 }
             )

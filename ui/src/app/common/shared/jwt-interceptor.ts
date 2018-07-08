@@ -2,50 +2,95 @@ import { Injectable } from '@angular/core';
 import {
     HttpRequest,
     HttpHandler,
-    HttpResponse,
     HttpEvent,
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/index';
 import { Observable } from 'rxjs/internal/Observable';
-import { tap } from 'rxjs/internal/operators';
+import { switchMap, catchError, finalize, filter, take } from 'rxjs/internal/operators';
 
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+    isRefreshingToken: boolean = false;
+    tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
     constructor(public  auth: AuthService, public tokenService: TokenService) {
     }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.auth.isAuthenticated) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: this.tokenService.getToken()['jwtToken']
-                }
-            });
-        }
-        return next.handle(request)
-            .pipe(
-                tap((event: HttpEvent<any>) => {
+    /**
+     * add token to http requests
+     * @param req - http request
+     * @param token - token
+     */
+    addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
+        return req.clone({setHeaders: {'Authorization': token}})
+    }
 
-                    if (event instanceof HttpResponse) {
-                        //todo stuff with response
-                    }
-                }, (err: any) => {
-                    if (err instanceof HttpErrorResponse) {
-                        if (err.status === 401) {
-                            //TODO find the bug in refreshToken
-                            // this.tokenService.refreshToken()
-                            //     .subscribe(
-                            //         (res) => {
-                            //             console.log(res);
-                            //             this.tokenService.saveToLocalStorage(res);
-                            //         }
-                            //     );
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+        return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken']))
+            .pipe(
+                catchError((error: HttpEvent<any>) => {
+
+                        if (error instanceof HttpErrorResponse) {
+
+                            switch ((<HttpErrorResponse>error).status) {
+                                case 401:
+                                    return this.handle401Error(request, next);
+                                default :
+                                    return Observable.throw(error);
+                            }
+                        } else {
+                            return Observable.throw(error);
                         }
                     }
-                })
+                )
             )
+    }
+
+    /**
+     * have deal with 401 error when token expired
+     * @param req - http request
+     * @param  next - the next interceptor in the chain
+     */
+    handle401Error(req: HttpRequest<any>, next: HttpHandler) {
+        if (!this.isRefreshingToken) {
+            this.isRefreshingToken = true;
+            this.tokenSubject.next(null);
+
+            return this.tokenService.refreshToken()
+                .pipe(
+                    switchMap((newToken: string): any => {
+
+                        if (newToken) {
+                            this.tokenService.saveToLocalStorage(newToken);
+                            this.tokenSubject.next(newToken);
+                            return next.handle(this.addToken(req, newToken['jwtToken']));
+                        }
+                        return this.logoutUser();
+                    }),
+                    catchError((error): any => {
+                        return this.logoutUser();
+                    }),
+                    finalize(() => {
+                        this.isRefreshingToken = false;
+                    })
+                )
+        } else {
+            return this.tokenSubject
+                .pipe(
+                    filter(token => token != null),
+                    take(1),
+                    switchMap(token => {
+                        return next.handle(this.addToken(req, token));
+                    })
+                );
+        }
+    }
+
+    logoutUser() {
+        // todo in the header component
     }
 }

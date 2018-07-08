@@ -3,8 +3,17 @@
 .btn-primary {
     background-color: $dashboard;
     border: $dashboard;
+    &:hover {
+        background-color: $btnActive;
+    }
 }
-
+.users-header {
+    color: $dashboard;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 1rem;
+}
 .button {
     cursor: pointer;
 }

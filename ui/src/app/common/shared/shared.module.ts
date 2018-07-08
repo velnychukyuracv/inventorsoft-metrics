@@ -1,15 +1,17 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { CustomDatePipe } from './custom-date.pipe';
 
 @NgModule({
-    declarations: [],
+    declarations: [CustomDatePipe],
     imports     : [
         ReactiveFormsModule,
         FormsModule
     ],
     exports     : [
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        CustomDatePipe
     ]
 })
 export class SharedModule {

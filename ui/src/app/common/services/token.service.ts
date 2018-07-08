@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Token } from '../models/token.model';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TokenService {
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     /**
@@ -28,11 +29,10 @@ export class TokenService {
         localStorage.setItem('jwt.token', data)
     }
 
-    //TODO find bug in refresh token
     /**
      * http request to the server for  new authentication data
      */
-    // public refreshToken() {
-    //     return this.http.post(environment.NO_AUTH_PREFIX + '/refresh-token', this.getToken()['expirationToken'])
-    // }
+    public refreshToken() {
+        return this.http.post(environment.NO_AUTH_PREFIX + '/refresh-token', this.getToken()['expirationToken']);
+    }
 }

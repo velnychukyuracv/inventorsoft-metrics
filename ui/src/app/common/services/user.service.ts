@@ -58,4 +58,26 @@ export class UserService {
             catchError(error => throwError('Something went wrong'))
         )
     }
+
+    /**
+     *  http request to delete user from the server
+     * @param id - user's id
+     */
+    deleteUser(id) {
+        return this.http.delete(environment.BASE_URL + `/app/users/${id}`)
+            .pipe(
+                catchError(error => throwError('Server problem: ' + error.status + ' error'))
+            )
+    }
+
+    /**
+     * http request to  get single user from the server by id
+     * @param id - user's id
+     */
+    getUser(id) {
+        return this.http.get(environment.BASE_URL + `/app/users/${id}`)
+            .pipe(
+                catchError(error => throwError('Server problem: ' + error.status + ' error'))
+            )
+    }
 }

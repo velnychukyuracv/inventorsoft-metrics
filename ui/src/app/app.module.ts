@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
 import { DataSourcesModule } from './data-sources/data-sources.module';
+import { SharedModule } from './common/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FormsModule } from '@angular/forms';
@@ -29,8 +30,10 @@ import { JwtInterceptor } from './common/shared/jwt-interceptor';
         SidebarModule,
         HttpClientModule,
         DataSourcesModule,
-        UsersModule
+        UsersModule,
+        SharedModule
     ],
+    exports     : [RouterModule],
     providers   : [
         SpinnersService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
