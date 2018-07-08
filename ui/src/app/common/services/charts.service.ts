@@ -29,7 +29,7 @@ export class ChartsService {
 
     /**
      * Http request for getting one Chart by id
-     * @param {number} id
+     * @param {number} id chart to get
      * @returns {Observable<any>}
      */
     getChartById(id: number): Observable<any> {
@@ -41,7 +41,7 @@ export class ChartsService {
 
     /**
      * Http request for creating new chart
-     * @param {Chart} chart
+     * @param {Chart} chart to create
      * @returns {Observable<any>}
      */
     createChart(chart: Chart): Observable<any> {
@@ -54,8 +54,8 @@ export class ChartsService {
 
     /**
      * Http request for editing some chart
-     * @param {number} id
-     * @param {Chart} chart
+     * @param {number} id chart to edit
+     * @param {Chart} new chart data
      * @returns {Observable<any>}
      */
     editChart(id: number, chart: Chart): Observable<any> {
@@ -67,8 +67,8 @@ export class ChartsService {
 
     /**
      * Http for deleting some chart
-     * @param {number} id
-     * @returns {{}}
+     * @param {number} id chart to delete
+     * @returns {Observable<any>}
      */
     deleteChart(id: number): Observable<any> {
         return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + id)

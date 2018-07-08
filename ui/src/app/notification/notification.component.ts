@@ -20,7 +20,7 @@ export class NotificationComponent implements OnInit {
 
     /**
      * Is used to close some message
-     * @param {number} id
+     * @param {number} id message to dismiss
      */
     dismiss(id: number) {
         this.notificationService.dissmissMessage(id);

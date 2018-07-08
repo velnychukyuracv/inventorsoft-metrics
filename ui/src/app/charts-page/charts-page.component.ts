@@ -121,6 +121,10 @@ export class ChartsPageComponent implements OnInit {
             })
     }
 
+    /**
+     * Opens window that create new chart.
+     * @param {number} chartId
+     */
     openCreateModal(chartId: number): void {
         if (this.selectedChartId) {
             this.chartForm.reset();
@@ -129,7 +133,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Opens window that confirms chart delete
+     * Opens window that confirms chart with chartId delete
      * @param {number} chartId
      */
     openConfirmDeleteModal(chartId: number): void {
@@ -137,7 +141,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Opens the chart input form for additing a chart and autocompletes it
+     * Opens the chart input form for additing a chart with chartId and autocompletes it
      * @param {number} chartId
      */
     openEditModal(chartId: number): void {

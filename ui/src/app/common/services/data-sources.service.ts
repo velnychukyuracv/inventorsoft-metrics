@@ -58,7 +58,8 @@ export class DataSourcesService {
             ));
     }
 
-    /** HTTP request for delete Data Source
+    /**
+     * HTTP request for delete Data Source
      * @param id: Data Source id
      */
     deleteDataSource(id: number) {

@@ -24,26 +24,27 @@ export class NotificationService {
 
     /**
      * Is used to create success notification
-     * @param content
-     * @param beDisappeared
+     * @param content of the message
+     * @param beDisappeared If true the success message will disappear after some time
+     *                                 if else it will be permanent
      */
     success(content, beDisappeared: boolean = true): void {
         this.sendMessage(content, 'success', beDisappeared);
     }
 
     /**
-     *
-     * @param content
-     * @param {boolean} beDisappeared
+     *  Is used to create error notification
+     * @param content of the message
+     * @param {boolean} beDisappeared If true the error message will disappear after some time
+     *                                 if else it will be permanent
      */
     error(content, beDisappeared: boolean = true): void {
         this.sendMessage(content, 'danger', beDisappeared);
     }
 
     /**
-     * Is used to dissmis notification
-     * @param {number} id
-     * @param {boolean} beDisappeared
+     * Is used to dissmis the message
+     * @param {number} id message to dissmiss
      */
     dissmissMessage(id: number): void {
         let index = this.notifications.findIndex(x => x.id == id);
@@ -52,9 +53,10 @@ export class NotificationService {
 
     /**
      * Is used to create message
-     * @param {string} content
-     * @param {string} type
-     * @param {boolean} beDisappeared
+     * @param {string} content of the message
+     * @param {string} type of message. Can be success or error
+     * @param {boolean} beDisappeared. If true the message will disappear after some time
+     *                                 if else it will be permanent
      */
     private sendMessage(content: string, type: string, beDisappeared: boolean = true): void {
         let message = new MessageModel(content, type);
