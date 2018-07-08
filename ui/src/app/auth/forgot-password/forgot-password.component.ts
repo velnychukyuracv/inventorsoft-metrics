@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ForgotPasswordComponent implements OnInit {
     form: FormGroup;
     /**
-     * valid pattern for user's email
+     * pattern for user's email
      */
     emailPattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
