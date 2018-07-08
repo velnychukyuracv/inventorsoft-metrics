@@ -53,7 +53,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Chart Card</h5>
+                <h5 class="modal-title">Chart Card:
+                    <span *ngIf="selectedChartId; else createCard"> Editing chart with id {{selectedChartId}}</span>
+                    <ng-template #createCard>
+                        <span> Creating new chart</span>
+                    </ng-template>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -222,7 +227,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deleting</h5>
+                <h5 class="modal-title">Deleting chart with id {{selectedChartId}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
