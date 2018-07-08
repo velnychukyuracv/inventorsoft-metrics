@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/index';
 import { PAGE_NAVIGATION } from '../models/page-navigation.enum';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class PaginationService {
 
     private currentPageSubject = new Subject<number | PAGE_NAVIGATION>();
