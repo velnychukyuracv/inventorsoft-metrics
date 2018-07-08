@@ -1,7 +1,7 @@
 /**
  * Group icons model
  */
-export class Icons {
+export interface Icons {
     class: string;
     glyph: string;
     title: string;

@@ -7,7 +7,6 @@
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-home fa-1x"> </i> Home</a>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-user fa-1x"> </i> User Management</a>
         </li>
@@ -36,9 +35,9 @@
                 </div>
                 <div>
                     <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
-                        <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
+                        <button class="btn btn-link btn-sm float-right" (click)="deleteGroup(group.id)"><i
                             class="fa fa-trash fa-1x"> </i></button>
-                        <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
+                        <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm float-right" data-toggle="modal"
                                 data-target="#editGroup"
                                 (click)="openEditModal(group)"><i
                             class="fa fa-edit fa-1x"> </i>

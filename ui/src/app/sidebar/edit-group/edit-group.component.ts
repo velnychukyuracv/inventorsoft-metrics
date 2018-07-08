@@ -19,7 +19,6 @@ export class EditGroupComponent implements OnInit {
 
     constructor(private groupsService: GroupsService,
                 private spinnersService: SpinnersService) {
-
     }
 
     ngOnInit() {

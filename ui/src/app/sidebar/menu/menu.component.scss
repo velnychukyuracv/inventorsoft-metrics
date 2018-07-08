@@ -32,14 +32,12 @@ p {
             margin-right: 10px;
         }
         button {
-            float: right;
             color: $sidebarItem;
             vertical-align: middle;
             &:active, &:hover {
                 color: $bgPage;
             }
         }
-
     }
     .sidebar-submenu {
         background-color: $sidebarDropdown;
@@ -47,5 +45,4 @@ p {
     #create-group {
         margin: 10px;
     }
-
 }
