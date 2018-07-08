@@ -7,6 +7,7 @@ import { throwError } from 'rxjs/index';
 
 import { environment } from '../../../environments/environment';
 import { DataSource } from '../models/data-source.model';
+import { a } from '@angular/core/src/render3';
 
 @Injectable({
     providedIn: 'root'
@@ -40,7 +41,7 @@ export class DataSourcesService {
     /** HTTP request for create Data Source
      * @param dataSource: Data Source Info
      */
-    createDataSource(dataSource: DataSource) {
+    createDataSource(dataSource: DataSource): Observable<any> {
         return this.httpClient.post(environment.BASE_URL + this.SERVICE_PATH, dataSource)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -51,7 +52,7 @@ export class DataSourcesService {
      * @param id: Data Source id
      * @param dataSource: Data Source Info
      */
-    editDataSource(id: number, dataSource: DataSource) {
+    editDataSource(id: number, dataSource: DataSource): Observable<any> {
         return this.httpClient.patch(environment.BASE_URL + this.SERVICE_PATH + '/' + id, dataSource)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -62,7 +63,7 @@ export class DataSourcesService {
      * HTTP request for delete Data Source
      * @param id: Data Source id
      */
-    deleteDataSource(id: number) {
+    deleteDataSource(id: number): Observable<any> {
         return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + '/' + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
