@@ -3,9 +3,7 @@ import { Subject } from 'rxjs/index';
 
 import { ColumnSortedEvent } from '../models/column-sorted-event.model';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class SortService {
 
     private columnSortedSource = new Subject<ColumnSortedEvent>();

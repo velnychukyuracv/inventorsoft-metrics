@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../common/shared/shared.module';
 import { DataSourcesComponent } from './data-sources.component';
-import { SortableColumnComponent } from '../sortable-table/sortable-column/sortable-column.component';
-import { SortableTableDirective } from '../sortable-table/sortable-table.directive';
 import { PaginationableListDirective } from '../pagination/paginationable-list.directive';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { PaginationItemDirective } from '../pagination/pagination-item.directive';
 import { PaginationService } from '../common/services/pagination.service';
+import { SortableModule } from '../common/shared/sortable.module';
 
 @NgModule({
     imports     : [
         CommonModule,
-        SharedModule
+        SharedModule,
+        SortableModule,
     ],
     declarations: [
         DataSourcesComponent,
-        SortableColumnComponent,
-        SortableTableDirective,
         PaginationComponent,
         PaginationItemDirective,
         PaginationableListDirective,
