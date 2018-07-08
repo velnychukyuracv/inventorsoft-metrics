@@ -6,11 +6,13 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { SharedModule } from '../common/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from '../app.routes';
+import { SortableModule } from '../common/shared/sortable.module';
 
 @NgModule({
     imports     : [
         CommonModule,
         SharedModule,
+        SortableModule,
         RouterModule.forRoot(
             APP_ROUTES
         )

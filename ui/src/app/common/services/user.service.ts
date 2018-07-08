@@ -5,21 +5,23 @@ import { catchError } from 'rxjs/internal/operators';
 import { throwError } from 'rxjs/index';
 import { NewUser } from '../models/add_user.model';
 import { EditUser } from '../models/edit_user.model';
+import { TableParams } from '../models/table-params.model';
+import { HelperService } from './helper.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    sortById: string = '?sortBy=id';
 
     constructor(private http: HttpClient) {
     }
 
     /**
      * http request to the server to get all users
+     * @param {TableParams} params: request parameters
      */
-    getUsers() {
-        return this.http.get(environment.BASE_URL + `/app/users${this.sortById}`)
+    getUsers(params: TableParams) {
+        return this.http.get(environment.BASE_URL + `/app/users`, {params: HelperService.makeHttpParams(params)})
             .pipe(
                 catchError(error => throwError('Server problem: ' + error.status + ' error'))
             )

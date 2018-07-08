@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
 import { Router } from '@angular/router';
+import { TableParams } from '../../common/models/table-params.model';
 
 @Component({
     selector   : 'app-users',
@@ -10,6 +11,10 @@ import { Router } from '@angular/router';
 export class UsersComponent implements OnInit {
     message: string;
     currentUsers: any;
+    tableParams: TableParams = {
+        pageSize: 10,
+        page    : 0
+    };
 
     constructor(private userService: UserService, private router: Router) {
     }
@@ -19,10 +24,20 @@ export class UsersComponent implements OnInit {
     }
 
     /**
+     * Slot for connecting to signal 'sorted'
+     * @param $event
+     */
+    onSorted($event) {
+        this.tableParams.sortBy = $event.sortBy;
+        this.tableParams.direction = $event.direction;
+        this.getAllUsers();
+    }
+
+    /**
      * show all users received from the server
      */
     getAllUsers() {
-        this.userService.getUsers()
+        this.userService.getUsers(this.tableParams)
             .subscribe(
                 (res) => {
                     this.currentUsers = res['content'];
