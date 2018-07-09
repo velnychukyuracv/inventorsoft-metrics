@@ -27,7 +27,7 @@ export class ChartsPageComponent implements OnInit {
 
     constructor(
         private chartsService: ChartsService,
-        private spinnersService: SpinnersService,
+        private spinner: SpinnersService,
         private notificationService: NotificationService,
         private dataSourceService: DataSourcesService,
         private groupService: GroupsService) {
@@ -47,7 +47,7 @@ export class ChartsPageComponent implements OnInit {
      * Is used to get a list of all charts and show it on the page
      */
     getCharts(): void {
-        this.spinnersService.show();
+        this.spinner.show();
         this.chartsService.getCharts().pipe(first())
             .subscribe(
                 (data) => {
@@ -64,9 +64,9 @@ export class ChartsPageComponent implements OnInit {
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
 
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                 }, (error) => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     this.notificationService.error('Failed to get list of charts');
                 }
             )
@@ -109,23 +109,22 @@ export class ChartsPageComponent implements OnInit {
      * Is used to create a chart
      */
     createChart(): void {
-        this.spinnersService.show()
+        this.spinner.show()
         this.chartsService.createChart(this.chartForm.value).pipe(first())
             .subscribe(response => {
-                this.spinnersService.hide();
+                this.spinner.hide();
                 this.getCharts();
                 this.notificationService.success('You have successfully added new chart');
             }, error => {
-                this.spinnersService.hide();
+                this.spinner.hide();
                 this.notificationService.error('Failed to create new chart"');
             })
     }
 
     /**
      * Opens window that create new chart.
-     * @param {number} chartId
      */
-    openCreateModal(chartId: number): void {
+    openCreateModal(): void {
         if (this.selectedChartId) {
             this.chartForm.reset();
             this.selectedChartId = undefined;
@@ -156,18 +155,18 @@ export class ChartsPageComponent implements OnInit {
      * Is used to delete a chart
      */
     deleteChart(): void {
-        this.spinnersService.show();
+        this.spinner.show();
         if (this.selectedChartId) {
             this.chartsService.deleteChart(this.selectedChartId).pipe(first())
                 .subscribe(
                     response => {
-                        this.spinnersService.hide();
+                        this.spinner.hide();
                         this.getCharts();
                         this.notificationService.success(
                             `You have successfully deleted chart with id ${this.selectedChartId}`
                         );
                     }, error => {
-                        this.spinnersService.hide();
+                        this.spinner.hide();
                         this.notificationService.error(`Failed to delete chart with id ${this.selectedChartId}`);
                     }
                 )
@@ -178,18 +177,18 @@ export class ChartsPageComponent implements OnInit {
      * Is used to edit a chart
      */
     editChart(): void {
-        this.spinnersService.show();
+        this.spinner.show();
         if (this.selectedChartId) {
             this.chartsService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
                 .subscribe(
                     response => {
-                        this.spinnersService.hide();
+                        this.spinner.hide();
                         this.getCharts();
                         this.notificationService.success(
                             `You have successfully edited chart with id ${this.selectedChartId}`
                         );
                     }, error => {
-                        this.spinnersService.hide();
+                        this.spinner.hide();
                         this.notificationService.error(`Failed to edit chart with id ${this.selectedChartId}`);
                     }
                 )
