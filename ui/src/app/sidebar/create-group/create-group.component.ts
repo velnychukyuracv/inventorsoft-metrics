@@ -21,7 +21,7 @@ export class CreateGroupComponent implements OnInit {
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinnersService: SpinnersService) {
+                private spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -51,16 +51,16 @@ export class CreateGroupComponent implements OnInit {
      * @param group: Data of created group
      */
     createGroup(group: Group) {
-        this.spinnersService.show();
+        this.spinner.show();
         this.groupsService.createGroup(group).pipe(first())
             .subscribe(
                 (data: Group) => {
                     this.receivedGroup = data;
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     // TODO: Show error notification
                 }
             );

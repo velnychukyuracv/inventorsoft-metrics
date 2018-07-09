@@ -18,7 +18,7 @@ export class EditGroupComponent implements OnInit {
     icons: Icons [];
 
     constructor(private groupsService: GroupsService,
-                private spinnersService: SpinnersService) {
+                private spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -49,15 +49,15 @@ export class EditGroupComponent implements OnInit {
      * @param selectedGroupId: Id of selected group
      */
     editGroup(group: Group, selectedGroupId: number) {
-        this.spinnersService.show();
+        this.spinner.show();
         this.groupsService.editGroup(group, selectedGroupId).pipe(first())
             .subscribe(
                 (response) => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     // TODO: Show error notification
                 }
             );

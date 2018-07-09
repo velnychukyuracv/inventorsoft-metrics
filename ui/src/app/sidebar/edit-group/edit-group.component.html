@@ -1,19 +1,22 @@
 <div *ngIf="editedGroup" class="modal fade" role="dialog" tabindex="-1" id="editGroup">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>Edit Group</h1>
+                <h3>Edit Group</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form class="form-validate" [formGroup]="editGroupForm">
                     <div class="form-group">
-                        <label for="edit-icon-{{editedGroup.id}}">Icon</label>
+                        <label class="form-control-label" for="edit-icon-{{editedGroup.id}}">Icon</label>
                         <select id="edit-icon-{{editedGroup.id}}" class="form-control" name="materialIcon" formControlName="materialIcon"
                                 required
                                 [(ngModel)]="editedGroup.materialIcon"
                                 [ngClass]="{'border border-danger': editGroupForm.get('materialIcon').invalid && editGroupForm.get('materialIcon').touched}">
                             <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}}
-                                {{materialIcon.title}}
+                                <p>{{materialIcon.title}}</p>
                             </option>
                         </select>
                     </div>
@@ -22,7 +25,7 @@
                         <span *ngIf="editGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
                     </div>
                     <div class="form-group">
-                        <label for="edit-name-{{editedGroup.id}}">Group Name</label>
+                        <label class="form-control-label" for="edit-name-{{editedGroup.id}}">Group Name</label>
                         <input type="text" id="edit-name-{{editedGroup.id}}" class="form-control" name="name" formControlName="name"
                                required
                                [(ngModel)]="editedGroup.name"

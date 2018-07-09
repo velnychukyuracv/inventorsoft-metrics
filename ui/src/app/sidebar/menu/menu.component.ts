@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinnersService: SpinnersService) {
+                private spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -29,15 +29,15 @@ export class MenuComponent implements OnInit {
      * Get all groups
      */
     getGroups() {
-        this.spinnersService.show();
+        this.spinner.show();
         this.groupsService.getGroups().pipe(first()).subscribe(
             (response: any) => {
-                this.spinnersService.hide();
+                this.spinner.hide();
                 this.groups = response.content;
                 // TODO: Show success notification
             },
             error => {
-                this.spinnersService.hide();
+                this.spinner.hide();
                 // TODO: Show error notification
             })
     }
@@ -47,16 +47,16 @@ export class MenuComponent implements OnInit {
      * @param groupId: Id of selected group
      */
     deleteGroup(groupId: number) {
-        this.spinnersService.show();
+        this.spinner.show();
         this.groupsService.deleteGroup(groupId).pipe(first())
             .subscribe(
                 (response) => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     this.getGroups();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.spinnersService.hide();
+                    this.spinner.hide();
                     // TODO: Show error notification
                 }
             );
