@@ -8,7 +8,7 @@ import { of } from 'rxjs/internal/observable/of';
 })
 export class NotificationService {
     notifications: MessageModel[];
-    private static const TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
+    static TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
     constructor() {
         this.notifications = [];
     }
