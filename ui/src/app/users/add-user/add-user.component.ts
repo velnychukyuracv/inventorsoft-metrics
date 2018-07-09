@@ -55,6 +55,13 @@ export class AddUserComponent implements OnInit {
             )
     }
 
+    /**
+     * be able to cancel adding
+     */
+    cancel() {
+        this.router.navigate(['/users'])
+    }
+
     // TODO Need to change when we will have done service for notifications
     /**
      * show info block

@@ -30,7 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-        return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken']))
+        return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken'] || ''))
             .pipe(
                 catchError((error: HttpEvent<any>) => {
 
