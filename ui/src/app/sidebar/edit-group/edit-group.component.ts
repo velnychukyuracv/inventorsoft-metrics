@@ -26,6 +26,10 @@ export class EditGroupComponent implements OnInit {
         this.getIcons();
     }
 
+    onSubmit() {
+        this.editGroup(this.editedGroup, this.editedGroup.id);
+    }
+
     /**
      * Initialization Edit Group Form
      */
@@ -63,3 +67,5 @@ export class EditGroupComponent implements OnInit {
             );
     }
 }
+
+

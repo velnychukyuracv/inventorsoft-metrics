@@ -8,39 +8,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-validate" [formGroup]="editGroupForm">
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                     <div class="form-group">
-                        <label class="form-control-label" for="edit-icon-{{editedGroup.id}}">Icon</label>
-                        <select id="edit-icon-{{editedGroup.id}}" class="form-control" name="materialIcon" formControlName="materialIcon"
+                        <label for="edit-icon-{{editedGroup.id}}">Icon</label>
+                        <select id="edit-icon-{{editedGroup.id}}" class="form-control" name="materialIcon" [(ngModel)]="editedGroup.materialIcon"
                                 required
-                                [(ngModel)]="editedGroup.materialIcon"
-                                [ngClass]="{'border border-danger': editGroupForm.get('materialIcon').invalid && editGroupForm.get('materialIcon').touched}">
+                                [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }">
                             <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}}
                                 <p>{{materialIcon.title}}</p>
                             </option>
                         </select>
-                    </div>
-                    <div class="alert alert-info mt-3"
-                         *ngIf="editGroupForm.get('materialIcon').invalid && editGroupForm.get('materialIcon').touched">
-                        <span *ngIf="editGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
+                        <div *ngIf="f.submitted && materialIcon.invalid" class="invalid-feedback">
+                            <div *ngIf="materialIcon.errors.required">First Name is required</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="edit-name-{{editedGroup.id}}">Group Name</label>
-                        <input type="text" id="edit-name-{{editedGroup.id}}" class="form-control" name="name" formControlName="name"
+                        <input type="text" id="edit-name-{{editedGroup.id}}" class="form-control" name="name" [(ngModel)]="editedGroup.name"
                                required
-                               [(ngModel)]="editedGroup.name"
-                               [ngClass]="{'border border-danger': editGroupForm.get('name').invalid && editGroupForm.get('name').touched}">
+                               [ngClass]="{ 'is-invalid': f.submitted && name.invalid }">
+                        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                            <div *ngIf="name.errors.required">Last Name is required</div>
+                        </div>
                     </div>
-                    <div class="alert alert-info mt-3" *ngIf="editGroupForm.get('name').invalid && editGroupForm.get('name').touched">
-                        <span *ngIf="editGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
+                    <div class="form-group">
+                        <button class="btn btn-default">Edit</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" (click)="editGroup(editedGroup, editedGroup.id)" data-dismiss="modal"
-                        [disabled]="editGroupForm.invalid">Edit
-                </button>
-                <button type="submit" class="btn btn-default" data-dismiss="modal" [disabled]="editGroupForm.invalid">Close</button>
             </div>
         </div>
     </div>

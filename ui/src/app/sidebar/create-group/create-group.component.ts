@@ -16,7 +16,6 @@ import { Router } from '@angular/router';
 export class CreateGroupComponent implements OnInit {
     group: Group = new Group();
     createGroupForm: FormGroup;
-    receivedGroup: Group;
     icons: Icons[];
 
     constructor(private router: Router,
@@ -48,14 +47,13 @@ export class CreateGroupComponent implements OnInit {
 
     /**
      * Create group
-     * @param group: Data of created group
      */
-    createGroup(group: Group) {
+    createGroup() {
+        const createdGroup = this.createGroupForm.value;
         this.spinner.show();
-        this.groupsService.createGroup(group).pipe(first())
+        this.groupsService.createGroup(createdGroup).pipe(first())
             .subscribe(
-                (data: Group) => {
-                    this.receivedGroup = data;
+                (response) => {
                     this.spinner.hide();
                     // TODO: Show success notification
                 },
