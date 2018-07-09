@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AuthService } from '../../common/services/auth.service';
 import { Router } from '@angular/router';
+import { SpinnersService } from '../../spinners/spinners.service';
 
 @Component({
     selector   : 'app-reset-password',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class ResetPasswordComponent implements OnInit {
     form: FormGroup;
 
-    constructor(private auth: AuthService, private router: Router) {
+    constructor(private auth: AuthService, private router: Router, public spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -28,10 +29,17 @@ export class ResetPasswordComponent implements OnInit {
      */
     resetPass() {
         let formData = this.form.value;
+        this.spinner.show();
         this.auth.resetPassword(formData['password'], formData['token'])
             .subscribe((res) => {
-                this.router.navigate(['/login'])
-            })
+                    this.spinner.hide();
+                    this.router.navigate(['/login'])
+                },
+                error => {
+                    this.spinner.hide();
+                    // TODO notification message
+                }
+            )
     }
 
 }

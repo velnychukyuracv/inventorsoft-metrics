@@ -37,7 +37,7 @@ export class AuthService {
 
     /**
      * http request to the server for new token
-     * @param email - eser's email
+     * @param email - user email
      */
     forgotPassword(email) {
         return this.http.post(environment.NO_AUTH_PREFIX + `/forgetPassword?email=${encodeURIComponent(email)}`, {email})

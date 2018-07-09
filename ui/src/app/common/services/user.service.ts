@@ -64,7 +64,7 @@ export class UserService {
      * @param id - user's id
      */
     deleteUser(id) {
-        return this.http.delete(environment.BASE_URL + `/app/users/${id}`)
+        return this.http.delete(environment.API_URL + `/users/${id}`)
             .pipe(
                 catchError(error => throwError('Server problem: ' + error.status + ' error'))
             )
@@ -75,7 +75,7 @@ export class UserService {
      * @param id - user's id
      */
     getUser(id) {
-        return this.http.get(environment.BASE_URL + `/app/users/${id}`)
+        return this.http.get(environment.API_URL + `/users/${id}`)
             .pipe(
                 catchError(error => throwError('Server problem: ' + error.status + ' error'))
             )

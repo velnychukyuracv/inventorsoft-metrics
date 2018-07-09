@@ -17,7 +17,7 @@ export class EditUserComponent implements OnInit {
     userId: any;
     currentUser: EditUser;
 
-    constructor(public router: Router, public userService: UserService, public activatedRoute: ActivatedRoute, public spinnerService: SpinnersService) {
+    constructor(public router: Router, public userService: UserService, public activatedRoute: ActivatedRoute, public spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -30,17 +30,17 @@ export class EditUserComponent implements OnInit {
      */
     onSubmit() {
         const formData = this.form.value;
-        this.spinnerService.show();
+        this.spinner.show();
 
         this.userService.editUser(formData, this.userId)
             .subscribe(
                 res => {
-                    this.spinnerService.hide();
+                    this.spinner.hide();
                     return this.router.navigate(['/users']);
                     //todo success notification
                 },
                 error => {
-                    this.spinnerService.hide();
+                    this.spinner.hide();
                     this.showMessage(error);
                 }
             )

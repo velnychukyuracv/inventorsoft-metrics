@@ -17,7 +17,7 @@ export class AddUserComponent implements OnInit {
      */
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
-    constructor(public router: Router, public userService: UserService, public spinnerService: SpinnersService) {
+    constructor(public router: Router, public userService: UserService, public spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -41,15 +41,15 @@ export class AddUserComponent implements OnInit {
      */
     onSubmit() {
         const formData = this.form.value;
-        this.spinnerService.show();
+        this.spinner.show();
         this.userService.addUser(formData)
             .subscribe(res => {
-                    this.spinnerService.hide();
+                    this.spinner.hide();
                     return this.router.navigate(['/users']);
                     //todo success notification
                 },
                 error => {
-                    this.spinnerService.hide();
+                    this.spinner.hide();
                     this.showMessage(error);
                 }
             )

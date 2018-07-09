@@ -1,13 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
+    /**
+     * pipe name
+     */
     name: 'customDate'
 })
 export class CustomDatePipe implements PipeTransform {
 
-    transform(value: any, locale?: any, format?: any): any {
-        let [createdYear, createdMonth, createdDay, createdHour, createdMinute, createdSecond, createdMs] = value;
-        value = new Date(Date.UTC(createdYear, createdMonth, createdDay, createdHour, createdMinute, createdSecond, createdMs));
+    transform(value: any, locale?: string, format?: string): any {
+        let [year, month, day, hour, minute, second, ms] = value;
+        value = new Date(Date.UTC(year, month, day, hour, minute, second, ms));
         let result;
 
         switch (format) {
