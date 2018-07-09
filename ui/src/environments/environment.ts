@@ -5,7 +5,7 @@
 export const environment = {
     production    : false,
     BASE_URL      : 'https://report.inventorsoft.co',
-    API_URL       : 'https://report.inventorsoft.co/api',
+    API_URL       : 'https://report.inventorsoft.co/app',
     NO_AUTH_PREFIX: 'https://report.inventorsoft.co/app/no-auth'
 };
 
