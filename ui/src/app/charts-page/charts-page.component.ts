@@ -28,7 +28,7 @@ export class ChartsPageComponent implements OnInit {
     constructor(
         private chartsService: ChartsService,
         private spinner: SpinnersService,
-        private notificationService: NotificationService,
+        private notification: NotificationService,
         private dataSourceService: DataSourcesService,
         private groupService: GroupsService) {
         this.charts = [];
@@ -67,7 +67,7 @@ export class ChartsPageComponent implements OnInit {
                     this.spinner.hide();
                 }, (error) => {
                     this.spinner.hide();
-                    this.notificationService.error('Failed to get list of charts');
+                    this.notification.error('Failed to get list of charts');
                 }
             )
     }
@@ -114,10 +114,10 @@ export class ChartsPageComponent implements OnInit {
             .subscribe(response => {
                 this.spinner.hide();
                 this.getCharts();
-                this.notificationService.success('You have successfully added new chart');
+                this.notification.success('You have successfully added new chart');
             }, error => {
                 this.spinner.hide();
-                this.notificationService.error('Failed to create new chart"');
+                this.notification.error('Failed to create new chart"');
             })
     }
 
@@ -162,12 +162,12 @@ export class ChartsPageComponent implements OnInit {
                     response => {
                         this.spinner.hide();
                         this.getCharts();
-                        this.notificationService.success(
+                        this.notification.success(
                             `You have successfully deleted chart with id ${this.selectedChartId}`
                         );
                     }, error => {
                         this.spinner.hide();
-                        this.notificationService.error(`Failed to delete chart with id ${this.selectedChartId}`);
+                        this.notification.error(`Failed to delete chart with id ${this.selectedChartId}`);
                     }
                 )
         }
@@ -184,12 +184,12 @@ export class ChartsPageComponent implements OnInit {
                     response => {
                         this.spinner.hide();
                         this.getCharts();
-                        this.notificationService.success(
+                        this.notification.success(
                             `You have successfully edited chart with id ${this.selectedChartId}`
                         );
                     }, error => {
                         this.spinner.hide();
-                        this.notificationService.error(`Failed to edit chart with id ${this.selectedChartId}`);
+                        this.notification.error(`Failed to edit chart with id ${this.selectedChartId}`);
                     }
                 )
         }
