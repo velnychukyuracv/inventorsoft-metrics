@@ -1,18 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector   : 'app-pagination',
     templateUrl: './pagination.component.html',
     styleUrls  : ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
     @Input() activePage: number = 0;
     @Input() totalPages: number = 1;
 
     constructor() {
-    }
-
-    ngOnInit() {
     }
 
     /**
