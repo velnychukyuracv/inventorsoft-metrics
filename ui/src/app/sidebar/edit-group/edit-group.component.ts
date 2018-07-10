@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,6 @@ import { Icons } from '../../common/models/groupIcons.model';
 export class EditGroupComponent implements OnInit {
     @Input() editedGroup: Group;
     groups: Group[];
-    editGroupForm: FormGroup;
     icons: Icons [];
 
     constructor(private groupsService: GroupsService,
@@ -22,22 +21,7 @@ export class EditGroupComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.initEditGroupForm();
         this.getIcons();
-    }
-
-    onSubmit() {
-        this.editGroup(this.editedGroup, this.editedGroup.id);
-    }
-
-    /**
-     * Initialization Edit Group Form
-     */
-    initEditGroupForm() {
-        this.editGroupForm = new FormGroup({
-            'materialIcon': new FormControl(null, [Validators.required]),
-            'name'        : new FormControl(null, [Validators.required]),
-        });
     }
 
     /**
