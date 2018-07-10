@@ -1,7 +1,6 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { SpinnersService } from '../../spinners/spinners.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { Icons } from '../../common/models/groupIcons.model';

@@ -15,7 +15,7 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to get all groups
+     * Get all groups
      */
     getGroups() {
         return this.httpClient.get(environment.API_URL + '/groups').pipe(catchError(
@@ -24,7 +24,7 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to create group
+     * Create group
      * @param createdGroup: Group Data
      */
     createGroup(createdGroup: Group) {
@@ -35,7 +35,7 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to edit group
+     * Edit group
      * @param editedGroup: Group Data
      * @param idGroup: Group id
      */
@@ -48,7 +48,7 @@ export class GroupsService {
     }
 
     /**
-     * HTTP request to delete group
+     * Delete group
      * @param idGroup: Group id
      */
     deleteGroup(idGroup: number) {
@@ -58,7 +58,7 @@ export class GroupsService {
     }
 
     /**
-     * Query to get all groups icons
+     * Get all groups icons
      */
     getIcons() {
         return groupIcons;
