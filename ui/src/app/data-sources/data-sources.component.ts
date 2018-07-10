@@ -29,22 +29,8 @@ export class DataSourcesComponent implements OnInit {
 
     constructor(
         private dataSourcesService: DataSourcesService,
-        private spinnersService: SpinnersService
+        private spinner: SpinnersService
     ) {
-    }
-
-    /**
-     * Show spinners
-     */
-    private showSpinners(): void {
-        this.spinnersService.show();
-    }
-
-    /**
-     * Hide spinners
-     */
-    private hideSpinners(): void {
-        this.spinnersService.hide();
     }
 
     ngOnInit() {
@@ -141,7 +127,7 @@ export class DataSourcesComponent implements OnInit {
      * Build Data Sources
      */
     buildDataSources() {
-        this.showSpinners();
+        this.spinner.show();
 
         this.dataSourcesService.getDataSources(this.tableParams)
             .pipe(first())
@@ -163,11 +149,11 @@ export class DataSourcesComponent implements OnInit {
                     });
                     this.dataSources = data.content;
 
-                    this.hideSpinners();
+                    this.spinner.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     // TODO: Show error notification
                 }
             );
@@ -177,18 +163,18 @@ export class DataSourcesComponent implements OnInit {
      * Create Data Source
      */
     createDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         this.dataSourcesService.createDataSource(this.dataSourceForm.value).pipe(first())
             .subscribe(
                 response => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     this.closeModalDataSource();
                     this.buildDataSources();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     this.closeModalDataSource();
                     // TODO: Show error notification
                 }
@@ -199,19 +185,19 @@ export class DataSourcesComponent implements OnInit {
      * Edit Data Source
      */
     editDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         if (this.selectedDataSourceId) {
             this.dataSourcesService.editDataSource(this.selectedDataSourceId, this.dataSourceForm.value).pipe(first())
                 .subscribe(
                     response => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.buildDataSources();
                         this.closeModalDataSource();
                         // TODO: Show success notification
                     },
                     error => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeModalDataSource();
                         // TODO: Show error notification
                     }
@@ -223,19 +209,19 @@ export class DataSourcesComponent implements OnInit {
      * Delete Data Source
      */
     deleteDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         if (this.selectedDataSourceId) {
             this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
                 .subscribe(
                     response => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeConfirmDeleteModal();
                         this.buildDataSources();
                         // TODO: Show success notification
                     },
                     error => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeConfirmDeleteModal();
                         // TODO: Show error notification
                     }
