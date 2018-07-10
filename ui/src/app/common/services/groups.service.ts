@@ -6,7 +6,6 @@ import { Group } from '../models/group.model';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Observable } from 'rxjs/internal/Observable';
-import { a } from '@angular/core/src/render3';
 
 @Injectable({
     providedIn: 'root'

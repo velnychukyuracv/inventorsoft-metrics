@@ -7,7 +7,6 @@ import { throwError } from 'rxjs/index';
 
 import { environment } from '../../../environments/environment';
 import { DataSource } from '../models/data-source.model';
-import { a } from '@angular/core/src/render3';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +20,7 @@ export class DataSourcesService {
 
     /** HTTP request for get Data Source list
      */
-    getDataSources(): Observable<any> {
+    getDataSources() {
         return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -31,7 +30,7 @@ export class DataSourcesService {
     /** HTTP request for get Data Source Info
      * @param id: Data Source id
      */
-    getDataSourceById(id: number): Observable<any> {
+    getDataSourceById(id: number) {
         return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH + '/' + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -41,7 +40,7 @@ export class DataSourcesService {
     /** HTTP request for create Data Source
      * @param dataSource: Data Source Info
      */
-    createDataSource(dataSource: DataSource): Observable<any> {
+    createDataSource(dataSource: DataSource) {
         return this.httpClient.post(environment.BASE_URL + this.SERVICE_PATH, dataSource)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -52,7 +51,7 @@ export class DataSourcesService {
      * @param id: Data Source id
      * @param dataSource: Data Source Info
      */
-    editDataSource(id: number, dataSource: DataSource): Observable<any> {
+    editDataSource(id: number, dataSource: DataSource) {
         return this.httpClient.patch(environment.BASE_URL + this.SERVICE_PATH + '/' + id, dataSource)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -63,7 +62,7 @@ export class DataSourcesService {
      * HTTP request for delete Data Source
      * @param id: Data Source id
      */
-    deleteDataSource(id: number): Observable<any> {
+    deleteDataSource(id: number) {
         return this.httpClient.delete(environment.BASE_URL + this.SERVICE_PATH + '/' + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
