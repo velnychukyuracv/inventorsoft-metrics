@@ -51,7 +51,7 @@ export class GroupsService {
      * @returns {Observable<any>}
      */
     editGroup(newGroup: Group, idGroup: number) : Observable<any> {
-        return this.httpClient.patch(environment.BASE_URL + '/groups/' + idGroup, newGroup)
+        return this.httpClient.patch(environment.API_URL + '/groups/' + idGroup, newGroup)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
@@ -63,7 +63,7 @@ export class GroupsService {
      * @returns {Observable<any>}
      */
     deleteGroup(idGroup: number) : Observable<any> {
-        return this.httpClient.delete(environment.BASE_URL + '/groups/' + idGroup)
+        return this.httpClient.delete(environment.API_URL + '/groups/' + idGroup)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
