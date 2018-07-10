@@ -43,7 +43,6 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     createChart(chart: Chart): Observable<any> {
-        console.log(chart);
         return this.httpClient.post(environment.BASE_URL + "/charts/", chart)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
