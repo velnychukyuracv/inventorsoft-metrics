@@ -20,7 +20,7 @@ export class DataSourcesService {
 
     /** HTTP request for get Data Source list
      */
-    getDataSources() {
+    getDataSources(): Observable<any> {
         return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -30,7 +30,7 @@ export class DataSourcesService {
     /** HTTP request for get Data Source Info
      * @param id: Data Source id
      */
-    getDataSourceById(id: number) {
+    getDataSourceById(id: number): Observable<any> {
         return this.httpClient.get(environment.BASE_URL + this.SERVICE_PATH + '/' + id)
             .pipe(catchError(
                 (error: HttpErrorResponse) => throwError(error)
@@ -58,8 +58,7 @@ export class DataSourcesService {
             ));
     }
 
-    /**
-     * HTTP request for delete Data Source
+    /** HTTP request for delete Data Source
      * @param id: Data Source id
      */
     deleteDataSource(id: number) {

@@ -22,7 +22,7 @@ export class GroupsService {
      * @returns {Observable<any>}
      */
     getGroups() : Observable<any> {
-        return this.httpClient.get(environment.BASE_URL + '/app/groups')
+        return this.httpClient.get(environment.API_URL + '/groups/')
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
@@ -38,7 +38,7 @@ export class GroupsService {
             materialIcon: createdGroup.materialIcon,
             name: createdGroup.name
         };
-        return this.httpClient.post(environment.BASE_URL + '/app/groups', body)
+        return this.httpClient.post(environment.API_URL + '/groups/', body)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
@@ -51,7 +51,7 @@ export class GroupsService {
      * @returns {Observable<any>}
      */
     editGroup(newGroup: Group, idGroup: number) : Observable<any> {
-        return this.httpClient.patch(environment.BASE_URL + '/app/groups/' + idGroup, newGroup)
+        return this.httpClient.patch(environment.BASE_URL + '/groups/' + idGroup, newGroup)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
@@ -63,7 +63,7 @@ export class GroupsService {
      * @returns {Observable<any>}
      */
     deleteGroup(idGroup: number) : Observable<any> {
-        return this.httpClient.delete(environment.BASE_URL + '/app/groups/' + idGroup)
+        return this.httpClient.delete(environment.BASE_URL + '/groups/' + idGroup)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             );
