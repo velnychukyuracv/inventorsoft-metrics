@@ -1,0 +1,268 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col">
+            <h2 class="float-left">
+                Chart Management Page
+            </h2>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" (click)="openCreateModal()"
+                    data-target="#chartsModal"
+            >
+                Create
+            </button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>DataSourceId</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let chart of charts">
+            <td>{{chart.id}}</td>
+            <td>{{chart.name}}</td>
+            <td>{{chart.dataSourceDbRepId}}</td>
+            <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal">
+                    <!-- TODO: Make it work when chart visualization would be implemented><!-->
+                    Preview
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#chartsModal"
+                    (click)="openEditModal(chart.id)">
+                    Edit
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
+                    (click)="openConfirmDeleteModal(chart.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal show" id="chartsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chart Card:
+                    <span *ngIf="selectedChartId; else createCard"> Editing chart with id {{selectedChartId}}</span>
+                    <ng-template #createCard>
+                        <span> Creating new chart</span>
+                    </ng-template>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-validate" [formGroup]="chartForm">
+                    <div class="form-group">
+                        <label for="dataSourceid">Data Source id: </label>
+                        <select required
+                               id = "dataSourceid"
+                               class="form-control"
+                               formControlName="dataSourceDbRepId"
+                                [ngClass]="{'border border-danger':chartForm.get('dataSourceDbRepId').invalid && chartForm.get('dataSourceDbRepId').touched}">
+                            <option *ngFor="let dataSource of dataSources" value="{{dataSource.id}}">{{dataSource.dataSourceName}}</option>
+                        </select>
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('dataSourceDbRepId').invalid && chartForm.get('dataSourceDbRepId').touched">
+                            <span *ngIf="!dataSources.length">There isn`t any data sources. You have to create data source first</span>
+                            <span *ngIf="chartForm.get('dataSourceDbRepId')['errors']['required'] && dataSources.length">You have to select DataSource</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filterColumns">filterColumns: </label>
+                        <input required
+                               id = "filterColumns"
+                               class="form-control"
+                               formControlName="filterColumns"
+                               [ngClass]="{'border border-danger':chartForm.get('filterColumns').invalid && chartForm.get('filterColumns').touched}">
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('filterColumns').invalid && chartForm.get('filterColumns').touched">
+                            <span *ngIf="chartForm.get('filterColumns')['errors']['required']">Field 'filterColumns' must be filled in.</span>
+                            <span *ngIf="chartForm.get('filterColumns')['errors']['pattern']">You have to enter column numbers separated by space or semicolon</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="groupId">Group id: </label>
+                        <select required
+                                id = "groupId"
+                                class="form-control"
+                                formControlName="groupId"
+                                [ngClass]="{'border border-danger':chartForm.get('groupId').invalid && chartForm.get('groupId').touched}">
+                            <option *ngFor="let group of groups" value="{{group.id}}">{{group.name}}</option>
+                        </select>
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('groupId').invalid && chartForm.get('groupId').touched">
+                            <span *ngIf="!groups.length">There isn`t any groups. You have to create group first</span>
+                            <span *ngIf="chartForm.get('groupId')['errors']['required'] && groups.length">You have to select Group</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name: </label>
+                        <input required
+                               id = "name"
+                               class="form-control"
+                               formControlName="name"
+                               [ngClass]="{'border border-danger':chartForm.get('name').invalid && chartForm.get('name').touched}">
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('name').invalid && chartForm.get('name').touched">
+                            <span *ngIf="chartForm.get('name')['errors']['required']">Field 'name' must be filled in.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order">Order: </label>
+                        <input required type="number"
+                               id = "order"
+                               class="form-control"
+                               formControlName="order"
+                               [ngClass]="{'border border-danger':chartForm.get('order').invalid && chartForm.get('order').touched}">
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('order').invalid && chartForm.get('order').touched">
+                            <span *ngIf="chartForm.get('order')['errors']['required']">Field 'order' must be filled in.</span>
+                            <span *ngIf="chartForm.get('order')['errors']['pattern']">Field 'order' mush be integer</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="query">Query: </label>
+                        <textarea required
+                               id = "query"
+                               class="form-control"
+                               formControlName="query"
+                               [ngClass]="{'border border-danger':chartForm.get('query').invalid && chartForm.get('query').touched}">
+                        </textarea>
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('query').invalid && chartForm.get('query').touched">
+                            <span *ngIf="chartForm.get('query')['errors']['required']">Area 'order' must be filled in.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type: </label>
+                        <select required
+                                id = "type"
+                                class="form-control"
+                                formControlName="type"
+                                [ngClass]="{'border border-danger':chartForm.get('type').invalid && chartForm.get('type').touched}">
+                            <option>LINE</option>
+                            <option>TABLE</option>
+                            <option>BAR</option>
+                            <option>PIE</option>
+                            <option>COLUMN</option>
+                            <option>AREA</option>
+                        </select>
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('type').invalid && chartForm.get('type').touched">
+                            <span *ngIf="chartForm.get('type')['errors']['required']">You have to select one option</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visibleColumns">VisibleColumns: </label>
+                        <input required
+                               id = "visibleColumns"
+                               class="form-control"
+                               formControlName="visibleColumns"
+                               [ngClass]="{'border border-danger':chartForm.get('visibleColumns').invalid && chartForm.get('visibleColumns').touched}">
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('visibleColumns').invalid && chartForm.get('visibleColumns').touched">
+                            <span *ngIf="chartForm.get('visibleColumns')['errors']['required']">Field 'visibleColumns' must be filled in.</span>
+                            <span *ngIf="chartForm.get('visibleColumns')['errors']['pattern']">You have to enter column numbers separated by space or semicolon</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="attributes">Attributes: (In JSON) </label>
+                        <textarea required
+                               id = "attributes"
+                               class="form-control"
+                               formControlName="attributes"
+                               [ngClass]="{'border border-danger':chartForm.get('attributes').invalid && chartForm.get('attributes').touched}">
+                        </textarea>
+                        <div class="alert alert-info mt-3"
+                             *ngIf="chartForm.get('attributes').invalid && chartForm.get('attributes').touched">
+                            <span *ngIf="chartForm.get('attributes')['errors']['required']">Field 'Attributes' must be filled in.</span>
+                            <span *ngIf="chartForm.get('attributes').hasError('minlength')">Attributes should be at least {{chartForm.get('attributes')['errors']['minlength']['requiredLength']}} characters long.
+                            Now {{chartForm.get('attributes')['errors']['minlength']['actualLength']}} characters.</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-secondary btn-clear mr-auto" (click)="chartForm.reset()">Clear</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button *ngIf="selectedChartId; else createBlock" type="button" data-dismiss="modal"
+                            class="btn btn-primary"
+                            [disabled]="chartForm.invalid"
+                            (click)="editChart()">
+                            Edit chart
+                        </button>
+                        <ng-template #createBlock>
+                            <button type="button" data-dismiss="modal"
+                                    class="btn btn-primary"
+                                    [disabled]="chartForm.invalid"
+                                    (click)="createChart()">
+                                Add chart
+                            </button>
+                        </ng-template>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deleting chart with id {{selectedChartId}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete the chart?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteChart()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="previewChartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chart preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--TODO: Visualize chart-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
