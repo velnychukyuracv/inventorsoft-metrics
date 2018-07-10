@@ -56,7 +56,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     editChart(id: number, chart: Chart): Observable<any> {
-        return this.httpClient.patch(environment.API_URL + "/charts/", chart)
+        return this.httpClient.patch(environment.API_URL + "/charts/" + id, chart)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             )
