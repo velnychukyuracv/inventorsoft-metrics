@@ -3,12 +3,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { MessageModel } from '../models/message.model';
 import { of } from 'rxjs/internal/observable/of';
 
+const TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
+
 @Injectable({
     providedIn: 'root'
 })
 export class NotificationService {
     notifications: MessageModel[];
-    static TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
     constructor() {
         this.notifications = [];
     }
@@ -62,7 +63,7 @@ export class NotificationService {
         let message = new MessageModel(content, type);
         this.notifications.push(message);
         if (beDisappeared)
-            setTimeout(() => this.dissmissMessage(message.id), NotificationService.TIME_TO_DESTROY_MSG_IN_MS);
+            setTimeout(() => this.dissmissMessage(message.id), TIME_TO_DESTROY_MSG_IN_MS);
     }
 
 }
