@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
     selectedGroup: Group;
     groups: Group[];
     editModalClicked: boolean;
+    sidebarBtnState: boolean = false;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
@@ -69,5 +70,12 @@ export class MenuComponent implements OnInit {
     openEditModal(group: Group) {
         this.editModalClicked = true;
         this.selectedGroup = group;
+    }
+
+    /**
+     *  Collapse sidebar
+     */
+    collapseSidebar() {
+        this.sidebarBtnState = !this.sidebarBtnState;
     }
 }

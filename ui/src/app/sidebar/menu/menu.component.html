@@ -1,46 +1,68 @@
-<nav class="nav flex-column" id="sidebar">
-    <div class="user">
+<!-- TODO: Move button to header component-->
+<button type="button" id="sidebarCollapse" class="btn btn-link btn-lg" (click)="collapseSidebar()">
+    <i class="fa fa-align-justify"></i>
+</button>
+
+<nav id="sidebar" [ngClass]="sidebarBtnState ? 'active' : ''">
+    <div class="sidebar-header">
         <img src="../../../assets/user.png" class="rounded-circle">
-        <p><b>Your Name</b></p>
+        <p>User Name</p>
     </div>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-user fa-1x"> </i> User Management</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-home fa-1x"> </i> Data Source Management</a>
-        </li>
-        <li class="nav-item">
-            <a data-toggle="collapse" aria-expanded="false" class="nav-link">
-                    <span class="menu-collapsed"><i class="fa fa-bar-chart fa-1x"> </i> Chart
-                    Management</span>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a href="#">
+                <i class="fa fa-user"></i>
+                User Management
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
-                    <span class="menu-collapsed"><i class="fa fa-group fa-1x"> </i> Group
-                    Management</span>
+        <li>
+            <a href="#">
+                <i class="fa fa-file"></i>
+                Data Source Management
             </a>
-            <div id='submenu' class="collapse sidebar-submenu">
-                <div class="text-center">
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-list-ul"></i>
+                Chart Management
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa fa-bar-chart"></i>
+                Charts
+            </a>
+        </li>
+        <li id="sidebar-submenu">
+            <a href="#group-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-group"></i>
+                Group Management
+            </a>
+            <ul class="collapse list-unstyled" id="group-submenu">
+                <div class="text-center group-item">
                     <button class="btn btn-outline-secondary" id="create-group" data-toggle="modal" data-target="#createGroup"><i
-                        class="fa fa-plus fa-1x"> </i> Create new group
+                        class="fa fa-plus"></i><span>Create new group</span>
                     </button>
                 </div>
-                <div>
-                    <a *ngFor="let group of groups"><i [class]="group.materialIcon"></i> {{group.name}}
-                        <button class="btn btn-link btn-sm float-right" (click)="deleteGroup(group.id)"><i
-                            class="fa fa-trash fa-1x"> </i></button>
-                        <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm float-right" data-toggle="modal"
-                                data-target="#editGroup"
-                                (click)="openEditModal(group)"><i
-                            class="fa fa-edit fa-1x"> </i>
-                        </button>
+                <li>
+                    <a class="group-item groups" *ngFor="let group of groups"><i [class]="group.materialIcon"></i>{{group.name}}
+                        <div class="group-btn pull-right">
+                            <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
+                                class="fa fa-trash"> </i></button>
+                            <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#editGroup"
+                                    (click)="openEditModal(group)"><i
+                                class="fa fa-edit"> </i>
+                            </button>
+                        </div>
                     </a>
-                </div>
-            </div>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>
 <app-create-group></app-create-group>
 <app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
+
