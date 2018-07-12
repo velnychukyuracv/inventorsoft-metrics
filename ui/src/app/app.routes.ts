@@ -3,27 +3,26 @@ import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
 import { ChartsComponent } from './charts/charts.component';
 
-export const APP_ROUTES:Routes = [
+export const APP_ROUTES: Routes = [
     {
-        path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
+        path      : '',
+        redirectTo: 'login',
+        pathMatch : 'full'
     },
     {
-        path: 'login',
+        path     : 'login',
         component: LoginComponent
     },
     {
         path     : 'data-sources',
-        component: DataSourcesComponent
+        component: DataSourcesComponent,
     },
     {
         path     : 'charts',
         component: ChartsComponent
     },
     {
-        path: '**',
-        redirectTo: '/login'
+        path      : '**',
+        redirectTo: 'login'
     }
-
 ];
