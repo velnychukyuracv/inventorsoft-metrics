@@ -10,7 +10,11 @@ import { SpinnersService } from './spinners/spinners.service';
 import { DataSourcesModule } from './data-sources/data-sources.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import {ChartsModule} from "./charts/charts.module";
+
+import { UsersModule } from './users/users.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './common/shared/jwt-interceptor';
+
 
 @NgModule({
     declarations: [
@@ -25,10 +29,16 @@ import {ChartsModule} from "./charts/charts.module";
         HttpClientModule,
         AuthModule,
         DataSourcesModule,
-        ChartsModule,
+
     ],
     providers   : [
-        SpinnersService
+        SpinnersService,
+        UsersModule
+    ],
+    providers   : [
+        SpinnersService,
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+
     ],
     bootstrap   : [AppComponent]
 })

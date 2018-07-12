@@ -20,4 +20,5 @@ public class ChartDto {
     private Integer order;
     private String attributes;
     private Long dataSourceDbRepId;
+    private Long groupId;
 }
