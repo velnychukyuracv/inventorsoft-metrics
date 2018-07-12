@@ -1,0 +1,16 @@
+
+  <section  class="chart " *ngFor="let chart of showCharts">
+    <div class="chartHeader">
+      <div >
+        <h3> {{chart?.type}} </h3>
+      </div>
+    </div>
+
+    <div class="chartBody">
+      <div   [chartType]="chart?.type"
+             [chartData]="chart?.data"
+             [chartOptions]="chart?.options"
+             appGoogleChart>
+      </div>
+    </div>
+  </section>

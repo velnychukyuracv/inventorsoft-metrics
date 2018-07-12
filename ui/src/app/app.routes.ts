@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
-import { ChartsComponent } from "./charts/charts.component";
+import { ChartsComponent } from './charts/charts.component';
 
 export const APP_ROUTES:Routes = [
     {
@@ -18,7 +18,7 @@ export const APP_ROUTES:Routes = [
         component: DataSourcesComponent
     },
     {
-        path: 'charts',
+        path     : 'charts',
         component: ChartsComponent
     },
     {
