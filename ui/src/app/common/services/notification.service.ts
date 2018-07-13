@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { MessageModel } from '../models/message.model';
+import { Message } from '../models/message';
 import { of } from 'rxjs/internal/observable/of';
 
 const TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
@@ -9,22 +9,22 @@ const TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
     providedIn: 'root'
 })
 export class NotificationService {
-    notifications: MessageModel[];
+    notifications: Message[];
     constructor() {
         this.notifications = [];
     }
 
     /**
-     * Is Used to get messages in reverse order
-     * @returns {Observable<MessageModel[]>}
+     * Get messages in reverse order
+     * @returns {Observable<Message[]>}
      */
-    getMessages(): Observable<MessageModel[]> {
+    getMessages(): Observable<Message[]> {
         return of(this.notifications.reverse());
     }
 
 
     /**
-     * Is used to create success notification
+     * Create success notification
      * @param content of the message
      * @param beDisappeared If true the success message will disappear after some time
      *                                 if else it will be permanent
@@ -34,7 +34,7 @@ export class NotificationService {
     }
 
     /**
-     *  Is used to create error notification
+     * Create error notification
      * @param content of the message
      * @param {boolean} beDisappeared If true the error message will disappear after some time
      *                                 if else it will be permanent
@@ -44,26 +44,26 @@ export class NotificationService {
     }
 
     /**
-     * Is used to dissmis the message
+     * Dismiss the message
      * @param {number} id message to dissmiss
      */
-    dissmissMessage(id: number): void {
+    dismissMessage(id: number): void {
         let index = this.notifications.findIndex(x => x.id == id);
         this.notifications.splice(index, 1);
     }
 
     /**
-     * Is used to create message
+     * Create message
      * @param {string} content of the message
      * @param {string} type of message. Can be success or error
      * @param {boolean} beDisappeared. If true the message will disappear after some time
      *                                 if else it will be permanent
      */
     private sendMessage(content: string, type: string, beDisappeared: boolean = true): void {
-        let message = new MessageModel(content, type);
+        let message = new Message(content, type);
         this.notifications.push(message);
         if (beDisappeared)
-            setTimeout(() => this.dissmissMessage(message.id), TIME_TO_DESTROY_MSG_IN_MS);
+            setTimeout(() => this.dismissMessage(message.id), TIME_TO_DESTROY_MSG_IN_MS);
     }
 
 }

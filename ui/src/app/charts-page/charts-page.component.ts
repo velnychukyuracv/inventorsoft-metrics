@@ -44,7 +44,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to get a list of all charts and show it on the page
+     * Get a list of all charts and show it on the page
      */
     getCharts(): void {
         this.spinner.show();
@@ -73,7 +73,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to init the chart input form. Although setted up validation for fields
+     * Init the chart input form and set up validation for fields
      */
     initChartForm(): void {
         this.chartForm = new FormGroup({
@@ -90,7 +90,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to get a list of all data sources
+     * Get a list of all data sources
      */
     getDataSources(): void {
         this.dataSourceService.getDataSources().pipe(first())
@@ -98,7 +98,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to get a list of all groups
+     * Get a list of all groups
      */
     getGroups(): void {
         this.groupService.getGroups().pipe(first())
@@ -106,7 +106,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to create a chart
+     * Create a chart
      */
     createChart(): void {
         this.spinner.show()
@@ -122,7 +122,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Opens window that create new chart.
+     * Open window that creates new chart.
      */
     openCreateModal(): void {
         if (this.selectedChartId) {
@@ -132,16 +132,16 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Opens window that confirms chart with chartId delete
-     * @param {number} chartId
+     * Open window that confirms chart deleting
+     * @param {number} chartId - id chart to delete
      */
     openConfirmDeleteModal(chartId: number): void {
         this.selectedChartId = chartId;
     }
 
     /**
-     * Opens the chart input form for additing a chart with chartId and autocompletes it
-     * @param {number} chartId
+     * Open the chart input form for editing a chart and autocomplete it
+     * @param {number} chartId - id chart to delete
      */
     openEditModal(chartId: number): void {
         this.selectedChartId = chartId;
@@ -152,7 +152,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to delete a chart
+     * Delete a chart
      */
     deleteChart(): void {
         this.spinner.show();
@@ -174,7 +174,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Is used to edit a chart
+     * Edit a chart
      */
     editChart(): void {
         this.spinner.show();

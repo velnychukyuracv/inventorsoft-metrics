@@ -58,7 +58,7 @@ export class GroupsService {
     }
 
     /**
-     * Http request to edit delete a group with idGroup
+     * Http request to delete a group with idGroup
      * @param {number} idGroup
      * @returns {Observable<any>}
      */
