@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/internal/operators/first';
+
 import { UserService } from '../../common/services/user.service';
-import { Router } from '@angular/router';
+import { TableParams } from '../../common/models/table-params.model';
+import { PAGE_NAVIGATION } from '../../common/models/page-navigation.enum';
 
 @Component({
     selector   : 'app-users',
@@ -8,10 +11,16 @@ import { Router } from '@angular/router';
     styleUrls  : ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+
     message: string;
     currentUsers: any;
+    tableParams: TableParams = {
+        pageSize: 10,
+        page    : 0
+    };
+    totalPages: number = 1;
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService) {
     }
 
     ngOnInit() {
@@ -19,12 +28,48 @@ export class UsersComponent implements OnInit {
     }
 
     /**
+     * Slot for connecting to signal 'sorted'
+     * @param $event
+     */
+    onSorted($event) {
+        this.tableParams.sortBy = $event.sortBy;
+        this.tableParams.direction = $event.direction;
+        this.getAllUsers();
+    }
+
+    /**
+     * Slot for connecting to signal 'pageChanged'
+     * @param {number | PAGE_NAVIGATION} $event
+     */
+    onPageChange($event: number | PAGE_NAVIGATION) {
+        switch ($event) {
+            case PAGE_NAVIGATION.PREV:
+                if (this.tableParams.page > 0) {
+                    --this.tableParams.page;
+                }
+                break;
+            case PAGE_NAVIGATION.NEXT:
+                if (this.tableParams.page < this.totalPages) {
+                    ++this.tableParams.page;
+                }
+                break;
+            default:
+                this.tableParams.page = $event;
+        }
+
+        this.getAllUsers();
+    }
+
+    /**
      * show all users received from the server
      */
     getAllUsers() {
-        this.userService.getUsers()
+        this.userService.getUsers(this.tableParams)
+            .pipe(first())
             .subscribe(
                 (res) => {
+                    this.totalPages = res.totalPages;
+                    this.tableParams.page = res.number;
                     this.currentUsers = res['content'];
                 },
                 error => {
