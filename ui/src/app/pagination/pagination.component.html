@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': activePage === 0}">
+            <button class="page-link" tabindex="-1"
+                    pagination-item="PREV"
+            >Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let i of range()" [ngClass]="{'active': i === activePage}">
+            <button pagination-item="{{i}}" class="page-link">{{i + 1}}</button>
+        </li>
+        <li class="page-item" [ngClass]="{'disabled': activePage === totalPages - 1}">
+            <button class="page-link"
+                    pagination-item="NEXT"
+            >Next</button>
+        </li>
+    </ul>
+</nav>
