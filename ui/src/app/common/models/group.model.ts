@@ -1,12 +1,15 @@
 /**
- * The model represents a group.
+ * Group model
  */
 export class Group {
     id?: number;
     materialIcon: string;
     name: string;
-    createdAt?: string;
+    createAt?: string;
     updatedAt?: string;
     order?: number;
     uuid?: string;
+
+    constructor() {
+    }
 }

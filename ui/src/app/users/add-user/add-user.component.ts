@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../common/services/user.service';
+import { SpinnersService } from '../../spinners/spinners.service';
 
 @Component({
     selector   : 'app-add-user',
@@ -16,7 +17,7 @@ export class AddUserComponent implements OnInit {
      */
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
-    constructor(public router: Router, public userService: UserService) {
+    constructor(public router: Router, public userService: UserService, public spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -40,14 +41,25 @@ export class AddUserComponent implements OnInit {
      */
     onSubmit() {
         const formData = this.form.value;
+        this.spinner.show();
         this.userService.addUser(formData)
             .subscribe(res => {
+                    this.spinner.hide();
                     return this.router.navigate(['/users']);
+                    //todo success notification
                 },
                 error => {
+                    this.spinner.hide();
                     this.showMessage(error);
                 }
             )
+    }
+
+    /**
+     * be able to cancel adding
+     */
+    cancel() {
+        this.router.navigate(['/users'])
     }
 
     // TODO Need to change when we will have done service for notifications
