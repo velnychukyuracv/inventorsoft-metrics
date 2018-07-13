@@ -12,7 +12,6 @@ import { groupIcons } from '../../groupIcons';
 })
 
 export class GroupsService {
-
     constructor(private httpClient: HttpClient,
                 private authService: AuthService) {
     }
