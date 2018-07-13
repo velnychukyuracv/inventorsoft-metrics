@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
 
 import { UserService } from '../../common/services/user.service';
+import { SpinnersService } from '../../spinners/spinners.service';
 import { TableParams } from '../../common/models/table-params.model';
 import { PAGE_NAVIGATION } from '../../common/models/page-navigation.enum';
 
@@ -11,7 +12,7 @@ import { PAGE_NAVIGATION } from '../../common/models/page-navigation.enum';
     styleUrls  : ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+    currentUserId: number;
     message: string;
     currentUsers: any;
     tableParams: TableParams = {
@@ -20,7 +21,10 @@ export class UsersComponent implements OnInit {
     };
     totalPages: number = 1;
 
-    constructor(private userService: UserService) {
+    @ViewChild('closeBtn') closeBtn: ElementRef;
+
+    constructor(private userService: UserService,
+                private spinner: SpinnersService) {
     }
 
     ngOnInit() {
@@ -64,6 +68,8 @@ export class UsersComponent implements OnInit {
      * show all users received from the server
      */
     getAllUsers() {
+        this.spinner.show();
+
         this.userService.getUsers(this.tableParams)
             .pipe(first())
             .subscribe(
@@ -71,9 +77,24 @@ export class UsersComponent implements OnInit {
                     this.totalPages = res.totalPages;
                     this.tableParams.page = res.number;
                     this.currentUsers = res['content'];
+                    this.spinner.hide();
+
+                    res['content'].map(element => {
+                        element.createdAt[1] -= 1;
+                        element.createdAt[6] = (element.createdAt[6] / 1000000) | 0;
+                        let [createdYear, createdMonth, createdDay, createdHour, createdMinute, createdSecond, createdMs] = element.createdAt;
+                        element.createdAt = new Date(Date.UTC(createdYear, createdMonth, createdDay, createdHour, createdMinute, createdSecond, createdMs));
+
+                        element.updatedAt[1] -= 1;
+                        element.updatedAt[6] /= 1000000;
+                        let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
+                        element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
+                    });
+
                 },
                 error => {
-                    this.showMessage(error)
+                    this.spinner.hide();
+                    this.showMessage(error);
                 }
             )
     }
@@ -90,8 +111,39 @@ export class UsersComponent implements OnInit {
         }, 6000)
     }
 
-    //TODO delete user
+    /**
+     * delete user
+     */
     deleteUser() {
+        this.spinner.show();
 
+        this.userService.deleteUser(this.currentUserId)
+            .subscribe(
+                () => {
+                    this.closeModal();
+                    this.spinner.hide();
+                    this.currentUsers = this.currentUsers.filter((user) => user.id != this.currentUserId)
+                },
+                error => {
+                    // todo replace to notification service
+                    this.showMessage(error);
+                    this.spinner.hide();
+                }
+            )
+    }
+
+    /**
+     * open modal window to delete user
+     * @param userId - user id
+     */
+    openModal(userId: number) {
+        this.currentUserId = userId;
+    }
+
+    /**
+     * close modal window
+     */
+    closeModal() {
+        this.closeBtn.nativeElement.click();
     }
 }

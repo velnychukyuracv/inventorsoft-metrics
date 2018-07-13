@@ -11,10 +11,8 @@ import { TokenService } from './token.service';
 })
 export class AuthService {
 
-    constructor(
-        private http: HttpClient,
-        private tokenService: TokenService
-    ) {
+    constructor(private http: HttpClient,
+                private tokenService: TokenService) {
     }
 
     /**
@@ -29,10 +27,36 @@ export class AuthService {
             catchError(error => throwError('User Name or Password incorrect'))
         )
     }
+
     /**
      * find out if user is authenticated
      */
     get isAuthenticated() {
         return !!this.tokenService.getToken()
+    }
+
+    /**
+     * http request to the server for new token
+     * @param email - user email
+     */
+    forgotPassword(email) {
+        return this.http.post(environment.NO_AUTH_PREFIX + `/forgetPassword?email=${encodeURIComponent(email)}`, {email})
+            .pipe(
+                catchError(error => throwError('email incorrect'))
+            )
+
+    }
+
+    /**
+     * http request to the server to provide  user's new password
+     * @param password - new user's password
+     * @param token - new token received from the server
+     */
+    resetPassword(password: string, token: string) {
+        return this.http.post(environment.NO_AUTH_PREFIX + '/forgetPassword/resetPassword', {password, token})
+            .pipe(
+                catchError(error => throwError('Token or Password incorrect'))
+            )
+
     }
 }
