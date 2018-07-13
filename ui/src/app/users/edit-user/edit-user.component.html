@@ -1,4 +1,3 @@
-<div class="alert alert-info" *ngIf="message">{{message}}</div>
 <div class="card card-body col-lg-6 col-md-6 col-sm-12 mx-auto mt-5">
     <h3 class="card-title text-center text">Edit User</h3>
     <form class="form-validate" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -31,12 +30,8 @@
             <span *ngIf="form.get('lastName')['errors']['required']">Field 'Last Name' must be filled in.</span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Edit" class="btn btn-primary">
+            <input type="submit" value="Edit" class="btn btn-primary mr-3">
+            <input type="submit" value="Cancel" (click)="cancel()" class="btn btn-secondary">
         </div>
     </form>
 </div>
-
-
-
-
-

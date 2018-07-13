@@ -1,27 +1,60 @@
-<h2> Users !</h2>
-<div class="alert alert-info" *ngIf="message">{{message}}</div>
-<table *ngIf='currentUsers' class="table table-striped"
-       sortable-table (sorted)="onSorted($event)"
-       paginationable-list (pageChanged)="onPageChange($event)"
->
-    <tr>
-        <th sortable-column="id">Id</th>
-        <th sortable-column="firstName">firstName</th>
-        <th sortable-column="lastName">lastName</th>
-        <th>edit</th>
-        <th>delete</th>
-    </tr>
-    <tr *ngFor='let user of currentUsers'>
-        <td>{{user.id}}</td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td class="button" [routerLink]="['/edit-user', user.id]">edit</td>
-        <td class="button" (click)="deleteUser()">delete</td>
-    </tr>
-</table>
-<app-pagination [activePage]="tableParams.page"
-                [totalPages]="totalPages"
->
-</app-pagination>
-<button class="btn btn-primary mb-3" routerLink="/add-user">Add</button>
-
+<div id="usersModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger"> Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> Are you sure? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+                <button #closeBtn type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid px-0 users-wrapper">
+    <header class="usersHeader row d-flex justify-content-between mx-0">
+        <h2 class="mb-0 h2">Users</h2>
+        <button class="btn btn-outline-primary float-right" routerLink="/add-user">Add User</button>
+    </header>
+    <main class="container-fluid">
+        <div>
+            <div class="alert alert-info" *ngIf="message">{{message}}</div>
+            <table *ngIf='currentUsers' class="table table-responsive-sm"
+                   sortable-table (sorted)="onSorted($event)"
+                   paginationable-list (pageChanged)="onPageChange($event)"
+            >
+                <tr>
+                    <th sortable-column="id">Id</th>
+                    <th sortable-column="firstName">First Name</th>
+                    <th sortable-column="lastName">Last Name</th>
+                    <th sortable-column="createdAt">Created</th>
+                    <th sortable-column="updatedAt">Updated</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let user of currentUsers">
+                    <td>{{user.id}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{user.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td class="button" [routerLink]="['/edit-user', user.id]">
+                        <i class="fa fa-pencil-square-o text-primary"></i>
+                    </td>
+                    <td class="button" data-toggle="modal" data-target='#usersModal' (click)="openModal(user.id)">
+                        <i class="fa fa-trash text-danger"></i>
+                    </td>
+                </tr>
+            </table>
+            <app-pagination [activePage]="tableParams.page"
+                            [totalPages]="totalPages"
+            ></app-pagination>
+        </div>
+    </main>
+</div>
