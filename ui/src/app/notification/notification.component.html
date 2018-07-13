@@ -1,7 +1,7 @@
 <div class="notifications">
     <div class="notification alert" *ngFor="let message of messages$ | async"
          [ngClass]="{'alert-success':   message.type === 'success',
-                    'alert-danger' :   message.type === 'danger'}">
+                     'alert-danger' :   message.type === 'danger'}">
         {{message.content}}
         <button type="button" class="close" aria-label="Close"
                 (click)="dismiss(message.id)">
