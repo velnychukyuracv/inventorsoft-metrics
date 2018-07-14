@@ -5,6 +5,8 @@ import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Chart } from '../models/chart.model';
+import { TableParams } from '../models/table-params.model';
+import { HelperService } from './helper.service';
 
 @Injectable({
     providedIn: 'root'
@@ -18,8 +20,8 @@ export class ChartsService {
      * Http request for getting all Charts
      * @returns {Observable<any>}
      */
-    getCharts(): Observable<any> {
-        return this.httpClient.get(environment.API_URL + "/charts/")
+    getCharts(params: TableParams): Observable<any> {
+        return this.httpClient.get(environment.API_URL + "/charts", {params: HelperService.makeHttpParams(params)})
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             )
@@ -43,7 +45,7 @@ export class ChartsService {
      * @returns {Observable<any>}
      */
     createChart(chart: Chart): Observable<any> {
-        return this.httpClient.post(environment.API_URL + "/charts/", chart)
+        return this.httpClient.post(environment.API_URL + "/charts", chart)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error))
             )

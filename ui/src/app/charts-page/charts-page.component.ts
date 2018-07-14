@@ -9,6 +9,8 @@ import { Group } from '../common/models/group.model';
 import { GroupsService } from '../common/services/groups.service';
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { first } from 'rxjs/operators';
+import { TableParams } from '../common/models/table-params.model';
+import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 
 @Component({
     selector   : 'app-charts',
@@ -21,12 +23,17 @@ export class ChartsPageComponent implements OnInit {
     dataSources: DataSource[];
     groups: Group[];
     selectedChartId: number;
+    tableParams: TableParams = {
+        pageSize: 2,
+        page    : 0
+    };
+    totalPages : number = 0;
 
     private isIntegerPattern = /^\d+$/;
     private columnsPattern = /^\s*?(?:\d+\,\s*)*\d+?\s*$/;
 
     constructor(
-        private chartsService: ChartsService,
+        private chartService: ChartsService,
         private spinner: SpinnersService,
         private notification: NotificationService,
         private dataSourceService: DataSourcesService,
@@ -38,9 +45,39 @@ export class ChartsPageComponent implements OnInit {
 
     ngOnInit() {
         this.getCharts();
-        this.getDataSources();
-        this.getGroups();
         this.initChartForm();
+    }
+
+    /**
+     * Slot for connecting to signal 'sorted'
+     * @param $event
+     */
+    onSorted($event): void {
+        this.tableParams.sortBy = $event.sortBy;
+        this.tableParams.direction = $event.direction;
+        this.getCharts();
+    }
+
+    /**
+     * Slot for connecting to signal 'pageChanged'
+     * @param {number | PAGE_NAVIGATION} $event
+     */
+    onPageChange($event: number | PAGE_NAVIGATION): void {
+        switch ($event) {
+            case PAGE_NAVIGATION.PREV:
+                if (this.tableParams.page > 0) {
+                    --this.tableParams.page;
+                }
+                break;
+            case PAGE_NAVIGATION.NEXT:
+                if (this.tableParams.page < this.totalPages) {
+                    ++this.tableParams.page;
+                }
+                break;
+            default:
+                this.tableParams.page = $event as number;
+        }
+        this.getCharts();
     }
 
     /**
@@ -48,10 +85,11 @@ export class ChartsPageComponent implements OnInit {
      */
     getCharts(): void {
         this.spinner.show();
-        this.chartsService.getCharts().pipe(first())
+        this.chartService.getCharts(this.tableParams).pipe(first())
             .subscribe(
                 (data) => {
-                    this.charts = data.content;
+                    this.totalPages = data.totalPages;
+                    this.tableParams.page = data.number;
                     data.content.map(element => {
                         element.createdAt[1] -= 1;
                         element.createdAt[6] /= 1000000;
@@ -63,7 +101,7 @@ export class ChartsPageComponent implements OnInit {
                         let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
-
+                    this.charts = data.content;
                     this.spinner.hide();
                 }, (error) => {
                     this.spinner.hide();
@@ -110,10 +148,11 @@ export class ChartsPageComponent implements OnInit {
      */
     createChart(): void {
         this.spinner.show()
-        this.chartsService.createChart(this.chartForm.value).pipe(first())
+        this.chartService.createChart(this.chartForm.value).pipe(first())
             .subscribe(response => {
                 this.spinner.hide();
                 this.getCharts();
+                this.chartForm.reset();
                 this.notification.success('You have successfully added new chart');
             }, error => {
                 this.spinner.hide();
@@ -125,6 +164,8 @@ export class ChartsPageComponent implements OnInit {
      * Open window that creates new chart.
      */
     openCreateModal(): void {
+        this.getDataSources();
+        this.getGroups();
         if (this.selectedChartId) {
             this.chartForm.reset();
             this.selectedChartId = undefined;
@@ -145,7 +186,9 @@ export class ChartsPageComponent implements OnInit {
      */
     openEditModal(chartId: number): void {
         this.selectedChartId = chartId;
-        this.chartsService.getChartById(chartId).pipe(first())
+        this.getDataSources();
+        this.getGroups();
+        this.chartService.getChartById(chartId).pipe(first())
             .subscribe(response => {
                 this.chartForm.patchValue(response);
             });
@@ -157,7 +200,7 @@ export class ChartsPageComponent implements OnInit {
     deleteChart(): void {
         this.spinner.show();
         if (this.selectedChartId) {
-            this.chartsService.deleteChart(this.selectedChartId).pipe(first())
+            this.chartService.deleteChart(this.selectedChartId).pipe(first())
                 .subscribe(
                     response => {
                         this.spinner.hide();
@@ -179,7 +222,7 @@ export class ChartsPageComponent implements OnInit {
     editChart(): void {
         this.spinner.show();
         if (this.selectedChartId) {
-            this.chartsService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
+            this.chartService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
                 .subscribe(
                     response => {
                         this.spinner.hide();
