@@ -1,0 +1,33 @@
+<header class="container-fluid header" #header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between w-100">
+                <!-- Navbar Header-->
+                <div class="navbar-header">
+                    <!-- Navbar Brand -->
+                    <a href="#" class="navbar-brand d-none d-sm-inline-block text-white">
+                        <div class="brand-text d-none d-lg-inline-block"><span>Bootstrap</span><strong>Dashboard</strong></div>
+                        <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div>
+                    </a>
+                    <!-- Toggle Button-->
+                    <div id="toggle-btn" class="menu-btn active">
+                        <span></span><span #arrow></span><span></span>
+                    </div>
+                </div>
+                <!-- Navbar Menu -->
+                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                    <!--Color Select-->
+                    <li class="color-box mr-3" *ngIf="auth.isAuthenticated">
+                        <label for="colors" class="mb-0"><i class="fa fa-paint-brush text-white"></i></label>
+                        <input class="d-none" [(ngModel)]='colorValue' type="color" id="colors">
+                    </li>
+                    <!-- Logout    -->
+                    <li class="nav-item logout text-white" *ngIf="auth.isAuthenticated" (click)="logout(event)">
+                        <span class="d-none d-sm-inline mr-2">Logout</span>
+                        <i class="fa fa-sign-out"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -90,7 +90,10 @@ export class JwtInterceptor implements HttpInterceptor {
         }
     }
 
+    /**
+     * exit the app
+     */
     logoutUser() {
-        // todo in the header component
+        this.auth.logout();
     }
 }

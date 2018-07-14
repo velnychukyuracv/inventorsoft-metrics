@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { JwtInterceptor } from './common/shared/jwt-interceptor';
         HttpClientModule,
         DataSourcesModule,
         UsersModule,
-        SharedModule
+        SharedModule,
+        HeaderModule
     ],
     exports     : [RouterModule],
     providers   : [

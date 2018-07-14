@@ -1,0 +1,61 @@
+@import '../../../assets/colors.scss';
+
+.header {
+    min-height: 60px;
+    background-color: $header;
+}
+
+.header-bg {
+    background-color: $header;
+}
+
+.nav-menu {
+    margin-bottom: 0;
+    a {
+        color: #fff;
+    }
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-header .menu-btn span {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    display: block;
+    margin: 4px auto 0;
+    transition: all 0.3s cubic-bezier(0.81, -0.33, 0.345, 1.375);
+}
+
+.navbar-header .menu-btn span:nth-child(2) {
+    position: relative;
+    width: 35px;
+}
+
+.navbar-header .menu-btn span:nth-child(2):before,
+.navbar-header .menu-btn span:nth-child(2):after {
+    content: '';
+    width: 6px;
+    height: 2px;
+    display: block;
+    background: #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition: all 0.7s;
+}
+
+.navbar-header .menu-btn span:nth-child(2):after {
+    transform: rotate(145deg);
+    position: absolute;
+    top: -2px;
+    left: 0;
+}
+
+.color-box i, .logout {
+    cursor: pointer;
+}
