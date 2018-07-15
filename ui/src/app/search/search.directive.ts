@@ -7,7 +7,6 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
     selector: '[search]'
 })
 export class SearchDirective implements OnInit, OnDestroy {
-
     @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
     private searchSubscription: Subscription;
 

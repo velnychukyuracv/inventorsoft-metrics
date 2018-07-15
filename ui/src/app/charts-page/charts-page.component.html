@@ -9,7 +9,6 @@
             <div class="col">
                 <app-search-bar
                     search (onSearch)="onSearch($event)">
-
                 </app-search-bar>
             </div>
             <div class="col">
@@ -85,7 +84,7 @@
             <div class="modal-body">
                 <form class="form-validate" [formGroup]="chartForm">
                     <div class="form-group">
-                        <label for="dataSourceid">Data Source id: </label>
+                        <label for="dataSourceid">Data Source: </label>
                         <select required
                                id = "dataSourceid"
                                class="form-control"
@@ -115,7 +114,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="groupId">Group id: </label>
+                        <label for="groupId">Group: </label>
                         <select required
                                 id = "groupId"
                                 class="form-control"
