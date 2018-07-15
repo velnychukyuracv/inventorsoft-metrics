@@ -1,64 +1,72 @@
-<div class="container">
-    <div class="row py-2">
-        <div class="col">
-            <h2 class="float-left">
-                Chart Management Page
-            </h2>
+<main>
+    <div class="container">
+        <div class="row py-2">
+            <div class="col">
+                <h2 class="float-left">
+                    Chart Management Page
+                </h2>
+            </div>
+            <div class="col">
+                <app-search-bar
+                    search (onSearch)="onSearch($event)">
+
+                </app-search-bar>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" (click)="openCreateModal()"
+                        data-target="#chartsModal"
+                >
+                    Create
+                </button>
+            </div>
         </div>
-        <div class="col">
-            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" (click)="openCreateModal()"
-                    data-target="#chartsModal"
-            >
-                Create
-            </button>
-        </div>
+        <table class="table table-hover table-responsive-sm"
+               sortable-table (sorted)="onSorted($event)"
+               paginationable-list (pageChanged)="onPageChange($event)"
+               >
+            <thead>
+            <tr>
+                <th sortable-column="id">id</th>
+                <th sortable-column="name">Name</th>
+                <th sortable-column="dataSourceDbRepId">DataSourceId</th>
+                <th sortable-column="createdAt">Created</th>
+                <th sortable-column="updatedAt">Updated</th>
+                <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let chart of charts">
+                <td>{{chart.id}}</td>
+                <td>{{chart.name}}</td>
+                <td>{{chart.dataSourceDbRepId}}</td>
+                <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal">
+                        <!-- TODO: Make it work when chart visualization would be implemented><!-->
+                        Preview
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#chartsModal"
+                        (click)="openEditModal(chart.id)">
+                        Edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
+                        (click)="openConfirmDeleteModal(chart.id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <app-pagination [activePage]="tableParams.page"
+                        [totalPages]="totalPages">
+        </app-pagination>
     </div>
-    <table class="table table-hover table-responsive-sm"
-           sortable-table (sorted)="onSorted($event)"
-           paginationable-list (pageChanged)="onPageChange($event)"
-           >
-        <thead>
-        <tr>
-            <th sortable-column="id">id</th>
-            <th sortable-column="name">Name</th>
-            <th sortable-column="dataSourceDbRepId">DataSourceId</th>
-            <th sortable-column="createdAt">Created</th>
-            <th sortable-column="updatedAt">Updated</th>
-            <th colspan="3"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let chart of charts">
-            <td>{{chart.id}}</td>
-            <td>{{chart.name}}</td>
-            <td>{{chart.dataSourceDbRepId}}</td>
-            <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <td>
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal">
-                    <!-- TODO: Make it work when chart visualization would be implemented><!-->
-                    Preview
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#chartsModal"
-                    (click)="openEditModal(chart.id)">
-                    Edit
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
-                    (click)="openConfirmDeleteModal(chart.id)">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <app-pagination [activePage]="tableParams.page"
-                    [totalPages]="totalPages">
-    </app-pagination>
-</div>
+</main>
 
 <div class="modal show" id="chartsModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">

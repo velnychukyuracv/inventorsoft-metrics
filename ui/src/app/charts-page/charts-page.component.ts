@@ -27,7 +27,7 @@ export class ChartsPageComponent implements OnInit {
         pageSize: 2,
         page    : 0
     };
-    totalPages : number = 0;
+    totalPages: number = 0;
 
     private isIntegerPattern = /^\d+$/;
     private columnsPattern = /^\s*?(?:\d+\,\s*)*\d+?\s*$/;
@@ -46,6 +46,20 @@ export class ChartsPageComponent implements OnInit {
     ngOnInit() {
         this.getCharts();
         this.initChartForm();
+    }
+
+    /**
+     * Slot for connecting to signal 'onSearch'
+     * @param $event
+     */
+    onSearch($event): void {
+        if ($event) {
+            this.tableParams.query = $event;
+            console.log($event);
+        }
+        else
+            delete this.tableParams.query;
+        this.getCharts();
     }
 
     /**
@@ -131,7 +145,7 @@ export class ChartsPageComponent implements OnInit {
      * Get a list of all data sources
      */
     getDataSources(): void {
-        this.dataSourceService.getDataSources().pipe(first())
+        this.dataSourceService.getDataSources(null).pipe(first())
             .subscribe(data => this.dataSources = data.content);
     }
 

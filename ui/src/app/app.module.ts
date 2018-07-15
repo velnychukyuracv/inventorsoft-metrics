@@ -16,6 +16,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
 import { ChartsPageModule } from './charts-page/charts-page.module';
 import { NotificationComponent } from './notification/notification.component';
+import { SearchModule } from './search/search.module';
+import { NotificationService } from './common/services/notification.service';
 
 @NgModule({
     declarations: [
@@ -35,11 +37,13 @@ import { NotificationComponent } from './notification/notification.component';
         DataSourcesModule,
         UsersModule,
         SharedModule,
-        ChartsPageModule
+        ChartsPageModule,
+        SearchModule
     ],
     exports     : [RouterModule],
     providers   : [
         SpinnersService,
+        NotificationService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
     ],
     bootstrap   : [AppComponent]
