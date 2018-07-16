@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
@@ -12,8 +12,10 @@ import { Router } from '@angular/router';
 })
 
 export class MenuComponent implements OnInit {
+    @ViewChild('closeBtn') closeBtn: ElementRef;
     selectedGroup: Group;
     groups: Group[];
+    currentGroupId: number;
     editModalClicked: boolean;
     sidebarBtnState: boolean = false;
 
@@ -47,12 +49,13 @@ export class MenuComponent implements OnInit {
      * Delete group data
      * @param groupId: Id of selected group
      */
-    deleteGroup(groupId: number) {
+    deleteGroup() {
         this.spinner.show();
-        this.groupsService.deleteGroup(groupId).pipe(first())
+        this.groupsService.deleteGroup(this.currentGroupId).pipe(first())
             .subscribe(
                 (response) => {
                     this.spinner.hide();
+                    this.closeModal();
                     this.getGroups();
                     // TODO: Show success notification
                 },
@@ -64,12 +67,27 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * Open edit modal
+     * Open modal to edit group
      * @param group: Data of selected group
      */
     openEditModal(group: Group) {
         this.editModalClicked = true;
         this.selectedGroup = group;
+    }
+
+    /**
+     * Open modal window to delete group
+     * @param groupId - group id
+     */
+    openDeleteModal(groupId: number) {
+        this.currentGroupId = groupId;
+    }
+
+    /**
+     * Close modal window
+     */
+    closeModal() {
+        this.closeBtn.nativeElement.click();
     }
 
     /**
