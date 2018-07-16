@@ -1,10 +1,6 @@
-<div class="header">
-    <!--TODO header component-->
-</div>
+<app-header [sidebar]="sidebar"></app-header>
 <div class="row mx-0">
-    <div class="sidebar">
-        <app-menu></app-menu>
-    </div>
+    <app-menu #sidebar></app-menu>
     <div class="col p-0">
         <router-outlet></router-outlet>
     </div>
