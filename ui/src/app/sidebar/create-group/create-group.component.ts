@@ -7,7 +7,6 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { Icons } from '../../common/models/groupIcons.model';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../common/services/notification.service';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
     selector   : 'app-create-group',
