@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AuthService } from '../../common/services/auth.service'
 import { Router } from '@angular/router';
 import { MenuComponent } from '../../sidebar/menu/menu.component';
@@ -10,14 +10,7 @@ import { MenuComponent } from '../../sidebar/menu/menu.component';
 })
 export class HeaderComponent implements OnInit {
     @ViewChild('header') header: ElementRef;
-    @Input() sideBar: MenuComponent;
-
-
-
-    @HostListener('click', ['$event'])
-    click(event: Event) {
-        this.sideBar.collapseSidebar();
-    }
+    @Input() sidebar: MenuComponent;
 
     constructor(public  auth: AuthService, public router: Router, private renderer: Renderer2) {
 
@@ -25,6 +18,13 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.renderer.setStyle(this.header.nativeElement, 'background-color', localStorage.getItem('header-bg'))
+    }
+
+    /**
+     *  Collapse sidebar
+     */
+    collapseSidebar() {
+        this.sidebar.collapseSidebar();
     }
 
     set colorValue(value) {

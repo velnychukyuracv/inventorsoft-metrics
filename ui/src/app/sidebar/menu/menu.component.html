@@ -1,9 +1,4 @@
-<!-- TODO: Move button to header component-->
-<button type="button" id="sidebarCollapse" class="btn btn-link btn-lg" (click)="collapseSidebar()">
-    <i class="fa fa-align-justify"></i>
-</button>
-
-<nav id="sidebar" [ngClass]="sidebarBtnState ? 'active' : ''">
+<nav *ngIf="auth.isAuthenticated" id="sidebar" [ngClass]="sidebarIsCollapsed ? 'active' : ''">
     <div class="sidebar-header">
         <img src="../../../assets/user.png" class="rounded-circle">
         <p>User Name</p>
@@ -61,6 +56,3 @@
         </li>
     </ul>
 </nav>
-<app-create-group></app-create-group>
-<app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
-

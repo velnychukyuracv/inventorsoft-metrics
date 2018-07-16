@@ -1,9 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../common/services/auth.service';
 
 @Component({
     selector   : 'app-menu',
@@ -15,11 +16,12 @@ export class MenuComponent implements OnInit {
     selectedGroup: Group;
     groups: Group[];
     editModalClicked: boolean;
-    sidebarBtnState: boolean = false;
+    sidebarIsCollapsed: boolean = false;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private auth: AuthService) {
     }
 
     ngOnInit() {
@@ -76,6 +78,6 @@ export class MenuComponent implements OnInit {
      *  Collapse sidebar
      */
     collapseSidebar() {
-        this.sidebarBtnState = !this.sidebarBtnState;
+        this.sidebarIsCollapsed = !this.sidebarIsCollapsed;
     }
 }
