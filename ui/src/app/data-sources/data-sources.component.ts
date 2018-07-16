@@ -224,7 +224,7 @@ export class DataSourcesComponent implements OnInit {
                     error => {
                         this.spinner.hide();
                         this.closeConfirmDeleteModal();
-                        this.notification.error(`Failed to edit data source!`)
+                        this.notification.error(`Failed to delete data source!`)
                     }
                 );
         }
