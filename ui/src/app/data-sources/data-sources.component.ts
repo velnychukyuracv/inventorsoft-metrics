@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
+import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
+import { TableParams } from '../common/models/table-params.model';
 
 @Component({
     selector   : 'app-data-sources',
@@ -17,35 +19,59 @@ export class DataSourcesComponent implements OnInit {
     @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
     dataSources: DataSource[];
+    tableParams: TableParams = {
+        pageSize: 2,
+        page    : 0
+    };
+    totalPages: number = 1;
     dataSourceForm: FormGroup;
     selectedDataSourceId: number;
 
     constructor(
         private dataSourcesService: DataSourcesService,
-        private spinnersService: SpinnersService
-
-    ) {    }
-
-
-
-    /** Show spinners
-     */
-    private showSpinners(): void {
-        this.spinnersService.show();
-    }
-
-    /** Hide spinners
-     */
-    private hideSpinners(): void {
-        this.spinnersService.hide();
-    }
+        private spinner: SpinnersService
+    ) {
 
     ngOnInit() {
         this.buildDataSources();
         this.initDataSourceForm();
     }
 
-    /** Initialisation Data Source Form
+    /**
+     * Slot for connecting to signal 'sorted'
+     * @param $event
+     */
+    onSorted($event) {
+        this.tableParams.sortBy = $event.sortBy;
+        this.tableParams.direction = $event.direction;
+        this.buildDataSources();
+    }
+
+    /**
+     * Slot for connecting to signal 'pageChanged'
+     * @param {number | PAGE_NAVIGATION} $event
+     */
+    onPageChange($event: number | PAGE_NAVIGATION) {
+        switch ($event) {
+            case PAGE_NAVIGATION.PREV:
+                if (this.tableParams.page > 0) {
+                    --this.tableParams.page;
+                }
+                break;
+            case PAGE_NAVIGATION.NEXT:
+                if (this.tableParams.page < this.totalPages) {
+                    ++this.tableParams.page;
+                }
+                break;
+            default:
+                this.tableParams.page = $event;
+        }
+
+        this.buildDataSources();
+    }
+
+    /**
+     * Initialisation Data Source Form
      */
     initDataSourceForm() {
         this.dataSourceForm = new FormGroup({
@@ -58,7 +84,8 @@ export class DataSourcesComponent implements OnInit {
         });
     }
 
-    /** Open modal window for adding instance of Data Source
+    /**
+     * Open modal window for adding instance of Data Source
      */
     openAddModal() {
         this.dataSourceForm.get('password').enable();
@@ -68,7 +95,8 @@ export class DataSourcesComponent implements OnInit {
         this.selectedDataSourceId = undefined;
     }
 
-    /** Open modal window for editing instance of Data Source
+    /**
+     * Open modal window for editing instance of Data Source
      * @param dataSourceId: Data Source id
      */
     openEditModal(dataSourceId: number) {
@@ -86,23 +114,26 @@ export class DataSourcesComponent implements OnInit {
                 });
     }
 
-    /** Open modal window for deleting instance of Data Source
-     * @param dataSourceId: Data Source id
+    /**
+     * Open modal window for deleting instance of Data Source
+     * @param {number} dataSourceId: Data Source id
      */
     openDeleteModal(dataSourceId: number) {
         this.selectedDataSourceId = dataSourceId;
     }
 
-    /** Build Data Sources
+    /**
+     * Build Data Sources
      */
     buildDataSources() {
-        this.showSpinners();
+        this.spinner.show();
 
-        this.dataSourcesService.getDataSources()
+        this.dataSourcesService.getDataSources(this.tableParams)
             .pipe(first())
             .subscribe(
                 (data) => {
-                    this.dataSources = data.content;
+                    this.totalPages = data.totalPages;
+                    this.tableParams.page = data.number;
 
                     data.content.map(element => {
                         element.createdAt[1] -= 1;
@@ -115,54 +146,57 @@ export class DataSourcesComponent implements OnInit {
                         let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
+                    this.dataSources = data.content;
 
-                    this.hideSpinners();
+                    this.spinner.hide();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     // TODO: Show error notification
                 }
             );
     }
 
-    /** Create Data Source
+    /**
+     * Create Data Source
      */
     createDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         this.dataSourcesService.createDataSource(this.dataSourceForm.value).pipe(first())
             .subscribe(
                 response => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     this.closeModalDataSource();
                     this.buildDataSources();
                     // TODO: Show success notification
                 },
                 error => {
-                    this.hideSpinners();
+                    this.spinner.hide();
                     this.closeModalDataSource();
                     // TODO: Show error notification
                 }
             );
     }
 
-    /** Edit Data Source
+    /**
+     * Edit Data Source
      */
     editDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         if (this.selectedDataSourceId) {
             this.dataSourcesService.editDataSource(this.selectedDataSourceId, this.dataSourceForm.value).pipe(first())
                 .subscribe(
                     response => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.buildDataSources();
                         this.closeModalDataSource();
                         // TODO: Show success notification
                     },
                     error => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeModalDataSource();
                         // TODO: Show error notification
                     }
@@ -170,22 +204,23 @@ export class DataSourcesComponent implements OnInit {
         }
     }
 
-    /** Delete Data Source
+    /**
+     * Delete Data Source
      */
     deleteDataSource() {
-        this.showSpinners();
+        this.spinner.show();
 
         if (this.selectedDataSourceId) {
             this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
                 .subscribe(
                     response => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeConfirmDeleteModal();
                         this.buildDataSources();
                         // TODO: Show success notification
                     },
                     error => {
-                        this.hideSpinners();
+                        this.spinner.hide();
                         this.closeConfirmDeleteModal();
                         // TODO: Show error notification
                     }
@@ -193,13 +228,15 @@ export class DataSourcesComponent implements OnInit {
         }
     }
 
-    /** close modal window for creating and editing Data Source
+    /**
+     * close modal window for creating and editing Data Source
      */
     closeModalDataSource() {
         this.btnCloseDataSource.nativeElement.click();
     }
 
-    /** close modal window for deleting Data Source
+    /**
+     * close modal window for deleting Data Source
      */
     closeConfirmDeleteModal() {
         this.btnCloseConfirmDelete.nativeElement.click();

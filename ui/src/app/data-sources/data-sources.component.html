@@ -1,49 +1,53 @@
-<div class="container-fluid">
-    <div class="row py-2">
-        <div class="col">
-            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#dataSourceModal"
-                    (click)="openAddModal()">
-                Create
-            </button>
-        </div>
-    </div>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th></th>
-            <th>URL</th>
-            <th>Data Source Name</th>
-            <th>Driver</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th colspan="2">Actions</th>
-        </tr>
-        </thead>
-        <tbody *ngIf="dataSources?.length > 0">
-        <tr *ngFor="let source of dataSources">
-            <td>{{source.id}}</td>
-            <td>{{source.url}}</td>
-            <td>{{source.dataSourceName}}</td>
-            <td>{{source.driverClassName}}</td>
-            <td>{{source.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <td>{{source.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <td>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#dataSourceModal"
-                        (click)="openEditModal(source.id)">
-                    Edit
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal"
-                        (click)="openDeleteModal(source.id)">
-                    Delete
-                </button>
-            </td>
-        </tr>
+<div class="container-fluid px-0 main-content">
+    <header class="row d-flex justify-content-between mx-0">
+        <h2 class="mb-0 h2">Data Sources</h2>
+        <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#dataSourceModal"
+                (click)="openAddModal()"
+        >Create</button>
+    </header>
+    <main class="container-fluid">
+        <table class="table table-hover table-sm"
+               sortable-table (sorted)="onSorted($event)"
+               paginationable-list (pageChanged)="onPageChange($event)"
+        >
+            <thead>
+            <tr>
+                <th sortable-column="id">#</th>
+                <th sortable-column="url">URL</th>
+                <th sortable-column="dataSourceName">DS Name</th>
+                <th sortable-column="driverClassName">Driver</th>
+                <th sortable-column="dataSourceType">Source Type</th>
+                <th sortable-column="createdAt">Created</th>
+                <th sortable-column="updatedAt">Updated</th>
+                <th colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody *ngIf="dataSources?.length > 0">
+            <tr *ngFor="let source of dataSources">
+                <td>{{source.id}}</td>
+                <td>{{source.url}}</td>
+                <td>{{source.dataSourceName}}</td>
+                <td>{{source.driverClassName}}</td>
+                <td>{{source.dataSourceType}}</td>
+                <td>{{source.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{source.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td class="button" data-toggle="modal" data-target="#dataSourceModal"
+                    (click)="openEditModal(source.id)">
+                    <i class="fa fa-pencil-square-o text-primary"></i>
+                </td>
+                <td class="button" data-toggle="modal" data-target="#confirmDeleteModal"
+                    (click)="openDeleteModal(source.id)">
+                    <i class="fa fa-trash text-danger"></i>
+                </td>
+            </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
+        <app-pagination [activePage]="tableParams.page"
+                        [totalPages]="totalPages"
+        ></app-pagination>
+    </main>
 </div>
 
 <div class="modal show" id="dataSourceModal" tabindex="-1" role="dialog" aria-hidden="true">

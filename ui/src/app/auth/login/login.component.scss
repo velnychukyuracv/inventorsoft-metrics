@@ -3,6 +3,9 @@
 .btn-primary {
     background-color: $dashboard;
     border: $dashboard;
+    &:hover {
+        background-color: $btnActive;
+    }
 }
 
 .left-block {

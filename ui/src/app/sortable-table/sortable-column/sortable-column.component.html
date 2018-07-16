@@ -1,0 +1,4 @@
+<i class="float-right fa fa-sort-amount-asc" *ngIf="sortDirection === 'asc'"></i>
+<i class="float-right fa fa-sort-amount-desc" *ngIf="sortDirection === 'desc'"></i>
+<i class="float-right fa fa-arrows-v can-sortable" *ngIf="sortDirection.length === 0"></i>
+<ng-content></ng-content>
