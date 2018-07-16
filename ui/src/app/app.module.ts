@@ -15,11 +15,20 @@ import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
 import { HeaderModule } from './header/header.module';
+import { ChartsPageModule } from './charts-page/charts-page.module';
+import { NotificationComponent } from './notification/notification.component';
+import { SearchModule } from './search/search.module';
+import { NotificationService } from './common/services/notification.service';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.component';
 
 @NgModule({
     declarations: [
+        AuthLayoutComponent,
+        NoAuthLayoutComponent,
         AppComponent,
-        SpinnersComponent
+        SpinnersComponent,
+        NotificationComponent
     ],
     imports     : [
         RouterModule.forRoot(
@@ -33,11 +42,14 @@ import { HeaderModule } from './header/header.module';
         DataSourcesModule,
         UsersModule,
         SharedModule,
-        HeaderModule
+        HeaderModule,
+        ChartsPageModule,
+        SearchModule
     ],
     exports     : [RouterModule],
     providers   : [
         SpinnersService,
+        NotificationService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
     ],
     bootstrap   : [AppComponent]
