@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/internal/operators/first';
+
+import { ChartService } from './../../common/services/chart.service';
+import { Chart } from './../../common/models/chart.model';
 
 @Component({
   selector: 'app-chart',
@@ -7,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private chartService: ChartService
+  ) { }
 
   ngOnInit() {
 
@@ -32,7 +38,6 @@ export class ChartComponent implements OnInit {
         legend: {
           position: 'bottom'
         },
-
       }
     },
     {
