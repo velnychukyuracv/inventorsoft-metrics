@@ -4,8 +4,10 @@
     height: 6px;
     width: 100%;
     position: fixed;
+    top: 0;
     overflow: hidden;
     background-color: $bgPage;
+    z-index: 999;
     &:before {
         display: block;
         position: absolute;
@@ -17,6 +19,7 @@
         animation: loading 2s linear infinite;
     }
 }
+
 @keyframes loading {
     from {
         left: -200px;

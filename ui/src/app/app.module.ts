@@ -18,9 +18,13 @@ import { ChartsPageModule } from './charts-page/charts-page.module';
 import { NotificationComponent } from './notification/notification.component';
 import { SearchModule } from './search/search.module';
 import { NotificationService } from './common/services/notification.service';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.component';
 
 @NgModule({
     declarations: [
+        AuthLayoutComponent,
+        NoAuthLayoutComponent,
         AppComponent,
         SpinnersComponent,
         NotificationComponent
