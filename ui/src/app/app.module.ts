@@ -14,11 +14,16 @@ import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
+import { ChartsPageModule } from './charts-page/charts-page.module';
+import { NotificationComponent } from './notification/notification.component';
+import { SearchModule } from './search/search.module';
+import { NotificationService } from './common/services/notification.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        SpinnersComponent
+        SpinnersComponent,
+        NotificationComponent
     ],
     imports     : [
         RouterModule.forRoot(
@@ -31,11 +36,14 @@ import { JwtInterceptor } from './common/shared/jwt-interceptor';
         HttpClientModule,
         DataSourcesModule,
         UsersModule,
-        SharedModule
+        SharedModule,
+        ChartsPageModule,
+        SearchModule
     ],
     exports     : [RouterModule],
     providers   : [
         SpinnersService,
+        NotificationService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
     ],
     bootstrap   : [AppComponent]

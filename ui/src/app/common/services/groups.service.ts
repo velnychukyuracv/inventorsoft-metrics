@@ -5,6 +5,7 @@ import { Group } from '../models/group.model';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { groupIcons } from '../../groupIcons';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,7 @@ export class GroupsService {
     /**
      * Get all groups
      */
-    getGroups() {
+    getGroups(): Observable<any> {
         return this.httpClient.get(environment.API_URL + '/groups').pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));
