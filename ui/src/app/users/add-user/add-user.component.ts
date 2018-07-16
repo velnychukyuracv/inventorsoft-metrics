@@ -51,7 +51,7 @@ export class AddUserComponent implements OnInit {
                 },
                 error => {
                     this.spinner.hide();
-                    this.notification.error(`Failed to create user!`);
+                    this.notification.error(`User with this name already exists!`);
                 }
             )
     }
