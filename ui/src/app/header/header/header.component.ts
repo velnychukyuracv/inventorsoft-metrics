@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AuthService } from '../../common/services/auth.service'
 import { Router } from '@angular/router';
+import { MenuComponent } from '../../sidebar/menu/menu.component';
 
 @Component({
     selector   : 'app-header',
@@ -9,6 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
     @ViewChild('header') header: ElementRef;
+    @Input() sideBar: MenuComponent;
+
+
+
+    @HostListener('click', ['$event'])
+    click(event: Event) {
+        this.sideBar.collapseSidebar();
+    }
 
     constructor(public  auth: AuthService, public router: Router, private renderer: Renderer2) {
 
