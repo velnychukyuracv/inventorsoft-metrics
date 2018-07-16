@@ -1,5 +1,11 @@
 @import '../../../assets/colors.scss';
 
+.btn-default {
+    background-color: $dashboard;
+    border: $dashboard;
+    color: $bgPage;
+}
+
 img {
     width: 90px;
     padding: 20px;

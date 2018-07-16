@@ -42,6 +42,7 @@ export class MenuComponent implements OnInit {
             },
             error => {
                 this.spinner.hide();
+                this.notification.error(`Failed to upload groups!`)
             })
     }
 
@@ -76,7 +77,7 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * Open modal window to delete group
+     * Open modal to delete group
      * @param groupId - group id
      */
     openDeleteModal(groupId: number) {

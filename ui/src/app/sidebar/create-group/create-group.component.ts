@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GroupsService } from '../../common/services/groups.service';
 import { Group } from '../../common/models/group.model';
 import { first } from 'rxjs/internal/operators/first';
@@ -7,6 +7,7 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { Icons } from '../../common/models/groupIcons.model';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../common/services/notification.service';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
     selector   : 'app-create-group',
