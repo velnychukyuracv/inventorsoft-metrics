@@ -5,6 +5,7 @@ import { UserService } from '../../common/services/user.service';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { TableParams } from '../../common/models/table-params.model';
 import { PAGE_NAVIGATION } from '../../common/models/page-navigation.enum';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-users',
@@ -24,7 +25,8 @@ export class UsersComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
 
     constructor(private userService: UserService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -94,21 +96,9 @@ export class UsersComponent implements OnInit {
                 },
                 error => {
                     this.spinner.hide();
-                    this.showMessage(error);
+                    this.notification.error(`Failed to upload users!`);
                 }
             )
-    }
-
-    // TODO Need to change when we will have done service for notifications
-    /**
-     * show info block
-     * @param message - info text for user
-     */
-    private showMessage(message) {
-        this.message = message;
-        setTimeout(() => {
-            this.message = '';
-        }, 6000)
     }
 
     /**
@@ -122,12 +112,12 @@ export class UsersComponent implements OnInit {
                 () => {
                     this.closeModal();
                     this.spinner.hide();
-                    this.currentUsers = this.currentUsers.filter((user) => user.id != this.currentUserId)
+                    this.currentUsers = this.currentUsers.filter((user) => user.id != this.currentUserId);
+                    this.notification.success(`You have successfully deleted user!`);
                 },
                 error => {
-                    // todo replace to notification service
-                    this.showMessage(error);
                     this.spinner.hide();
+                    this.notification.error(`Failed to delete user!`);
                 }
             )
     }

@@ -4,6 +4,7 @@ import { AuthService } from '../../common/services/auth.service';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { TokenService } from '../../common/services/token.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
         private authService: AuthService,
         private spinnersService: SpinnersService,
         private tokenService: TokenService,
-        public router: Router
+        public router: Router,
+        public notification: NotificationService
     ) {
     }
 
@@ -48,31 +50,17 @@ export class LoginComponent implements OnInit {
         this.authService.login(formData)
             .subscribe(res => {
                     this.tokenService.saveToLocalStorage(res);
-                    this.showMessage('Logged in', 1000,
-                        () => {
-                            return this.router.navigate(['/users']);
-                        }
-                    );
+                    this.notification.success(`Logged in`);
+                    setTimeout(() => {
+                        return this.router.navigate(['/users']);
+                    }, 1000);
                     this.hideSpinners();
                 },
                 error => {
-                    this.showMessage(error);
                     this.hideSpinners();
+                    this.notification.error(`Failed to log in!`);
                 })
+
     }
 
-    // TODO Need to change when we will have done service for notifications
-    /**
-     * show info block
-     * @param message - info text for user
-     */
-    private showMessage(message, time = 6000, actionCb = null) {
-        this.message = message;
-        setTimeout(() => {
-            if (actionCb) {
-                actionCb()
-            }
-            this.message = '';
-        }, time)
-    }
 }

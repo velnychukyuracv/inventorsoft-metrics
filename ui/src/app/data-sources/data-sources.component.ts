@@ -155,7 +155,7 @@ export class DataSourcesComponent implements OnInit {
                 },
                 error => {
                     this.spinner.hide();
-                    this.notification.error(`Failed to upload data source!`);
+                    this.notification.error(`Failed to upload data sources!`);
                 }
             );
     }

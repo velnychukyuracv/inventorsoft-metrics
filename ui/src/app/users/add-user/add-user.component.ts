@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../common/services/user.service';
 import { SpinnersService } from '../../spinners/spinners.service';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-add-user',
@@ -17,7 +18,7 @@ export class AddUserComponent implements OnInit {
      */
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
-    constructor(public router: Router, public userService: UserService, public spinner: SpinnersService) {
+    constructor(public router: Router, public userService: UserService, public spinner: SpinnersService, private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -45,12 +46,12 @@ export class AddUserComponent implements OnInit {
         this.userService.addUser(formData)
             .subscribe(res => {
                     this.spinner.hide();
+                    this.notification.success(`You have successfully created user!`);
                     return this.router.navigate(['/users']);
-                    //todo success notification
                 },
                 error => {
                     this.spinner.hide();
-                    this.showMessage(error);
+                    this.notification.error(`Failed to create user!`);
                 }
             )
     }
@@ -60,17 +61,5 @@ export class AddUserComponent implements OnInit {
      */
     cancel() {
         this.router.navigate(['/users'])
-    }
-
-    // TODO Need to change when we will have done service for notifications
-    /**
-     * show info block
-     * @param message - info text for user
-     */
-    private showMessage(message) {
-        this.message = message;
-        setTimeout(() => {
-            this.message = '';
-        }, 6000)
     }
 }

@@ -5,6 +5,7 @@ import { Validators } from '@angular/forms';
 import { AuthService } from '../../common/services/auth.service';
 import { Router } from '@angular/router';
 import { SpinnersService } from '../../spinners/spinners.service';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-forgot-password',
@@ -18,7 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
      */
     emailPattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
-    constructor(private auth: AuthService, private router: Router, public spinner: SpinnersService) {
+    constructor(private auth: AuthService, private router: Router, public spinner: SpinnersService, public notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -37,11 +38,12 @@ export class ForgotPasswordComponent implements OnInit {
             .subscribe(
                 (res) => {
                     this.spinner.hide();
+                    this.notification.success(`Data for resetting the password has been sent to your email!`)
                     this.router.navigate(['/reset-password'])
                 },
                 (err) => {
                     this.spinner.hide();
-                    //TODO notification message
+                    this.notification.error(`Failed to send data!`)
                 }
             )
     }

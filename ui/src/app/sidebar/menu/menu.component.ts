@@ -42,7 +42,7 @@ export class MenuComponent implements OnInit {
             },
             error => {
                 this.spinner.hide();
-                this.notification.error(`Failed to upload groups!`)
+                this.notification.error(`Failed to upload groups!`);
             })
     }
 
