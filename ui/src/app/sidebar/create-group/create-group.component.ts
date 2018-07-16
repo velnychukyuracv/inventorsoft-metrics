@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Icons } from '../../common/models/groupIcons.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-create-group',
@@ -20,7 +21,8 @@ export class CreateGroupComponent implements OnInit {
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -55,11 +57,11 @@ export class CreateGroupComponent implements OnInit {
             .subscribe(
                 (response) => {
                     this.spinner.hide();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully created group!`);
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to create group!`)
                 }
             );
     }

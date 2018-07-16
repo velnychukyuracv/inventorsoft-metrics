@@ -4,6 +4,7 @@ import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-menu',
@@ -21,7 +22,8 @@ export class MenuComponent implements OnInit {
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -37,11 +39,9 @@ export class MenuComponent implements OnInit {
             (response: any) => {
                 this.spinner.hide();
                 this.groups = response.content;
-                // TODO: Show success notification
             },
             error => {
                 this.spinner.hide();
-                // TODO: Show error notification
             })
     }
 
@@ -57,11 +57,11 @@ export class MenuComponent implements OnInit {
                     this.spinner.hide();
                     this.closeModal();
                     this.getGroups();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully deleted group!`);
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to delete group!`);
                 }
             );
     }

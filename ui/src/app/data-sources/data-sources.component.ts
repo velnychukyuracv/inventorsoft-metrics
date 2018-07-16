@@ -7,6 +7,7 @@ import { SpinnersService } from '../spinners/spinners.service';
 import { DataSource } from '../common/models/data-source.model';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 import { TableParams } from '../common/models/table-params.model';
+import { NotificationService } from '../common/services/notification.service';
 
 @Component({
     selector   : 'app-data-sources',
@@ -29,7 +30,8 @@ export class DataSourcesComponent implements OnInit {
 
     constructor(
         private dataSourcesService: DataSourcesService,
-        private spinner: SpinnersService
+        private spinner: SpinnersService,
+        private notification: NotificationService
     ) {
     }
 
@@ -171,12 +173,12 @@ export class DataSourcesComponent implements OnInit {
                     this.spinner.hide();
                     this.closeModalDataSource();
                     this.buildDataSources();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully created data source!`);
                 },
                 error => {
                     this.spinner.hide();
                     this.closeModalDataSource();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to create data source!`)
                 }
             );
     }
@@ -194,12 +196,12 @@ export class DataSourcesComponent implements OnInit {
                         this.spinner.hide();
                         this.buildDataSources();
                         this.closeModalDataSource();
-                        // TODO: Show success notification
+                        this.notification.success(`You have successfully edited data source!`);
                     },
                     error => {
                         this.spinner.hide();
                         this.closeModalDataSource();
-                        // TODO: Show error notification
+                        this.notification.error(`Failed to edit data source!`)
                     }
                 );
         }
@@ -218,12 +220,12 @@ export class DataSourcesComponent implements OnInit {
                         this.spinner.hide();
                         this.closeConfirmDeleteModal();
                         this.buildDataSources();
-                        // TODO: Show success notification
+                        this.notification.success(`You have successfully deleted data source!`);
                     },
                     error => {
                         this.spinner.hide();
                         this.closeConfirmDeleteModal();
-                        // TODO: Show error notification
+                        this.notification.error(`Failed to edit data source!`)
                     }
                 );
         }
