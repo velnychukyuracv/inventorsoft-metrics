@@ -13,7 +13,6 @@ import { NotificationService } from '../../common/services/notification.service'
 })
 export class LoginComponent implements OnInit {
     form: FormGroup;
-    message: string;
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
 
     constructor(

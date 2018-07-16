@@ -14,7 +14,6 @@ import { NotificationService } from '../../common/services/notification.service'
 })
 export class EditUserComponent implements OnInit {
     form: FormGroup;
-    message: string;
     userId: any;
     currentUser: EditUser;
 

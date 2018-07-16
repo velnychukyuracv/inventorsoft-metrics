@@ -12,7 +12,6 @@ import { NotificationService } from '../../common/services/notification.service'
 })
 export class AddUserComponent implements OnInit {
     form: FormGroup;
-    message: string;
     /**
      * validation pattern for username
      */

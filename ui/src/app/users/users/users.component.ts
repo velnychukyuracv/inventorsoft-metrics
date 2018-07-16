@@ -14,7 +14,6 @@ import { NotificationService } from '../../common/services/notification.service'
 })
 export class UsersComponent implements OnInit {
     currentUserId: number;
-    message: string;
     currentUsers: any;
     tableParams: TableParams = {
         pageSize: 10,
