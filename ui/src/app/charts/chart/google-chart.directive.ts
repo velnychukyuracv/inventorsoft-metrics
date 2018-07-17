@@ -1,4 +1,4 @@
-import {Directive, OnChanges,  Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {Directive, OnChanges, HostListener, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
 declare const google: any;
 
@@ -14,6 +14,10 @@ export class GoogleChart implements OnChanges {
 
   @Output('itemSelect') public itemSelect: EventEmitter<{ row: number, column: number }> = new EventEmitter();
   @Output('itemDeselect') public itemDeselect = new EventEmitter();
+
+  @HostListener('window:resize', ['$event']) onResize(event: any) {
+    this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.element)
+  }
 
   constructor(public element: ElementRef) {
     this.element = this.element.nativeElement;

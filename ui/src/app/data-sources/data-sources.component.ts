@@ -31,6 +31,7 @@ export class DataSourcesComponent implements OnInit {
         private dataSourcesService: DataSourcesService,
         private spinner: SpinnersService
     ) {
+    }
 
     ngOnInit() {
         this.buildDataSources();

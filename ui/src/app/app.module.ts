@@ -6,7 +6,7 @@ import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { DataSourcesModule } from './data-sources/data-sources.module';
-import { ChartsModule } from "./charts/charts.module";
+import { ChartsModule } from './charts/charts.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
 
@@ -48,7 +48,6 @@ import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.c
         SharedModule,
         ChartsPageModule,
         SearchModule
-
     ],
     exports     : [RouterModule],
     providers   : [

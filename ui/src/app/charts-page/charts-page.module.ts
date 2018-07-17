@@ -5,6 +5,9 @@ import { ChartsPageComponent } from './charts-page.component';
 import { SortableModule } from '../common/shared/sortable.module';
 import { PaginationableModule } from '../common/shared/paginationable.module';
 import { SearchModule} from '../search/search.module';
+import { ChartsModule } from '../charts/charts.module';
+
+
 
 @NgModule({
     imports     : [
@@ -12,7 +15,8 @@ import { SearchModule} from '../search/search.module';
         SharedModule,
         SortableModule,
         PaginationableModule,
-        SearchModule
+        SearchModule,
+        ChartsModule
     ],
     declarations: [ChartsPageComponent],
     exports     : [ChartsPageComponent]

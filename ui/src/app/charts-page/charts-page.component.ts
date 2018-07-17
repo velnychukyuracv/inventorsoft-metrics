@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataSource } from '../common/models/data-source.model';
 import { Group } from '../common/models/group.model';
 import { GroupsService } from '../common/services/groups.service';
+
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { first } from 'rxjs/operators';
 import { TableParams } from '../common/models/table-params.model';
@@ -206,6 +207,11 @@ export class ChartsPageComponent implements OnInit {
             .subscribe(response => {
                 this.chartForm.patchValue(response);
             });
+    }
+
+    previewChart(chartId: number): void {
+        console.log(chartId);
+        this.selectedChartId = chartId;
     }
 
     /**

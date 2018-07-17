@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
 
 import { ChartService } from './../../common/services/chart.service';
+import { ChartShowService } from './../../common/services/chart-show.service';
+
+import { ChartShow } from './../../common/models/chart-show.model';
 import { Chart } from './../../common/models/chart.model';
+import {ChartsService} from "../../common/services/charts.service";
+
 
 @Component({
   selector: 'app-chart',
@@ -10,14 +15,48 @@ import { Chart } from './../../common/models/chart.model';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-
+  @Input('id') public id: number;
+  chartList;
   constructor(
-      private chartService: ChartService
-  ) { }
+      private chartService: ChartShowService,
+      private getChartService: ChartsService
+  ) {
+  }
 
   ngOnInit() {
-
   }
+
+  /*getChart():void{
+    this.getChartService.getChartById(id).pipe(first())
+      .subscribe(data=>{
+        console.log(data);
+      })
+  }*/
+
+  getCharts(): void {
+    this.chartService.getCharts().pipe(first())
+        .subscribe(data => {
+              this.chartList = data.content;
+              this.chartList.forEach(
+                  chart => {
+                    console.log(chart);
+                    this.chartService.getDBQuery(chart).subscribe(
+                        dbData => {
+                          console.log('db query data = ', dbData);
+                        },
+                        error => {
+                          console.log('error 1 = ', error);
+                        }
+                    );
+                  }
+              );
+            },
+        error => {
+          console.log('error 2 = ', error);
+        });
+  }
+
+
 
   /**
    *  google charts
@@ -159,4 +198,5 @@ export class ChartComponent implements OnInit {
       }
     },
   ];
+
 }
