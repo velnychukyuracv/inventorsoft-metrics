@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
 
 import { ChartService } from './../../common/services/chart.service';
@@ -14,8 +14,8 @@ import {ChartsService} from "../../common/services/charts.service";
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
-  @Input('id') public id: number;
+export class ChartComponent implements OnChanges {
+  @Input() id: number;
   chartList;
   constructor(
       private chartService: ChartShowService,
@@ -23,8 +23,12 @@ export class ChartComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    console.log(this.id);
+    //TODO use this life hook to get one chart this.getChart();
   }
+
+
 
   /*getChart():void{
     this.getChartService.getChartById(id).pipe(first())

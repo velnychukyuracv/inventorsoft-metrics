@@ -209,8 +209,11 @@ export class ChartsPageComponent implements OnInit {
             });
     }
 
+    /**
+     * Preview the chart on modal window
+     * @param {number} chartId
+     */
     previewChart(chartId: number): void {
-        console.log(chartId);
         this.selectedChartId = chartId;
     }
 
