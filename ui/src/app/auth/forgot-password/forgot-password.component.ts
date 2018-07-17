@@ -38,12 +38,12 @@ export class ForgotPasswordComponent implements OnInit {
             .subscribe(
                 (res) => {
                     this.spinner.hide();
-                    this.notification.success(`Data for resetting the password has been sent to your email!`)
-                    this.router.navigate(['/reset-password'])
+                    this.notification.success(`Data for resetting the password has been sent to your email!`);
+                    this.router.navigate(['/reset-password']);
                 },
                 (err) => {
                     this.spinner.hide();
-                    this.notification.error(`Failed to send data!`)
+                    this.notification.error(`User with this email address does not exist!`);
                 }
             )
     }

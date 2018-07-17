@@ -49,17 +49,15 @@ export class LoginComponent implements OnInit {
         this.authService.login(formData)
             .subscribe(res => {
                     this.tokenService.saveToLocalStorage(res);
-                    this.notification.success(`Logged in`);
-                    setTimeout(() => {
-                        return this.router.navigate(['/users']);
-                    }, 1000);
                     this.hideSpinners();
+                    this.notification.success(`Logged in`);
+                    return this.router.navigate(['/users']);
                 },
                 error => {
+                    console.log(error);
                     this.hideSpinners();
                     this.notification.error(`Failed to log in!`);
                 })
-
     }
 
 }
