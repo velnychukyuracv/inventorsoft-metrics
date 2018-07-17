@@ -25,12 +25,9 @@ export class HeaderComponent implements OnInit {
     }
 
     /**
-     *  Collapse sidebar
+     * Set value of color
+     * @param value: color
      */
-    // collapseSidebar() {
-    //     this.sidebar.collapseSidebar();
-    // }
-
     set colorValue(value) {
         localStorage.setItem('header-bg', value);
         this.renderer.setStyle(this.header.nativeElement, 'background-color', value);
