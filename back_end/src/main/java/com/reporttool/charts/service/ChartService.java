@@ -66,41 +66,16 @@ public class ChartService extends DefaultCrudSupport<Chart> {
     }
 
 
+
     @Transactional
-    public ChartForm updateChart(Long chartId, ChartForm form) {
+    public ChartDto updateChart(Long chartId, ChartForm form) {
         Chart chart = findById(chartId).orElseThrow(ResourceNotFoundException::new);
-        setChartVariable(form, chart);
+        chartMapper.updateChart(form, chart);
         update(chart);
-        return form;
+        return chartMapper.mapToChartDtoFromChart(chart);
     }
 
 
-
-    private void setChartVariable(ChartForm form, Chart chart) {
-        if (nonNull(form.getName())) {
-            chart.setName(form.getName());
-        }
-        if (nonNull(form.getFilterColumns())) {
-            chart.setFilterColumns(form.getFilterColumns());
-        }
-        if (nonNull(form.getVisibleColumns())) {
-            chart.setVisibleColumns(form.getVisibleColumns());
-        }
-        if (nonNull(form.getType())) {
-            chart.setType(ChartType.valueOf(form.getType()));
-        }
-        if (nonNull(form.getOrder())) {
-            chart.setOrder(form.getOrder());
-        }
-        if (nonNull(form.getAttributes())) {
-            chart.setAttributes(form.getAttributes());
-        }
-        if (nonNull(form.getDataSourceDbRepId())) {
-            chart.setDataSourceDbRep(dataSourcePropService.
-                    findById(form.getDataSourceDbRepId())
-                    .orElseThrow(ResourceNotFoundException::new));
-        }
-    }
 
     public Page<ChartDto> findChartsByGroup(Long groupId, Pageable pageable) {
         return chartRepository.findByGroup(groupId, pageable).map(chartMapper :: mapToChartDtoFromChart);
