@@ -4,6 +4,9 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between w-100">
                 <!-- Navbar Header-->
                 <div class="navbar-header">
+                    <div id="company-logo">
+                        <img [src]="imageUrl"  style="width:70px;height=70px">
+                    </div>
                     <!-- Navbar Brand -->
                     <a href="#" class="navbar-brand d-none d-sm-inline-block text-white">
                         <div class="brand-text d-none d-lg-inline-block"><span>Bootstrap</span><strong>Dashboard</strong></div>
@@ -20,6 +23,10 @@
                     <li class="color-box mr-3" *ngIf="auth.isAuthenticated">
                         <label for="colors" class="mb-0"><i class="fa fa-paint-brush text-white"></i></label>
                         <input class="d-none" [(ngModel)]='colorValue' type="color" id="colors">
+                    </li>
+                    <li class="color-box mr-3" *ngIf="auth.isAuthenticated">
+                        <label for="image" class="mb-0"><i class="fa fa-image text-white"></i></label>
+                        <input class="d-none" id="image" type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
                     </li>
                     <!-- Logout    -->
                     <li class="nav-item logout text-white" *ngIf="auth.isAuthenticated" (click)="logout(event)">
