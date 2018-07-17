@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GroupsService } from '../../common/services/groups.service';
 import { Group } from '../../common/models/group.model';
 import { first } from 'rxjs/internal/operators/first';
@@ -18,6 +18,7 @@ export class CreateGroupComponent implements OnInit {
     group: Group = new Group();
     createGroupForm: FormGroup;
     icons: Icons[];
+    @Output() needUpdateGroups: EventEmitter<any> = new EventEmitter();
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
@@ -53,12 +54,12 @@ export class CreateGroupComponent implements OnInit {
     createGroup() {
         const createdGroup = this.createGroupForm.value;
         this.spinner.show();
-        //this.createGroupForm.reset();
         this.groupsService.createGroup(createdGroup).pipe(first())
             .subscribe(
                 (response) => {
                     this.spinner.hide();
                     this.notification.success(`You have successfully created group!`);
+                    this.needUpdateGroups.emit(null);
                     this.createGroupForm.reset();
                 },
                 error => {

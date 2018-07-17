@@ -82,6 +82,6 @@
         </li>
     </ul>
 </nav>
-<app-create-group></app-create-group>
+<app-create-group (needUpdateGroups)="getGroups()"></app-create-group>
 <app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
 

@@ -43,7 +43,9 @@ export class ForgotPasswordComponent implements OnInit {
                 },
                 (err) => {
                     this.spinner.hide();
-                    this.notification.error(`User with this email address does not exist!`);
+                    console.log(err);
+                    console.log(err.message);
+                    this.notification.error(err);
                 }
             )
     }
