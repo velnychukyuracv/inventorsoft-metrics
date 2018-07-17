@@ -4,26 +4,26 @@
         <p>User Name</p>
     </div>
     <ul class="list-unstyled components">
-        <li [routerLink]="['/users']">
-            <a>
+        <li>
+            <a href="#">
                 <i class="fa fa-user"></i>
                 User Management
             </a>
         </li>
-        <li [routerLink]="['/data-sources']">
-            <a>
+        <li>
+            <a href="#">
                 <i class="fa fa-file"></i>
                 Data Source Management
             </a>
         </li>
         <li>
-            <a>
+            <a href="#">
                 <i class="fa fa-list-ul"></i>
                 Chart Management
             </a>
         </li>
         <li>
-            <a>
+            <a href="#">
                 <i class="fa fa-bar-chart"></i>
                 Charts
             </a>
@@ -56,3 +56,5 @@
         </li>
     </ul>
 </nav>
+<app-create-group></app-create-group>
+<app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
