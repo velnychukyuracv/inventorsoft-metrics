@@ -1,5 +1,5 @@
 
-  <section  class="chart" *ngFor="let chart of showCharts">
+<section  class="chart">
     <div class="chartHeader">
       <div >
         <h3> {{chart?.type}} </h3>
@@ -7,10 +7,10 @@
     </div>
 
     <div class="chartBody">
-      <div   [chartType]="chart?.type"
-             [chartData]="chart?.data"
-             [chartOptions]="chart?.options"
-             appGoogleChart>
+       <div   [chartType]="chart?.type"
+              [chartData]="chart?.data"
+              [chartOptions]="chart?.options"
+              appGoogleChart>
       </div>
     </div>
-  </section>
+</section>

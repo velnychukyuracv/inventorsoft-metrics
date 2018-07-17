@@ -210,7 +210,6 @@ export class ChartsPageComponent implements OnInit {
     }
 
     previewChart(chartId: number): void {
-        console.log(chartId);
         this.selectedChartId = chartId;
     }
 

@@ -21,13 +21,13 @@
                 Data Source Management
             </a>
         </li>
-        <li>
+        <li [routerLink]="['/chart-management']">
             <a>
                 <i class="fa fa-list-ul"></i>
                 Chart Management
             </a>
         </li>
-        <li>
+        <li [routerLink]="['/charts']">
             <a>
                 <i class="fa fa-bar-chart"></i>
                 Charts
@@ -44,8 +44,8 @@
                         class="fa fa-plus"></i><span>Create new group</span>
                     </button>
                 </div>
-                <li>
-                    <a class="group-item groups" *ngFor="let group of groups"><i [class]="group.materialIcon"></i>{{group.name}}
+                <li >
+                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/charts']"><i [class]="group.materialIcon"></i>{{group.name}}
                         <div class="group-btn pull-right">
                             <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
                                 class="fa fa-trash"> </i></button>

@@ -16,7 +16,7 @@ export class GoogleChart implements OnChanges {
   @Output('itemDeselect') public itemDeselect = new EventEmitter();
 
   @HostListener('window:resize', ['$event']) onResize(event: any) {
-    this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.element)
+      this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.element)
   }
 
   constructor(public element: ElementRef) {
