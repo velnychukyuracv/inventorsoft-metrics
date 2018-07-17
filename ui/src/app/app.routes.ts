@@ -5,6 +5,7 @@ import { DataSourcesComponent } from './data-sources/data-sources.component';
 import { UsersComponent } from './users/users/users.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { ChartsComponent } from './charts/charts.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ChartsPageComponent } from './charts-page/charts-page.component';
@@ -23,6 +24,18 @@ export const APP_ROUTES: Routes = [
                 pathMatch : 'full'
             },
             {
+                path     : 'users',
+                component: UsersComponent
+            },
+            {
+                path     : 'add-user',
+                component: AddUserComponent
+            },
+            {
+                path     : 'edit-user/:id',
+                component: EditUserComponent
+            },
+            {
                 path     : 'data-sources',
                 component: DataSourcesComponent
             },
@@ -31,17 +44,10 @@ export const APP_ROUTES: Routes = [
                 component: ChartsPageComponent
             },
             {
-                path     : 'users',
-                component: UsersComponent
+                path     : 'charts',
+                component: ChartsComponent
             },
-            {
-                path     : 'edit-user/:id',
-                component: EditUserComponent
-            },
-            {
-                path     : 'add-user',
-                component: AddUserComponent
-            },
+
         ]
     },
     {

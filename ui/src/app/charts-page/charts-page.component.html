@@ -41,7 +41,8 @@
                 <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal"
+                        (click)="previewChart(chart.id)">
                         <!-- TODO: Make it work when chart visualization would be implemented><!-->
                         Preview
                     </button>
@@ -271,7 +272,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!--TODO: Visualize chart-->
+                <app-chart > </app-chart>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
