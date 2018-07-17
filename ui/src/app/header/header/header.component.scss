@@ -60,6 +60,22 @@
     left: 0;
 }
 
-.color-box i, .logout {
+.color-box i, .logout, .arrow-box {
     cursor: pointer;
+}
+
+.second-arrow {
+    transition: transform .4s;
+}
+
+.change-arrow {
+    transform: rotate(180deg);
+}
+
+.line1 {
+    transform: translateY(12px)
+}
+
+.line2 {
+    transform: translateY(-12px)
 }

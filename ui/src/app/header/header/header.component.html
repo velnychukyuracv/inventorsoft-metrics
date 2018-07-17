@@ -9,12 +9,9 @@
                         <div class="brand-text d-none d-lg-inline-block"><span>Bootstrap</span><strong>Dashboard</strong></div>
                         <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div>
                     </a>
-                    <!-- Toggle Button-->
-                    <div id="toggle-btn" class="menu-btn active">
-<!--                        <span></span><span #arrow></span><span></span>-->
-                        <button type="button" id="sidebarCollapse" class="btn btn-link btn-lg" (click)="collapseSidebar()">
-                            <i class="fa fa-align-justify"></i>
-                        </button>
+                    <div id="toggle-btn" class="menu-btn active arrow-box"
+                         (click)="collapseSidebar(this.isArrowRotate = !this.isArrowRotate)">
+                        <span #line1></span><span class="second-arrow" #arrow></span><span #line2></span>
                     </div>
                 </div>
                 <!-- Navbar Menu -->

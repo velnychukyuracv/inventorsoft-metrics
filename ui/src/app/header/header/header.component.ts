@@ -10,7 +10,11 @@ import { MenuComponent } from '../../sidebar/menu/menu.component';
 })
 export class HeaderComponent implements OnInit {
     @ViewChild('header') header: ElementRef;
+    @ViewChild('arrow') arrow: ElementRef;
+    @ViewChild('line1') line1: ElementRef;
+    @ViewChild('line2') line2: ElementRef;
     @Input() sidebar: MenuComponent;
+    isArrowRotate = false;
 
     constructor(public  auth: AuthService, public router: Router, private renderer: Renderer2) {
 
@@ -23,9 +27,9 @@ export class HeaderComponent implements OnInit {
     /**
      *  Collapse sidebar
      */
-    collapseSidebar() {
-        this.sidebar.collapseSidebar();
-    }
+    // collapseSidebar() {
+    //     this.sidebar.collapseSidebar();
+    // }
 
     set colorValue(value) {
         localStorage.setItem('header-bg', value);
@@ -39,5 +43,21 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('header-bg');
         this.renderer.setStyle(this.header.nativeElement, 'background-color', '#2f333e');
         this.auth.logout();
+    }
+
+    /**
+     *toggle sidebar
+     */
+    collapseSidebar() {
+        this.sidebar.collapseSidebar();
+        if (this.isArrowRotate) {
+            this.renderer.addClass(this.arrow.nativeElement, 'change-arrow');
+            this.renderer.addClass(this.line1.nativeElement, 'line1');
+            this.renderer.addClass(this.line2.nativeElement, 'line2');
+        } else {
+            this.renderer.removeClass(this.arrow.nativeElement, 'change-arrow');
+            this.renderer.removeClass(this.line1.nativeElement, 'line1');
+            this.renderer.removeClass(this.line2.nativeElement, 'line2');
+        }
     }
 }
