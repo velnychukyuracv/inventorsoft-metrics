@@ -42,7 +42,10 @@ export class AuthService {
     forgotPassword(email) {
         return this.http.post(environment.NO_AUTH_PREFIX + `/forgetPassword?email=${encodeURIComponent(email)}`, {email})
             .pipe(
-                catchError(error => throwError(error))
+                catchError(error => {
+                        return throwError(error)
+                    }
+                )
             )
 
     }

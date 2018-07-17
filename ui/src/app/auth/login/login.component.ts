@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             .subscribe(res => {
                     this.tokenService.saveToLocalStorage(res);
                     this.hideSpinners();
-                    this.notification.success(`Logged in`);
+                    this.notification.success(`Logged in!`);
                     return this.router.navigate(['/users']);
                 },
                 error => {

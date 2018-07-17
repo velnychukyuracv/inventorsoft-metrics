@@ -43,9 +43,7 @@ export class ForgotPasswordComponent implements OnInit {
                 },
                 (err) => {
                     this.spinner.hide();
-                    console.log(err);
-                    console.log(err.message);
-                    this.notification.error(err);
+                    this.notification.error(err.error);
                 }
             )
     }

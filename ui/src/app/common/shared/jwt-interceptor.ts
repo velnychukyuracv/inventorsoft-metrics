@@ -5,7 +5,7 @@ import {
     HttpEvent,
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/index';
+import { BehaviorSubject, throwError } from 'rxjs/index';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap, catchError, finalize, filter, take } from 'rxjs/internal/operators';
 
@@ -40,10 +40,11 @@ export class JwtInterceptor implements HttpInterceptor {
                                 case 401:
                                     return this.handle401Error(request, next);
                                 default :
-                                    return Observable.throw(error);
+                                    return throwError(error);
                             }
                         } else {
-                            return Observable.throw(error);
+                            return throwError(error);
+
                         }
                     }
                 )
