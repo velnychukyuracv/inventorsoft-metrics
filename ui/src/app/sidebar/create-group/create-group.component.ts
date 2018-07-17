@@ -53,11 +53,13 @@ export class CreateGroupComponent implements OnInit {
     createGroup() {
         const createdGroup = this.createGroupForm.value;
         this.spinner.show();
+        //this.createGroupForm.reset();
         this.groupsService.createGroup(createdGroup).pipe(first())
             .subscribe(
                 (response) => {
                     this.spinner.hide();
                     this.notification.success(`You have successfully created group!`);
+                    this.createGroupForm.reset();
                 },
                 error => {
                     this.spinner.hide();
