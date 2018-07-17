@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
                     return this.router.navigate(['/users']);
                 },
                 error => {
-                    console.log(error);
                     this.hideSpinners();
                     this.notification.error(`Failed to log in!`);
                 })
