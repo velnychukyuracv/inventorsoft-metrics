@@ -111,6 +111,7 @@ public class ChartTest {
         assertTrue(5 == chartDto.getId());
 
         chartForm.setAttributes("TestAttributes");
+        chartForm.setQuery("Test query");
 
         response = mockMvc.perform(patch(APP + "/charts/5")
                 .header(jwtProperties.getHeaderString(), token)
@@ -118,10 +119,11 @@ public class ChartTest {
                 .content(objectMapper.writeValueAsString(chartForm)))
                 .andReturn().getResponse();
         assertEquals(202, response.getStatus());
-
         object = response.getContentAsString();
-        chartForm = objectMapper.readValue(object, ChartForm.class);
-        assertTrue("TestAttributes".equals(chartForm.getAttributes()));
+        ChartDto chartDto1 = objectMapper.readValue(object, ChartDto.class);
+
+        assertTrue("TestAttributes".equals(chartDto1.getAttributes()));
+        assertEquals("Test query", chartDto1.getQuery());
 
         response = mockMvc.perform(get(APP + "/charts")
                 .header(jwtProperties.getHeaderString(), token)
@@ -134,7 +136,7 @@ public class ChartTest {
                 .header(jwtProperties.getHeaderString(), token))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content", hasSize(1)))
-                .andExpect(jsonPath("$.content[0].query").value("Query"))
+                .andExpect(jsonPath("$.content[0].query").value("Test query"))
                 .andReturn();
         assertEquals(200, response.getStatus());
 
