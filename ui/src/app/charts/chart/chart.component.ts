@@ -1,4 +1,5 @@
-import { Component, OnInit, Input,  OnChanges } from '@angular/core';
+
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
 
 import { ChartShowService } from './../../common/services/chart-show.service';
@@ -10,6 +11,7 @@ import { ChartsService } from "../../common/services/charts.service";
     templateUrl: './chart.component.html',
     styleUrls: ['./chart.component.scss']
 })
+
 export class ChartComponent implements OnInit {
 
     @Input('id') public id: number;
@@ -68,6 +70,7 @@ export class ChartComponent implements OnInit {
 
                                 }
                             );
+
                         }
                     );
                 },
