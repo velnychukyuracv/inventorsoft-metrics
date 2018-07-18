@@ -37,8 +37,12 @@ export class JwtInterceptor implements HttpInterceptor {
                         if (error instanceof HttpErrorResponse) {
 
                             switch ((<HttpErrorResponse>error).status) {
-                                case 401:
-                                    return this.handle401Error(request, next);
+                                case 401: {
+                                    if (this.auth.isAuthenticated)
+                                        return this.handle401Error(request, next);
+                                    else
+                                        return throwError(error)
+                                }
                                 default :
                                     return throwError(error);
                             }

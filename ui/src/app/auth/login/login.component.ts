@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
                 },
                 error => {
                     this.hideSpinners();
-                    this.notification.error(`Failed to log in!`);
+                    this.notification.error(error.error);
                 })
     }
-
 }
