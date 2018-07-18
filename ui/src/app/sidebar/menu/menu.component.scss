@@ -24,6 +24,7 @@ li a {
     cursor: pointer;
     color: $sidebarItem;
     transition: background-color 200ms, color 200ms;
+    border-left: 5px solid transparent;
     &:active, &:hover, &:focus {
         color: $bgPage;
         background-color: $sidebarActive;

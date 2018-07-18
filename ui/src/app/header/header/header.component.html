@@ -1,5 +1,5 @@
-<header class="container-fluid header" #header>
-    <nav class="navbar">
+<header class="header" #header>
+    <nav class="navbar p-0">
         <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between w-100">
                 <!-- Navbar Header-->
@@ -18,11 +18,11 @@
                     </div>
                 </div>
                 <!-- Navbar Menu -->
-                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center list-menu">
                     <!--Color Select-->
                     <li class="color-box mr-3" *ngIf="auth.isAuthenticated">
                         <label for="colors" class="mb-0"><i class="fa fa-paint-brush text-white"></i></label>
-                        <input class="d-none" [(ngModel)]='colorValue' type="color" id="colors">
+                        <input [(ngModel)]='colorValue' type="color" id="colors">
                     </li>
                     <li class="color-box mr-3" *ngIf="auth.isAuthenticated">
                         <label for="image" class="mb-0"><i class="fa fa-image text-white"></i></label>

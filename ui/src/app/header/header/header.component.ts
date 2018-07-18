@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     @ViewChild('line1') line1: ElementRef;
     @ViewChild('line2') line2: ElementRef;
     @Input() sidebar: MenuComponent;
-    isArrowRotate = false;
+    isArrowRotate: boolean = false;
     imageUrl: string = '/assets/img/logo1.png';
     selectedFile: File = null;
 
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
         let reader = new FileReader();
         reader.onload = (event:any) => {
             this.imageUrl = event.target.result;
-        }
+        };
         reader.readAsDataURL(this.selectedFile);
     }
 
