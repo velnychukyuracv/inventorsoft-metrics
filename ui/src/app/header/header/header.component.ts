@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     @ViewChild('line2') line2: ElementRef;
     @Input() sidebar: MenuComponent;
     isArrowRotate = false;
-    imageUrl: string = '/assets/img/logo1.png';
+    imageUrl: string = '/assets/img/default-logo.png';
     selectedFile: File = null;
 
     constructor(public  auth: AuthService, public router: Router, private renderer: Renderer2) {
@@ -26,10 +26,14 @@ export class HeaderComponent implements OnInit {
         this.renderer.setStyle(this.header.nativeElement, 'background-color', localStorage.getItem('header-bg'))
     }
 
-    handleFileInput(file: FileList){
+    /**
+     * Handle image upload
+     * @param file: uploaded img
+     */
+    handleImgUpload(file: FileList) {
         this.selectedFile = file.item(0);
         let reader = new FileReader();
-        reader.onload = (event:any) => {
+        reader.onload = (event: any) => {
             this.imageUrl = event.target.result;
         }
         reader.readAsDataURL(this.selectedFile);
