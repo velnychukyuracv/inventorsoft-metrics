@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     form: FormGroup;
     message: string;
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
+    imageUrl: string = '/assets/img/default-logo.png';
 
     constructor(
         private authService: AuthService,
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
         this.form = new FormGroup({
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'userName': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)])
-        })
+        });
+        localStorage.setItem('image-url', this.imageUrl);
     }
 
     /**
