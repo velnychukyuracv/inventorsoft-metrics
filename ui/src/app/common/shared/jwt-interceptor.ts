@@ -33,25 +33,21 @@ export class JwtInterceptor implements HttpInterceptor {
         return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken'] || ''))
             .pipe(
                 catchError((error: HttpEvent<any>) => {
-
-                        if (error instanceof HttpErrorResponse) {
-
-                            switch ((<HttpErrorResponse>error).status) {
-                                case 401: {
-                                    if (this.auth.isAuthenticated)
-                                        return this.handle401Error(request, next);
-                                    else
-                                        return throwError(error)
-                                }
-                                default :
+                    if (error instanceof HttpErrorResponse) {
+                        switch ((<HttpErrorResponse>error).status) {
+                            case 401:{
+                                if(error.error === "Bad credentials")
                                     return throwError(error);
+                                else if(!error.error.indexOf('JWT expired'))
+                                    return this.handle401Error(request, next);
                             }
-                        } else {
-                            return throwError(error);
-
+                            default :
+                                return throwError(error);
                         }
+                    } else {
+                        return throwError(error);
                     }
-                )
+                })
             )
     }
 
