@@ -55,7 +55,7 @@ public class ChartService extends DefaultCrudSupport<Chart> {
 
     @Transactional(readOnly = true)
     public Page<ChartDto> findChartDtosByName(String query, Pageable pageable) {
-        return chartRepository.findAllByName(query, pageable).map(chartMapper :: mapToChartDtoFromChart);
+        return chartRepository.findAllByNameContainingIgnoreCaseOrderByNameAsc(query, pageable).map(chartMapper :: mapToChartDtoFromChart);
     }
 
     @Transactional(readOnly = true)

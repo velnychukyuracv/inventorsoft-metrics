@@ -11,6 +11,6 @@ public interface GroupRepository extends JpaRepository<Group, Long>{
     @Query("select max(groups.order) from Group groups")
     Integer findMaxOrderForGroups();
 
-    Page<Group> findAllByName(String name, Pageable pageable);
+    Page<Group> findAllByNameContainingIgnoreCaseOrderByNameAsc(String name, Pageable pageable);
 
 }

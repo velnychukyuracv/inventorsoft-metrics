@@ -65,7 +65,7 @@ public class GroupService extends DefaultCrudSupport<Group> {
 
     @Transactional(readOnly = true)
     public Page<GroupDto> findGroupDtosByName(String name, Pageable pageable) {
-        return groupRepository.findAllByName(name, pageable).map(groupMapper :: mapToGroupDtoFromGroup);
+        return groupRepository.findAllByNameContainingIgnoreCaseOrderByNameAsc(name, pageable).map(groupMapper :: mapToGroupDtoFromGroup);
     }
 
     @Transactional(readOnly = true)
