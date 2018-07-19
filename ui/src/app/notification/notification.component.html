@@ -1,9 +1,11 @@
 <div class="notifications">
-    <div class="notification alert" *ngFor="let message of messages$ | async"
+    <div class="notification alert msg" *ngFor="let message of messages$ | async"
          [ngClass]="{'alert-success':   message.type === 'success',
-                     'alert-danger' :   message.type === 'danger'}">
+                     'alert-danger' :   message.type === 'danger',
+                     'fadeIn'       :   !message.dissmised,
+                     'fadeOut'      :   message.dissmised}">
         {{message.content}}
-        <button type="button" class="close" aria-label="Close"
+        <button type="button close-notification" class="close" aria-label="Close"
                 (click)="dismiss(message.id)">
             <span aria-hidden="true">&times;</span>
         </button>
