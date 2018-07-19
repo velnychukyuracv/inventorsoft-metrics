@@ -54,7 +54,6 @@ export class HeaderComponent implements OnInit {
      * exit the app
      */
     logout() {
-        localStorage.removeItem('header-bg');
         this.renderer.setStyle(this.header.nativeElement, 'background-color', '#2f333e');
         this.auth.logout();
     }

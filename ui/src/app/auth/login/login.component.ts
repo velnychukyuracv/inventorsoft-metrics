@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        localStorage.setItem('image-url', this.imageUrl);
         this.form = new FormGroup({
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'userName': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)])
         });
-        localStorage.setItem('image-url', this.imageUrl);
     }
 
     /**
