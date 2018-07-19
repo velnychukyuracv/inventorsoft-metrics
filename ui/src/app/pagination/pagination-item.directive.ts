@@ -3,6 +3,7 @@ import { PaginationService } from '../common/services/pagination.service';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 
 @Directive({selector: '[pagination-item]'})
+
 export class PaginationItemDirective {
 
     @Input('pagination-item') pageNumber: number | PAGE_NAVIGATION = 1;

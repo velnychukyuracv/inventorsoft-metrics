@@ -44,8 +44,8 @@
                         class="fa fa-plus"></i><span>Create new group</span>
                     </button>
                 </div>
-                <li >
-                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/charts']"><i [class]="group.materialIcon"></i>{{group.name}}
+                <li>
+                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/group', group.id, 'charts']" (click)="showCharts(group.id)"><i [class]="group.materialIcon"></i>{{group.name}}
                         <div class="group-btn pull-right">
                             <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
                                 class="fa fa-trash"> </i></button>

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
     selectedGroup: Group;
     groups: Group[];
+    groupId: number;
     editModalClicked: boolean;
     sidebarBtnState: boolean = false;
 
@@ -63,6 +64,10 @@ export class MenuComponent implements OnInit {
             );
     }
 
+    showCharts(groupId: number): void {
+        console.log('group id = ', this.groupId);
+        this.groupId = groupId;
+    }
     /**
      * Open edit modal
      * @param group: Data of selected group

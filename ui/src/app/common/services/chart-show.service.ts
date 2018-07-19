@@ -7,6 +7,7 @@ import { throwError } from 'rxjs/index';
 
 import { environment } from '../../../environments/environment';
 import {HelperService} from "./helper.service";
+import {TableParams} from "../models/table-params.model";
 
 @Injectable({
     providedIn: 'root'
@@ -17,8 +18,15 @@ export class ChartShowService {
     }
 
 
-    getCharts():Observable<any> {
-        return this.http.get(environment.API_URL + '/charts')
+    getCharts(paginationParams):Observable<any> {
+        return this.http.get(environment.API_URL + '/charts', {params: HelperService.makeHttpParams(paginationParams)})
+                .pipe(catchError(
+                (error:HttpErrorResponse) => throwError(error)
+            ));
+    }
+
+    getChartsByGroupId(groupId: number, paginationParams):Observable<any> {
+        return this.http.get(environment.API_URL + '/groups/'+ groupId + '/charts', {params: HelperService.makeHttpParams(paginationParams)})
             .pipe(catchError(
                 (error:HttpErrorResponse) => throwError(error)
             ));
@@ -32,5 +40,6 @@ export class ChartShowService {
                 (error:HttpErrorResponse) => throwError(error)
             ))
     };
+
 
 }

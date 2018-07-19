@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from '../app.routes';
 import { SharedModule } from '../common/shared/shared.module';
 
-import { ChartsComponent } from './charts.component';
+import { ChartsListComponent } from './charts-list.component';
 import { ChartComponent } from './chart/chart.component';
 import { GoogleChart } from './chart/google-chart.directive';
-
 import { PaginationableModule } from '../common/shared/paginationable.module';
 
 @NgModule({
@@ -19,7 +18,7 @@ import { PaginationableModule } from '../common/shared/paginationable.module';
         APP_ROUTES
     )
   ],
-  declarations: [ChartsComponent, ChartComponent, GoogleChart],
-  exports     : [ChartsComponent, ChartComponent, GoogleChart]
+  declarations: [ChartsListComponent, ChartComponent, GoogleChart],
+  exports     : [ChartsListComponent, ChartComponent, GoogleChart]
 })
-export class ChartsModule { }
+export class ChartsListModule { }

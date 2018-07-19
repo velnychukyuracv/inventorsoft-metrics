@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../common/shared/shared.module';
-import { ChartsPageComponent } from './charts-page.component';
 import { SortableModule } from '../common/shared/sortable.module';
 import { PaginationableModule } from '../common/shared/paginationable.module';
 import { SearchModule} from '../search/search.module';
-import { ChartsModule } from '../charts/charts.module';
+import { ChartsListModule } from '../charts-list/charts-list.module';
+import { ChartsPageComponent } from './charts-page.component';
+import { PreviewComponent } from './preview/preview.component';
 
 
 
@@ -16,10 +17,10 @@ import { ChartsModule } from '../charts/charts.module';
         SortableModule,
         PaginationableModule,
         SearchModule,
-        ChartsModule
+        ChartsListModule
     ],
-    declarations: [ChartsPageComponent],
-    exports     : [ChartsPageComponent]
+    declarations: [ChartsPageComponent, PreviewComponent],
+    exports     : [ChartsPageComponent, PreviewComponent]
 })
 export class ChartsPageModule {
 }
