@@ -64,6 +64,13 @@
     left: 0;
 }
 
+#company-logo {
+    margin-right: 10px;
+    img {
+        height: 70px;
+    }
+}
+
 .color-box i, .logout, .arrow-box {
     cursor: pointer;
 }
