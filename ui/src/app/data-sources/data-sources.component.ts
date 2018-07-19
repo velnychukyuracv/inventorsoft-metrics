@@ -45,10 +45,10 @@ export class DataSourcesComponent implements OnInit {
     onSearch($event): void {
         if ($event) {
             this.tableParams.query = $event;
-            console.log($event);
         }
-        else
+        else {
             delete this.tableParams.query;
+        }
         this.buildDataSources();
     }
 
