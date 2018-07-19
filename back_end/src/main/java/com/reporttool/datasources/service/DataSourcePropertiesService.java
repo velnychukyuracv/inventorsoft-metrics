@@ -106,7 +106,7 @@ public class DataSourcePropertiesService extends DefaultCrudSupport<DataSourceDb
     @Transactional(readOnly = true)
     public Page<DataSourceDto> findDataSourcesByName(String query, Pageable pageable, String sortBy, String direction) {
         Page<DataSourceDbRepresentation> dbRepresentations =
-                dbRepresentationRepository.findAllByDataSourceNameOrderByDataSourceNameAsc(query, pageable);
+                dbRepresentationRepository.findAllByDataSourceNameContainingIgnoreCaseOrderByDataSourceNameAsc(query, pageable);
         Page<DataSourceDto> dataSourceDtos = dbRepresentations.map(this::createDataSourceDto);
         List<DataSourceDto> list = new ArrayList<>(dataSourceDtos.getContent());
         list.sort(createComparator(sortBy, direction));

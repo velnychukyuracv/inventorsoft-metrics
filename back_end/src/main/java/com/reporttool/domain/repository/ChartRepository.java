@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface ChartRepository extends JpaRepository<Chart, Long>{
-    Page<Chart> findAllByName(String name, Pageable pageable);
+    Page<Chart> findAllByNameContainingIgnoreCaseOrderByNameAsc(String name, Pageable pageable);
     @Query("Select c from Chart c where c.group.id = :groupId")
     Page<Chart> findByGroup(@Param("groupId") Long groupId, Pageable pageable);
 }

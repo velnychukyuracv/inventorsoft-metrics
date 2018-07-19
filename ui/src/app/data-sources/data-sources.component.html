@@ -1,6 +1,7 @@
 <div class="container-fluid px-0 main-content">
     <header class="row d-flex justify-content-between mx-0">
         <h2 class="mb-0 h2">Data Sources</h2>
+        <app-search-bar search (onSearch)="onSearch($event)"></app-search-bar>
         <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#dataSourceModal"
                 (click)="openAddModal()"
         >Create</button>
