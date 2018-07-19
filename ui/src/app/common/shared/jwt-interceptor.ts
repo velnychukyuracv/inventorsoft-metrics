@@ -35,11 +35,13 @@ export class JwtInterceptor implements HttpInterceptor {
                 catchError((error: HttpEvent<any>) => {
                     if (error instanceof HttpErrorResponse) {
                         switch ((<HttpErrorResponse>error).status) {
-                            case 401:{
-                                if(error.error === "Bad credentials")
+                            case 401: {
+                                if (error.error === "Bad credentials") {
                                     return throwError(error);
-                                else if(!error.error.indexOf('JWT expired'))
+                                }
+                                else if (!error.error.indexOf('JWT expired')) {
                                     return this.handle401Error(request, next);
+                                }
                             }
                             default :
                                 return throwError(error);
