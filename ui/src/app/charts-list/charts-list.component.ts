@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {first} from 'rxjs/internal/operators/first';
+import { first } from 'rxjs/internal/operators/first';
 import { ActivatedRoute } from '@angular/router';
 
-import { ChartShowService } from '../common/services/chart-show.service';
-import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
+import { ChartsService } from '../common/services/charts.service';
 import { SpinnersService } from '../spinners/spinners.service';
+import { NotificationService } from '../common/services/notification.service';
+import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 
 @Component({
     selector: 'app-charts-list',
@@ -17,9 +18,12 @@ export class ChartsListComponent implements OnInit, OnDestroy {
         pageSize: 4,
         page: 0
     };
-    totalPages:number = 1;
+    totalPages: number = 1;
+    chartDataList: Array<any>;
+    groupId: number;
 
-    private chartTypes:Object = {
+    private parametersObservable: any;
+    private chartTypes: Object = {
         LINE: 'LineChart',
         BAR: 'BarChart',
         COLUMN: 'ColumnChart',
@@ -28,35 +32,26 @@ export class ChartsListComponent implements OnInit, OnDestroy {
         TABLE: 'Table'
     };
 
-    chartDataList = [];
-
-    groupId:number;
-
-    private parametersObservable: any;
-
-    constructor(private chartService:ChartShowService,
-                private route:ActivatedRoute,
-                private spinner: SpinnersService
+    constructor(private chartsService: ChartsService,
+                private route: ActivatedRoute,
+                private spinner: SpinnersService,
+                private notification: NotificationService
     ) {
     }
 
     ngOnInit() {
         this.groupId = this.route.snapshot.params['id'];
-
         this.parametersObservable = this.route.params.subscribe(
             params => {
                 this.groupId = +params['id'];
-                this.initializeComponent();
+                this.buildCharts();
             }
         );
     }
 
-
-
-    private initializeComponent() {
-        this.buildCharts();
-    }
-
+    /**
+     * Built charts considering groupId charts
+     */
     buildCharts() {
         if (this.groupId) {
             this.getChartsByGroupId();
@@ -87,17 +82,19 @@ export class ChartsListComponent implements OnInit, OnDestroy {
         this.getCharts();
     }
 
-
+    /**
+     * Get all chart and show it on the page
+     */
     getCharts():void {
         this.spinner.show();
-        this.chartService.getCharts(this.tableParams).pipe(first())
+        this.chartsService.getCharts(this.tableParams).pipe(first())
             .subscribe(data => {
                     this.chartDataList = [];
                     this.totalPages = data.totalPages;
                     this.tableParams.page = data.number;
                     data.content.forEach(
                         chart => {
-                            this.chartService.getDBQuery(chart).subscribe(
+                            this.chartsService.getDBQuery(chart).subscribe(
                                 dbData => {
                                     this.chartDataList.push({
                                         name: chart.name,
@@ -106,33 +103,36 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                                         options: {
                                             width: '100%'
                                         }
-                                    })
+                                    });
                                 },
                                 error => {
-                                    // TODO: Show error notification
+                                    this.notification.error(`Failed data to show this chart!`)
                                 }
                             );
                         }
                     );
                     this.spinner.hide();
-                    // TODO: Show success notification
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
-                });
+                    this.notification.error(`Failed chart to show this chart!`)
+                }
+            );
     }
 
+    /**
+     * Get all chart by group id and show it on the page
+     */
     getChartsByGroupId():void {
         this.spinner.show();
-        this.chartService.getChartsByGroupId(this.groupId, this.tableParams).pipe(first())
+        this.chartsService.getChartsByGroupId(this.groupId, this.tableParams).pipe(first())
             .subscribe(data => {
                     this.chartDataList = [];
                     this.totalPages = data.totalPages;
                     this.tableParams.page = data.number;
                      data.content.forEach(
                         chart => {
-                            this.chartService.getDBQuery(chart).subscribe(
+                            this.chartsService.getDBQuery(chart).subscribe(
                                 dbData => {
                                     this.chartDataList.push({
                                         name: chart.name,
@@ -144,18 +144,18 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                                     })
                                 },
                                 error => {
-                                    // TODO: Show error notification
+                                    this.notification.error(`Failed data to show this chart!`)
                                 }
                             );
                         }
                     );
                     this.spinner.hide();
-                    // TODO: Show success notification
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
-                });
+                    this.notification.error(`Failed chart to show this chart!`)
+                }
+            );
     }
 
     ngOnDestroy() {

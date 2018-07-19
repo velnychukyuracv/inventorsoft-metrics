@@ -214,7 +214,6 @@ export class ChartsPageComponent implements OnInit {
      * @param {number} chartId
      */
     previewChart(chartId: number): void {
-        console.log('chart id test 1=' ,chartId);
         this.selectedChartId = chartId;
     }
 

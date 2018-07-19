@@ -1,6 +1,4 @@
-
-import { Component,  Input,  OnInit} from '@angular/core';
-import { first } from 'rxjs/internal/operators/first';
+import { Component,  Input,  OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-chart',
@@ -10,19 +8,10 @@ import { first } from 'rxjs/internal/operators/first';
 
 export class ChartComponent implements OnInit{
 
-    @Input('chart') public chart: any;
+    @Input('chart') public chart: Object;
 
-    private chartTypes: Object = {
-        LINE: 'LineChart',
-        BAR: 'BarChart',
-        COLUMN: 'ColumnChart',
-        PIE: 'PieChart',
-        AREA: 'AreaChart',
-        TABLE: 'Table'
-    };
+    constructor() { }
 
-    constructor() {    }
-
-    ngOnInit() {   }
+    ngOnInit() { }
 
 }

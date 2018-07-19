@@ -3,7 +3,6 @@ import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector   : 'app-menu',
@@ -18,8 +17,7 @@ export class MenuComponent implements OnInit {
     editModalClicked: boolean;
     sidebarBtnState: boolean = false;
 
-    constructor(private router: Router,
-                private groupsService: GroupsService,
+    constructor(private groupsService: GroupsService,
                 private spinner: SpinnersService) {
     }
 
@@ -64,10 +62,14 @@ export class MenuComponent implements OnInit {
             );
     }
 
+    /**
+     * Show group data
+     * @param groupId: Id of selected group
+     */
     showCharts(groupId: number): void {
-        console.log('group id = ', this.groupId);
         this.groupId = groupId;
     }
+
     /**
      * Open edit modal
      * @param group: Data of selected group

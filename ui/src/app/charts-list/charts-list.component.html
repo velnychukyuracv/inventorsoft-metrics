@@ -1,21 +1,11 @@
 <section class="container-fluid px-0">
-
   <header class="chartsHeader row d-flex justify-content-between mx-0">
-    <div>
       <h2 class="no-margin-bottom">Charts</h2>
-    </div>
   </header>
-
-  <main class="container-fluid">
-    <div class="google-charts row"
-         paginationable-list (pageChanged)="onPageChange($event)"
-    >
+  <main>
+    <div class="google-charts row" paginationable-list (pageChanged)="onPageChange($event)" >
          <app-chart class="col col-lg-6 col-md-12 col-sm-12" [chart]="chart" *ngFor="let chart of chartDataList"></app-chart>
     </div>
-    <app-pagination [activePage]="tableParams.page"
-                    [totalPages]="totalPages"
-    ></app-pagination>
-
+    <app-pagination [activePage]="tableParams.page" [totalPages]="totalPages" > </app-pagination>
   </main>
-
 </section>

@@ -1,7 +1,9 @@
-import { Component, OnChanges, Input} from '@angular/core';
-import {first} from "rxjs/internal/operators/first";
-import {ChartShowService} from "../../common/services/chart-show.service";
-import {ChartsService} from "../../common/services/charts.service";
+import { Component, OnChanges, Input } from '@angular/core';
+import { first } from 'rxjs/internal/operators/first';
+
+import { ChartsService } from '../../common/services/charts.service';
+import { SpinnersService } from '../../spinners/spinners.service';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector: 'app-preview',
@@ -10,11 +12,11 @@ import {ChartsService} from "../../common/services/charts.service";
 })
 
 export class PreviewComponent implements OnChanges {
+    @Input() id: number;
+    chart: Object;
+    name: string;
 
-
-    @Input() id:number;
-
-    private chartTypes:Object = {
+    private chartTypes: Object = {
         LINE: 'LineChart',
         BAR: 'BarChart',
         COLUMN: 'ColumnChart',
@@ -23,23 +25,22 @@ export class PreviewComponent implements OnChanges {
         TABLE: 'Table'
     };
 
-
-
-    chart;
-
-
-    constructor(private getChartService:ChartsService,
-                private chartService:ChartShowService) {
+    constructor(private chartService:ChartsService,
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnChanges() {
-        console.log('chart id test 2=', this.id);
         this.getChartByID(this.id);
     }
 
-
+    /**
+     * Get chart by id and show it on the page
+     * @param {id} id chart to show
+     */
     getChartByID(id):void {
-        this.getChartService.getChartById(id).pipe(first())
+        this.spinner.show();
+        this.chartService.getChartById(id).pipe(first())
             .subscribe(chart => {
                     this.chartService.getDBQuery(chart).subscribe(
                         dbData => {
@@ -53,13 +54,14 @@ export class PreviewComponent implements OnChanges {
                             }
                         },
                         error => {
-
+                            this.notification.error(`Failed data to show this chart!`)
                         }
                     );
+                    this.spinner.hide();
                 },
                 error => {
-                });
+                    this.spinner.hide();
+                }
+            );
     }
-
-
 }
