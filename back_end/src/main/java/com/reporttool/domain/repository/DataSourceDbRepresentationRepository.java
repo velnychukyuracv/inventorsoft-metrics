@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DataSourceDbRepresentationRepository extends JpaRepository<DataSourceDbRepresentation, Long> {
-    Page<DataSourceDbRepresentation> findAllByDataSourceNameOrderByDataSourceNameAsc(String query, Pageable pageable);
+    Page<DataSourceDbRepresentation> findAllByDataSourceNameContainingIgnoreCaseOrderByDataSourceNameAsc(String query, Pageable pageable);
 }

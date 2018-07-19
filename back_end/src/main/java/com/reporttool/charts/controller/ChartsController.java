@@ -69,7 +69,7 @@ public class ChartsController {
 
     @PatchMapping(value = "/{chartId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ChartForm updateChart(
+    public ChartDto updateChart(
             @PathVariable Long chartId,
             @RequestBody @Validated ChartForm form) {
         return chartService.updateChart(chartId, form);

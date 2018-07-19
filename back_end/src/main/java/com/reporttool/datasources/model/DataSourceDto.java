@@ -16,4 +16,6 @@ public class DataSourceDto {
     private String url;
     private String driverClassName;
     private DataSourceType dataSourceType;
+    private String userName;
+    private String password;
 }

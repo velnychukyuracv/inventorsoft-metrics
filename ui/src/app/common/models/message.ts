@@ -5,6 +5,7 @@ export class Message {
     id: number;
     content: string;
     type: string;
+    dissmised: boolean;
     static counter: number = 0;
 
     constructor(content, type) {
@@ -12,6 +13,7 @@ export class Message {
         this.id = Message.counter;
         this.content = content;
         this.type = type;
+        this.dissmised = false;
     }
 }
 
