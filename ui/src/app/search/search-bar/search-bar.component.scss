@@ -1,0 +1,10 @@
+@import '../../../assets/colors.scss';
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+#searchBox, .search-icon {
+    border-color: $searchBoxBorderColor;
+}

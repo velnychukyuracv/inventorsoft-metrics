@@ -4,6 +4,7 @@ import { Message } from '../models/message';
 import { of } from 'rxjs/internal/observable/of';
 
 const TIME_TO_DESTROY_MSG_IN_MS: number = 6000;
+const ANIMATION_DURATION: number = 2000;
 
 @Injectable({
     providedIn: 'root'
@@ -49,7 +50,8 @@ export class NotificationService {
      */
     dismissMessage(id: number): void {
         let index = this.notifications.findIndex(x => x.id == id);
-        this.notifications.splice(index, 1);
+        this.notifications[index].dissmised = true;
+        setTimeout(() => this.notifications.splice(index, 1), ANIMATION_DURATION);
     }
 
     /**

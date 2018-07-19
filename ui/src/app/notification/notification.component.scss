@@ -1,0 +1,42 @@
+$animationDuration: 2s;
+
+.notifications {
+    position: absolute;
+    width: 450px;
+    padding: 10px;
+    top: 70px;
+    right: 10px;
+    z-index: 10001;
+}
+
+.msg {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.fadeIn {
+    animation: fadeInAnimation $animationDuration;
+}
+
+.fadeOut {
+    animation: fadeOutAnimation $animationDuration;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@keyframes fadeOutAnimation {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
