@@ -39,6 +39,20 @@ export class DataSourcesComponent implements OnInit {
     }
 
     /**
+     * Slot for connecting to signal 'onSearch'
+     * @param $event
+     */
+    onSearch($event): void {
+        if ($event) {
+            this.tableParams.query = $event;
+            console.log($event);
+        }
+        else
+            delete this.tableParams.query;
+        this.buildDataSources();
+    }
+
+    /**
      * Slot for connecting to signal 'sorted'
      * @param $event
      */

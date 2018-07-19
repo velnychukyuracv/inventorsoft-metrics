@@ -20,6 +20,8 @@
 <div class="container-fluid px-0 users-wrapper">
     <header class="usersHeader row d-flex justify-content-between mx-0">
         <h2 class="mb-0 h2">Users</h2>
+        <app-search-bar search (onSearch)="onSearch($event)">
+        </app-search-bar>
         <button class="btn btn-outline-primary float-right" routerLink="/add-user">Add User</button>
     </header>
     <main class="container-fluid">

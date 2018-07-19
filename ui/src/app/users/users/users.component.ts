@@ -32,6 +32,20 @@ export class UsersComponent implements OnInit {
     }
 
     /**
+     * Slot for connecting to signal 'onSearch'
+     * @param $event
+     */
+    onSearch($event): void {
+        if ($event) {
+            this.tableParams.query = $event;
+            console.log($event);
+        }
+        else
+            delete this.tableParams.query;
+        this.getAllUsers();
+    }
+
+    /**
      * Slot for connecting to signal 'sorted'
      * @param $event
      */
