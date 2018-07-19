@@ -34,22 +34,19 @@ export class JwtInterceptor implements HttpInterceptor {
             .pipe(
                 catchError((error: HttpEvent<any>) => {
 
-                    if (error instanceof HttpErrorResponse) {
+                        if (error instanceof HttpErrorResponse) {
 
-                        switch ((<HttpErrorResponse>error).status) {
-                            case 401: {
-                                if (this.auth.isAuthenticated)
+                            switch ((<HttpErrorResponse>error).status) {
+                                case 401:
                                     return this.handle401Error(request, next);
-                                else
-                                    return Observable.throw(error)
+                                default :
+                                    return Observable.throw(error);
                             }
-                            default :
-                                return Observable.throw(error);
+                        } else {
+                            return Observable.throw(error);
                         }
-                    } else {
-                        return Observable.throw(error);
                     }
-                })
+                )
             )
     }
 
@@ -93,10 +90,7 @@ export class JwtInterceptor implements HttpInterceptor {
         }
     }
 
-    /**
-     * exit the app
-     */
     logoutUser() {
-        this.auth.logout();
+        // todo in the header component
     }
 }
