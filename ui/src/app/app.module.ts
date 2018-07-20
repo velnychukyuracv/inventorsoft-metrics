@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { DataSourcesModule } from './data-sources/data-sources.module';
+import { ChartsListModule} from './charts-list/charts-list.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
-import { DataSourcesModule } from './data-sources/data-sources.module';
+
 import { SharedModule } from './common/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarModule } from './sidebar/sidebar.module';
@@ -21,6 +24,8 @@ import { SearchModule } from './search/search.module';
 import { NotificationService } from './common/services/notification.service';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.component';
+
+
 
 @NgModule({
     declarations: [
@@ -41,10 +46,11 @@ import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.c
         HttpClientModule,
         DataSourcesModule,
         UsersModule,
+        ChartsListModule,
         SharedModule,
         HeaderModule,
         ChartsPageModule,
-        SearchModule
+        SearchModule,
     ],
     exports     : [RouterModule],
     providers   : [

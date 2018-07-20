@@ -6,6 +6,7 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { AuthService } from '../../common/services/auth.service';
 import { NotificationService } from '../../common/services/notification.service';
 
+
 @Component({
     selector   : 'app-menu',
     templateUrl: './menu.component.html',
@@ -16,8 +17,9 @@ export class MenuComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
     selectedGroup: Group;
     groups: Group[];
-    currentGroupId: number;
+    groupId: number;
     editModalClicked: boolean;
+    currentGroupId: number;
     sidebarIsCollapsed: boolean = false;
 
     constructor(private groupsService: GroupsService,
@@ -68,7 +70,15 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * Open modal to edit group
+     * Show group data
+     * @param groupId: Id of selected group
+     */
+    showCharts(groupId: number): void {
+        this.groupId = groupId;
+    }
+
+    /**
+     * Open edit modal
      * @param group: Data of selected group
      */
     openEditModal(group: Group) {

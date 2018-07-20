@@ -7,13 +7,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataSource } from '../common/models/data-source.model';
 import { Group } from '../common/models/group.model';
 import { GroupsService } from '../common/services/groups.service';
+
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { first } from 'rxjs/operators';
 import { TableParams } from '../common/models/table-params.model';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 
 @Component({
-    selector   : 'app-charts',
+    selector   : 'app-charts-management',
     templateUrl: './charts-page.component.html',
     styleUrls  : ['./charts-page.component.scss']
 })
@@ -95,7 +96,7 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
-     * Get a list of all charts and show it on the page
+     * Get a list of all charts-list and show it on the page
      */
     getCharts(): void {
         this.spinner.show();
@@ -119,7 +120,7 @@ export class ChartsPageComponent implements OnInit {
                     this.spinner.hide();
                 }, (error) => {
                     this.spinner.hide();
-                    this.notification.error('Failed to get list of charts');
+                    this.notification.error('Failed to get list of charts-list');
                 }
             )
     }
@@ -161,7 +162,7 @@ export class ChartsPageComponent implements OnInit {
      * Create a chart
      */
     createChart(): void {
-        this.spinner.show()
+        this.spinner.show();
         this.chartService.createChart(this.chartForm.value).pipe(first())
             .subscribe(response => {
                 this.spinner.hide();
@@ -206,6 +207,14 @@ export class ChartsPageComponent implements OnInit {
             .subscribe(response => {
                 this.chartForm.patchValue(response);
             });
+    }
+
+    /**
+     * Preview the chart on modal window
+     * @param {number} chartId
+     */
+    previewChart(chartId: number): void {
+        this.selectedChartId = chartId;
     }
 
     /**

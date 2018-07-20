@@ -40,6 +40,32 @@ export class ChartsService {
     }
 
     /**
+     * Http request for getting  Charts by group id
+     * @param {number} groupId charts to get
+     * @returns {Observable<any>}
+     */
+    getChartsByGroupId(groupId: number, paginationParams):Observable<any> {
+        return this.httpClient.get(environment.API_URL + '/groups/'+ groupId + '/charts', {params: HelperService.makeHttpParams(paginationParams)})
+            .pipe(catchError(
+                (error:HttpErrorResponse) => throwError(error)
+            ));
+    }
+
+    /**
+     * Http request for getting  data from data source  by data source id
+     * @param {Chart} chart to show this chart
+     * @returns {Observable<any>}
+     */
+    getDBQuery(chart):Observable<any> {
+        return this.httpClient.post(environment.API_URL + '/datasource/' + chart.dataSourceDbRepId + '/query',{}, {
+                params: HelperService.makeHttpParams({sql: chart.query})
+            })
+            .pipe(catchError(
+                (error:HttpErrorResponse) => throwError(error)
+            ))
+    };
+
+    /**
      * Http request for creating new chart
      * @param {Chart} chart to create
      * @returns {Observable<any>}

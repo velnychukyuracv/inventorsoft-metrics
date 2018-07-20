@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/index';
     templateUrl: './spinners.component.html',
     styleUrls: ['./spinners.component.scss']
 })
-export class SpinnersComponent implements OnInit {
+export class SpinnersComponent implements OnInit, OnDestroy {
 
     show = false;
 
