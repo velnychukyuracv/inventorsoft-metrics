@@ -139,6 +139,9 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                                         name: chart.name,
                                         type: this.chartTypes[chart.type],
                                         data: dbData,
+                                        options: {
+                                            width:'100%'
+                                        }
                                     })
                                 },
                                 error => {
