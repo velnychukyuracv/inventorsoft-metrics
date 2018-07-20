@@ -5,6 +5,7 @@ import { UserService } from '../../common/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { EditUser } from '../../common/models/edit_user.model'
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-edit-user',
@@ -13,11 +14,11 @@ import { EditUser } from '../../common/models/edit_user.model'
 })
 export class EditUserComponent implements OnInit {
     form: FormGroup;
-    message: string;
     userId: any;
     currentUser: EditUser;
 
-    constructor(public router: Router, public userService: UserService, public activatedRoute: ActivatedRoute, public spinner: SpinnersService) {
+    constructor(public router: Router, public userService: UserService, public activatedRoute: ActivatedRoute, public spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -36,12 +37,12 @@ export class EditUserComponent implements OnInit {
             .subscribe(
                 res => {
                     this.spinner.hide();
+                    this.notification.success(`You have successfully edited user!`);
                     return this.router.navigate(['/users']);
-                    //todo success notification
                 },
                 error => {
                     this.spinner.hide();
-                    this.showMessage(error);
+                    this.notification.error(`Failed to edit user!`);
                 }
             )
     }
@@ -69,7 +70,7 @@ export class EditUserComponent implements OnInit {
                         this.currentUser = user;
                         this.form.setValue({firstName, lastName})
                     },
-                    error => this.showMessage(error)
+                    error => this.notification.error(`Failed to get user!`)
                 );
         }
     }
@@ -80,17 +81,4 @@ export class EditUserComponent implements OnInit {
     cancel() {
         this.router.navigate(['/users'])
     }
-
-    // TODO Need to change when we will have done service for notifications
-    /**
-     * show info block
-     * @param message - info text for user
-     */
-    private showMessage(message) {
-        this.message = message;
-        setTimeout(() => {
-            this.message = '';
-        }, 6000)
-    }
-
 }

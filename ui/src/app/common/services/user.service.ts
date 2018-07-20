@@ -40,7 +40,7 @@ export class UserService {
             lastName,
             password
         }).pipe(
-            catchError(error => throwError('Server problem: ' + error.status + ' error'))
+            catchError(error => throwError(error))
         )
     }
 
@@ -55,7 +55,7 @@ export class UserService {
             firstName,
             lastName
         }).pipe(
-            catchError(error => throwError('Something went wrong'))
+            catchError(error => throwError(error))
         )
     }
 
@@ -66,7 +66,7 @@ export class UserService {
     deleteUser(id) {
         return this.http.delete(environment.API_URL + `/users/${id}`)
             .pipe(
-                catchError(error => throwError('Server problem: ' + error.status + ' error'))
+                catchError(error => throwError(error))
             )
     }
 
@@ -77,7 +77,7 @@ export class UserService {
     getUser(id) {
         return this.http.get(environment.API_URL + `/users/${id}`)
             .pipe(
-                catchError(error => throwError('Server problem: ' + error.status + ' error'))
+                catchError(error => throwError(error))
             )
     }
 }
