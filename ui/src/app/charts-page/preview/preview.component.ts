@@ -63,6 +63,7 @@ export class PreviewComponent implements OnChanges {
                 },
                 error => {
                     this.spinner.hide();
+                    this.notification.error(`Failed chart to show this chart!`)
                 }
             );
     }

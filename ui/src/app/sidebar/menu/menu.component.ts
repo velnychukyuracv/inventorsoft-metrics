@@ -70,7 +70,6 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-<<<<<<< HEAD
      * Show group data
      * @param groupId: Id of selected group
      */
@@ -80,9 +79,6 @@ export class MenuComponent implements OnInit {
 
     /**
      * Open edit modal
-=======
-     * Open modal to edit group
->>>>>>> master
      * @param group: Data of selected group
      */
     openEditModal(group: Group) {

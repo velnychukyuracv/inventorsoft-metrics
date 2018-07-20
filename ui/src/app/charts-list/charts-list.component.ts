@@ -102,7 +102,8 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                                         type: this.chartTypes[chart.type],
                                         data: dbData,
                                         options: {
-                                            width:'100%'
+                                            width:'100%',
+                                            is3D: true
                                         }
                                     });
                                 },
