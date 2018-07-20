@@ -4,111 +4,182 @@
     min-width: 250px;
     max-width: 250px;
     transition: all 0.5s;
+}
 
-    .btn-default {
-        background-color: $dashboard;
-        border: $dashboard;
+img {
+    width: 90px;
+    padding: 20px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+p {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 1.7em;
+    color: $sidebarItem;
+}
+
+li a {
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: $sidebarItem;
+    transition: background-color 200ms, color 200ms;
+    border-left: 5px solid transparent;
+    &:active, &:hover, &:focus {
+        color: $bgPage;
+        background-color: $sidebarActive;
+        border-left: 5px solid $sidebarLeft;
+    }
+}
+
+i {
+    margin-right: 10px;
+}
+
+button {
+    color: $sidebarItem;
+    vertical-align: middle;
+    &:active, &:hover {
         color: $bgPage;
     }
+}
 
-    img {
-        width: 90px;
-        padding: 20px;
-        vertical-align: middle;
-        display: inline-block;
-    }
+.group-item {
+    background-color: $sidebarDropdown;
+}
 
-    p {
-        vertical-align: middle;
-        display: inline-block;
-        font-size: 1.1em;
-        font-weight: 600;
-        line-height: 1.7em;
-        color: $sidebarItem;
-    }
+#create-group {
+    margin: 10px;
+}
 
-    li a {
-        font-size: 15px;
-        text-decoration: none;
-        display: block;
-        padding: 12px 20px;
-        cursor: pointer;
-        color: $sidebarItem;
-        transition: background-color 200ms, color 200ms;
-        border-left: 5px solid transparent;
-        &:active, &:hover, &:focus {
-            color: $bgPage;
-            background-color: $sidebarActive;
-            border-left: 5px solid $sidebarLeft;
-        }
-    }
+#sidebar {
+    background: $sidebarBg;
+}
 
-    i {
-        margin-right: 10px;
-    }
+#sidebar.active {
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center;
+}
 
-    button {
-        color: $sidebarItem;
-        vertical-align: middle;
-        &:active, &:hover {
-            color: $bgPage;
-        }
-    }
+#sidebar.active .sidebar-header p {
+    display: none;
+}
 
-    .group-item {
-        background-color: $sidebarDropdown;
-    }
+#sidebar.active #create-group i {
+    margin: 0;
+}
 
-    #create-group {
-        margin: 10px;
-    }
+#sidebar.active span {
+    display: none;
+}
 
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul li a .groups {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.6em;
+}
+
+#sidebar.active ul li .groups i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#sidebar.active ul li .groups .group-btn {
+    margin-right: 0;
+    display: inline-block;
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-align: center;
+    float: none;
+}
+
+#sidebar.active a p {
+    font-size: 1em;
+    color: $sidebarItem;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+@media (max-width: 980px) {
     #sidebar {
-        background: $sidebarBg;
-    }
-
-    #sidebar.active {
         min-width: 100px;
         max-width: 100px;
         text-align: center;
+        margin-left: -100px !important;
     }
 
-    #sidebar.active .sidebar-header p {
+    #sidebar .sidebar-header p {
         display: none;
     }
 
-    #sidebar.active #create-group i {
+    #sidebar #create-group i {
         margin: 0;
     }
 
-    #sidebar.active span {
+    #sidebar span {
         display: none;
     }
 
-    #sidebar ul li a {
-        text-align: left;
+    #sidebar.active {
+        margin-left: 0 !important;
     }
 
-    #sidebar.active ul li a {
+    #sidebar ul li a {
         padding: 20px 10px;
         text-align: center;
         font-size: 0.85em;
     }
 
-    #sidebar.active ul li a i {
+    #sidebar ul li a i {
         margin-right: 0;
         display: block;
         font-size: 1.8em;
         margin-bottom: 5px;
     }
 
-    #sidebar.active ul li a .groups {
+    #sidebar ul li a .groups {
         padding: 20px 10px;
         text-align: center;
         font-size: 0.6em;
     }
 
-    #sidebar.active ul li .groups i {
+    #sidebar ul li .groups i {
         margin-right: 0;
         display: block;
         font-size: 1.5em;
@@ -116,7 +187,7 @@
         text-align: center;
     }
 
-    #sidebar.active ul li .groups .group-btn {
+    #sidebar ul li .groups .group-btn {
         margin-right: 0;
         display: inline-block;
         font-size: 1em;
@@ -125,96 +196,19 @@
         float: none;
     }
 
-    #sidebar.active a p {
+    #sidebar a p {
         font-size: 1em;
         color: $sidebarItem;
     }
 
-    #sidebar.active ul ul a {
+    #sidebar ul ul a {
         padding: 10px !important;
     }
 
-    #sidebar.active .dropdown-toggle::after {
+    #sidebar .dropdown-toggle::after {
         top: auto;
         bottom: 10px;
         right: 50%;
         transform: translateX(50%);
-    }
-
-    @media (max-width: 980px) {
-        #sidebar {
-            min-width: 100px;
-            max-width: 100px;
-            text-align: center;
-            margin-left: -100px !important;
-        }
-
-        #sidebar .sidebar-header p {
-            display: none;
-        }
-
-        #sidebar #create-group i {
-            margin: 0;
-        }
-
-        #sidebar span {
-            display: none;
-        }
-
-        #sidebar.active {
-            margin-left: 0 !important;
-        }
-
-        #sidebar ul li a {
-            padding: 20px 10px;
-            text-align: center;
-            font-size: 0.85em;
-        }
-
-        #sidebar ul li a i {
-            margin-right: 0;
-            display: block;
-            font-size: 1.8em;
-            margin-bottom: 5px;
-        }
-
-        #sidebar ul li a .groups {
-            padding: 20px 10px;
-            text-align: center;
-            font-size: 0.6em;
-        }
-
-        #sidebar ul li .groups i {
-            margin-right: 0;
-            display: block;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-
-        #sidebar ul li .groups .group-btn {
-            margin-right: 0;
-            display: inline-block;
-            font-size: 1em;
-            margin-bottom: 5px;
-            text-align: center;
-            float: none;
-        }
-
-        #sidebar a p {
-            font-size: 1em;
-            color: $sidebarItem;
-        }
-
-        #sidebar ul ul a {
-            padding: 10px !important;
-        }
-
-        #sidebar .dropdown-toggle::after {
-            top: auto;
-            bottom: 10px;
-            right: 50%;
-            transform: translateX(50%);
-        }
     }
 }
