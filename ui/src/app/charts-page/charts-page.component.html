@@ -32,12 +32,9 @@
                 <td>{{chart.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 <td>{{chart.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
 
-                <td>
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#previewChartModal"
+                <td class="button"  data-toggle="modal" data-target="#previewChartModal"
                             [id] = "chart.id"  (click)="previewChart(chart.id)">
-                        <i class="fa fa-eye"></i>
-                    </button>
-
+                    <i class="fa fa-eye text-primary"></i>
                 </td>
                 <td class="button" data-toggle="modal" data-target="#chartsModal"
                     (click)="openEditModal(chart.id)">
