@@ -94,7 +94,6 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                     this.tableParams.page = data.number;
                     data.content.forEach(
                         chart => {
-                            console.log(chart.attributes);
                             this.chartsService.getDBQuery(chart).subscribe(
                                 dbData => {
                                     this.chartDataList.push({

@@ -31,7 +31,9 @@ export class PreviewComponent implements OnChanges {
     }
 
     ngOnChanges() {
-        this.getChartByID(this.id);
+        if(this.id){
+            this.getChartByID(this.id)
+        }
     }
 
     /**
