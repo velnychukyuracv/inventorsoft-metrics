@@ -1,7 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/Observable';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SearchService } from '../../common/services/search.service';
 
 @Component({
@@ -16,7 +13,6 @@ export class SearchBarComponent {
     }
 
     @HostListener('keyup') keyUp() {
-        console.log(this.searchBox);
         this.searchService.makeSearch(this.searchBox.nativeElement.value);
     }
 

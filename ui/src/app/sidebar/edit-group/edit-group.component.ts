@@ -4,6 +4,7 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { Icons } from '../../common/models/groupIcons.model';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-edit-group',
@@ -16,7 +17,8 @@ export class EditGroupComponent implements OnInit {
     icons: Icons [];
 
     constructor(private groupsService: GroupsService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -41,11 +43,11 @@ export class EditGroupComponent implements OnInit {
             .subscribe(
                 (response) => {
                     this.spinner.hide();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully edited group!`);
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to edit group!`)
                 }
             );
     }

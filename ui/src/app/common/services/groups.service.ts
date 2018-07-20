@@ -28,7 +28,7 @@ export class GroupsService {
      * Create group
      * @param createdGroup: Group Data
      */
-    createGroup(createdGroup: Group) {
+    createGroup(createdGroup: Group): Observable<any> {
         const body = {materialIcon: createdGroup.materialIcon, name: createdGroup.name};
         return this.httpClient.post(environment.API_URL + '/groups', body).pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
@@ -40,7 +40,7 @@ export class GroupsService {
      * @param editedGroup: Group Data
      * @param idGroup: Group id
      */
-    editGroup(editedGroup: Group, idGroup: number) {
+    editGroup(editedGroup: Group, idGroup: number): Observable<any> {
         const body = {materialIcon: editedGroup.materialIcon, name: editedGroup.name};
         return this.httpClient.patch(environment.API_URL + '/groups/' + idGroup, body).pipe(
             catchError(
@@ -52,7 +52,7 @@ export class GroupsService {
      * Delete group
      * @param idGroup: Group id
      */
-    deleteGroup(idGroup: number) {
+    deleteGroup(idGroup: number): Observable<any> {
         return this.httpClient.delete(environment.API_URL + '/groups/' + idGroup).pipe(catchError(
             (error: HttpErrorResponse) => throwError(error)
         ));

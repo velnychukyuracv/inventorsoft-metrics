@@ -4,6 +4,7 @@ import { AuthService } from '../../common/services/auth.service';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { TokenService } from '../../common/services/token.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-login',
@@ -12,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
     form: FormGroup;
-    message: string;
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
     imageUrl: string = '/assets/img/default-logo.png';
 
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
         private authService: AuthService,
         private spinnersService: SpinnersService,
         private tokenService: TokenService,
-        public router: Router
+        public router: Router,
+        public notification: NotificationService
     ) {
     }
 
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        localStorage.setItem('image-url', this.imageUrl);
+        this.saveImgPathToLocalStorage();
         this.form = new FormGroup({
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'userName': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)])
@@ -50,31 +51,20 @@ export class LoginComponent implements OnInit {
         this.authService.login(formData)
             .subscribe(res => {
                     this.tokenService.saveToLocalStorage(res);
-                    this.showMessage('Logged in', 1000,
-                        () => {
-                            return this.router.navigate(['/users']);
-                        }
-                    );
                     this.hideSpinners();
+                    this.notification.success(`Logged in!`);
+                    return this.router.navigate(['/users']);
                 },
                 error => {
-                    this.showMessage(error);
                     this.hideSpinners();
+                    this.notification.error(error.error);
                 })
     }
 
-    // TODO Need to change when we will have done service for notifications
     /**
-     * show info block
-     * @param message - info text for user
+     * Save default img path to Local Storage
      */
-    private showMessage(message, time = 6000, actionCb = null) {
-        this.message = message;
-        setTimeout(() => {
-            if (actionCb) {
-                actionCb()
-            }
-            this.message = '';
-        }, time)
+    saveImgPathToLocalStorage(){
+        localStorage.setItem('image-url', this.imageUrl);
     }
 }

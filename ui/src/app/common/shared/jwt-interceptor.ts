@@ -5,7 +5,7 @@ import {
     HttpEvent,
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/index';
+import { BehaviorSubject, throwError } from 'rxjs/index';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap, catchError, finalize, filter, take } from 'rxjs/internal/operators';
 
@@ -33,20 +33,23 @@ export class JwtInterceptor implements HttpInterceptor {
         return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken'] || ''))
             .pipe(
                 catchError((error: HttpEvent<any>) => {
-
-                        if (error instanceof HttpErrorResponse) {
-
-                            switch ((<HttpErrorResponse>error).status) {
-                                case 401:
+                    if (error instanceof HttpErrorResponse) {
+                        switch ((<HttpErrorResponse>error).status) {
+                            case 401: {
+                                if (error.error === "Bad credentials") {
+                                    return throwError(error);
+                                }
+                                else if (!error.error.indexOf('JWT expired')) {
                                     return this.handle401Error(request, next);
-                                default :
-                                    return Observable.throw(error);
+                                }
                             }
-                        } else {
-                            return Observable.throw(error);
+                            default :
+                                return throwError(error);
                         }
+                    } else {
+                        return throwError(error);
                     }
-                )
+                })
             )
     }
 

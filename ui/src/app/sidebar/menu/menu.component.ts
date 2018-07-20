@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../common/services/auth.service';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-menu',
@@ -13,15 +14,18 @@ import { AuthService } from '../../common/services/auth.service';
 })
 
 export class MenuComponent implements OnInit {
+    @ViewChild('closeBtn') closeBtn: ElementRef;
     selectedGroup: Group;
     groups: Group[];
+    currentGroupId: number;
     editModalClicked: boolean;
     sidebarIsCollapsed: boolean = false;
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
                 private spinner: SpinnersService,
-                private auth: AuthService) {
+                private auth: AuthService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -37,11 +41,10 @@ export class MenuComponent implements OnInit {
             (response: any) => {
                 this.spinner.hide();
                 this.groups = response.content;
-                // TODO: Show success notification
             },
             error => {
                 this.spinner.hide();
-                // TODO: Show error notification
+                this.notification.error(`Failed to upload groups!`);
             })
     }
 
@@ -49,29 +52,45 @@ export class MenuComponent implements OnInit {
      * Delete group data
      * @param groupId: Id of selected group
      */
-    deleteGroup(groupId: number) {
+    deleteGroup() {
         this.spinner.show();
-        this.groupsService.deleteGroup(groupId).pipe(first())
+        this.groupsService.deleteGroup(this.currentGroupId).pipe(first())
             .subscribe(
                 (response) => {
                     this.spinner.hide();
+                    this.closeModal();
                     this.getGroups();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully deleted group!`);
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to delete group!`);
                 }
             );
     }
 
     /**
-     * Open edit modal
+     * Open modal to edit group
      * @param group: Data of selected group
      */
     openEditModal(group: Group) {
         this.editModalClicked = true;
         this.selectedGroup = group;
+    }
+
+    /**
+     * Open modal to delete group
+     * @param groupId - group id
+     */
+    openDeleteModal(groupId: number) {
+        this.currentGroupId = groupId;
+    }
+
+    /**
+     * Close modal window
+     */
+    closeModal() {
+        this.closeBtn.nativeElement.click();
     }
 
     /**

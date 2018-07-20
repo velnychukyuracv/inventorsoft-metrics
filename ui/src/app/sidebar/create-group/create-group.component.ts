@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GroupsService } from '../../common/services/groups.service';
 import { Group } from '../../common/models/group.model';
 import { first } from 'rxjs/internal/operators/first';
@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { Icons } from '../../common/models/groupIcons.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
     selector   : 'app-create-group',
@@ -17,10 +18,12 @@ export class CreateGroupComponent implements OnInit {
     group: Group = new Group();
     createGroupForm: FormGroup;
     icons: Icons[];
+    @Output() needUpdateGroups: EventEmitter<any> = new EventEmitter();
 
     constructor(private router: Router,
                 private groupsService: GroupsService,
-                private spinner: SpinnersService) {
+                private spinner: SpinnersService,
+                private notification: NotificationService) {
     }
 
     ngOnInit() {
@@ -55,11 +58,13 @@ export class CreateGroupComponent implements OnInit {
             .subscribe(
                 (response) => {
                     this.spinner.hide();
-                    // TODO: Show success notification
+                    this.notification.success(`You have successfully created group!`);
+                    this.needUpdateGroups.emit(null);
+                    this.createGroupForm.reset();
                 },
                 error => {
                     this.spinner.hide();
-                    // TODO: Show error notification
+                    this.notification.error(`Failed to create group!`)
                 }
             );
     }
