@@ -95,7 +95,6 @@ export class MenuComponent implements OnInit {
      *  Collapse sidebar
      */
     collapseSidebar() {
-        console.log(this.sidebarIsCollapsed);
         this.sidebarIsCollapsed = !this.sidebarIsCollapsed;
     }
 }
