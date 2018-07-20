@@ -3,7 +3,7 @@ import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
-import { Router } from '@angular/router';
+import { AuthService } from '../../common/services/auth.service';
 import { NotificationService } from '../../common/services/notification.service';
 
 @Component({
@@ -18,11 +18,11 @@ export class MenuComponent implements OnInit {
     groups: Group[];
     currentGroupId: number;
     editModalClicked: boolean;
-    sidebarBtnState: boolean = false;
+    sidebarIsCollapsed: boolean = false;
 
-    constructor(private router: Router,
-                private groupsService: GroupsService,
+    constructor(private groupsService: GroupsService,
                 private spinner: SpinnersService,
+                private auth: AuthService,
                 private notification: NotificationService) {
     }
 
@@ -95,6 +95,6 @@ export class MenuComponent implements OnInit {
      *  Collapse sidebar
      */
     collapseSidebar() {
-        this.sidebarBtnState = !this.sidebarBtnState;
+        this.sidebarIsCollapsed = !this.sidebarIsCollapsed;
     }
 }

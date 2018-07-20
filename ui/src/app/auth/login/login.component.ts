@@ -14,6 +14,7 @@ import { NotificationService } from '../../common/services/notification.service'
 export class LoginComponent implements OnInit {
     form: FormGroup;
     usernamePattern: string = '^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{1,6})$';
+    imageUrl: string = '/assets/img/default-logo.png';
 
     constructor(
         private authService: AuthService,
@@ -33,10 +34,11 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.saveImgPathToLocalStorage();
         this.form = new FormGroup({
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'userName': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.pattern(this.usernamePattern)])
-        })
+        });
     }
 
     /**
@@ -57,5 +59,12 @@ export class LoginComponent implements OnInit {
                     this.hideSpinners();
                     this.notification.error(error.error);
                 })
+    }
+
+    /**
+     * Save default img path to Local Storage
+     */
+    saveImgPathToLocalStorage(){
+        localStorage.setItem('image-url', this.imageUrl);
     }
 }

@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/internal/operators';
 import { throwError } from 'rxjs/index';
 import { TokenService } from './token.service';
+import { Router } from '@angular/router'
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,8 @@ import { TokenService } from './token.service';
 export class AuthService {
 
     constructor(private http: HttpClient,
-                private tokenService: TokenService) {
+                private tokenService: TokenService,
+                private router: Router) {
     }
 
     /**
@@ -61,5 +63,14 @@ export class AuthService {
                 catchError(error => throwError(error))
             )
 
+    }
+
+    /**
+     * remove auth data to quit the system
+     */
+    logout() {
+        localStorage.removeItem('jwt.token');
+        localStorage.removeItem('header-bg');
+        this.router.navigate(['/login']);
     }
 }
