@@ -1,0 +1,101 @@
+@import '../../../assets/colors.scss';
+
+.header {
+    min-height: 60px;
+    background-color: $header;
+}
+
+.header-bg {
+    background-color: $header;
+}
+
+.list-menu {
+    font-size: 20px;
+}
+
+#sidebarCollapse {
+    color: $sidebarBg;
+}
+
+.nav-menu {
+    margin-bottom: 0;
+    a {
+        color: $sidebarBg;
+    }
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-header .menu-btn span {
+    width: 20px;
+    height: 2px;
+    background: $sidebarBg;
+    display: block;
+    margin: 4px auto 0;
+    transition: all 0.3s cubic-bezier(0.81, -0.33, 0.345, 1.375);
+}
+
+.navbar-header .menu-btn span:nth-child(2) {
+    position: relative;
+    width: 35px;
+}
+
+.navbar-header .menu-btn span:nth-child(2):before,
+.navbar-header .menu-btn span:nth-child(2):after {
+    content: '';
+    width: 6px;
+    height: 2px;
+    display: block;
+    background: $sidebarBg;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition: all 0.7s;
+}
+
+.navbar-header .menu-btn span:nth-child(2):after {
+    transform: rotate(145deg);
+    position: absolute;
+    top: -2px;
+    left: 0;
+}
+
+#company-logo {
+    margin-right: 10px;
+    img {
+        height: 70px;
+    }
+}
+
+.color-box i, .logout, .arrow-box {
+    cursor: pointer;
+}
+
+.second-arrow {
+    transition: transform .4s;
+}
+
+.change-arrow {
+    transform: rotate(180deg);
+}
+
+.line1 {
+    transform: translateY(12px)
+}
+
+.line2 {
+    transform: translateY(-12px)
+}
+
+.color-box input {
+    width: 0;
+    height: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    visibility: hidden;
+}

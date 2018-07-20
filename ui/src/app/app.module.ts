@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/shared/jwt-interceptor';
+import { HeaderModule } from './header/header.module';
 import { ChartsPageModule } from './charts-page/charts-page.module';
 import { NotificationComponent } from './notification/notification.component';
 import { SearchModule } from './search/search.module';
@@ -47,6 +48,7 @@ import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.c
         UsersModule,
         ChartsListModule,
         SharedModule,
+        HeaderModule,
         ChartsPageModule,
         SearchModule,
     ],
