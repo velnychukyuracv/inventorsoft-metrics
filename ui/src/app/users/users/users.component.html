@@ -25,7 +25,6 @@
     </header>
     <main class="container-fluid">
         <div>
-            <div class="alert alert-info" *ngIf="message">{{message}}</div>
             <table *ngIf='currentUsers' class="table table-responsive-sm"
                    sortable-table (sorted)="onSorted($event)"
                    paginationable-list (pageChanged)="onPageChange($event)"

@@ -24,7 +24,7 @@ export class AuthService {
             password: user.password,
             userName: user.userName
         }).pipe(
-            catchError(error => throwError('User Name or Password incorrect'))
+            catchError(error => throwError(error))
         )
     }
 
@@ -42,7 +42,10 @@ export class AuthService {
     forgotPassword(email) {
         return this.http.post(environment.NO_AUTH_PREFIX + `/forgetPassword?email=${encodeURIComponent(email)}`, {email})
             .pipe(
-                catchError(error => throwError('email incorrect'))
+                catchError(error => {
+                        return throwError(error)
+                    }
+                )
             )
 
     }
@@ -55,7 +58,7 @@ export class AuthService {
     resetPassword(password: string, token: string) {
         return this.http.post(environment.NO_AUTH_PREFIX + '/forgetPassword/resetPassword', {password, token})
             .pipe(
-                catchError(error => throwError('Token or Password incorrect'))
+                catchError(error => throwError(error))
             )
 
     }

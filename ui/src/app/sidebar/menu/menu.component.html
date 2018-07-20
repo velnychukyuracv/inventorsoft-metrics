@@ -3,6 +3,26 @@
     <i class="fa fa-align-justify"></i>
 </button>
 
+<div class="modal fade" role="dialog" tabindex="-1" id="deleteGroup">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Delete Group</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> Are you sure you want to delete group? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="deleteGroup()">Delete</button>
+                <button #closeBtn type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <nav id="sidebar" [ngClass]="sidebarBtnState ? 'active' : ''">
     <div class="sidebar-header">
         <img src="../../../assets/user.png" class="rounded-circle">
@@ -47,7 +67,8 @@
                 <li>
                     <a class="group-item groups" *ngFor="let group of groups"><i [class]="group.materialIcon"></i>{{group.name}}
                         <div class="group-btn pull-right">
-                            <button class="btn btn-link btn-sm" (click)="deleteGroup(group.id)"><i
+                            <button class="btn btn-link btn-sm" data-toggle="modal" data-target='#deleteGroup'
+                                    (click)="openDeleteModal(group.id)"><i
                                 class="fa fa-trash"> </i></button>
                             <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
                                     data-target="#editGroup"
@@ -61,6 +82,6 @@
         </li>
     </ul>
 </nav>
-<app-create-group></app-create-group>
+<app-create-group (needUpdateGroups)="getGroups()"></app-create-group>
 <app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
 
