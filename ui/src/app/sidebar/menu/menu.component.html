@@ -55,7 +55,8 @@
             </a>
             <ul class="collapse list-unstyled" id="group-submenu">
                 <div class="text-center group-item">
-                    <button class="btn btn-outline-secondary" id="create-group" data-toggle="modal" data-target="#createGroup"><i
+                    <button class="btn btn-outline-secondary" id="create-group" data-toggle="modal" data-target="#createGroup"
+                            (click)="openGroupModal()"><i
                         class="fa fa-plus"></i><span>Create new group</span>
                     </button>
                 </div>
@@ -67,8 +68,8 @@
                                     (click)="openDeleteModal(group.id)"><i
                                 class="fa fa-trash"> </i></button>
                             <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
-                                    data-target="#editGroup"
-                                    (click)="openEditModal(group)"><i
+                                    data-target="#createGroup"
+                                    (click)="openGroupModal(group.id)"><i
                                 class="fa fa-edit"> </i>
                             </button>
                         </div>
@@ -78,7 +79,5 @@
         </li>
     </ul>
 </nav>
-<div class="overlay"></div>
-<app-create-group (needUpdateGroups)="getGroups()"></app-create-group>
-<app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
+<app-groups (needUpdateGroups)="getGroups()" [groupData]="selectedGroupId"></app-groups>
 

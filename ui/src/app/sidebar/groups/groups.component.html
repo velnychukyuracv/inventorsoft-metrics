@@ -2,40 +2,48 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="createModalLabel">Create Group</h3>
+                <h3 *ngIf="selectedGroupId; else createTitle" id="editModalLabel">Edit Group</h3>
+                <ng-template #createTitle>
+                    <h3 id="createModalLabel">Create Group</h3>
+                </ng-template>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-validate" [formGroup]="createGroupForm">
+                <form class="form-validate" [formGroup]="groupForm">
                     <div class="form-group">
                         <label class="form-control-label" for="icon">Icon</label>
                         <select id="icon" class="form-control" name="materialIcon" formControlName="materialIcon" required
-                                [ngClass]="{'border border-danger': createGroupForm.get('materialIcon').invalid && createGroupForm.get('materialIcon').touched}">
+                                [ngClass]="{'border border-danger': groupForm.get('materialIcon').invalid && groupForm.get('materialIcon').touched}">
                             <option *ngFor="let materialIcon of icons" [value]="materialIcon.class">{{materialIcon.glyph}}
                                 {{materialIcon.title}}
                             </option>
                         </select>
                     </div>
                     <div class="alert alert-info mt-3"
-                         *ngIf="createGroupForm.get('materialIcon').invalid && createGroupForm.get('materialIcon').touched">
-                        <span *ngIf="createGroupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
+                         *ngIf="groupForm.get('materialIcon').invalid && groupForm.get('materialIcon').touched">
+                        <span *ngIf="groupForm.get('materialIcon')?.errors">Field 'Icon' is required.</span>
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="name">Group Name</label>
                         <input type="text" id="name" class="form-control" name="name" formControlName="name" required
-                               [ngClass]="{'border border-danger': createGroupForm.get('name').invalid && createGroupForm.get('name').touched}">
+                               [ngClass]="{'border border-danger': groupForm.get('name').invalid && groupForm.get('name').touched}">
                     </div>
-                    <div class="alert alert-info mt-3" *ngIf="createGroupForm.get('name').invalid && createGroupForm.get('name').touched">
-                        <span *ngIf="createGroupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
+                    <div class="alert alert-info mt-3" *ngIf="groupForm.get('name').invalid && groupForm.get('name').touched">
+                        <span *ngIf="groupForm.get('name')['errors']['required']">Field 'Group Name' is required.</span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" (click)="createGroup()" data-dismiss="modal"
-                        [disabled]="createGroupForm.invalid">Create
+                <button *ngIf="selectedGroupId; else createBlock" type="button" class="btn btn-default" data-dismiss="modal"
+                        [disabled]="groupForm.invalid" (click)="editGroup()">Edit
                 </button>
+                <ng-template #createBlock>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" [disabled]="groupForm.invalid"
+                            (click)="createGroup()">Create
+                    </button>
+                </ng-template>
                 <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

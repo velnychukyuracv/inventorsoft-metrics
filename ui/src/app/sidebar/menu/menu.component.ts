@@ -5,6 +5,7 @@ import { first } from 'rxjs/internal/operators/first';
 import { SpinnersService } from '../../spinners/spinners.service';
 import { AuthService } from '../../common/services/auth.service';
 import { NotificationService } from '../../common/services/notification.service';
+import { Subject } from 'rxjs/index';
 
 
 @Component({
@@ -15,10 +16,9 @@ import { NotificationService } from '../../common/services/notification.service'
 
 export class MenuComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
-    selectedGroup: Group;
+    selectedGroupId: Subject<number> = new Subject()
     groups: Group[];
     groupId: number;
-    editModalClicked: boolean;
     currentGroupId: number;
     sidebarIsCollapsed: boolean = false;
 
@@ -78,17 +78,16 @@ export class MenuComponent implements OnInit {
     }
 
     /**
-     * Open edit modal
-     * @param group: Data of selected group
+     * Open group modal
+     * @param idGroup:  group Id
      */
-    openEditModal(group: Group) {
-        this.editModalClicked = true;
-        this.selectedGroup = group;
+    openGroupModal(idGroup: number){
+        this.selectedGroupId.next(idGroup);
     }
 
     /**
      * Open modal to delete group
-     * @param groupId - group id
+     * @param groupId: group id
      */
     openDeleteModal(groupId: number) {
         this.currentGroupId = groupId;
