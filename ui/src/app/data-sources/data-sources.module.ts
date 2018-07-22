@@ -5,6 +5,7 @@ import { DataSourcesComponent } from './data-sources.component';
 import { SortableModule } from '../common/shared/sortable.module';
 import { PaginationableModule } from '../common/shared/paginationable.module';
 import { SearchModule } from '../search/search.module';
+import { DataSourceFormComponent } from './modal/data-source-form.component';
 
 @NgModule({
     imports     : [
@@ -16,6 +17,7 @@ import { SearchModule } from '../search/search.module';
     ],
     declarations: [
         DataSourcesComponent,
+        DataSourceFormComponent
     ],
     exports     : [
         DataSourcesComponent,

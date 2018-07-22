@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/index';
 
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
@@ -19,13 +19,14 @@ export class DataSourcesComponent implements OnInit {
     @ViewChild('btnCloseDataSource') btnCloseDataSource: ElementRef;
     @ViewChild('btnCloseConfirmDelete') btnCloseConfirmDelete: ElementRef;
 
+    parentSubject: Subject<number> = new Subject();
+
     dataSources: DataSource[];
     tableParams: TableParams = {
         pageSize: 2,
         page    : 0
     };
     totalPages: number = 1;
-    dataSourceForm: FormGroup;
     selectedDataSourceId: number;
 
     constructor(
@@ -37,7 +38,6 @@ export class DataSourcesComponent implements OnInit {
 
     ngOnInit() {
         this.buildDataSources();
-        this.initDataSourceForm();
     }
 
     /**
@@ -88,47 +88,11 @@ export class DataSourcesComponent implements OnInit {
     }
 
     /**
-     * Initialisation Data Source Form
+     * Sends event for opening modal window
+     * @param {number} id: Data Source id
      */
-    initDataSourceForm() {
-        this.dataSourceForm = new FormGroup({
-            dataSourceName : new FormControl(null, [Validators.required]),
-            dataSourceType : new FormControl(null, [Validators.required, Validators.minLength(3)]),
-            driverClassName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-            url            : new FormControl(null, [Validators.required, Validators.minLength(8)]),
-            password       : new FormControl(null, [Validators.required, Validators.minLength(8)]),
-            userName       : new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        });
-    }
-
-    /**
-     * Open modal window for adding instance of Data Source
-     */
-    openAddModal() {
-        this.dataSourceForm.get('password').enable();
-        this.dataSourceForm.get('userName').enable();
-
-        this.dataSourceForm.reset();
-        this.selectedDataSourceId = undefined;
-    }
-
-    /**
-     * Open modal window for editing instance of Data Source
-     * @param dataSourceId: Data Source id
-     */
-    openEditModal(dataSourceId: number) {
-        this.dataSourceForm.get('password').disable();
-        this.dataSourceForm.get('userName').disable();
-
-        this.dataSourceForm.reset();
-
-        this.dataSourcesService.getDataSourceById(dataSourceId)
-            .pipe(first())
-            .subscribe(
-                response => {
-                    this.selectedDataSourceId = response.id;
-                    this.dataSourceForm.patchValue(response);
-                });
+    openDataSourceModal(id: number) {
+        this.parentSubject.next(id);
     }
 
     /**
@@ -175,52 +139,6 @@ export class DataSourcesComponent implements OnInit {
     }
 
     /**
-     * Create Data Source
-     */
-    createDataSource() {
-        this.spinner.show();
-
-        this.dataSourcesService.createDataSource(this.dataSourceForm.value).pipe(first())
-            .subscribe(
-                response => {
-                    this.spinner.hide();
-                    this.closeModalDataSource();
-                    this.buildDataSources();
-                    this.notification.success(`You have successfully created data source!`);
-                },
-                error => {
-                    this.spinner.hide();
-                    this.closeModalDataSource();
-                    this.notification.error(`Failed to create data source!`)
-                }
-            );
-    }
-
-    /**
-     * Edit Data Source
-     */
-    editDataSource() {
-        this.spinner.show();
-
-        if (this.selectedDataSourceId) {
-            this.dataSourcesService.editDataSource(this.selectedDataSourceId, this.dataSourceForm.value).pipe(first())
-                .subscribe(
-                    response => {
-                        this.spinner.hide();
-                        this.buildDataSources();
-                        this.closeModalDataSource();
-                        this.notification.success(`You have successfully edited data source!`);
-                    },
-                    error => {
-                        this.spinner.hide();
-                        this.closeModalDataSource();
-                        this.notification.error(`Failed to edit data source!`)
-                    }
-                );
-        }
-    }
-
-    /**
      * Delete Data Source
      */
     deleteDataSource() {
@@ -242,13 +160,6 @@ export class DataSourcesComponent implements OnInit {
                     }
                 );
         }
-    }
-
-    /**
-     * close modal window for creating and editing Data Source
-     */
-    closeModalDataSource() {
-        this.btnCloseDataSource.nativeElement.click();
     }
 
     /**
