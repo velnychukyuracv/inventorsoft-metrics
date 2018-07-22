@@ -23,7 +23,7 @@
         <img src="../../../assets/img/user.png" class="rounded-circle">
         <p>User Name</p>
     </div>
-    <ul class="list-unstyled components">
+    <ul class="components">
         <li>
             <a [routerLink]="['/users']">
                 <i class="fa fa-user"></i>
@@ -60,7 +60,8 @@
                     </button>
                 </div>
                 <li>
-                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/group', group.id, 'charts']" (click)="showCharts(group.id)"><i [class]="group.materialIcon"></i>{{group.name}}
+                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/group', group.id, 'charts']"
+                       (click)="showCharts(group.id)"><i [class]="group.materialIcon"></i>{{group.name}}
                         <div class="group-btn pull-right">
                             <button class="btn btn-link btn-sm" data-toggle="modal" data-target='#deleteGroup'
                                     (click)="openDeleteModal(group.id)"><i
@@ -77,6 +78,7 @@
         </li>
     </ul>
 </nav>
+<div class="overlay"></div>
 <app-create-group (needUpdateGroups)="getGroups()"></app-create-group>
 <app-edit-group *ngIf="editModalClicked" [editedGroup]="selectedGroup"></app-edit-group>
 

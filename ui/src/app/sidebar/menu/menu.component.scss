@@ -1,10 +1,10 @@
 @import '../../../assets/colors.scss';
 
-#sidebar {
+/*#sidebar {
     min-width: 250px;
     max-width: 250px;
-    transition: all 0.5s;
-}
+    transition: all .5s linear;
+}*/
 
 img {
     width: 90px;
@@ -20,6 +20,11 @@ p {
     font-weight: 600;
     line-height: 1.7em;
     color: $sidebarItem;
+}
+
+.components {
+    list-style: none;
+    padding-left: 0;
 }
 
 li a {
@@ -136,7 +141,11 @@ button {
     transform: translateX(50%);
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1285px) and (min-width: 1140px) {
+    #sidebar.active {
+        display: none;
+    }
+
     #sidebar {
         min-width: 100px;
         max-width: 100px;
@@ -156,8 +165,90 @@ button {
         display: none;
     }
 
-    #sidebar.active {
+    #sidebar {
         margin-left: 0 !important;
+    }
+
+    #sidebar ul li a {
+        padding: 20px 10px;
+        text-align: center;
+        font-size: 0.85em;
+    }
+
+    #sidebar ul li a i {
+        margin-right: 0;
+        display: block;
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+
+    #sidebar ul li a .groups {
+        padding: 20px 10px;
+        text-align: center;
+        font-size: 0.6em;
+    }
+
+    #sidebar ul li .groups i {
+        margin-right: 0;
+        display: block;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    #sidebar ul li .groups .group-btn {
+        margin-right: 0;
+        display: inline-block;
+        font-size: 1em;
+        margin-bottom: 5px;
+        text-align: center;
+        float: none;
+    }
+
+    #sidebar a p {
+        font-size: 1em;
+        color: $sidebarItem;
+    }
+
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+
+    #sidebar .dropdown-toggle::after {
+        top: auto;
+        bottom: 10px;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+@media (max-width: 1139px) {
+    #sidebar.active {
+        display: none;
+    }
+
+    #sidebar .sidebar-header {
+        display: none;
+    }
+
+    #sidebar #create-group i {
+        margin: 0;
+    }
+
+    #sidebar span {
+        display: none;
+    }
+
+    .components {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style: none;
+        flex-wrap: wrap;
+    }
+
+    #sidebar li {
+        flex: 1 1 0;
     }
 
     #sidebar ul li a {
