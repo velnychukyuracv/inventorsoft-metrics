@@ -23,8 +23,7 @@ export class GroupsComponent implements OnInit, OnDestroy {
     icons: Icons[];
     selectedGroupId: number;
 
-    constructor(private router: Router,
-                private groupsService: GroupsService,
+    constructor(private groupsService: GroupsService,
                 private spinner: SpinnersService,
                 private notification: NotificationService) {
     }
