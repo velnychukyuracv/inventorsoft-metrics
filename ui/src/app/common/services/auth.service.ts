@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/internal/operators';
 import { throwError } from 'rxjs/index';
 import { TokenService } from './token.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
