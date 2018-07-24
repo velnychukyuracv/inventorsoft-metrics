@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Group } from '../../common/models/group.model';
 import { GroupsService } from '../../common/services/groups.service';
 import { first } from 'rxjs/internal/operators/first';
@@ -6,7 +6,6 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { AuthService } from '../../common/services/auth.service';
 import { NotificationService } from '../../common/services/notification.service';
 import { Subject } from 'rxjs/index';
-
 
 @Component({
     selector   : 'app-menu',
@@ -16,6 +15,7 @@ import { Subject } from 'rxjs/index';
 
 export class MenuComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
+    @ViewChild('groupSubmenu') groupSubmenu: ElementRef;
     selectedGroupId: Subject<number> = new Subject()
     groups: Group[];
     groupId: number;
@@ -25,7 +25,8 @@ export class MenuComponent implements OnInit {
     constructor(private groupsService: GroupsService,
                 private spinner: SpinnersService,
                 private auth: AuthService,
-                private notification: NotificationService) {
+                private notification: NotificationService,
+                private renderer: Renderer2) {
     }
 
     ngOnInit() {
@@ -74,6 +75,7 @@ export class MenuComponent implements OnInit {
      * @param groupId: Id of selected group
      */
     showCharts(groupId: number): void {
+        this.collapseGroupList();
         this.groupId = groupId;
     }
 
@@ -81,7 +83,8 @@ export class MenuComponent implements OnInit {
      * Open group modal
      * @param idGroup:  group Id
      */
-    openGroupModal(idGroup: number){
+    openGroupModal(idGroup: number) {
+        this.renderer.addClass(this.groupSubmenu.nativeElement, 'show');
         this.selectedGroupId.next(idGroup);
     }
 
@@ -105,5 +108,14 @@ export class MenuComponent implements OnInit {
      */
     collapseSidebar() {
         this.sidebarIsCollapsed = !this.sidebarIsCollapsed;
+    }
+
+    /**
+     * Collapse group list
+     */
+    collapseGroupList(){
+        if (window.innerWidth < 1140) {
+            this.renderer.removeClass(this.groupSubmenu.nativeElement, 'show');
+        }
     }
 }

@@ -24,46 +24,46 @@
         <p>User Name</p>
     </div>
     <ul class="components">
-        <li>
-            <a [routerLink]="['/users']">
+        <li [routerLink]="['/users']">
+            <a>
                 <i class="fa fa-user"></i>
-                User Management
+                <span class="menu-item">User Management</span>
             </a>
         </li>
-        <li>
-            <a [routerLink]="['/data-sources']">
+        <li [routerLink]="['/data-sources']">
+            <a>
                 <i class="fa fa-file"></i>
-                Data Source Management
+                <span class="menu-item">Data Source Management</span>
             </a>
         </li>
         <li [routerLink]="['/chart-management']">
             <a>
                 <i class="fa fa-list-ul"></i>
-                Chart Management
+                <span class="menu-item">Chart Management</span>
             </a>
         </li>
         <li [routerLink]="['/charts']">
             <a>
                 <i class="fa fa-bar-chart"></i>
-                Charts
+                <span class="menu-item">Charts</span>
             </a>
         </li>
         <li id="sidebar-submenu">
             <a href="#group-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-group"></i>
-                Group Management
+                <span class="menu-item">Group Management</span>
             </a>
-            <ul class="collapse list-unstyled" id="group-submenu">
+            <ul class="collapse list-unstyled" id="group-submenu" #groupSubmenu>
                 <div class="text-center group-item">
                     <button class="btn btn-outline-secondary" id="create-group" data-toggle="modal" data-target="#createGroup"
                             (click)="openGroupModal()"><i
                         class="fa fa-plus"></i><span>Create new group</span>
                     </button>
                 </div>
-                <li>
-                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/group', group.id, 'charts']"
-                       (click)="showCharts(group.id)"><i [class]="group.materialIcon"></i>{{group.name}}
-                        <div class="group-btn pull-right">
+                <li class="group-list">
+                    <a class="group-item groups" *ngFor="let group of groups" [routerLink]="['/group', group.id, 'charts']">
+                        <div (click)="showCharts(group.id)"><i [class]="group.materialIcon"></i>{{group.name}}</div>
+                        <div class="group-btn">
                             <button class="btn btn-link btn-sm" data-toggle="modal" data-target='#deleteGroup'
                                     (click)="openDeleteModal(group.id)"><i
                                 class="fa fa-trash"> </i></button>
