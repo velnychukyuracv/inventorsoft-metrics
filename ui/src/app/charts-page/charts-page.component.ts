@@ -159,10 +159,22 @@ export class ChartsPageComponent implements OnInit {
     }
 
     /**
+     * Get charts attributes value and transformation at json string
+     */
+    toStringifyChartsOptions():void{
+        Object.keys(this.chartForm.controls).forEach(key => {
+            if (key === "attributes"){
+                let attributes = JSON.stringify(this.chartForm.value.attributes);
+            }
+        });
+    }
+
+    /**
      * Create a chart
      */
     createChart(): void {
         this.spinner.show();
+        this.toStringifyChartsOptions();
         this.chartService.createChart(this.chartForm.value).pipe(first())
             .subscribe(response => {
                 this.spinner.hide();
@@ -244,8 +256,8 @@ export class ChartsPageComponent implements OnInit {
      */
     editChart(): void {
         this.spinner.show();
-        if (this.selectedChartId) {
-            this.chartService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
+        this.toStringifyChartsOptions();
+        this.chartService.editChart(this.selectedChartId, this.chartForm.value).pipe(first())
                 .subscribe(
                     response => {
                         this.spinner.hide();
@@ -257,7 +269,6 @@ export class ChartsPageComponent implements OnInit {
                         this.spinner.hide();
                         this.notification.error(`Failed to edit chart with id ${this.selectedChartId}`);
                     }
-                )
-        }
+                );
     }
 }

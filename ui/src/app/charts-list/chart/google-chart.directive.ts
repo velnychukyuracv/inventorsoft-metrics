@@ -37,12 +37,14 @@ export class GoogleChart implements OnChanges {
    * @param {Array} chartData - data for chart
    */
   drawGraph(chartOptions, chartType, chartData, element) {
-    google.charts.setOnLoadCallback(()=>{
+    google.charts.setOnLoadCallback(()=> {
+      console.log('test3=', chartOptions, typeof chartOptions);
       const wrapper = new google.visualization.ChartWrapper({
-      chartType: chartType,
-      dataTable: chartData,
-      options: chartOptions
+        chartType: chartType,
+        dataTable: chartData,
+        options: chartOptions
+      });
+      wrapper.draw(element);
     });
-      wrapper.draw(element);});
   }
 }
