@@ -44,15 +44,14 @@ export class PreviewComponent implements OnChanges {
         this.spinner.show();
         this.chartService.getChartById(id).pipe(first())
             .subscribe(chart => {
+                    let options = JSON.parse(chart.attributes);
                     this.chartService.getDBQuery(chart).subscribe(
                         dbData => {
                             this.chart = {
                                 name: chart.name,
                                 type: this.chartTypes[chart.type],
                                 data: dbData,
-                                options: {
-                                    width: '100%'
-                                }
+                                options: options,
                             }
                         },
                         error => {

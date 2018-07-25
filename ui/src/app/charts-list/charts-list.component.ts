@@ -94,17 +94,14 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                     this.tableParams.page = data.number;
                     data.content.forEach(
                         chart => {
-                            console.log(chart.attributes);
+                            let options = JSON.parse(chart.attributes);
                             this.chartsService.getDBQuery(chart).subscribe(
                                 dbData => {
                                     this.chartDataList.push({
                                         name: chart.name,
                                         type: this.chartTypes[chart.type],
                                         data: dbData,
-                                        options: {
-                                            width:'100%',
-                                            is3D: true
-                                        }
+                                        options: options,
                                     });
                                 },
                                 error => {
@@ -134,15 +131,14 @@ export class ChartsListComponent implements OnInit, OnDestroy {
                     this.tableParams.page = data.number;
                      data.content.forEach(
                         chart => {
+                            let options = JSON.parse(chart.attributes);
                             this.chartsService.getDBQuery(chart).subscribe(
                                 dbData => {
                                     this.chartDataList.push({
                                         name: chart.name,
                                         type: this.chartTypes[chart.type],
                                         data: dbData,
-                                        options: {
-                                            width:'100%'
-                                        }
+                                        options: options,
                                     })
                                 },
                                 error => {
