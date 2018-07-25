@@ -38,7 +38,6 @@ export class GoogleChart implements OnChanges {
    */
   drawGraph(chartOptions, chartType, chartData, element) {
     google.charts.setOnLoadCallback(()=> {
-      console.log('test3=', chartOptions, typeof chartOptions);
       const wrapper = new google.visualization.ChartWrapper({
         chartType: chartType,
         dataTable: chartData,
