@@ -8,9 +8,10 @@ import {
 import { BehaviorSubject, throwError } from 'rxjs/index';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap, catchError, finalize, filter, take } from 'rxjs/internal/operators';
+import { AuthService} from '../common/services/auth.service';
+import { TokenService } from '../common/services/token.service';
 
-import { AuthService } from '../services/auth.service';
-import { TokenService } from '../services/token.service';
+
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -26,20 +27,24 @@ export class JwtInterceptor implements HttpInterceptor {
      * @param token - token
      */
     addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
-        return req.clone({setHeaders: {'Authorization': token}})
+        if(this.auth.isAuthenticated){
+            return req.clone({setHeaders: {'Authorization': token}})
+        }
+        return req;
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-        return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken'] || ''))
+        return next.handle(this.addToken(request, this.tokenService.getToken()['jwtToken']))
             .pipe(
                 catchError((error: HttpEvent<any>) => {
                     if (error instanceof HttpErrorResponse) {
                         switch ((<HttpErrorResponse>error).status) {
                             case 401: {
-                                if (error.error === "Bad credentials") {
-                                    return throwError(error);
-                                }
-                                else if (!error.error.indexOf('JWT expired')) {
+
+
+                                if (error.error.error && error.error.error === 'Unauthorized') {
+                                    this.auth.logout();
+                                } else if (error.error && error.error.indexOf('JWT expired') != -1) {
                                     return this.handle401Error(request, next);
                                 }
                             }
@@ -70,12 +75,13 @@ export class JwtInterceptor implements HttpInterceptor {
                         if (newToken) {
                             this.tokenService.saveToLocalStorage(newToken);
                             this.tokenSubject.next(newToken);
+
                             return next.handle(this.addToken(req, newToken['jwtToken']));
                         }
-                        return this.logoutUser();
+                        return this.auth.logout();
                     }),
                     catchError((error): any => {
-                        return this.logoutUser();
+                        return this.auth.logout();
                     }),
                     finalize(() => {
                         this.isRefreshingToken = false;
@@ -87,13 +93,9 @@ export class JwtInterceptor implements HttpInterceptor {
                     filter(token => token != null),
                     take(1),
                     switchMap(token => {
-                        return next.handle(this.addToken(req, token));
+                        return next.handle(this.addToken(req, token['jwtToken']));
                     })
                 );
         }
-    }
-
-    logoutUser() {
-        // todo in the header component
     }
 }

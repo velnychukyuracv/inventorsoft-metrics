@@ -45,7 +45,9 @@ export class MenuComponent implements OnInit {
             },
             error => {
                 this.spinner.hide();
-                this.notification.error(`Failed to upload groups!`);
+                if (error.error && error.error.indexOf('JWT expired') == -1) {
+                    this.notification.error(`Failed to upload groups!`);
+                }
             })
     }
 

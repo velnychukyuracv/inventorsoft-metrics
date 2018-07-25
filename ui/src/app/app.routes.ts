@@ -3,8 +3,6 @@ import { AuthGuard } from './common/services/auth-guard.service';
 import { LoginComponent } from './auth/login/login.component';
 import { DataSourcesComponent } from './data-sources/data-sources.component';
 import { UsersComponent } from './users/users/users.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
 import { ChartsListComponent} from './charts-list/charts-list.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
@@ -26,14 +24,6 @@ export const APP_ROUTES: Routes = [
             {
                 path     : 'users',
                 component: UsersComponent
-            },
-            {
-                path     : 'add-user',
-                component: AddUserComponent
-            },
-            {
-                path     : 'edit-user/:id',
-                component: EditUserComponent
             },
             {
                 path     : 'data-sources',

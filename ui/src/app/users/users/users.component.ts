@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
 
 import { UserService } from '../../common/services/user.service';
@@ -6,6 +6,7 @@ import { SpinnersService } from '../../spinners/spinners.service';
 import { TableParams } from '../../common/models/table-params.model';
 import { PAGE_NAVIGATION } from '../../common/models/page-navigation.enum';
 import { NotificationService } from '../../common/services/notification.service';
+import { Modal } from '../../common/models/modal.model';
 
 @Component({
     selector   : 'app-users',
@@ -13,15 +14,13 @@ import { NotificationService } from '../../common/services/notification.service'
     styleUrls  : ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-    currentUserId: number;
     currentUsers: any;
+    currentModal: Modal;
     tableParams: TableParams = {
         pageSize: 10,
         page    : 0
     };
     totalPages: number = 1;
-
-    @ViewChild('closeBtn') closeBtn: ElementRef;
 
     constructor(private userService: UserService,
                 private spinner: SpinnersService,
@@ -84,7 +83,6 @@ export class UsersComponent implements OnInit {
      */
     getAllUsers() {
         this.spinner.show();
-
         this.userService.getUsers(this.tableParams)
             .pipe(first())
             .subscribe(
@@ -105,48 +103,13 @@ export class UsersComponent implements OnInit {
                         let [updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs] = element.updatedAt;
                         element.updatedAt = new Date(Date.UTC(updatedYear, updatedMonth, updatedDay, updatedHour, updatedMinute, updatedSecond, updatedMs));
                     });
-
                 },
                 error => {
                     this.spinner.hide();
-                    this.notification.error(`Failed to upload users!`);
+                    if (error.error && error.error.indexOf('JWT expired') == -1) {
+                        this.notification.error(`Failed to upload users!`);
+                    }
                 }
             )
-    }
-
-    /**
-     * delete user
-     */
-    deleteUser() {
-        this.spinner.show();
-
-        this.userService.deleteUser(this.currentUserId)
-            .subscribe(
-                () => {
-                    this.closeModal();
-                    this.spinner.hide();
-                    this.currentUsers = this.currentUsers.filter((user) => user.id != this.currentUserId);
-                    this.notification.success(`You have successfully deleted user!`);
-                },
-                error => {
-                    this.spinner.hide();
-                    this.notification.error(`Failed to delete user!`);
-                }
-            )
-    }
-
-    /**
-     * open modal window to delete user
-     * @param userId - user id
-     */
-    openModal(userId: number) {
-        this.currentUserId = userId;
-    }
-
-    /**
-     * close modal window
-     */
-    closeModal() {
-        this.closeBtn.nativeElement.click();
     }
 }

@@ -1,27 +1,12 @@
-<div id="usersModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger"> Delete User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p> Are you sure? </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
-                <button #closeBtn type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+<app-modals [currentModal]='currentModal' (refresh)='getAllUsers()'></app-modals>
+
 <div class="container-fluid px-0 users-wrapper">
     <header class="usersHeader row d-flex justify-content-between mx-0">
         <h2 class="mb-0 h2">Users</h2>
         <app-search-bar search (onSearch)="onSearch($event)"></app-search-bar>
-        <button class="btn btn-outline-primary float-right" routerLink="/add-user">Add User</button>
+        <button class="btn btn-outline-primary float-right" (click)="currentModal = {type: 'add'}" data-toggle="modal"
+                data-target='#usersModal'>Add User
+        </button>
     </header>
     <main class="container-fluid">
         <div>
@@ -44,10 +29,10 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{user.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                    <td class="button" [routerLink]="['/edit-user', user.id]">
+                    <td class="button" (click)="currentModal = {type: 'edit', user: user}" data-toggle="modal" data-target='#usersModal'>
                         <i class="fa fa-pencil-square-o text-primary"></i>
                     </td>
-                    <td class="button" data-toggle="modal" data-target='#usersModal' (click)="openModal(user.id)">
+                    <td class="button" (click)="currentModal = {type: 'delete', user: user}" data-toggle="modal" data-target='#usersModal'>
                         <i class="fa fa-trash text-danger"></i>
                     </td>
                 </tr>

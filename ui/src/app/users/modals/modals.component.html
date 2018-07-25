@@ -1,0 +1,149 @@
+<div id="usersModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" [ngSwitch]="currentModal?.type">
+        <!-- DELETE MODAL -->
+        <div class="modal-content" *ngSwitchCase="'delete'">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger"> Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> Are you sure? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+                <button #closeBtn type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- EDIT MODAL -->
+        <div class="modal-content" *ngSwitchCase="'edit'">
+            <div class="modal-header">
+                <h3 class="card-title text-center text">Edit User</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-validate" [formGroup]="editForm">
+                    <div class="form-group">
+                        <label class="form-control-label">First Name</label>
+                        <input type="text"
+                               placeholder="First Name"
+                               class="form-control"
+                               required
+                               name="firstName"
+                               formControlName="firstName"
+                               [ngClass]="{'border border-danger': editForm.get('firstName').invalid && editForm.get('firstName').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="editForm.get('firstName').invalid && editForm.get('firstName').touched">
+                        <span *ngIf="editForm.get('firstName')['errors']['required']">Field 'First Name' must be filled in.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Last Name</label>
+                        <input type="text"
+                               placeholder="Last Name"
+                               class="form-control"
+                               required
+                               name="lastName"
+                               formControlName="lastName"
+                               [ngClass]="{'border border-danger': editForm.get('lastName').invalid && editForm.get('lastName').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="editForm.get('lastName').invalid && editForm.get('lastName').touched">
+                        <span *ngIf="editForm.get('lastName')['errors']['required']">Field 'Last Name' must be filled in.</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="button" (click)="editUser()" value="Edit" class="btn btn-primary mr-3">
+                <button #closeBtn type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- ADD MODAL -->
+        <div class="modal-content" *ngSwitchCase="'add'">
+            <div class="modal-header">
+                <h3 class="card-title text-center text">Add User</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-validate" [formGroup]="addForm">
+                    <div class="form-group">
+                        <label class="form-control-label">Email</label>
+                        <input type="email"
+                               placeholder="Email Address"
+                               class="form-control"
+                               required
+                               name="email"
+                               formControlName="email"
+                               [ngClass]="{'border border-danger': addForm.get('email').invalid && addForm.get('email').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="addForm.get('email').invalid && addForm.get('email').touched">
+                        <span *ngIf="addForm.get('email')['errors']['required']">Field 'User Name' must be filled in.</span>
+                        <span
+                            *ngIf="addForm.get('email').hasError('minlength')">
+                                    User Name should be at least {{ addForm.get('email')['errors']['minlength']['requiredLength'] }} characters long.
+                                    Now {{ addForm.get('email')['errors']['minlength']['actualLength'] }} characters.
+                            </span>
+                        <span *ngIf="addForm.get('email')['errors']['pattern']">Required pattern: test@gmail.com</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">First Name</label>
+                        <input type="text"
+                               placeholder="First Name"
+                               class="form-control"
+                               required
+                               name="firstName"
+                               formControlName="firstName"
+                               [ngClass]="{'border border-danger': addForm.get('firstName').invalid && addForm.get('firstName').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="addForm.get('firstName').invalid && addForm.get('firstName').touched">
+                        <span *ngIf="addForm.get('firstName')['errors']['required']">Field 'First Name' must be filled in.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Last Name</label>
+                        <input type="text"
+                               placeholder="Last Name"
+                               class="form-control"
+                               required
+                               name="lastName"
+                               formControlName="lastName"
+                               [ngClass]="{'border border-danger': addForm.get('lastName').invalid && addForm.get('lastName').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="addForm.get('lastName').invalid && addForm.get('lastName').touched">
+                        <span *ngIf="addForm.get('lastName')['errors']['required']">Field 'Last Name' must be filled in.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Password</label>
+                        <input type="password"
+                               placeholder="Password"
+                               class="form-control"
+                               required
+                               name="password"
+                               formControlName="password"
+                               [ngClass]="{'border border-danger': addForm.get('password').invalid && addForm.get('password').touched}"
+                        >
+                    </div>
+                    <div class="alert alert-info mt-3" *ngIf="addForm.get('password').invalid && addForm.get('password').touched">
+                        <span *ngIf="addForm.get('password')['errors']['required']">Field 'Password' must be filled in.</span>
+                        <span
+                            *ngIf="addForm.get('password').hasError('minlength')">
+                    Password should be at least  {{ addForm.get('password')['errors']['minlength']['requiredLength'] }} characters long.
+                    Now {{ addForm.get('password')['errors']['minlength']['actualLength'] }} characters.
+                </span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input (click)="addUser()" type="button" value="Add" class="btn btn-primary mr-3" [disabled]="addForm.invalid">
+                <button #closeBtn type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

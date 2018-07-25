@@ -6,7 +6,7 @@ import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { DataSourcesModule } from './data-sources/data-sources.module';
-import { ChartsListModule} from './charts-list/charts-list.module';
+import { ChartsListModule } from './charts-list/charts-list.module';
 import { SpinnersComponent } from './spinners/spinners.component';
 import { SpinnersService } from './spinners/spinners.service';
 
@@ -16,7 +16,6 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { FormsModule } from '@angular/forms';
 import { UsersModule } from './users/users.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './common/shared/jwt-interceptor';
 import { HeaderModule } from './header/header.module';
 import { ChartsPageModule } from './charts-page/charts-page.module';
 import { NotificationComponent } from './notification/notification.component';
@@ -24,8 +23,7 @@ import { SearchModule } from './search/search.module';
 import { NotificationService } from './common/services/notification.service';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.component';
-
-
+import { JwtInterceptor } from './auth/jwt-interceptor';
 
 @NgModule({
     declarations: [
