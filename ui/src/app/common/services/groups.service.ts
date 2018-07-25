@@ -25,6 +25,16 @@ export class GroupsService {
     }
 
     /**
+     * Get selected group info
+     * @param idGroup: Group id
+     */
+    getGroupById(idGroup: number): Observable<any> {
+        return this.httpClient.get(environment.API_URL + '/groups/' + idGroup).pipe(catchError(
+                (error: HttpErrorResponse) => throwError(error)
+            ));
+    }
+
+    /**
      * Create group
      * @param createdGroup: Group Data
      */
