@@ -3,12 +3,7 @@
          <h3> {{chart?.name}} </h3>
     </div>
     <div class="chartBody">
-       <ng-template  #loading>
-           <img src="http://bestanimations.com/Science/Gears/loadinggears/loading-gears-animation-10.gif" alt="loading" >
-       </ng-template>
-
-       <div     *ngIf="true; else loading"
-                [chartType]="chart?.type"
+       <div     [chartType]="chart?.type"
                 [chartData]="chart?.data"
                 [chartOptions]="chart?.options"
                 appGoogleChart>
