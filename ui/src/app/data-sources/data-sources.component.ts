@@ -168,24 +168,15 @@ export class DataSourcesComponent implements OnInit {
                 .subscribe(
                     response => {
                         this.spinner.hide();
-                        this.closeConfirmDeleteModal();
                         this.buildDataSources();
                         this.notification.success(`You have successfully deleted data source!`);
                     },
                     error => {
                         this.spinner.hide();
-                        this.closeConfirmDeleteModal();
                         this.notification.error(`Failed to delete data source!`)
                     }
                 );
         }
-    }
-
-    /**
-     * close modal window for deleting Data Source
-     */
-    closeConfirmDeleteModal() {
-        this.btnCloseConfirmDelete.nativeElement.click();
     }
 
 }
