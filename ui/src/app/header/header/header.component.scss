@@ -99,3 +99,22 @@
     padding: 0;
     visibility: hidden;
 }
+
+#logout .modal-content{
+    border-radius: 25px;
+    border: none;
+    .modal-body{
+        color:$userName;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .modal-footer{
+        border-top:none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
