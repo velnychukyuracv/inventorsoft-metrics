@@ -11,6 +11,14 @@
             font-weight: 700;
         }
     }
+    main {
+        padding: 40px;
+        table {
+            th, td {
+                vertical-align: middle;
+            }
+        }
+    }
     i {
         cursor: pointer;
         transition: transform .2s;

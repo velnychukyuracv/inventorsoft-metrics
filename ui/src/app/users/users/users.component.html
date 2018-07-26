@@ -9,8 +9,8 @@
         </button>
     </header>
     <main class="container-fluid">
-        <div>
-            <table *ngIf='currentUsers' class="table table-responsive-sm"
+
+         <table *ngIf='currentUsers' class="table table-responsive-sm"
                    sortable-table (sorted)="onSorted($event)"
                    paginationable-list (pageChanged)="onPageChange($event)"
             >
@@ -37,9 +37,9 @@
                     </td>
                 </tr>
             </table>
-            <app-pagination [activePage]="tableParams.page"
-                            [totalPages]="totalPages"
-            ></app-pagination>
-        </div>
+
+        <app-pagination [activePage]="tableParams.page"
+                        [totalPages]="totalPages"
+        ></app-pagination>
     </main>
 </div>
