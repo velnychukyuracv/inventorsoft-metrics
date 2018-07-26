@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
-import { Subject } from 'rxjs/index';
+import { Subject, Subscription } from 'rxjs/index';
 
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
@@ -30,6 +30,8 @@ export class DataSourcesComponent implements OnInit {
     totalPages: number = 1;
     selectedDataSourceId: number;
 
+    private confirmSubscription: Subscription;
+
     constructor(
         private dataSourcesService: DataSourcesService,
         private spinner: SpinnersService,
@@ -40,7 +42,17 @@ export class DataSourcesComponent implements OnInit {
 
     ngOnInit() {
         this.buildDataSources();
+        this.subscribeToConfirm();
     }
+
+    subscribeToConfirm() {
+        this.confirmSubscription = this.confirm.confirm$.subscribe(isConfirm => {
+            if (isConfirm) {
+                this.deleteDataSource();
+            }
+        })
+    }
+
 
     /**
      * Slot for connecting to signal 'onSearch'
@@ -102,17 +114,12 @@ export class DataSourcesComponent implements OnInit {
      * @param {number} dataSourceId: Data Source id
      */
     openDeleteModal(dataSourceId: number) {
+        this.selectedDataSourceId = dataSourceId;
+
         this.confirm.confirm(
             'Deleting...',
             'Are you sure to delete data source?'
-        ).then(
-            (result: boolean) => {
-                if (result) {
-                    this.deleteDataSource(dataSourceId);
-                }
-            }
         );
-
     }
 
     /**
@@ -152,13 +159,12 @@ export class DataSourcesComponent implements OnInit {
 
     /**
      * Delete Data Source
-     * @param {number} id: Data Source Id
      */
-    deleteDataSource(id: number) {
-        if (id) {
+    deleteDataSource() {
+        if (this.selectedDataSourceId) {
             this.spinner.show();
 
-            this.dataSourcesService.deleteDataSource(id).pipe(first())
+            this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
                 .subscribe(
                     response => {
                         this.spinner.hide();

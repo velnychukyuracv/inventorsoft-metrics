@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/index';
 
 @Injectable()
 export class ConfirmService {
@@ -9,20 +10,28 @@ export class ConfirmService {
 
     isShow: boolean = false;
 
-    /**
-     * Detects confirmation.
-     * Will be implemented every time after calling method confirm.
-     * Connects with click event.
-     */
-    public confirmation: () => void;
-
-    /**
-     * Detects rejection
-     * Will be implemented every time after calling method confirm
-     */
-    public rejection: () => void;
+    private confirmSubject = new Subject<boolean>();
+    confirm$ = this.confirmSubject.asObservable();
 
     constructor() {
+    }
+
+    /**
+     * Sends event(agree) to observable
+     * and hides modal dialog
+     */
+    confirmation() {
+        this.isShow = false;
+        this.confirmSubject.next(true);
+    }
+
+    /**
+     * Sends event(disagree) to observable
+     * and hides modal dialog
+     */
+    rejection() {
+        this.isShow = false;
+        this.confirmSubject.next(false);
     }
 
     /**
@@ -30,33 +39,13 @@ export class ConfirmService {
      * @param {string} header
      * @param {string} message
      * @param {string} btnOk
-     * @return {Promise<boolean>}
      */
-    confirm(header: string, message: string, btnOk = 'Yes'): Promise<boolean> {
+    confirm(header: string, message: string, btnOk = 'Yes'): void {
         this.header = header;
         this.message = message;
         this.btnOk = btnOk;
 
-        return new Promise<boolean>((resolve, reject) => {
-            this.isShow = true;
-
-            /**
-             * Will be executed when user will click 'YES' button
-             */
-            this.confirmation = () => {
-                this.isShow = false;
-                resolve(true);
-            };
-
-            /**
-             * Will be executed when user will click 'CANCEL' button
-             */
-            this.rejection = () => {
-                this.isShow = false;
-                resolve(false);
-            };
-
-        });
-    };
+        this.isShow = true;
+    }
 
 }
