@@ -8,6 +8,7 @@ import { DataSource } from '../common/models/data-source.model';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 import { TableParams } from '../common/models/table-params.model';
 import { NotificationService } from '../common/services/notification.service';
+import { ConfirmService } from '../common/services/confirm.service';
 
 @Component({
     selector   : 'app-data-sources',
@@ -32,7 +33,8 @@ export class DataSourcesComponent implements OnInit {
     constructor(
         private dataSourcesService: DataSourcesService,
         private spinner: SpinnersService,
-        private notification: NotificationService
+        private notification: NotificationService,
+        private confirm: ConfirmService,
     ) {
     }
 
@@ -100,7 +102,17 @@ export class DataSourcesComponent implements OnInit {
      * @param {number} dataSourceId: Data Source id
      */
     openDeleteModal(dataSourceId: number) {
-        this.selectedDataSourceId = dataSourceId;
+        this.confirm.confirm(
+            'Deleting...',
+            'Are you sure to delete data source?'
+        ).then(
+            (result: boolean) => {
+                if (result) {
+                    this.deleteDataSource(dataSourceId);
+                }
+            }
+        );
+
     }
 
     /**
@@ -140,12 +152,13 @@ export class DataSourcesComponent implements OnInit {
 
     /**
      * Delete Data Source
+     * @param {number} id: Data Source Id
      */
-    deleteDataSource() {
-        this.spinner.show();
+    deleteDataSource(id: number) {
+        if (id) {
+            this.spinner.show();
 
-        if (this.selectedDataSourceId) {
-            this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
+            this.dataSourcesService.deleteDataSource(id).pipe(first())
                 .subscribe(
                     response => {
                         this.spinner.hide();
