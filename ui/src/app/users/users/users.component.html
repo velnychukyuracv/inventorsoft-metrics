@@ -10,7 +10,7 @@
     </header>
     <main class="container-fluid">
 
-         <table *ngIf='currentUsers' class="table table-responsive-sm"
+            <table *ngIf='currentUsers' class="table table-responsive-sm"
                    sortable-table (sorted)="onSorted($event)"
                    paginationable-list (pageChanged)="onPageChange($event)"
             >
@@ -38,6 +38,7 @@
                 </tr>
             </table>
 
+        
         <app-pagination [activePage]="tableParams.page"
                         [totalPages]="totalPages"
         ></app-pagination>
