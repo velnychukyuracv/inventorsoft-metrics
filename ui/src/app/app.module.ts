@@ -24,6 +24,8 @@ import { NotificationService } from './common/services/notification.service';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { NoAuthLayoutComponent } from './layouts/no-auth-layout/no-auth-layout.component';
 import { JwtInterceptor } from './auth/jwt-interceptor';
+import { ConfirmService } from './common/services/confirm.service';
+import { ConfirmComponent } from './common/shared/confirm/confirm.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,8 @@ import { JwtInterceptor } from './auth/jwt-interceptor';
         NoAuthLayoutComponent,
         AppComponent,
         SpinnersComponent,
-        NotificationComponent
+        NotificationComponent,
+        ConfirmComponent,
     ],
     imports     : [
         RouterModule.forRoot(
@@ -54,6 +57,7 @@ import { JwtInterceptor } from './auth/jwt-interceptor';
     providers   : [
         SpinnersService,
         NotificationService,
+        ConfirmService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
     ],
     bootstrap   : [AppComponent]
