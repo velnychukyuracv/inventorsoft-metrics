@@ -7,13 +7,11 @@ import { SharedModule } from '../common/shared/shared.module';
 import { ChartsListComponent } from './charts-list.component';
 import { ChartComponent } from './chart/chart.component';
 import { GoogleChart } from './chart/google-chart.directive';
-import { PaginationableModule } from '../common/shared/paginationable.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    PaginationableModule,
     RouterModule.forRoot(
         APP_ROUTES
     )

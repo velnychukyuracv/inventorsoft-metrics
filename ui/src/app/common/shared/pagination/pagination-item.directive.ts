@@ -1,6 +1,6 @@
 import { Directive, HostListener, Input } from '@angular/core';
-import { PaginationService } from '../common/services/pagination.service';
-import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
+import { PaginationService } from '../../services/pagination.service';
+import { PAGE_NAVIGATION } from '../../models/page-navigation.enum';
 
 @Directive({selector: '[pagination-item]'})
 

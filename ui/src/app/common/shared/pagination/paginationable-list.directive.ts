@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs/index';
-import { PaginationService } from '../common/services/pagination.service';
-import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
+import { PaginationService } from '../../services/pagination.service';
+import { PAGE_NAVIGATION } from '../../models/page-navigation.enum';
 
 @Directive({
     selector: '[paginationable-list]'
