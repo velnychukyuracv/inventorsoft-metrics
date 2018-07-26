@@ -42,9 +42,6 @@ export class GoogleChart implements OnChanges {
         dataTable: chartData,
         options: chartOptions
       });
-      google.visualization.events.addListener(wrapper, 'ready', ()=> {
-
-      });
       wrapper.draw(element);
     });
   }
