@@ -25,9 +25,8 @@ export class GoogleChart implements OnChanges {
   }
 
   ngOnChanges() {
-    google.charts.load('current', {'packages': ['corechart', 'gauge']['orgchart']});
-
-    setTimeout(() => this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.element));
+      google.charts.load('current', {'packages': ['corechart', 'gauge']['orgchart']});
+      this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.element);
   }
 
   /**
@@ -42,6 +41,9 @@ export class GoogleChart implements OnChanges {
         chartType: chartType,
         dataTable: chartData,
         options: chartOptions
+      });
+      google.visualization.events.addListener(wrapper, 'ready', ()=> {
+
       });
       wrapper.draw(element);
     });
