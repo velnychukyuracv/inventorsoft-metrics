@@ -29,6 +29,12 @@ p {
     align-items: center;
 }
 
+.active > a {
+    color: $bgPage;
+    background-color: $sidebarActive;
+    border-left: 5px solid $sidebarLeft;
+}
+
 li {
     display: block;
     cursor: pointer;

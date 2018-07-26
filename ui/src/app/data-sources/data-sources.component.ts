@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { first } from 'rxjs/internal/operators/first';
-import { Subject } from 'rxjs/index';
+import { Subject, Subscription } from 'rxjs/index';
 
 import { DataSourcesService } from '../common/services/data-sources.service';
 import { SpinnersService } from '../spinners/spinners.service';
@@ -8,6 +8,7 @@ import { DataSource } from '../common/models/data-source.model';
 import { PAGE_NAVIGATION } from '../common/models/page-navigation.enum';
 import { TableParams } from '../common/models/table-params.model';
 import { NotificationService } from '../common/services/notification.service';
+import { ConfirmService } from '../common/services/confirm.service';
 
 @Component({
     selector   : 'app-data-sources',
@@ -29,16 +30,29 @@ export class DataSourcesComponent implements OnInit {
     totalPages: number = 1;
     selectedDataSourceId: number;
 
+    private confirmSubscription: Subscription;
+
     constructor(
         private dataSourcesService: DataSourcesService,
         private spinner: SpinnersService,
-        private notification: NotificationService
+        private notification: NotificationService,
+        private confirm: ConfirmService,
     ) {
     }
 
     ngOnInit() {
         this.buildDataSources();
+        this.subscribeToConfirm();
     }
+
+    subscribeToConfirm() {
+        this.confirmSubscription = this.confirm.confirm$.subscribe(isConfirm => {
+            if (isConfirm) {
+                this.deleteDataSource();
+            }
+        })
+    }
+
 
     /**
      * Slot for connecting to signal 'onSearch'
@@ -101,6 +115,11 @@ export class DataSourcesComponent implements OnInit {
      */
     openDeleteModal(dataSourceId: number) {
         this.selectedDataSourceId = dataSourceId;
+
+        this.confirm.confirm(
+            'Deleting...',
+            'Are you sure to delete data source?'
+        );
     }
 
     /**
@@ -142,9 +161,9 @@ export class DataSourcesComponent implements OnInit {
      * Delete Data Source
      */
     deleteDataSource() {
-        this.spinner.show();
-
         if (this.selectedDataSourceId) {
+            this.spinner.show();
+
             this.dataSourcesService.deleteDataSource(this.selectedDataSourceId).pipe(first())
                 .subscribe(
                     response => {
