@@ -16,6 +16,7 @@ import { Subject } from 'rxjs/index';
 export class MenuComponent implements OnInit {
     @ViewChild('closeBtn') closeBtn: ElementRef;
     @ViewChild('groupSubmenu') groupSubmenu: ElementRef;
+    @ViewChild('groupManagement') groupManagement: ElementRef;
     selectedGroupId: Subject<number> = new Subject()
     groups: Group[];
     groupId: number;
@@ -119,5 +120,19 @@ export class MenuComponent implements OnInit {
         if (window.innerWidth < 1140) {
             this.renderer.removeClass(this.groupSubmenu.nativeElement, 'show');
         }
+    }
+
+    /**
+     * Add class active to menu-item
+     */
+    addActiveClass(){
+        this.renderer.addClass(this.groupManagement.nativeElement, 'active');
+    }
+
+    /**
+     * Remove class active
+     */
+    removeActiveClass(){
+        this.renderer.removeClass(this.groupManagement.nativeElement, 'active')
     }
 }

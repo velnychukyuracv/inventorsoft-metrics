@@ -24,32 +24,32 @@
         <p>User Name</p>
     </div>
     <ul class="components">
-        <li [routerLink]="['/users']">
+        <li [routerLink]="['/users']" (click)="removeActiveClass()">
             <a>
                 <i class="fa fa-user"></i>
                 <span class="menu-item">User Management</span>
             </a>
         </li>
-        <li [routerLink]="['/data-sources']">
+        <li [routerLink]="['/data-sources']" (click)="removeActiveClass()">
             <a>
                 <i class="fa fa-file"></i>
                 <span class="menu-item">Data Source Management</span>
             </a>
         </li>
-        <li [routerLink]="['/chart-management']">
+        <li [routerLink]="['/chart-management']" (click)="removeActiveClass()">
             <a>
                 <i class="fa fa-list-ul"></i>
                 <span class="menu-item">Chart Management</span>
             </a>
         </li>
-        <li [routerLink]="['/charts']">
+        <li [routerLink]="['/charts']" (click)="removeActiveClass()">
             <a>
                 <i class="fa fa-bar-chart"></i>
                 <span class="menu-item">Charts</span>
             </a>
         </li>
-        <li id="sidebar-submenu">
-            <a href="#group-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <li id="sidebar-submenu" #groupManagement>
+            <a href="#group-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" (click)="addActiveClass()">
                 <i class="fa fa-group"></i>
                 <span class="menu-item">Group Management</span>
             </a>
@@ -67,7 +67,7 @@
                             <button class="btn btn-link btn-sm" data-toggle="modal" data-target='#deleteGroup'
                                     (click)="openDeleteModal(group.id)"><i
                                 class="fa fa-trash"> </i></button>
-                            <button [class.selected]="group === selectedGroup" class="btn btn-link btn-sm" data-toggle="modal"
+                            <button [class.selected]="group.id === currentGroupId" class="btn btn-link btn-sm" data-toggle="modal"
                                     data-target="#createGroup"
                                     (click)="openGroupModal(group.id)"><i
                                 class="fa fa-edit"> </i>
